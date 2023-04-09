@@ -1,9 +1,9 @@
 from dash import dcc
 
 from my_dash.my_html.my_div import my_div
+from pages.main_page.main_page_callbacks import *
 from pages.main_page.main_page_css import *
-from pages.main_page.main_page_functions import (create_callback,
-                                                 create_div_buttons)
+from pages.main_page.main_page_functions import create_div_buttons
 from pages.main_page.main_page_lists import (buttons, functions, models,
                                              visualizations)
 
@@ -34,7 +34,7 @@ id_page = "main_page"
 
 layout: dict = my_div(style_div_main, "",
                       [
-                       dcc.Store(id=f"{id_page}_store"),
+                       dcc.Store(id=f"{id_page}_store"),                       
                        # Up Panel
                        my_div(style_up_panel, ""),
                        # Middle Panel
@@ -43,14 +43,26 @@ layout: dict = my_div(style_div_main, "",
                                # Left Panel
                                my_div(style_div_buttons, f"{id_page}_left",
                                       [
-                                       create_div_buttons(
-                                           style_div_1, "DataFrame", buttons),
+                                       # User panel
+                                       my_div({"position": "relative", "top": "1%", "left": "2%"}, "", 
+                                              dcc.Input(id=f"{id_page}_user",
+                                                        placeholder="Usuario",
+                                                        style={"width": "70%"},
+                                                        debounce=True
+                                              ),
+                                       ),
+                                       # DataFrame panel
+                                       create_div_buttons(style_div_1, "DataFrame", buttons),
+                                       # Div for Visualizations panel, Functions panel, Models panel
                                        my_div({"height": "80%"}, f"{id_page}_div_functions",
                                               [
+                                               # Visualizations panel
                                                create_div_buttons(
-                                                   style_div_2, "Visualization", visualizations),
+                                                   style_div_2, "Visualizations", visualizations),
+                                               # Functions panel
                                                create_div_buttons(
                                                    style_div_2, "Functions", functions),
+                                               # Models panel
                                                create_div_buttons(
                                                    style_div_2, "Models", models),
                                               ],
@@ -66,9 +78,3 @@ layout: dict = my_div(style_div_main, "",
                        my_div(style_up_panel, ""),
                       ]
                )
-
-
-create_callback(buttons, "i_o_pages")
-create_callback(visualizations, "visualization_pages", "Visualización")
-create_callback(functions, "functions_pages", "Función")
-create_callback(models, "models_pages", "Modelo")

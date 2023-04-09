@@ -7,9 +7,10 @@ id_page = "load_data"
 from dash.dependencies import Input, Output, State
 from pandas import read_csv
 
+
 @callback(
     [
-        Output("main_page_store", "data"),
+        Output("main_page_store", "data", allow_duplicate=True),
         Output(f"{id_page}_content", "children"),
         Output(f"main_page_div_functions", "hidden")
     ],
@@ -55,18 +56,20 @@ def load_data(n_clicks, input_value, drop_value, data):
             Indicador de si se mostrará o no la sección de funciones de
             la página principal.
     """
-    data = {}
+    
     load_data_content = ""
     hidden = True
     if input_value is not None:
-        path = input_value
+          
+        path = f"""users/{data["user"]}/{input_value}"""
         if drop_value == "From CSV":
+            path = f"""users/{data["user"]}/csv/{input_value}"""
             try:
                 df = read_csv(path)
                 data["df"] = df.to_json(orient="columns")
                 load_data_content = "DataFrame Cargado"
                 hidden = False
-            except FileNotFoundError:
+            except (FileNotFoundError, IsADirectoryError):
                 load_data_content = f"No such file or directory: {input_value}"
         elif drop_value == "From JSON":
             load_data_content = "Función no implementada"

@@ -1,3 +1,5 @@
+import os
+
 from dash import Input, Output, State, callback
 from pandas import read_json
 
@@ -37,7 +39,9 @@ def save_data(n_clicks, input_value, drop_value, data):
             df = read_json(data["df"])
             match drop_value:
                 case "To CSV":
-                    df.to_csv(f"Data/csv/{input_value}.csv", index=False)
+                    if os.path.exists(f"""users/{data["user"]}/csv""")==False:                        
+                        os.mkdir(f"""users/{data["user"]}/csv""")
+                    df.to_csv(f"""users/{data["user"]}/csv/{input_value}.csv""", index=False)
                 case "To JSON":
                     pass
         except (TypeError, KeyError):
