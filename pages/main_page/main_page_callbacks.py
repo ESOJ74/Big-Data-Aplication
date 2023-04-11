@@ -1,8 +1,7 @@
-import os
-
 from dash import callback
 from dash.dependencies import Input, Output, State
 from pandas import read_csv
+
 from pages.main_page.main_page_functions import create_callback
 from pages.main_page.main_page_lists import (buttons, functions, models,
                                              visualizations)

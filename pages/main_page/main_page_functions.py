@@ -1,64 +1,10 @@
 from importlib import import_module
 
-from dash import callback, dcc
+from dash import callback
 from dash.dependencies import Input, Output
 
 from my_dash.my_html.my_button import my_button
 from my_dash.my_html.my_div import my_div
-
-style_div_regystry = {"position": "absolute",
-                      "top": "5%",
-                      "left": "1%",
-                      "width": "10%",
-                      "height": "10%",
-                      "background": "#699B8F"}
-
-style_div_input = {    
-    "margin-top": "1%",
-    "margin-left": "5%",
-    "width": "85%"
-}
-
-style_input = {
-    "font-family": "Roboto, Helvetica, Arial, sans-serif",
-    "width": "100%"
-}
-
-style_div_reg_answer = {    
-    "margin-top": "1%",
-    "margin-left": "5%",
-    #"width": "100%",
-    #"background": "#C0FBED",
-    "font-family": "Roboto, Helvetica, Arial, sans-serif",
-}
-
-style_accept = {
-    "font-family": "Roboto, Helvetica, Arial, sans-serif",
-    "width": "100%"
-}
-
-def a(id_page):
-    obj = my_div(style_div_regystry, f"{id_page}_div_registry",
-                 [
-                  my_div(style_div_input, "",
-                                dcc.Input(id=f"{id_page}_reg_user",
-                                          placeholder="Usuario",
-                                          style=style_input,
-                                          debounce=True
-                                )
-                  ),
-                  my_div(style_div_input, "",
-                                dcc.Input(id=f"{id_page}_reg_pass",
-                                          placeholder="Contraseña",
-                                          style=style_input,
-                                          debounce=True
-                                )
-                  ),
-                  my_button(f"{id_page}_reg_accept", "Aceptar", style_div_input),
-                  my_div(style_div_reg_answer, f"{id_page}_reg_answer")
-        
-                 ])
-    return obj
 
 
 def create_div_buttons(style_div: dict, tittle: str, button_list: list) -> dict:

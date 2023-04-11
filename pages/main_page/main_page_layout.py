@@ -1,9 +1,10 @@
 from dash import dcc
 
+from common_functions.user_registry import user_registry
 from my_dash.my_html.my_div import my_div
 from pages.main_page.main_page_callbacks import *
 from pages.main_page.main_page_css import *
-from pages.main_page.main_page_functions import create_div_buttons, a
+from pages.main_page.main_page_functions import create_div_buttons
 from pages.main_page.main_page_lists import (buttons, functions, models,
                                              visualizations)
 
@@ -35,7 +36,7 @@ id_page = "main_page"
 layout: dict = my_div(style_div_main, "",
                       [
                        dcc.Store(id=f"{id_page}_store"),        
-                       a(id_page),               
+                       user_registry(id_page),               
                        # Up Panel
                        my_div(style_up_panel, ""),
                        # Middle Panel
