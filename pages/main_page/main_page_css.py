@@ -14,6 +14,17 @@ style_up_panel = {
     "background": "#699B8F",
 }
 
+style_panel_user = {
+    "position": "relative",
+    "top": "1%",
+    "left": "2%",
+    "width": "90%",
+    "border-radius": "7px 7px 5px 5px",
+    "padding": "0px 0px 0px 10px",
+    "background": "#C0FBED",
+    "font-family": "Roboto, Helvetica, Arial, sans-serif",
+}
+
 style_div_buttons = {
     "float": "left",
     "width": "10%",
