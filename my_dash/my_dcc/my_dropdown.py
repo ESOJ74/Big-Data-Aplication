@@ -1,4 +1,4 @@
-from dash import dcc
+from dash import dcc, html
 
 
 def my_dropdown(id, style, options=[], value="", placeholder="", multi=False):
@@ -26,7 +26,12 @@ def my_dropdown(id, style, options=[], value="", placeholder="", multi=False):
     return dcc.Dropdown(
         style=style,
         id=id,
-        options=options,
+        options=[
+            {
+                "label": html.Span([option], style={'color': 'black'}),
+                "value": option,        
+            } for option in options
+        ],
         value=value,
         placeholder=placeholder,
         multi=multi

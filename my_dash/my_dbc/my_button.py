@@ -1,7 +1,7 @@
-from dash import html
+import dash_bootstrap_components as dbc
 
 
-def my_button(id, name, style, hidden=False, disabled=False, n_clicks=0):
+def my_button(id, children, style, color="secondary", className="btn btn-outline-success", hidden=False, disabled=False, n_clicks=0):
     """
     La función my_button crea un botón de HTML utilizando la librería dash-html-components.
 
@@ -18,11 +18,12 @@ def my_button(id, name, style, hidden=False, disabled=False, n_clicks=0):
 
      html.Button: el botón de HTML con las propiedades especificadas."""
     
-    return html.Button(
-        style=style,
+    return dbc.Button(
+        children=children,
         id=id,
-        n_clicks=n_clicks,
-        hidden=hidden,
-        children=name,
+        color=color,
+        className=className,
+        style=style,
+        n_clicks=n_clicks,               
         disabled=disabled,
     )

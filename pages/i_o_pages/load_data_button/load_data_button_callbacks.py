@@ -59,6 +59,7 @@ def load_data(n_clicks, input_value, drop_value, data):
     
     load_data_content = ""
     hidden = True
+    data["df"] = ""
     if input_value is not None:
           
         path = f"""users/{data["user"]}/{input_value}"""

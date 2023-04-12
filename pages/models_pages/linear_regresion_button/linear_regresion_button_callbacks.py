@@ -2,7 +2,7 @@ from dash import callback, dcc
 from dash.dependencies import Input, Output, State
 from pandas import read_json
 from my_dash.my_dcc.my_dropdown import my_dropdown
-from my_dash.my_html.my_button import my_button
+from my_dash.my_dbc.my_button import my_button
 from my_dash.my_html.my_div import my_div
 import plotly.express as px
 import numpy as np

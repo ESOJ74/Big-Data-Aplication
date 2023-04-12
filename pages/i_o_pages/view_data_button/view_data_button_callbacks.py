@@ -39,7 +39,7 @@ def view_data(n_clicks, data):
                 defaultColDef=dict(resizable=True,)
             ))
         obj.append(False)
-    except (TypeError, KeyError):
+    except (TypeError, KeyError, ValueError):
         obj = ['No hay ningún DataFrame Cargado', True]
     return obj
 

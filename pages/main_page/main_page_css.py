@@ -4,14 +4,13 @@ style_div_main = {
     "top": "0px",
     "width": "100%",
     "height": "100%",
-    "background": "#C0FBED",
     "font-family": "Roboto, Helvetica, Arial, sans-serif",
 }
 
 style_up_panel = {
     "width": "100%",
     "height": "4%",
-    "background": "#699B8F",
+    "background": "#B6DBD2",
 }
 
 style_panel_user = {
@@ -21,7 +20,6 @@ style_panel_user = {
     "width": "90%",
     "border-radius": "7px 7px 5px 5px",
     "padding": "0px 0px 0px 10px",
-    "background": "#C0FBED",
     "font-family": "Roboto, Helvetica, Arial, sans-serif",
 }
 
@@ -29,7 +27,6 @@ style_div_buttons = {
     "float": "left",
     "width": "10%",
     "height": "100%",
-    "background": "#699B8F",
 }
 
 style_div_content = {
@@ -41,22 +38,25 @@ style_div_content = {
 style_div_1 = {
     "margin-top": "20%",
     "width": "95%",
-    "height": "10%",
+    "height": "16%",
+    "color": "black",
     "border-radius": "7px 7px 5px 5px",
-    "background": "#C0FBED",
+    "background": "#B6DBD2",
 }
 style_div_2 = {
     "margin-top": "20%",
     "width": "95%",
-    "height": "20%",    
+    "height": "27%",    
+    "color": "black",
     "overflow-y": "auto",
     "border-radius": "7px 7px 5px 5px",
     "padding": "2px 2px 0px 2px",
-    "background": "#C0FBED",
+    "background": "#B6DBD2",
 }
 
 style_button = {    
-    "float": "left",
-    "margin-left": "0.1%",
-    "margin-top": "0.1%",
+    "margin-top": "1%",
+    "margin-left": "5%",
+    "font-size": "75%",
+    "font-family": "Roboto, Helvetica, Arial, sans-serif",
 }

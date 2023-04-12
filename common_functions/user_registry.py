@@ -1,14 +1,16 @@
 from dash import dcc
+import dash_bootstrap_components as dbc
 
-from my_dash.my_html.my_button import my_button
+from my_dash.my_dbc.my_button import my_button
 from my_dash.my_html.my_div import my_div
 
-style_div_regystry = {"position": "absolute",
-                      "top": "5%",
-                      "left": "1%",
-                      "width": "10%",
-                      "height": "10%",
-                      "background": "#699B8F"}
+style_div_regystry = {
+    "position": "absolute",
+    "top": "5%",
+    "left": "1%",
+    "width": "10%",
+    "height": "10%"
+}
 
 style_div_input = {    
     "margin-top": "1%",
@@ -19,6 +21,15 @@ style_div_input = {
 style_input = {
     "font-family": "Roboto, Helvetica, Arial, sans-serif",
     "width": "100%"
+}
+
+style_button = {    
+    "margin-top": "2%",
+    "margin-left": "5%",
+    "width": "85%",
+    "height": "30%",
+    "font-size": "90%",
+    "font-family": "Roboto, Helvetica, Arial, sans-serif",
 }
 
 style_div_reg_answer = {    
@@ -49,7 +60,7 @@ def user_registry(id_page):
                                           debounce=True
                                 )
                   ),
-                  my_button(f"{id_page}_reg_accept", "Aceptar", style_div_input),
-                  my_div(style_div_reg_answer, f"{id_page}_reg_answer")
-        
-                 ])
+                  my_button(f"{id_page}_reg_accept", "Aceptar", style_button),
+                  my_div(style_div_reg_answer, f"{id_page}_reg_answer"),        
+                 ]
+    )

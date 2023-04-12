@@ -40,7 +40,7 @@ layout: dict = my_div(style_div_main, "",
                        # Up Panel
                        my_div(style_up_panel, ""),
                        # Middle Panel
-                       my_div({"width": "100%", "height": "92%", }, "",
+                       my_div({"margin-left": "1%", "width": "98%", "height": "92%", }, "",
                               [
                                # Left Panel
                                my_div(style_div_buttons, f"{id_page}_left",
@@ -48,19 +48,32 @@ layout: dict = my_div(style_div_main, "",
                                        # User panel
                                        my_div(style_panel_user, f"{id_page}_user"),
                                        # DataFrame panel
-                                       create_div_buttons(style_div_1, "DataFrame", buttons),
+                                       create_div_buttons(
+                                            style_div_1, "DataFrame",
+                                            style_button, buttons,
+                                            className="btn btn-outline-light"
+                                       ),
                                        # Div for Visualizations panel, Functions panel, Models panel
-                                       my_div({"height": "80%"}, f"{id_page}_div_functions",
+                                       my_div({"height": "70%"}, f"{id_page}_div_functions",
                                               [
                                                # Visualizations panel
                                                create_div_buttons(
-                                                   style_div_2, "Visualizations", visualizations),
+                                                   style_div_2, "Visualizations",
+                                                   style_button, visualizations,
+                                                   className="btn btn-outline-light"
+                                               ),
                                                # Functions panel
                                                create_div_buttons(
-                                                   style_div_2, "Functions", functions),
+                                                   style_div_2, "Functions",
+                                                   style_button, functions,
+                                                   className="btn btn-outline-light"
+                                               ),
                                                # Models panel
                                                create_div_buttons(
-                                                   style_div_2, "Models", models),
+                                                   style_div_2, "Models",
+                                                   style_button, models,
+                                                   className="btn btn-outline-light"
+                                               ),
                                               ],
                                               hidden=True,
                                        ),

@@ -3,11 +3,11 @@ from importlib import import_module
 from dash import callback
 from dash.dependencies import Input, Output
 
-from my_dash.my_html.my_button import my_button
+from my_dash.my_dbc.my_button import my_button
 from my_dash.my_html.my_div import my_div
 
 
-def create_div_buttons(style_div: dict, tittle: str, button_list: list) -> dict:
+def create_div_buttons(style_div: dict, tittle: str, style_button, button_list: list, color="dark", className="btn btn-outline-success") -> dict:
     """
     Crea y devuelve un elemento div que contiene un título y una lista de botones.
 
@@ -26,11 +26,18 @@ def create_div_buttons(style_div: dict, tittle: str, button_list: list) -> dict:
         Cada botón se crea utilizando la función my_button y se agrega a la lista de elementos div.
     """
 
-    return my_div(style_div, "", [
-        my_div({"margin-left": "10%"}, "", tittle),
-        *[my_div({"margin-top": "1%"}, "",
-                 my_button(*button)) for button in button_list]
-    ])
+    return my_div(style_div, "",
+                  [
+                    my_div({"margin-left": "10%"}, "", tittle),
+                    *[my_div({"margin-top": "1%"}, "",
+                             my_button(button[0],
+                                       button[1],
+                                       style_button,
+                                       color="dark",
+                                       className=className)
+                      ) for button in button_list]
+                   ]
+           )
 
 
 def create_callback(buttons_list: list, module: str, button_name: str = "") -> None:
