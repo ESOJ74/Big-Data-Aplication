@@ -10,7 +10,7 @@ style_div_main = {
 style_up_panel = {
     "width": "100%",
     "height": "4%",
-    "background": "#B6DBD2",
+    "background": "#0C231E",
 }
 
 style_panel_user = {
@@ -39,19 +39,19 @@ style_div_1 = {
     "margin-top": "20%",
     "width": "95%",
     "height": "16%",
-    "color": "black",
+    "color": "white",
     "border-radius": "7px 7px 5px 5px",
-    "background": "#B6DBD2",
+    #"background": "#B6DBD2",
 }
 style_div_2 = {
     "margin-top": "20%",
     "width": "95%",
     "height": "27%",    
-    "color": "black",
+    "color": "white",
     "overflow-y": "auto",
     "border-radius": "7px 7px 5px 5px",
     "padding": "2px 2px 0px 2px",
-    "background": "#B6DBD2",
+    #"background": "#B6DBD2",
 }
 
 style_button = {    
