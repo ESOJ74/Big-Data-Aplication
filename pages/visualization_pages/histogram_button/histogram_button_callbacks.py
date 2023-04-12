@@ -11,7 +11,6 @@ id_page = "histogram_button"
 s_selector = {
     "position": "relative",
     "top": "20%",
-    "left": "2.4%",
     "width": "17.5%",
     "height": "48%",
     "border-radius": "7px 7px 5px 5px",
@@ -23,7 +22,6 @@ s_selector = {
 s_content_down = {
     "position": "relative",    
     "top": "5%",
-    "left": "2.4%",
     "width": "30%",
     "background": "white",
 }
