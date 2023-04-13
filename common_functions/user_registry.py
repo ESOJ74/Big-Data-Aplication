@@ -1,5 +1,4 @@
 from dash import dcc
-import dash_bootstrap_components as dbc
 
 from my_dash.my_dbc.my_button import my_button
 from my_dash.my_html.my_div import my_div

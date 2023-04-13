@@ -1,11 +1,12 @@
 from dash import dcc
 
-from my_dash.my_dcc.my_dropdown import my_dropdown
 from my_dash.my_dbc.my_button import my_button
+from my_dash.my_dcc.my_dropdown import my_dropdown
 from my_dash.my_html.my_div import my_div
 from pages.i_o_pages.load_data_button.load_data_button_callbacks import *
 from pages.i_o_pages.load_data_button.load_data_button_css import *
-from pages.i_o_pages.load_data_button.load_data_button_lists import list_of_format
+from pages.i_o_pages.load_data_button.load_data_button_lists import \
+    list_of_format
 
 """
 El código presentado define una variable layout que contiene la estructura visual de una

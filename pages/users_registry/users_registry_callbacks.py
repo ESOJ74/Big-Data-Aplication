@@ -4,9 +4,8 @@ from dash import callback
 from dash.dependencies import Input, Output, State
 from pandas import read_csv
 
-from dash.exceptions import PreventUpdate
-
 id_page = "users_registry"
+
 
 @callback(Output(f"{id_page}_reg_answer", "children"),
           Input(f"{id_page}_reg_accept", "n_clicks"),
@@ -14,8 +13,7 @@ id_page = "users_registry"
             State(f"{id_page}_reg_user", "value"),
             State(f"{id_page}_reg_pass", "value") 
           ], prevent_initial_call=True)
-def auth_display(n_clicks, reg_user, reg_pass):
-    
+def auth_display(n_clicks, reg_user, reg_pass):    
 
     if reg_user is None or reg_pass is None:
         reg_answer = "Faltan Datos"
