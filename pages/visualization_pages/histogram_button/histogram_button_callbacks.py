@@ -37,11 +37,11 @@ def display_page(n_clicks, data):
           Input(f"{id_page}_content_up", "children"),
           State('main_page_store', 'data'),
           prevent_initial_call=True)
-def display_page(n_clicks, data):     
-    print(read_json(data["df"]).columns)
+def display_page(n_clicks, data):  
     return read_json(data["df"]).columns
 
 
+# Panel content_middle
 @callback(Output(f"{id_page}_content_middle", "children"),           
           Input(f"{id_page}_dropdown", "value"),  
           [
