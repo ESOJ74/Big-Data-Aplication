@@ -18,10 +18,10 @@ s_content_down = {
 
 s_utils = {
     "position": "relative",    
-    "top": "2%",
+    "top": "5%",
     "left": "5%",
     "width": "100%",
-    "height": "100%",
+    "height": "95%",
 }
 
 style_input = {
