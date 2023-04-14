@@ -19,12 +19,12 @@ style_div_input = {
     "color": "white"
 }
 
-style_input = {
-    
+style_input = {    
     "width": "10%"
 }
 
-def create_utils():
+
+def create_utils(id_page):
     return my_div(s_utils, "",
                  [
                    my_div(style_div_input, "", 

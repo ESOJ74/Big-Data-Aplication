@@ -7,6 +7,7 @@ style_div_content_middle = {"width": "100%", "height": "50%"}
 style_div_content_down = {"width": "99.5%", "margin-top": "2%", "height": "38%", "color": "black"}
 style_div_utils = {"float": "left", "margin-left": "1%", "width": "15%", "height": "100%"}
 
+
 def create_visualization_layout(id_page):
     return my_div(style_main_div, "",
                   [

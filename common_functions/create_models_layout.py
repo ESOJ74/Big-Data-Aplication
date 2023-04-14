@@ -1,13 +1,15 @@
 from my_dash.my_html.my_div import my_div
+from pages.models_pages.linear_regresion_button.linear_regresion_button_functions import \
+    create_utils
 
-style_main_div = {"width": "100%", "height": "100%"}
-style_div_content = {"float": "left", "width": "85%", "height": "100%"}
-style_div_content_up = {"width": "100%", "height": "10%"}
-style_div_content_middle = {"width": "100%", "height": "50%", "background": "yellow"}
-style_div_content_down = {"width": "100%", "height": "40%"}
-style_div_utils = {"float": "left", "width": "15%", "height": "100%", "background": "#699B8F"}
+style_main_div = {"width": "99%", "height": "100%"}
+style_div_content = {"float": "left", "margin-left": "4%", "margin-top": "3%", "width": "80%", "height": "97%"}
+style_div_content_up = {"width": "95%", "height": "10%"}
+style_div_content_middle = {"width": "100%", "height": "52%"}
+style_div_content_down = {"width": "99.5%", "margin-top": "2%", "height": "38%"}
+style_div_utils = {"float": "left", "margin-left": "1%", "width": "15%", "height": "100%"}
 
-
+ 
 def create_models_layout(id_page):
     return my_div(style_main_div, "",
                   [
@@ -18,5 +20,5 @@ def create_models_layout(id_page):
                            my_div(style_div_content_down, f"{id_page}_content_down"),
                           ]
                    ),
-                   my_div(style_div_utils, f"{id_page}_utils")
+                   my_div(style_div_utils, f"{id_page}_utils", create_utils(id_page))
                   ])

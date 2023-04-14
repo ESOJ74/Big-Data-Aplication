@@ -1,4 +1,4 @@
-import openai
+"""import openai
 
 # Configuramos las credenciales de API
 openai.api_key = "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"
@@ -14,4 +14,7 @@ response = openai.Completion.create(
 )
 
 # Imprimimos la respuesta generada por el modelo
-print(response["choices"][0]["text"])
+print(response["choices"][0]["text"])"""
+import seaborn as sns
+df = sns.load_dataset('diamonds')
+df.to_csv("diamonds.csv", index=False)

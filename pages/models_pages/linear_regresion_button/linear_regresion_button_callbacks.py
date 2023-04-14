@@ -1,102 +1,25 @@
+import plotly.express as px
 from dash import callback, dcc
 from dash.dependencies import Input, Output, State
-from pandas import read_json
-from my_dash.my_dcc.my_dropdown import my_dropdown
-from my_dash.my_dbc.my_button import my_button
-from my_dash.my_html.my_div import my_div
-import plotly.express as px
-import numpy as np
-from sklearn import linear_model
+from pandas import DataFrame, read_json
 from sklearn.metrics import mean_squared_error, r2_score
-import pandas as pd
+
+from my_dash.my_html.my_div import my_div
+from pages.models_pages.linear_regresion_button.linear_regresion_button_functions import (
+    create_content_up, fit_model, pred_model, split_df)
+
+id_page = "linear_regresion"
 
 
-
-s_selector = {
-    "float" : "left",
-    "position": "relative",
-    "top": "20%",
-    "left": "2.4%",
-    "width": "17.5%",
-    "height": "48%",
-    "border-radius": "7px 7px 5px 5px",
-    "padding": "2px 2px 0px 2px",
-    "font-size": "1em",
-    "background": "#699B8F",
-}
-
-s_selector2 = {
-    "float" : "left",
-    "position": "relative",
-    "top": "20%",
-    "margin-left": "5%",
-    "width": "17.5%",
-    "height": "48%",
-    "border-radius": "7px 7px 5px 5px",
-    "padding": "2px 2px 0px 2px",
-    "font-size": "1em",
-    "background": "#699B8F",
-}
-
-s_content_down = {
-    "position": "relative",    
-    "top": "5%",
-    "left": "2.4%",
-    "width": "30%",
-    "background": "white",
-}
-
-s_utils = {
-    "position": "relative",    
-    "top": "2%",
-    "left": "5%",
-    "width": "100%",
-    "height": "100%",
-}
-
-style_input = {
-    "font-family": "Roboto, Helvetica, Arial, sans-serif",
-    "width": "10%"
-}
-
-
-id_page = "linear_regresion_button"
-
-
+# Panel content_up
 @callback(Output(f"{id_page}_content_up", "children"),
           Input("linear_regresion_button", "n_clicks"),
-          State('main_page_store', 'data'),
-          prevent_initial_call=True)
-def display_page(n_clicks, data):          
-     
-    columns = read_json(data["df"]).columns
-    
-    obj = my_div({"width": "100%", "height": "100%"}, "",
-                 [my_div({"position": "relative", "top": "2%", "width": "100%", "height": "7%"}, "",
-                         [
-                          my_div({"float": "left", "margin-left": "3%", "width": "20%", "height": "100%"}, "", "X"),
-                          my_div({"float": "left", "width": "30%", "height": "100%"}, "", "Y"),
-                         ]
-                  ),
-                  my_div(s_selector, "",
-                         my_dropdown(f"{id_page}_dropdown_x",
-                              {},
-                              columns,
-                              placeholder="Seleccione columna",
-                              multi=True,
-                         ),
-                  ),
-                  my_div(s_selector2, "",
-                         my_dropdown(f"{id_page}_dropdown_y",
-                              {},
-                              placeholder="Seleccione columna"
-                         ),
-                  ),
-                 ]
-          )
-    return obj
+          State('main_page_store', 'data'),)
+def display_page(n_clicks, data):   
+    return create_content_up(read_json(data["df"]).columns)
 
 
+# options dropdown y
 @callback(Output(f"{id_page}_dropdown_y", "options"),
           Input(f"{id_page}_dropdown_x", "value"),
           State('main_page_store', 'data'),
@@ -110,70 +33,54 @@ def display_page(values, data):
     return cols
 
 
-@callback(Output(f"{id_page}_content_down", "children"),
-          Input(f"{id_page}_dropdown_y", "value"),
+# Panel content_down
+@callback([
+           Output(f"{id_page}_content_middle", "children"),
+           Output(f"{id_page}_content_down", "children"),
+          ],
+          Input(f"{id_page}_train", "n_clicks"),
           [
            State(f"{id_page}_dropdown_x", "value"),
+           State(f"{id_page}_dropdown_y", "value"),                            
            State('main_page_store', 'data'),
+           State(f"{id_page}_test_size", "value"),
+           State(f"{id_page}_random_state", "value"),
+           State(f"{id_page}_fit_intercept", "value"),
+           State(f"{id_page}_copy_X", "value"),
+           State(f"{id_page}_n_jobs", "value"),
+           State(f"{id_page}_positive", "value")
           ],
           prevent_initial_call=True)
-def display_page(value_y, value_x, data):
-     
+def display_page(n_clicks, value_x, value_y, data, test_size, random_state, fit_intercept, copy_X, n_jobs, positive):     
     
-    try:
-        df = read_json(data["df"])
+    try:                
+        # train_test_split
+        X_train, X_test, y_train, y_test = split_df(read_json(data["df"]),
+                                                    value_x, value_y, int(test_size)/100, int(random_state))               
+        # Entrenamos modelo
+        regr = fit_model(X_train, y_train, fit_intercept, copy_X, n_jobs, positive)
+        # Hacemos las predicciones
+        y_pred = pred_model(regr, X_test)
+        
+        # content_middle        
+        df = DataFrame({value_x[0]: list(map(lambda x: x[0], X_test)), value_y: y_test})     
 
-        if len(value_x) == 1:
+        fig = px.scatter(df, x=value_x[0], y=value_y)
+        fig.add_trace(px.line(x=df[value_x[0]], y=y_pred).data[0])
+        fig.update_traces(line_color='green')
 
-            dataX =df[[value_x[0]]]
-            X_train = np.array(dataX)
-            y_train = df[value_y].values    
-            
-            # Creamos el objeto de Regresión Linear
-            regr = linear_model.LinearRegression()
-    
-            # Entrenamos nuestro modelo
-            regr.fit(X_train, y_train)
+        obj_middle = dcc.Graph(figure=fig)
 
-            # Hacemos las predicciones que en definitiva una línea (en este caso, al ser 2D)
-            y_pred = regr.predict(X_train)
-
-            obj = f"Coefficients: \n {regr.coef_}"
-            # Veamos los coeficienetes obtenidos, En nuestro caso, serán la Tangente
-            print('Coefficients: \n', regr.coef_)
-            # Este es el valor donde corta el eje Y (en X=0)
-            print('Independent term: \n', regr.intercept_)
-            # Error Cuadrado Medio
-            print("Mean squared error: %.2f" % mean_squared_error(y_train, y_pred))
-            # Puntaje de Varianza. El mejor puntaje es un 1.0
-            print('Variance score: %.2f' % r2_score(y_train, y_pred))
-        else:
-            dataX2 =  pd.DataFrame()
-            for x in value_x:
-                dataX2[x] = df[x].fillna(0)
-             
-            XY_train = np.array(dataX2)
-            z_train = df[value_y].values
-
-            # Creamos un nuevo objeto de Regresión Lineal
-            regr2 = linear_model.LinearRegression()
-            
-            # Entrenamos el modelo, esta vez, con 2 dimensiones
-            # obtendremos 2 coeficientes, para graficar un plano
-            regr2.fit(XY_train, z_train)
-            
-            # Hacemos la predicción con la que tendremos puntos sobre el plano hallado
-            z_pred = regr2.predict(XY_train)
-            
-            # Los coeficientes
-            print('Coefficients: \n', regr2.coef_)
-            # Error cuadrático medio
-            print("Mean squared error: %.2f" % mean_squared_error(z_train, z_pred))
-            # Evaluamos el puntaje de varianza (siendo 1.0 el mejor posible)
-            print('Variance score: %.2f' % r2_score(z_train, z_pred))
-
-            obj = f"Coefficients: \n {regr2.coef_}"
-    except KeyError:
-        obj = ""
-    return obj
+        # content_down
+        obj_down = my_div({}, "",
+                          [my_div({}, "", f"Coefficients: {list(map(lambda x: round(x, 2), regr.coef_))}"),
+                           my_div({}, "", f"Independent term: {round(regr.intercept_, 2)}"),
+                           my_div({}, "", f"Mean squared error: {round(mean_squared_error(y_test, y_pred), 2)}"),
+                           my_div({}, "", f"Variance score: {round(r2_score(y_test, y_pred), 2)}"),
+                          ]
+                   )      
+    except (KeyError, ValueError):
+        obj_down = ""
+        obj_middle = "Ambas columnas deben ser numéricas"
+    return [obj_middle, obj_down]
 

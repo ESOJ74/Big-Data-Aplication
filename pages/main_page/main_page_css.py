@@ -57,6 +57,7 @@ style_div_2 = {
 style_button = {    
     "margin-top": "1%",
     "margin-left": "5%",
+    "width": "98%",
     "font-size": "75%",
     "font-family": "Roboto, Helvetica, Arial, sans-serif",
 }

@@ -29,7 +29,7 @@ def create_div_buttons(style_div: dict, tittle: str, style_button, button_list: 
     return my_div(style_div, "",
                   [
                     my_div({"margin-left": "10%"}, "", tittle),
-                    *[my_div({"margin-top": "1%"}, "",
+                    *[my_div({"margin-top": "1%", "width": "90%"}, "",
                              my_button(button[0],
                                        button[1],
                                        style_button,

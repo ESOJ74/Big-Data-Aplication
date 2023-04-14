@@ -6,7 +6,8 @@ from pandas import read_json
 from my_dash.my_dcc.my_dropdown import my_dropdown
 from my_dash.my_html.my_div import my_div
 from pages.visualization_pages.histogram_button.histogram_button_css import *
-from pages.visualization_pages.histogram_button.histogram_button_functions import create_utils
+from pages.visualization_pages.histogram_button.histogram_button_functions import \
+    create_utils
 
 id_page = "histogram_button"
 
@@ -16,7 +17,7 @@ id_page = "histogram_button"
           Input("histogram_button", "n_clicks"),
           prevent_initial_call=True)
 def display_page(n_clicks):  
-    return create_utils()
+    return create_utils(id_page)
 
 
 # Panel content_up (dropdown)
