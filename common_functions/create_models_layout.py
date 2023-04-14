@@ -3,10 +3,10 @@ from pages.models_pages.linear_regresion_button.linear_regresion_button_function
     create_utils
 
 style_main_div = {"width": "99%", "height": "100%"}
-style_div_content = {"float": "left", "margin-left": "4%", "margin-top": "3%", "width": "80%", "height": "97%"}
-style_div_content_up = {"width": "95%", "height": "10%"}
+style_div_content = {"float": "left", "margin-left": "4%", "margin-top": "3%", "width": "80%", "height": "90%"}
+style_div_content_up = {"margin-top": "1%", "width": "95%", "height": "10%"}
 style_div_content_middle = {"width": "100%", "height": "52%"}
-style_div_content_down = {"width": "99.5%", "margin-top": "2%", "height": "38%"}
+style_div_content_down = {"width": "99.5%", "margin-top": "4%", "height": "38%"}
 style_div_utils = {"float": "left", "margin-left": "1%", "width": "15%", "height": "100%"}
 
  
