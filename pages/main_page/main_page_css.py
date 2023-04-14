@@ -37,7 +37,7 @@ style_div_content = {
 
 style_div_1 = {
     "margin-top": "20%",
-    "width": "95%",
+    "width": "86%",
     "height": "16%",
     "color": "white",
     "border-radius": "7px 7px 5px 5px",
