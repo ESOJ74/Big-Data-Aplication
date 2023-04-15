@@ -1,6 +1,6 @@
 from dash import dcc
 
-from common_functions.user_registry import user_registry
+from common_functions.user_registry import user_login
 from my_dash.my_html.my_div import my_div
 from pages.main_page.main_page_callbacks import *
 from pages.main_page.main_page_css import *
@@ -36,11 +36,21 @@ id_page = "main_page"
 layout: dict = my_div(style_div_main, "",
                       [
                        dcc.Store(id=f"{id_page}_store"),        
-                       user_registry(id_page),               
+                       user_login(id_page),               
                        # Up Panel
-                       my_div(style_up_panel, ""),
+                       my_div(style_up_panel, "",
+                              [
+                                my_div({"float": "left", "width": "10%"}, "", 
+                                       my_div({"margin-left": "15%", "margin-top": "5%"}, f"{id_page}_panel_up_left"),
+                                ),
+                                my_div({"float": "left", "width": "83%"}, "", 
+                                       html.H5("Big Data App", style={"margin-left": "35%", "margin-top": "0.3%"})),
+                                my_div({"float": "left", "width": "5%"}, "",
+                                       my_div({"margin-top": "6%"}, f"{id_page}_panel_up_right"),
+                                )
+                              ]),
                        # Middle Panel
-                       my_div({"margin-left": "1%", "width": "99%", "height": "92%", }, "",
+                       my_div({"margin-left": "1%", "margin-top": "0.5%", "width": "95%", "height": "92%", }, "",
                               [
                                # Left Panel
                                my_div(style_div_buttons, f"{id_page}_left",

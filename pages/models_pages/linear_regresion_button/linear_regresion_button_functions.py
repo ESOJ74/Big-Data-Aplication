@@ -1,5 +1,5 @@
 import numpy as np
-from dash import dcc
+from dash import dcc, html
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error, r2_score
 from sklearn.model_selection import train_test_split
@@ -16,8 +16,8 @@ def create_content_up(columns):
     return my_div({"width": "100%", "height": "100%"}, "",
                  [my_div({"position": "relative", "top": "2%", "width": "100%", "height": "7%"}, "",
                          [
-                          my_div({"float": "left", "width": "23%", "height": "100%"}, "", "X"),
-                          my_div({"float": "left", "width": "30%", "height": "100%"}, "", "Y"),
+                          my_div({"float": "left", "margin-left": "1%", "width": "22.5%", "height": "100%"}, "", html.H6("X")),
+                          my_div({"float": "left", "width": "30%", "height": "100%"}, "", html.H6("Y")),
                          ]
                   ),
                   my_div(s_selector, "",
@@ -56,7 +56,7 @@ def create_utils(id_page):
     return my_div(s_utils, "",
                  [
                    my_div(style_div_input, "", 
-                          [my_div({"color": "black"}, "", "train_test_split"),
+                          [html.H5("train_test_split", style={"margin-left": "2%", "color": "black"}),
                            my_div({"margin-left": "5%"}, "",
                                   [my_div({}, "", 
                                           ["test_size",
@@ -75,8 +75,8 @@ def create_utils(id_page):
                                           ]
                                   ),
                                   ]
-                           ),        
-                           my_div({"margin-top": "2%", "color": "black"}, "", "Model"),
+                           ),  
+                           html.H5("Model", style={"margin-top": "10%", "margin-left": "2%", "color": "black"}),  
                            my_div({"margin-left": "5%"}, "",
                                   [create_param_drop("fit_intercept", "True"),
                                    create_param_drop("copy_X", "True"),

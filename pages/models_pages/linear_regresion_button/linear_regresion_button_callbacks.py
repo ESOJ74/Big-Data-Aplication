@@ -1,5 +1,5 @@
 import plotly.express as px
-from dash import callback, dcc
+from dash import callback, dcc, html
 from dash.dependencies import Input, Output, State
 from pandas import DataFrame, read_json
 from sklearn.metrics import mean_squared_error, r2_score
@@ -73,10 +73,10 @@ def display_page(n_clicks, value_x, value_y, data, test_size, random_state, fit_
 
         # content_down
         obj_down = my_div({}, "",
-                          [my_div({}, "", f"Coefficients: {list(map(lambda x: round(x, 2), regr.coef_))}"),
-                           my_div({}, "", f"Independent term: {round(regr.intercept_, 2)}"),
-                           my_div({}, "", f"Mean squared error: {round(mean_squared_error(y_test, y_pred), 2)}"),
-                           my_div({}, "", f"Variance score: {round(r2_score(y_test, y_pred), 2)}"),
+                          [html.H6(f"Coefficients: {list(map(lambda x: round(x, 2), regr.coef_))}"),
+                           html.H6(f"Independent term: {round(regr.intercept_, 2)}"),
+                           html.H6(f"Mean squared error: {round(mean_squared_error(y_test, y_pred), 2)}"),
+                           html.H6(f"Variance score: {round(r2_score(y_test, y_pred), 2)}"),
                           ]
                    )      
     except (KeyError, ValueError):

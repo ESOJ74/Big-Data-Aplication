@@ -1,4 +1,4 @@
-from dash import callback
+from dash import callback, html
 from dash.dependencies import Input, Output, State
 from pandas import read_csv
 
@@ -13,7 +13,8 @@ id_page = "main_page"
            Output(f"{id_page}_left", "hidden"),
            Output(f"{id_page}_div_registry", "hidden"),
            Output(f"{id_page}_store", "data"),
-           Output(f"{id_page}_user", "children"),
+           Output(f"{id_page}_panel_up_left", "children"),
+           Output(f"{id_page}_panel_up_right", "children"),
            Output(f"{id_page}_reg_answer", "children"),
           ],
           Input(f"{id_page}_reg_accept", "n_clicks"),
@@ -25,6 +26,7 @@ def auth_display(n_clicks, reg_user, reg_pass):
     left_hidden = True
     registry_hidden = False
     user_div = ""
+    sesion_div = ""
     reg_answer = ""
     data = {}
     if n_clicks:
@@ -34,13 +36,14 @@ def auth_display(n_clicks, reg_user, reg_pass):
             if str(password) == str(reg_pass):
                 left_hidden = False
                 registry_hidden = True
-                user_div = f"Usuario: {reg_user}"
+                user_div = html.H6(f"User: {reg_user}")
+                sesion_div = html.A("Cerrar Sesión", href="/aplicacion")
                 data = {"user": reg_user}
             else:
                 reg_answer = "Contraseña incorrecta"
         else:
             reg_answer =  "Usuario no registrado"
-    return [left_hidden, registry_hidden, data, user_div, reg_answer] 
+    return [left_hidden, registry_hidden, data, user_div, sesion_div, reg_answer] 
 
 
 create_callback(buttons, "i_o_pages")

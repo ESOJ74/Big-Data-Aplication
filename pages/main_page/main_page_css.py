@@ -9,7 +9,7 @@ style_div_main = {
 
 style_up_panel = {
     "width": "100%",
-    "height": "4%",
+    "height": "3.5%",
     "background": "#0C231E",
 }
 

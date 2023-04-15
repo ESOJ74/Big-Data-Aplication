@@ -34,6 +34,7 @@ s_utils = {
 
 style_div_input = {
     "margin-left": "2%",
+    "height": "90%",
     "color": "white"
 }
 
