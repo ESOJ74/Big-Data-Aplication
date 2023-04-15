@@ -25,7 +25,11 @@ Cada uno de los componentes visuales es personalizado a través de distintas var
 id_page = "load_data"
 
 layout = my_div(style_div_main, "",
-                [
+                [my_div(style_div_titles, "",
+                        [
+                         my_div({"float": "left", "width": "20%"}, "", html.H6("Directorios")),
+                         my_div({"float": "left", "width": "35%"}, "", html.H6("Archivos")),
+                        ]),
                  my_div(style_div_dropdown_load, "",
                         [
                          my_div(s_selector_load, "",
@@ -34,13 +38,13 @@ layout = my_div(style_div_main, "",
                                             placeholder="Select format"
                                 ),
                          ),
-                         my_div(s_selector_load, "",
+                         my_div(s_selector_load2, "",
                                 my_dropdown(f"{id_page}_drop_file",
                                             {"background": "#B0B3B3"},
                                             placeholder="Select format"
                                 ),
                          ),
-                         my_button(f"{id_page}_up_file", "Up File", style_boton_up_file),   
+                         my_button(f"{id_page}_up_file", "Up File from Local", style_boton_up_file),   
                         ]
                  ),
                  my_button(f"{id_page}_aceptar", "Aceptar", style_boton_aceptar_load),

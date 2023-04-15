@@ -1,7 +1,8 @@
 import os
 
-from dash import Input, Output, State, callback
+from dash import html, Input, Output, State, callback
 from pandas import read_json
+import openpyxl
 
 id_page = "save_data"
 
@@ -15,26 +16,10 @@ id_page = "save_data"
           ],
           prevent_initial_call=True,)
 def save_data(n_clicks, input_value, drop_value, data):
-    """
-    Función que guarda un DataFrame en un archivo local en uno de los
-    formatos disponibles.
-
-    Args:
-        n_clicks (int): Número de veces que se ha hecho click en el
-                        botón "Aceptar".
-        file_name (str): Nombre del archivo.
-        file_format (str): Formato en el que se desea guardar
-                           el DataFrame.
-        data (dict): Datos actualizados que se almacenarán en el componente
-                     Store de la página principal.
-
-    Returns:
-        str: Mensaje indicando si se ha guardado el archivo correctamente
-             o si ha ocurrido un error.
-    """
-    load_data_content = "Introduzca el nombre para el archivo"
+    
+    load_data_content = html.H6("Introduzca el nombre para el archivo")
     if input_value is not None:
-        load_data_content = "DataFrame Guardado"
+        load_data_content = html.H6("DataFrame Guardado")
         try:
             df = read_json(data["df"])
             match drop_value:
@@ -43,7 +28,13 @@ def save_data(n_clicks, input_value, drop_value, data):
                         os.mkdir(f"""users/{data["user"]}/csv""")
                     df.to_csv(f"""users/{data["user"]}/csv/{input_value}.csv""", index=False)
                 case "To JSON":
-                    pass
+                    if os.path.exists(f"""users/{data["user"]}/json""")==False:                        
+                        os.mkdir(f"""users/{data["user"]}/json""")
+                    df.to_json(f"""users/{data["user"]}/json/{input_value}.json""")
+                case "To EXCEL":
+                    if os.path.exists(f"""users/{data["user"]}/excel""")==False:                        
+                        os.mkdir(f"""users/{data["user"]}/excel""")
+                    df.to_excel(f"""users/{data["user"]}/excel/{input_value}.xlsx""", index=False) 
         except (TypeError, KeyError):
-            load_data_content = "No hay DataFrame cargado"   
+            load_data_content = html.H6("No hay DataFrame cargado")
     return load_data_content

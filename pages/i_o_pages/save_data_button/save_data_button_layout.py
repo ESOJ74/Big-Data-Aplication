@@ -16,7 +16,7 @@ layout = my_div(style_div_main, "",
                         [
                          my_div(s_selector_save, "",
                                 my_dropdown(f"{id_page}_dropdown",
-                                            {"background": "#555958"},
+                                            {"background": "#B0B3B3"},
                                             list_of_format,
                                             value="To CSV",
                                             placeholder="Select format"
@@ -32,6 +32,6 @@ layout = my_div(style_div_main, "",
                          my_button(f"{id_page}_aceptar", "Aceptar", style_boton_aceptar)
                         ]
                  ),
-                 my_div(style_div_load_data_content, f"{id_page}_content")
+                 my_div(style_div_save_data_content, f"{id_page}_content")
                 ]
          )

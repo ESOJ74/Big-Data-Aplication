@@ -50,7 +50,7 @@ layout: dict = my_div(style_div_main, "",
                                 )
                               ]),
                        # Middle Panel
-                       my_div({"margin-left": "1%", "margin-top": "0.5%", "width": "99%", "height": "92%", }, "",
+                       my_div({"margin-left": "1%", "margin-top": "0.5%", "width": "99%", "height": "92%"}, "",
                               [
                                # Left Panel
                                my_div(style_div_buttons, f"{id_page}_left",

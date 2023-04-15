@@ -4,7 +4,7 @@ from tkinter import filedialog
 
 from dash import Input, Output, State, callback, html
 from dash.dependencies import Input, Output, State
-from pandas import read_csv, read_json
+from pandas import read_csv, read_json, read_excel
 
 id_page = "load_data"
 
@@ -19,8 +19,11 @@ id_page = "load_data"
     prevent_initial_call=True
 )
 def load_data(n_clicks, data):
+    file = ""
     list_dir = os.listdir(f"""users/{data["user"]}""")
-    return [list_dir, list_dir[0]]
+    if len(list_dir) > 0:
+        file = list_dir[0]
+    return [list_dir, file]
 
 
 #drop_file
@@ -32,15 +35,13 @@ def load_data(n_clicks, data):
           State("main_page_store", "data"),
     prevent_initial_call=True
 )
-def load_data(drop_dir, data):
-    list_dir = []
+def load_data(drop_dir, data):    
     file = ""
-    try:
+    list_dir = []
+    if drop_dir is not None:
         list_dir = os.listdir(f"""users/{data["user"]}/{drop_dir}""")
-        file = list_dir[0]
-    except FileNotFoundError:
-        pass
-        
+    if len(list_dir) > 0:
+        file = list_dir[0]   
     return [list_dir, file]
 
 
@@ -51,7 +52,7 @@ def load_data(drop_dir, data):
           ],
           Input(f"{id_page}_up_file", "n_clicks"),
           State("main_page_store", "data"),
-    prevent_initial_call=True
+          prevent_initial_call=True
 )
 def load_data(n_clicks, data):
     archivo = filedialog.askopenfilename()
@@ -63,6 +64,7 @@ def load_data(n_clicks, data):
     return ["Archivo subido", 0]
 
 
+# content
 @callback(
     [
         Output("main_page_store", "data", allow_duplicate=True),
@@ -87,10 +89,14 @@ def load_data(accept, drop_value, input_value, data):
     
     if input_value is not None and len(input_value) > 0:
         path = f"""users/{data["user"]}/{drop_value}/{input_value}"""  
-
+        
         match drop_value:
             case "csv" | "txt":
                 data["df"] = read_csv(path).to_json(orient="columns")
+            case "json":
+                data["df"] = read_json(path).to_json(orient="columns")
+            case "excel":
+                data["df"] = read_excel(path).to_json(orient="columns")
             case _:
                 pass
 

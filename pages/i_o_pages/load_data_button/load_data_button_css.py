@@ -1,13 +1,13 @@
 style_div_main = {
     "position": "relative",
     "width": "90%",
-    "height": "90%",
+    "height": "90%",    
 }
 style_div_dropdown_save = {
     "position": "relative",
     "top": "8%",
     "left": "2%",
-    "width": "15%",
+    "width": "16%",
     "height": "10%",
     "font-family": "Roboto, Helvetica, Arial, sans-serif",
 }
@@ -18,26 +18,50 @@ s_selector_save = {
     "border-radius": "7px 7px 5px 5px",
     "padding": "2px 2px 0px 2px",
     "font-size": "1em",
-    #"background": "#555958",
+}
+
+style_div_save_data_content = {
+    "margin-top": "7%",
+    "margin-left": "2.5%",
+    "width": "99.8%",
+    "height": "20%"
+}
+
+style_div_titles = {
+    "position": "relative",
+    "top": "8%",
+    "left": "2.5%",
+    "width": "35%",
+    "height": "4%",
+    "font-family": "Roboto, Helvetica, Arial, sans-serif",
 }
 
 style_div_dropdown_load = {
     "position": "relative",
-    "top": "8%",
+    "top": "7%",
     "left": "2%",
-    "width": "30%",
-    "height": "10%",
+    "width": "35%",
+    "height": "7%",
     "font-family": "Roboto, Helvetica, Arial, sans-serif",
 }
+
 s_selector_load = {     
     "float": "left",
     "height": "45%",
-    "width": "40%",
+    "width": "20%",
     "border-radius": "7px 7px 5px 5px",
     "padding": "2px 2px 0px 2px",
     "font-size": "1em",
     "color": "black",
-    #"background": "#555958",
+}
+s_selector_load2 = {     
+    "float": "left",
+    "height": "45%",
+    "width": "35%",
+    "border-radius": "7px 7px 5px 5px",
+    "padding": "2px 2px 0px 2px",
+    "font-size": "1em",
+    "color": "black",
 }
 
 style_boton_up_file = {  
@@ -52,7 +76,7 @@ style_boton_aceptar_load = {
     "margin-top": "3%",
     "margin-left": "2%",
     "font-size": "75%",
-    "font-family": "Roboto, Helvetica, Arial, sans-serif",
+    "font-family": "Roboto, Helvetica, Arial, sans-serif"
 }
 
 style_button = {
@@ -61,10 +85,10 @@ style_button = {
 }
 
 style_div_load_data_content = {
-    "margin-top": "10%",
+    "margin-top": "2%",
     "margin-left": "2.5%",
     "width": "99.8%",
-    "height": "90%",
+    "height": "20%"
 }
 
 style_div_input = {    
@@ -73,8 +97,9 @@ style_div_input = {
 
 style_input = {
     "font-family": "Roboto, Helvetica, Arial, sans-serif",
-    "width": "98%",
-    "background": "#555958",
+    "width": "100%",
+    "color": "black",
+    "background": "#B0B3B3",
 }
 
 style_boton_aceptar = {    

@@ -24,9 +24,6 @@ df.to_csv("diamonds.csv", index=False)"""
 
 
 
-import tkinter as tk
+
 from tkinter import filedialog
-
-
-
 archivo = filedialog.askopenfilename()
