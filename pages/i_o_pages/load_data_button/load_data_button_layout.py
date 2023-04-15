@@ -1,4 +1,4 @@
-from dash import dcc
+from dash import dcc, html
 
 from my_dash.my_dbc.my_button import my_button
 from my_dash.my_dcc.my_dropdown import my_dropdown
@@ -26,26 +26,24 @@ id_page = "load_data"
 
 layout = my_div(style_div_main, "",
                 [
-                 my_div(style_div_dropdown, "",
+                 my_div(style_div_dropdown_load, "",
                         [
-                         my_div(s_selector, "",
-                                my_dropdown(f"{id_page}_dropdown",
-                                            {"background": "#555958"},
-                                            list_of_format,
-                                            value="From CSV",
+                         my_div(s_selector_load, "",
+                                my_dropdown(f"{id_page}_drop_dir",
+                                            {"background": "#B0B3B3"},
                                             placeholder="Select format"
                                 ),
                          ),
-                         my_div(style_div_input, "",
-                                dcc.Input(id=f"{id_page}_input",
-                                          placeholder="Introduce la ruta del archivo",
-                                          style=style_input,
-                                          debounce=True
-                                )
+                         my_div(s_selector_load, "",
+                                my_dropdown(f"{id_page}_drop_file",
+                                            {"background": "#B0B3B3"},
+                                            placeholder="Select format"
+                                ),
                          ),
-                         my_button(f"{id_page}_aceptar", "Aceptar", style_boton_aceptar)
+                         my_button(f"{id_page}_up_file", "Up File", style_boton_up_file),   
                         ]
                  ),
+                 my_button(f"{id_page}_aceptar", "Aceptar", style_boton_aceptar_load),
                  my_div(style_div_load_data_content, f"{id_page}_content")
                 ]
          )

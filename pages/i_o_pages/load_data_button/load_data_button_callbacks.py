@@ -1,77 +1,100 @@
-from dash import Input, Output, State, callback
+import os
+import shutil
+from tkinter import filedialog
+
+from dash import Input, Output, State, callback, html
+from dash.dependencies import Input, Output, State
 from pandas import read_csv, read_json
 
 id_page = "load_data"
 
 
-from dash.dependencies import Input, Output, State
-from pandas import read_csv
+# drop_dir
+@callback([
+           Output(f"{id_page}_drop_dir", "options"),
+           Output(f"{id_page}_drop_dir", "value"),
+          ],
+          Input("load_data_button", "n_clicks"),
+          State("main_page_store", "data"),
+    prevent_initial_call=True
+)
+def load_data(n_clicks, data):
+    list_dir = os.listdir(f"""users/{data["user"]}""")
+    return [list_dir, list_dir[0]]
+
+
+#drop_file
+@callback([
+           Output(f"{id_page}_drop_file", "options"),
+           Output(f"{id_page}_drop_file", "value"),
+          ],
+          Input(f"{id_page}_drop_dir", "value"),
+          State("main_page_store", "data"),
+    prevent_initial_call=True
+)
+def load_data(drop_dir, data):
+    list_dir = []
+    file = ""
+    try:
+        list_dir = os.listdir(f"""users/{data["user"]}/{drop_dir}""")
+        file = list_dir[0]
+    except FileNotFoundError:
+        pass
+        
+    return [list_dir, file]
+
+
+#up_file
+@callback([
+           Output(f"{id_page}_content", "children", allow_duplicate=True),
+           Output(f"{id_page}_up_file", "n_clicks"),
+          ],
+          Input(f"{id_page}_up_file", "n_clicks"),
+          State("main_page_store", "data"),
+    prevent_initial_call=True
+)
+def load_data(n_clicks, data):
+    archivo = filedialog.askopenfilename()
+    filename = archivo.split('/')[-1]
+    extension = filename.split('.')[-1]
+    if os.path.exists(f"""users/{data["user"]}/{extension}""")==False:
+        os.mkdir(f"""users/{data["user"]}/{extension}""")
+    shutil.copy(archivo, f"""users/{data["user"]}/{extension}/{filename}""")        
+    return ["Archivo subido", 0]
 
 
 @callback(
     [
         Output("main_page_store", "data", allow_duplicate=True),
         Output(f"{id_page}_content", "children"),
-        Output(f"main_page_div_functions", "hidden")
+        Output(f"main_page_div_functions", "hidden"),
     ],
     [
         Input(f"{id_page}_aceptar", "n_clicks")
     ],
     [
-        State(f"{id_page}_input", "value"),
-        State("load_data_dropdown", "value"),
+        State(f"{id_page}_drop_dir", "value"),
+        State(f"{id_page}_drop_file", "value"),        
         State("main_page_store", "data")
     ],
     prevent_initial_call=True
 )
-def load_data(n_clicks, input_value, drop_value, data):
-
-    """
-    Callback que se encarga de cargar los datos del archivo seleccionado
-    por el usuario en la página 'Load Data'. 
-
-    Parámetros:
-    -----------
-    n_clicks: int
-        Número de veces que se ha hecho clic en el botón de 'Aceptar'.
-    input_value: str
-        Ruta del archivo seleccionado por el usuario.
-    drop_value: str
-        Valor seleccionado en el dropdown que indica el formato
-        del archivo (CSV, JSON).
-    data: dict
-        Datos almacenados en el componente Store de la página principal.
-
-    Devuelve:
-    ---------
-    list
-        Lista con los siguientes elementos:
-        - data: dict
-            Datos actualizados que se almacenarán en el componente Store
-            de la página principal.
-        - load_data_content: str
-            Mensaje que se mostrará en la sección de carga de datos indicando
-            el resultado de la operación.
-        - hidden: bool
-            Indicador de si se mostrará o no la sección de funciones de
-            la página principal.
-    """
+def load_data(accept, drop_value, input_value, data):   
     
     load_data_content = ""
     hidden = True
-    data["df"] = ""
-    if input_value is not None:
-          
-        path = f"""users/{data["user"]}/{input_value}"""
-        if drop_value == "From CSV":
-            path = f"""users/{data["user"]}/csv/{input_value}"""
-            try:
-                df = read_csv(path)
-                data["df"] = df.to_json(orient="columns")
-                load_data_content = "DataFrame Cargado"
-                hidden = False
-            except (FileNotFoundError, IsADirectoryError):
-                load_data_content = f"No such file or directory: {input_value}"
-        elif drop_value == "From JSON":
-            load_data_content = "Función no implementada"
+    data["df"] = ""    
+    
+    if input_value is not None and len(input_value) > 0:
+        path = f"""users/{data["user"]}/{drop_value}/{input_value}"""  
+
+        match drop_value:
+            case "csv" | "txt":
+                data["df"] = read_csv(path).to_json(orient="columns")
+            case _:
+                pass
+
+        load_data_content = html.H6("DataFrame Cargado")
+        hidden = False
+            
     return [data, load_data_content, hidden]

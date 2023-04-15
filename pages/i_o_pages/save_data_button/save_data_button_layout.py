@@ -12,9 +12,9 @@ id_page = "save_data"
 
 layout = my_div(style_div_main, "",
                 [
-                 my_div(style_div_dropdown, "",
+                 my_div(style_div_dropdown_save, "",
                         [
-                         my_div(s_selector, "",
+                         my_div(s_selector_save, "",
                                 my_dropdown(f"{id_page}_dropdown",
                                             {"background": "#555958"},
                                             list_of_format,

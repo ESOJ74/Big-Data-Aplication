@@ -45,12 +45,12 @@ layout: dict = my_div(style_div_main, "",
                                 ),
                                 my_div({"float": "left", "width": "83%"}, "", 
                                        html.H5("Big Data App", style={"margin-left": "35%", "margin-top": "0.3%"})),
-                                my_div({"float": "left", "width": "5%"}, "",
+                                my_div({"float": "left", "width": "7%"}, "",
                                        my_div({"margin-top": "6%"}, f"{id_page}_panel_up_right"),
                                 )
                               ]),
                        # Middle Panel
-                       my_div({"margin-left": "1%", "margin-top": "0.5%", "width": "95%", "height": "92%", }, "",
+                       my_div({"margin-left": "1%", "margin-top": "0.5%", "width": "99%", "height": "92%", }, "",
                               [
                                # Left Panel
                                my_div(style_div_buttons, f"{id_page}_left",
