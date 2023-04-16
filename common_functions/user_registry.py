@@ -97,7 +97,7 @@ def user_registry(id_page):
                           my_div({"float": "left", "width": "23%"}, "",
                                  html.Label('Ir a Big Data App?'),),
                           my_div({"float": "left", "width": "70%"}, "",
-                                 html.A('Login', href='/aplicacion'),),
+                                 html.A('Login', href='/'),),
                          ]
                   ),         
                  ]

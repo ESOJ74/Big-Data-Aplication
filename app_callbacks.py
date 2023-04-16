@@ -4,7 +4,7 @@ from dash.dependencies import Input, Output
 import pages
 
 lista_de_paginas = {
-    "/aplicacion": pages.main_page.main_page_layout.layout,
+    "/": pages.main_page.main_page_layout.layout,
     "/registro": pages.users_registry.users_registry_layout.layout
 }
 
