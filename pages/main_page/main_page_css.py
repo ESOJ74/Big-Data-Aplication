@@ -25,13 +25,13 @@ style_panel_user = {
 
 style_div_buttons = {
     "float": "left",
-    "width": "10%",
+    "width": "11%",
     "height": "100%",
 }
 
 style_div_content = {
     "float": "left",
-    "width": "90%",
+    "width": "89%",
     "height": "100%",
 }
 
@@ -39,25 +39,22 @@ style_div_1 = {
     "margin-top": "20%",
     "width": "86%",
     "height": "16%",
-    "color": "white",
-    "border-radius": "7px 7px 5px 5px",
-    #"background": "#B6DBD2",
+    "border-radius": "7px 7px 5px 5px",     
 }
+
 style_div_2 = {
     "margin-top": "20%",
     "width": "95%",
-    "height": "27%",    
-    "color": "white",
+    "height": "27%",  
     "overflow-y": "auto",
     "border-radius": "7px 7px 5px 5px",
     "padding": "2px 2px 0px 2px",
-    #"background": "#B6DBD2",
 }
 
 style_button = {    
     "margin-top": "1%",
     "margin-left": "5%",
     "width": "98%",
-    "font-size": "75%",
+    "font-size": "80%",
     "font-family": "Roboto, Helvetica, Arial, sans-serif",
 }

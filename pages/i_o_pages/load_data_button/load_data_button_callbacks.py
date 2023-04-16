@@ -4,67 +4,62 @@ from tkinter import filedialog
 
 from dash import Input, Output, State, callback, html
 from dash.dependencies import Input, Output, State
-from pandas import read_csv, read_json, read_excel
+from pandas import read_sql
+from sqlalchemy import create_engine
+
+from my_dash.my_html.my_div import my_div
+from pages.i_o_pages.load_data_button.load_data_button_functions import \
+    read_data
 
 id_page = "load_data"
 
 
-# drop_dir
+# botones
 @callback([
-           Output(f"{id_page}_drop_dir", "options"),
-           Output(f"{id_page}_drop_dir", "value"),
+           Output(f"{id_page}_div_archivos", "hidden"),
+           Output(f"{id_page}_div_db", "hidden"),
+           Output(f"{id_page}_archivos", "n_clicks"),
+           Output(f"{id_page}_database", "n_clicks"),
+           Output(f"{id_page}_content", "style"),
+           Output(f"{id_page}_content", "children", allow_duplicate=True),
           ],
-          Input("load_data_button", "n_clicks"),
-          State("main_page_store", "data"),
-    prevent_initial_call=True
-)
-def load_data(n_clicks, data):
-    file = ""
-    list_dir = os.listdir(f"""users/{data["user"]}""")
-    if len(list_dir) > 0:
-        file = list_dir[0]
-    return [list_dir, file]
+          [
+           Input(f"{id_page}_archivos", "n_clicks"),
+           Input(f"{id_page}_up_file", "n_clicks"),
+           Input(f"{id_page}_database", "n_clicks"),
+          ],
+    prevent_initial_call=True)
+def load_data(click_archivos, click_up, click_db):    
+    hidden_arch = True
+    hidden_db = True
+    style = {"margin-top": "5%", "margin-left": "15%"}
+    if click_archivos:
+        hidden_arch = False
+        style = {"margin-top": "7%", "margin-left": "3.5%"}
+    if click_db:
+        hidden_db = False
+        style = {"margin-top": "7%", "margin-left": "3.5%"}
+    return [hidden_arch, hidden_db, 0, 0, style, ""]
 
-
-#drop_file
+            
+#dropdown Archivos
 @callback([
            Output(f"{id_page}_drop_file", "options"),
            Output(f"{id_page}_drop_file", "value"),
           ],
-          Input(f"{id_page}_drop_dir", "value"),
+          Input(f"{id_page}_archivos", "n_clicks"),
           State("main_page_store", "data"),
-    prevent_initial_call=True
-)
+    prevent_initial_call=True)
 def load_data(drop_dir, data):    
-    file = ""
-    list_dir = []
-    if drop_dir is not None:
-        list_dir = os.listdir(f"""users/{data["user"]}/{drop_dir}""")
+    file = ""   
+    list_dir = os.listdir(f"""users/{data["user"]}/data""")
+
     if len(list_dir) > 0:
         file = list_dir[0]   
     return [list_dir, file]
-
-
-#up_file
-@callback([
-           Output(f"{id_page}_content", "children", allow_duplicate=True),
-           Output(f"{id_page}_up_file", "n_clicks"),
-          ],
-          Input(f"{id_page}_up_file", "n_clicks"),
-          State("main_page_store", "data"),
-          prevent_initial_call=True
-)
-def load_data(n_clicks, data):
-    archivo = filedialog.askopenfilename()
-    filename = archivo.split('/')[-1]
-    extension = filename.split('.')[-1]
-    if os.path.exists(f"""users/{data["user"]}/{extension}""")==False:
-        os.mkdir(f"""users/{data["user"]}/{extension}""")
-    shutil.copy(archivo, f"""users/{data["user"]}/{extension}/{filename}""")        
-    return ["Archivo subido", 0]
-
-
-# content
+         
+    
+# content archivos
 @callback(
     [
         Output("main_page_store", "data", allow_duplicate=True),
@@ -75,32 +70,71 @@ def load_data(n_clicks, data):
         Input(f"{id_page}_aceptar", "n_clicks")
     ],
     [
-        State(f"{id_page}_drop_dir", "value"),
         State(f"{id_page}_drop_file", "value"),        
         State("main_page_store", "data")
     ],
-    prevent_initial_call=True
-)
-def load_data(accept, drop_value, input_value, data):   
+    prevent_initial_call=True)
+def load_data(accept, input_value, data):   
     
     load_data_content = ""
     hidden = True
     data["df"] = ""    
     
-    if input_value is not None and len(input_value) > 0:
-        path = f"""users/{data["user"]}/{drop_value}/{input_value}"""  
-        
-        match drop_value:
-            case "csv" | "txt":
-                data["df"] = read_csv(path).to_json(orient="columns")
-            case "json":
-                data["df"] = read_json(path).to_json(orient="columns")
-            case "excel":
-                data["df"] = read_excel(path).to_json(orient="columns")
-            case _:
-                pass
-
-        load_data_content = html.H6("DataFrame Cargado")
-        hidden = False
-            
+    if accept:
+        if input_value is not None and len(input_value) > 0:
+            path = f"""users/{data["user"]}/data/{input_value}"""  
+            data["df"] = read_data(input_value.split('.')[-1], path)         
+            load_data_content = html.H6("DataFrame Cargado")
+            hidden = False
+        else:
+            load_data_content = html.H6("Seleccione Archivos")    
     return [data, load_data_content, hidden]
+
+
+#up_file from local
+@callback(Output(f"{id_page}_content", "children", allow_duplicate=True),      
+          Input(f"{id_page}_up_file", "n_clicks"),
+          State("main_page_store", "data"),
+          prevent_initial_call=True
+)
+def load_data(n_clicks, data):
+    
+    archivo = filedialog.askopenfilename()
+
+    if type(archivo) != tuple:
+        filename = archivo.split('/')[-1]        
+        shutil.copy(archivo, f"""users/{data["user"]}/data/{filename}""")    
+        msg = html.H6("Archivo subido")    
+    else:
+        msg = ""
+    return msg
+
+
+#up file from database
+@callback(Output(f"{id_page}_content", "children", allow_duplicate=True),      
+          Input(f"{id_page}_aceptar_db", "n_clicks"),
+          [
+           State(f"{id_page}_user", "value"),
+           State(f"{id_page}_password", "value"),
+           State(f"{id_page}_host", "value"),
+           State(f"{id_page}_port", "value"),
+           State(f"{id_page}_bd", "value"),
+           State(f"{id_page}_schema", "value"),
+           State(f"{id_page}_table", "value"),
+           State("main_page_store", "data"),
+          ],
+          prevent_initial_call=True
+)
+def load_data(n_clicks, user, password, host, port, bd, schema, table, data):
+    msg = my_div({"margin-left": "23%"}, "", html.H6("Datos Erroneos"))
+    try:
+        engine = create_engine(f"postgresql://{user}:{password}@{host}:{port}/{bd}")
+        query = f"select * from {table}"
+        if schema:
+            query = f"select * from {schema}.{table}"
+        read_sql(query, engine).to_csv(f"""users/{data["user"]}/data/{table}.csv""")
+        msg = my_div({"margin-left": "23%"}, "", html.H6(f"Archivo guardado como {table}.csv"))
+        engine.dispose()
+    except:
+        pass
+    return msg

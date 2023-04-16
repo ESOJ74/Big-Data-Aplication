@@ -31,31 +31,30 @@ style_div_titles = {
     "position": "relative",
     "top": "8%",
     "left": "2.5%",
-    "width": "35%",
+    "width": "70%",
     "height": "4%",
     "font-family": "Roboto, Helvetica, Arial, sans-serif",
 }
 
-style_div_dropdown_load = {
+style_div_dropdown_archivos = {
     "position": "relative",
-    "top": "7%",
-    "left": "2%",
-    "width": "35%",
+    "top": "9%",
+    "left": "3%",
+    "width": "30%",
     "height": "7%",
     "font-family": "Roboto, Helvetica, Arial, sans-serif",
 }
 
-s_selector_load = {     
-    "float": "left",
-    "height": "45%",
-    "width": "20%",
-    "border-radius": "7px 7px 5px 5px",
-    "padding": "2px 2px 0px 2px",
-    "font-size": "1em",
-    "color": "black",
+style_div_dropdown_db = {
+    "position": "relative",
+    "top": "9%",
+    "left": "25.5%",
+    "width": "30%",
+    "height": "55%",
+    "font-family": "Roboto, Helvetica, Arial, sans-serif",
 }
-s_selector_load2 = {     
-    "float": "left",
+
+s_selector_arch = {     
     "height": "45%",
     "width": "35%",
     "border-radius": "7px 7px 5px 5px",
@@ -64,17 +63,31 @@ s_selector_load2 = {
     "color": "black",
 }
 
-style_boton_up_file = {  
+s_selector_db = {     
+    "height": "100%",
+    "width": "35%",
+    "border-radius": "7px 7px 5px 5px",
+    "padding": "2px 2px 0px 2px",
+    "font-size": "1em",
+    "color": "black",
+}
+
+style_boton_files = {  
     "float": "left", 
     "margin-left": "1%",
-    "margin-top": "1%",
+    "width": "15%",
     "font-size": "75%",
     "font-family": "Roboto, Helvetica, Arial, sans-serif",
 }
 
 style_boton_aceptar_load = {    
-    "margin-top": "3%",
-    "margin-left": "2%",
+    "margin-top": "4%",
+    "margin-left": "0%",
+    "font-size": "75%",
+    "font-family": "Roboto, Helvetica, Arial, sans-serif"
+}
+
+style_boton_aceptar_up_file = {   
     "font-size": "75%",
     "font-family": "Roboto, Helvetica, Arial, sans-serif"
 }
@@ -85,10 +98,8 @@ style_button = {
 }
 
 style_div_load_data_content = {
-    "margin-top": "2%",
-    "margin-left": "2.5%",
-    "width": "99.8%",
-    "height": "20%"
+    "margin-top": "7%",
+    "margin-left": "3.5%",
 }
 
 style_div_input = {    

@@ -26,28 +26,47 @@ id_page = "load_data"
 
 layout = my_div(style_div_main, "",
                 [my_div(style_div_titles, "",
-                        [
-                         my_div({"float": "left", "width": "20%"}, "", html.H6("Directorios")),
-                         my_div({"float": "left", "width": "35%"}, "", html.H6("Archivos")),
+                        [my_button(f"{id_page}_archivos", "Archivos", style_boton_files,
+                                   className="btn btn-outline-primary", color="black"),   
+                         my_button(f"{id_page}_up_file", "Up File from Local", style_boton_files,
+                                   className="btn btn-outline-primary", color="black"),       
+                         my_button(f"{id_page}_database", "Up File from DataBase", style_boton_files,
+                                   className="btn btn-outline-primary", color="black"),  
                         ]),
-                 my_div(style_div_dropdown_load, "",
+                 my_div(style_div_dropdown_archivos, f"{id_page}_div_archivos",
                         [
-                         my_div(s_selector_load, "",
-                                my_dropdown(f"{id_page}_drop_dir",
-                                            {"background": "#B0B3B3"},
-                                            placeholder="Select format"
-                                ),
-                         ),
-                         my_div(s_selector_load2, "",
+                         my_div(s_selector_arch, "",
                                 my_dropdown(f"{id_page}_drop_file",
                                             {"background": "#B0B3B3"},
                                             placeholder="Select format"
                                 ),
                          ),
-                         my_button(f"{id_page}_up_file", "Up File from Local", style_boton_up_file),   
-                        ]
-                 ),
-                 my_button(f"{id_page}_aceptar", "Aceptar", style_boton_aceptar_load),
-                 my_div(style_div_load_data_content, f"{id_page}_content")
+                         my_button(f"{id_page}_aceptar", "Aceptar", style_boton_aceptar_load),    
+                        ], hidden=True,
+                 ),        
+                 my_div(style_div_dropdown_db, f"{id_page}_div_db",
+                        [
+                         my_div(s_selector_db, "",
+                                [
+                                 html.H6("User"),
+                                 dcc.Input(id=f"{id_page}_user",style={"width": "100%"}),
+                                 my_div({"margin-top": "3%"}, "", html.H6("Password")),
+                                 dcc.Input(id=f"{id_page}_password",style={"width": "100%"}),     
+                                 my_div({"margin-top": "3%"}, "", html.H6("Host")),
+                                 dcc.Input(id=f"{id_page}_host",style={"width": "100%"}), 
+                                 my_div({"margin-top": "3%"}, "", html.H6("Port")),
+                                 dcc.Input(id=f"{id_page}_port",style={"width": "100%"}), 
+                                 my_div({"margin-top": "3%"}, "", html.H6("DataBase")),
+                                 dcc.Input(id=f"{id_page}_bd",style={"width": "100%"}), 
+                                 my_div({"margin-top": "3%"}, "", html.H6("Schema")),
+                                 dcc.Input(id=f"{id_page}_schema",style={"width": "100%"}),
+                                 my_div({"margin-top": "3%"}, "", html.H6("Table")),
+                                 dcc.Input(id=f"{id_page}_table",style={"width": "100%"}),
+                                ],
+                         ),
+                         my_button(f"{id_page}_aceptar_db", "Aceptar", style_boton_aceptar_up_file),    
+                        ], hidden=True,
+                 ),          
+                 my_div({}, f"{id_page}_content")
                 ]
          )

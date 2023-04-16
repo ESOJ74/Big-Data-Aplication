@@ -44,7 +44,7 @@ def add_data_to_fig(value, data):
     try:
         df = read_json(data["df"])        
         df = df.groupby(value).mean().reset_index()
-        print(df)
+        
         content = [f"df.groupby({value}).mean()",
                    create_data_table(df)]
     except TypeError as e:

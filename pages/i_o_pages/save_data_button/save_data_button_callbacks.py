@@ -1,11 +1,20 @@
-import os
-
-from dash import html, Input, Output, State, callback
+from dash import Input, Output, State, callback, html
 from pandas import read_json
-import openpyxl
 
 id_page = "save_data"
 
+
+def write_data(df, extension, path):     
+    match extension:
+        case "csv" | "txt":
+            df.to_csv(path + ".csv", index=False)
+        case "json":
+            df.to_json(path + ".json")
+        case "xlsx":
+            df.to_excel(path + ".xlsx", index=False) 
+        case _:
+            pass
+     
 
 @callback(Output(f"{id_page}_content", "children"),
           Input(f"{id_page}_aceptar", "n_clicks"),
@@ -22,19 +31,15 @@ def save_data(n_clicks, input_value, drop_value, data):
         load_data_content = html.H6("DataFrame Guardado")
         try:
             df = read_json(data["df"])
+            path = f"""users/{data["user"]}/data/{input_value}"""
+
             match drop_value:
                 case "To CSV":
-                    if os.path.exists(f"""users/{data["user"]}/csv""")==False:                        
-                        os.mkdir(f"""users/{data["user"]}/csv""")
-                    df.to_csv(f"""users/{data["user"]}/csv/{input_value}.csv""", index=False)
+                    write_data(df, "csv", path)
                 case "To JSON":
-                    if os.path.exists(f"""users/{data["user"]}/json""")==False:                        
-                        os.mkdir(f"""users/{data["user"]}/json""")
-                    df.to_json(f"""users/{data["user"]}/json/{input_value}.json""")
+                    write_data(df, "json", path)
                 case "To EXCEL":
-                    if os.path.exists(f"""users/{data["user"]}/excel""")==False:                        
-                        os.mkdir(f"""users/{data["user"]}/excel""")
-                    df.to_excel(f"""users/{data["user"]}/excel/{input_value}.xlsx""", index=False) 
-        except (TypeError, KeyError):
+                    write_data(df, "xlsx", path)
+        except (TypeError, KeyError, ValueError):
             load_data_content = html.H6("No hay DataFrame cargado")
     return load_data_content

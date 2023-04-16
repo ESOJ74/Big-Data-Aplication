@@ -25,6 +25,8 @@ def auth_display(n_clicks, reg_user, reg_pass):
             reg_answer = "El Usuario ya existe"
         else:
             os.mkdir(f"users/{reg_user}")
+            os.mkdir(f"users/{reg_user}/data")
+            os.mkdir(f"users/{reg_user}/models")
             df.loc[df.shape[0]] = [reg_user, reg_pass]
             df.to_csv("users.csv", index=False)
             reg_answer =  "Registro completado"

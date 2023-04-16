@@ -37,7 +37,7 @@ def auth_display(n_clicks, reg_user, reg_pass):
                 left_hidden = False
                 registry_hidden = True
                 user_div = html.H6(f"User: {reg_user}")
-                sesion_div = html.A("Cerrar Sesión", href="/aplicacion")
+                sesion_div = html.A("Cerrar Sesión", href="/")
                 data = {"user": reg_user}
             else:
                 reg_answer = "Contraseña incorrecta"

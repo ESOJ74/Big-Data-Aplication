@@ -55,13 +55,12 @@ layout: dict = my_div(style_div_main, "",
                                # Left Panel
                                my_div(style_div_buttons, f"{id_page}_left",
                                       [
-                                       # User panel
-                                       my_div(style_panel_user, f"{id_page}_user"),
-                                       # DataFrame panel
+                                      # DataFrame panel
                                        create_div_buttons(
                                             style_div_1, "DataFrame",
                                             style_button, buttons,
-                                            className="btn btn-outline-light"
+                                            className="btn btn-outline-primary",
+                                            color="#F7FAFA",
                                        ),
                                        # Div for Visualizations panel, Functions panel, Models panel
                                        my_div({"height": "70%"}, f"{id_page}_div_functions",
@@ -70,7 +69,8 @@ layout: dict = my_div(style_div_main, "",
                                                create_div_buttons(
                                                    style_div_2, "Visualizations",
                                                    style_button, visualizations,
-                                                   className="btn btn-outline-light"
+                                                   className="btn btn-outline-primary",
+                                                   color="#F7FAFA",
                                                ),
                                                # Functions panel
                                                create_div_buttons(
