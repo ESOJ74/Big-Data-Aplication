@@ -38,8 +38,8 @@ def display_page(n_clicks, data):
           Input(f"{id_page}_content_up", "children"),
           State('main_page_store', 'data'),
           prevent_initial_call=True)
-def display_page(n_clicks, data):  
-    return read_json(data["df"]).columns
+def display_page(n_clicks, data):      
+    return [" "] +  list(read_json(data["df"]).columns)  
 
 
 # Panel content_middle
@@ -57,7 +57,7 @@ def display_page(
     nbins_state,
     color_state):     
 
-    if color_state is not None and len(color_state) < 1:
+    if color_state is not None and len(color_state) < 1 or color_state == " ":
         color_state = None     
      
     obj = ["", ""]
@@ -80,52 +80,3 @@ def display_page(
           prevent_initial_call=True)
 def display_page(n_clicks, dropdown_state):
     return dropdown_state
-
-
-"""@callback([
-           Output(f"{id_page}_content_middle", "children"),           
-           Output(f"{id_page}_content_down", "children"),
-          ],
-          [
-           Input(f"{id_page}_dropdown", "value"),     
-           Input(f"{id_page}_nbins", 'value'),
-           Input(f"{id_page}_color", 'value'),      
-          ],
-          [
-           State('main_page_store', 'data'),
-           State(f"{id_page}_nbins", 'value'),
-           State(f"{id_page}_color", 'value'),
-          ],
-          prevent_initial_call=True)
-def display_page(
-    dropdown_value,
-    nbins_value,
-    color_value,
-    data,
-    nbins_state,
-    color_state):          
-    
-    obj = ["", ""]
-    if dropdown_value:
-        # content_middle
-        df = read_json(data["df"])
-        fig = px.histogram(
-            df,
-            x=dropdown_value,
-            color=color_state,
-            nbins=int(nbins_state))
-        obj = [dcc.Graph(figure=fig)]
-        # content_down
-
-        obj.append(
-            my_div(s_content_down, "", 
-                   [
-                     my_div({}, "", "import plotly.express as px"),
-                     my_div({"margin-top": "2%"}, "", "fig = px.histogram(df,"),
-                     my_div({"margin-left": "30%"}, "", f"     x=\"{dropdown_value}\","),
-                     my_div({"margin-left": "30%"}, "", f"     nbins={int(nbins_state)})"),
-                     my_div({}, "", "fig.show()")
-                   ]
-            )
-        )
-    return obj"""
