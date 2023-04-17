@@ -1,7 +1,6 @@
 import numpy as np
 from dash import dcc, html
 from sklearn.linear_model import LinearRegression
-from sklearn.metrics import mean_squared_error, r2_score
 from sklearn.model_selection import train_test_split
 
 from my_dash.my_dbc.my_button import my_button
@@ -91,7 +90,7 @@ def create_utils(id_page):
                                    create_param_drop("positive", "False")
                                   ]
                            ),
-                           my_button(f"{id_page}_train", "Train", {"margin-top": "2%"})
+                           my_button(f"{id_page}_train", "Train", {"margin-top": "2%"}, className="btn btn-outline-light", color="black")
                           ]
                    ),                   
                  ]

@@ -81,6 +81,6 @@ def display_page(n_clicks, value_x, value_y, data, test_size, random_state, fit_
                    )      
     except (KeyError, ValueError):
         obj_down = ""
-        obj_middle = "Ambas columnas deben ser numéricas"
+        obj_middle = html.H6("Ambas columnas deben ser numéricas")
     return [obj_middle, obj_down]
 

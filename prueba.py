@@ -27,7 +27,7 @@ from pandas import read_sql
 import psycopg2
 
 
-def conec():
+"""def conec():
     '''    conn = psycopg2.connect(
         user = "postgres",
         password = "Iruelas2010",
@@ -44,7 +44,7 @@ engine = conec()
 query = "select * from usuarios"
 df = read_sql(query, conec())
 print(df)
-engine.dispose()
+engine.dispose()"""
 
 
 '''cur = conn.cursor()
@@ -58,3 +58,26 @@ for tabla in tabla_nombres:
 # Cerrar cursor y conexión
 cur.close()
 conn.close()'''
+
+from sklearn.datasets import load_iris
+df = load_iris()
+X, y = load_iris(return_X_y=True)
+
+
+
+
+import pandas as pd
+
+df = pd.DataFrame(columns=["sepal length", "sepal width", "petal length", "petal width"])
+
+"""for i, x in enumerate(X):
+    print(i, x)
+    df[i] = x
+
+df["class"] = y"""
+
+df = pd.DataFrame(X)
+df.columns=["sepal length", "sepal width", "petal length", "petal width"]
+df["class"] = y
+print(df)
+df.to_csv("iris.csv", index=False)

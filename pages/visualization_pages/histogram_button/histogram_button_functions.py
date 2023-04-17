@@ -10,13 +10,14 @@ s_utils = {
     "top": "15.5%",
     "width": "100%",
     "height": "50%",
-    "background": "#699B8F",
+    "background": "#95D3DE",
     "font-family": "Roboto, Helvetica, Arial, sans-serif",
 }
 
 style_div_input = {
     "margin-left": "2%",
-    "color": "white"
+    "font-weight": "bold",
+    "color": "#012A32"
 }
 
 style_input = {    
@@ -35,7 +36,7 @@ def create_utils(id_page):
                            ),
                            my_div({}, "", "color"),
                            my_dropdown(f"{id_page}_color", {"width": "70%", "color": "black", "font-size": "80%"},),                           
-                           my_button(f"{id_page}_refresh", "Refresh", {"margin-top": "2%"})
+                           my_button(f"{id_page}_refresh", "Refresh", {"margin-top": "2%"}, className="btn btn-outline-light", color="black")
                           ]
                    ),                   
                  ]

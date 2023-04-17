@@ -6,7 +6,8 @@ s_selector = {
     "border-radius": "7px 7px 5px 5px",
     "padding": "2px 2px 0px 2px",
     "font-size": "1em",
-    "background": "#699B8F",
+    "color": "black",
+    "background": "#E4EEF0",
 }
 
 s_content_down = {
