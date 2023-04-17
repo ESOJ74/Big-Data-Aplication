@@ -9,8 +9,8 @@ buttons = list(map(lambda x: x + [style_button],
 
 functions = list(map(lambda x: x + [style_button],
                      [
-    ["info_button", "DataFrame Info"],
-    ["describe_button", "DataFrame Describe"],
+    ["info_button", "Info"],
+    ["describe_button", "Describe"],
     ["drop_columns_button", "Drop Columns"],
     ["groupby_button", "Groupby"],
     ["funcion_3", "Funcion 3"],

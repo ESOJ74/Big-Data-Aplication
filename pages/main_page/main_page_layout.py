@@ -8,29 +8,6 @@ from pages.main_page.main_page_functions import create_div_buttons
 from pages.main_page.main_page_lists import (buttons, functions, models,
                                              visualizations)
 
-"""
-La variable layout es un diccionario que define el diseño de una página web. 
-Se crea utilizando la función my_div, que es una función que crea un elemento 
-div con las propiedades CSS y los elementos hijos especificados en los argumentos.
-
-Argumentos:
-
-style_div_main (dict): Un diccionario que contiene las propiedades CSS para aplicar
- al elemento div principal.
-id_page (str): Un identificador único para la página web.
-style_div_buttons (dict): Un diccionario que contiene las propiedades CSS para
- aplicar al panel de botones.
-style_div_content (dict): Un diccionario que contiene las propiedades CSS para
- aplicar al panel de contenido.
-style_div_1, style_div_2 (dict): Diccionarios que contienen las propiedades
- CSS para aplicar a los elementos div del panel de botones y el panel de contenido.
-buttons, visualizations, functions, models (list): Listas de tuplas que contienen
- la información necesaria para crear los botones en el panel de botones.
-Retorno:
-
-layout (dict): Un diccionario que contiene el diseño de la página web.
-"""
-
 id_page = "main_page"
 
 layout: dict = my_div(style_div_main, "",
@@ -40,60 +17,77 @@ layout: dict = my_div(style_div_main, "",
                        # Up Panel
                        my_div(style_up_panel, "",
                               [
-                                my_div({"float": "left", "width": "10%"}, "", 
-                                       my_div({"margin-left": "15%", "margin-top": "5%"}, f"{id_page}_panel_up_left"),
+                                my_div(style_div_user, "", 
+                                       my_div(style_user, f"{id_page}_panel_up_left"),
                                 ),
-                                my_div({"float": "left", "width": "83%"}, "", 
-                                       html.H5("Big Data App", style={"margin-left": "35%", "margin-top": "0.3%"})),
-                                my_div({"float": "left", "width": "7%"}, "",
-                                       my_div({"margin-top": "6%"}, f"{id_page}_panel_up_right"),
+                                my_div(style_div_app, "", 
+                                       html.H5("Big Data App", style=style_app)),
+                                my_div(style_div_sesion, "",
+                                       my_div(style_sesion, f"{id_page}_panel_up_right"),
                                 )
-                              ]),
+                              ], className="alert-primary"),
                        # Middle Panel
-                       my_div({"margin-left": "1%", "margin-top": "0.5%", "width": "99%", "height": "92%"}, "",
+                       my_div(style_middle_panel, "",
                               [
                                # Left Panel
                                my_div(style_div_buttons, f"{id_page}_left",
                                       [
                                       # DataFrame panel
+                                       my_div(style_dataframe_panel, "",
+                                              html.H5("DataFrame", style={"color": "#0F1458"})
+                                       ),
                                        create_div_buttons(
-                                            style_div_1, "DataFrame",
-                                            style_button, buttons,
-                                            className="btn btn-outline-primary",
-                                            color="#F7FAFA",
+                                            style_div_1,
+                                            style_button,
+                                            buttons, classdiv="table-success"                                           
                                        ),
                                        # Div for Visualizations panel, Functions panel, Models panel
                                        my_div({"height": "70%"}, f"{id_page}_div_functions",
                                               [
                                                # Visualizations panel
+                                               my_div(style_visualization_panel, "",
+                                                      html.H5("Visualizations", style={"color": "#0F1458"})
+                                               ),
                                                create_div_buttons(
-                                                   style_div_2, "Visualizations",
-                                                   style_button, visualizations,
-                                                   className="btn btn-outline-primary",
-                                                   color="#F7FAFA",
+                                                   style_div_2,
+                                                   style_button,
+                                                   visualizations,
                                                ),
                                                # Functions panel
+                                               my_div(style_visualization_panel, "",
+                                                      html.H5("Functions", style={"color": "#0F1458"})
+                                               ),
                                                create_div_buttons(
-                                                   style_div_2, "Functions",
-                                                   style_button, functions,
-                                                   className="btn btn-outline-light"
+                                                   style_div_2,
+                                                   style_button,
+                                                   functions,
+                                                   
                                                ),
                                                # Models panel
+                                               my_div(style_visualization_panel, "",
+                                                      html.H5("Models", style={"color": "#0F1458"})
+                                               ),
                                                create_div_buttons(
-                                                   style_div_2, "Models",
-                                                   style_button, models,
-                                                   className="btn btn-outline-light"
+                                                   style_div_2,
+                                                   style_button,
+                                                   models,
                                                ),
                                               ],
                                               hidden=True,
                                        ),
-                                     ],
+                                     ],className="alert-primary",
                                ),
                                # Central Panel
                                my_div(style_div_content, f"{id_page}_page_content"),                               
                               ]
                        ),
                        # Down Panel
-                       my_div(style_up_panel, ""),
+                       my_div(style_down_panel, "", 
+                              my_div({"margin-left": "2%"}, "",
+                                      html.A("GitHub", href="https://github.com/ESOJ74/Big-Data-Aplication",
+                                             style={"color": "black"}
+                                      )
+                              ), className="alert-primary"
+                       ),
                       ]
                )

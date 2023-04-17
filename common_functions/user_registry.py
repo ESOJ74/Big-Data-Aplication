@@ -27,7 +27,7 @@ style_button = {
     "margin-top": "1%",
     "margin-left": "12%",
     "width": "22%",
-    "height": "30%",
+    "height": "35%",
     "font-size": "90%",
     "font-family": "Roboto, Helvetica, Arial, sans-serif",
 }

@@ -1,7 +1,7 @@
 import dash_bootstrap_components as dbc
 
 
-def my_button(id, children, style, color="secondary", className="btn btn-outline-success", hidden=False, disabled=False, n_clicks=0):
+def my_button(id, children, style, color="secondary", className="btn btn-outline-primary", hidden=False, disabled=False, n_clicks=0):
         
     return dbc.Button(
         children=children,
