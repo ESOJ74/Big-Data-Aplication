@@ -27,7 +27,7 @@ s_utils = {
     "position": "relative",
     "top": "16%",
     "width": "100%",
-    "height": "75%",
+    "height": "78%",
     "background": "#95D3DE",
     "font-family": "Roboto, Helvetica, Arial, sans-serif",
 }

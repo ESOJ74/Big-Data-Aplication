@@ -94,7 +94,7 @@ def display_page(n_clicks, value_x, value_y, data, test_size, random_state, pena
                           colorscale='RdBu', contours=dict(start=0.5, end=0.5), 
                           line_width=2))
 
-        obj_middle = my_div({"margin-top": "4%"}, "", dcc.Graph(figure=fig))
+        obj_middle = dcc.Graph(figure=fig)
 
         # content_down
         obj_down = my_div({}, "",
