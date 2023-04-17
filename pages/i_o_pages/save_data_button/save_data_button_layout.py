@@ -16,20 +16,20 @@ layout = my_div(style_div_main, "",
                         [
                          my_div(s_selector_save, "",
                                 my_dropdown(f"{id_page}_dropdown",
-                                            {"background": "#B0B3B3"},
+                                            {},
                                             list_of_format,
                                             value="To CSV",
                                             placeholder="Select format"
                                 ),
                          ),
-                         my_div(style_div_input, "",
+                         my_div({"margin-top": "1%"}, "",
                                 dcc.Input(id=f"{id_page}_input",
                                           placeholder="Introduce el nombre del archivo",
                                           style=style_input,
                                           debounce=True
                                 )
                          ),
-                         my_button(f"{id_page}_aceptar", "Aceptar", style_boton_aceptar)
+                         my_button(f"{id_page}_aceptar", "Aceptar", style_boton_aceptar, color="black")
                         ]
                  ),
                  my_div(style_div_save_data_content, f"{id_page}_content")

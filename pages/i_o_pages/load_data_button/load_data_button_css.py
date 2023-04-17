@@ -3,21 +3,24 @@ style_div_main = {
     "width": "90%",
     "height": "90%",    
 }
+
 style_div_dropdown_save = {
     "position": "relative",
-    "top": "8%",
+    "top": "8.5%",
     "left": "2%",
     "width": "16%",
-    "height": "10%",
+    "height": "15%",
     "font-family": "Roboto, Helvetica, Arial, sans-serif",
 }
 
 s_selector_save = {     
-    "height": "45%",
-    #"width": "95.5%",
+    "width": "98%",
     "border-radius": "7px 7px 5px 5px",
-    "padding": "2px 2px 0px 2px",
+    "padding": "3px",
     "font-size": "1em",
+    "color": "#158397",
+    "background":"#495D61",
+    "font-family": "Roboto, Helvetica, Arial, sans-serif",
 }
 
 style_div_save_data_content = {
@@ -38,29 +41,32 @@ style_div_titles = {
 
 style_div_dropdown_archivos = {
     "position": "relative",
-    "top": "9%",
+    "top": "11%",
     "left": "3%",
     "width": "30%",
-    "height": "7%",
+    "height": "10%",
     "font-family": "Roboto, Helvetica, Arial, sans-serif",
 }
 
 style_div_dropdown_db = {
     "position": "relative",
     "top": "9%",
-    "left": "25.5%",
+    "left": "32.5%",
     "width": "30%",
-    "height": "55%",
+    "height": "57%",
     "font-family": "Roboto, Helvetica, Arial, sans-serif",
 }
 
-s_selector_arch = {     
-    "height": "45%",
-    "width": "35%",
+s_selector_arch = {    
+    "width": "46%",
     "border-radius": "7px 7px 5px 5px",
-    "padding": "2px 2px 0px 2px",
+    "padding-left": "2px",
+    "padding-right": "2px",
+    "padding-bottom": "2px",
     "font-size": "1em",
-    "color": "black",
+    "color": "#158397",
+    "background":"#495D61",
+    "font-family": "Roboto, Helvetica, Arial, sans-serif",
 }
 
 s_selector_db = {     
@@ -75,13 +81,13 @@ s_selector_db = {
 style_boton_files = {  
     "float": "left", 
     "margin-left": "1%",
-    "width": "15%",
-    "font-size": "75%",
+    "width": "20%",
+    "font-size": "90%",
     "font-family": "Roboto, Helvetica, Arial, sans-serif",
 }
 
 style_boton_aceptar_load = {    
-    "margin-top": "4%",
+    "margin-top": "1%",
     "margin-left": "0%",
     "font-size": "75%",
     "font-family": "Roboto, Helvetica, Arial, sans-serif"
@@ -102,19 +108,15 @@ style_div_load_data_content = {
     "margin-left": "3.5%",
 }
 
-style_div_input = {    
-    "margin-top": "2%",    
-}
-
 style_input = {
     "font-family": "Roboto, Helvetica, Arial, sans-serif",
-    "width": "100%",
+    "width": "98%",
     "color": "black",
-    "background": "#B0B3B3",
+    "background": "#D3E3E6",
 }
 
 style_boton_aceptar = {    
-    "margin-top": "1%",
+    "margin-top": "2%",
     "font-size": "75%",
     "font-family": "Roboto, Helvetica, Arial, sans-serif",
 }

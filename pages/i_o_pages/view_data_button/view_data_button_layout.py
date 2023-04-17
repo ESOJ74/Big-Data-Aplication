@@ -8,8 +8,7 @@ layout = my_div({"position": "relative", "margin-top": "8%", "margin-left": "7%"
                             "View full DataFrame",
                              {"font-size": "85%",
                               "font-family": "Roboto, Helvetica, Arial, sans-serif",}, 
-                             color="primary",
-                             className="btn btn-primary",
+                             color="black",
                              disabled=True),
                   my_div({"margin-top": "1%", "width": "90%"}, "view_data_content")
                 ])

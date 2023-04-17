@@ -1,5 +1,5 @@
 import dash_ag_grid as dag
-from dash import Input, Output, Patch, State, callback
+from dash import Input, Output, Patch, State, callback, html
 from pandas import read_json
 
 
@@ -11,20 +11,6 @@ from pandas import read_json
           State('main_page_store', 'data'))
 def view_data(n_clicks, data):
 
-    """
-    Callback que muestra los datos del DataFrame en un objeto AgGrid y
-    habilita el botón para añadir filas.
-
-    Args:
-        n_clicks (int): Número de clicks en el botón 'Ver datos'.
-        data (dict): Datos actualizados que se almacenarán en el
-                     componente Store de la página principal.
-
-    Returns:
-        list: Lista con el objeto AgGrid y el estado del botón para añadir
-              filas. Si no hay ningún DataFrame cargado, devuelve un mensaje
-              y el botón se deshabilita.
-    """
     obj = []                    #ag-theme-alpine, ag-theme-alpine-dark, ag-theme-balham, ag-theme-balham-dark, ag-theme-material, ag-theme-bootstrap
     try:        
         df = read_json(data["df"])[0:10]
@@ -40,7 +26,7 @@ def view_data(n_clicks, data):
             ))
         obj.append(False)
     except (TypeError, KeyError, ValueError):
-        obj = ['No hay ningún DataFrame Cargado', True]
+        obj = [html.H6('No hay ningún DataFrame Cargado'), True]
     return obj
 
 
@@ -54,23 +40,7 @@ def view_data(n_clicks, data):
     prevent_initial_call=True,
 )
 def add_data_to_fig(n_clicks, data):
-    """
-    Actualiza los datos de la tabla y habilita el botón de añadir filas de datos.
     
-    Parámetros:
-    -----------
-    n_clicks : int
-        Número de veces que se ha hecho clic en el botón 'add-data-rows'.
-    data : dict
-        Datos almacenados en 'main_page_store'.
-        
-    Retorna:
-    --------
-    patched_table : Patch
-        Nuevos datos de la tabla.
-    True : bool
-        Deshabilita el botón de añadir filas de datos.
-    """
     df = read_json(data["df"])[10:]
     patched_table = Patch()
     patched_table.extend(df.to_dict("records"))

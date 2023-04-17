@@ -126,14 +126,14 @@ def load_data(n_clicks, data):
           prevent_initial_call=True
 )
 def load_data(n_clicks, user, password, host, port, bd, schema, table, data):
-    msg = my_div({"margin-left": "23%"}, "", html.H6("Datos Erroneos"))
+    msg = my_div({"margin-left": "30%"}, "", html.H6("Datos Erroneos"))
     try:
         engine = create_engine(f"postgresql://{user}:{password}@{host}:{port}/{bd}")
         query = f"select * from {table}"
         if schema:
             query = f"select * from {schema}.{table}"
         read_sql(query, engine).to_csv(f"""users/{data["user"]}/data/{table}.csv""")
-        msg = my_div({"margin-left": "23%"}, "", html.H6(f"Archivo guardado como {table}.csv"))
+        msg = my_div({"margin-left": "30%"}, "", html.H6(f"Archivo guardado como {table}.csv"))
         engine.dispose()
     except:
         pass
