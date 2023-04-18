@@ -79,5 +79,37 @@ df["class"] = y"""
 df = pd.DataFrame(X)
 df.columns=["sepal length", "sepal width", "petal length", "petal width"]
 df["class"] = y
-print(df)
-df.to_csv("iris.csv", index=False)
+
+index = df.index
+print(index)
+start = index.start
+stop = index.stop
+
+
+columns = list(df.columns)
+list_index = list(range(len(columns)))
+list_non_null = df.isnull().sum()
+list_non_null = [f"{stop - list_non_null[column]} non-null" for column in list_non_null]
+list_dtype = [df[column].dtype for column in columns]
+list_dtypes = dict((i, list_dtype.count(i)) for i in list_dtype)
+
+
+df.info()
+
+line0 = "<class 'pandas.core.frame.DataFrame'>"
+line1 = f"RangeIndex: {stop} entries, {start}, to {stop - 1}"
+line2 = f"Data Columns (total {len(columns)} columns)"
+max = len(max(columns, key=len))
+max_2 = max + 3
+
+print('------------------------------------')
+print(line0)
+print(line1)
+print(line2)
+print(f" #   Column{' '*(max - 4)}Non-Null Count  Dtype")
+print(f"---  ------{' '*(max - 4)}--------------  ----- ")
+for x in zip(list_index, columns, list_non_null, list_dtype):
+    print(f" {x[0]}  {x[1]}{' '*(max_2 - len(x[1]))}{x[2]}    {x[3]}")
+
+print(f"dtypes: {' '.join([f'{key}({list_dtypes[key]})' for key in  list_dtypes])}")
+print(f"memory usage: {df.memory_usage(index=False).sum() / 1000} KB")
