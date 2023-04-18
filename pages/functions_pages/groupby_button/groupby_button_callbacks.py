@@ -1,60 +1,102 @@
-from dash import Input, Output, State, callback, dash_table
-from pandas import read_json
-from my_dash.my_dcc.my_dropdown import my_dropdown
-from my_dash.my_dbc.my_button import my_button
-from my_dash.my_html.my_div import my_div
 import dash_ag_grid as dag
+from dash import Input, Output, State, callback, html
+from dash.exceptions import PreventUpdate
+from pandas import read_json
 
-id_page = "groupby_function"
+from my_dash.my_dbc.my_button import my_button
+from my_dash.my_dcc.my_dropdown import my_dropdown
+from my_dash.my_html.my_div import my_div
+from pages.functions_pages.drop_columns_button.drop_columns_button_css import *
+
+id_page = "groupby"
 
 
 @callback(
-    [Output("dd", "children")],
-    Input("groupby_function", "n_clicks"),
-    State("store", "data"),
+    Output(f"{id_page}_div_dropdown", "children"),
+    Input("groupby_button", "n_clicks"),
+    State("main_page_store", "data"),
     prevent_initial_call=True,)
-def add_data_to_fig(n_clicks, data):
-    
-    try:
-        columns = read_json(data["df"]).columns        
-        content = my_dropdown(f"{id_page}_dropdown", {"width": "50%"}, options=columns, placeholder="Select Columns", multi=True),
-    except (TypeError, KeyError) as e:        
-        content = "No hay ningún DataFrame Cargado"   
-    return [content]
+def add_data_to_fig(n_clicks, data):    
+    columns = read_json(data["df"]).columns
+    return my_div(s_selector, "",
+                  my_dropdown(f"{id_page}_dropdown",
+                              {},
+                              columns,
+                              value = columns[0],
+                              placeholder="Seleccione columna",
+                              multi=True,),)    
 
-
-def create_data_table(df):
-    """Create Dash datatable from Pandas DataFrame."""
-    table = dash_table.DataTable(         #{‘dict’, ‘list’, ‘series’, ‘split’, ‘records’, ‘index’}
-        id='database-table',
-        columns=[{"name": i, "id": i} for i in df.columns],
-        data=df.to_dict('records'),
-        style_cell={'textAlign': 'center'},
-        page_size=300
-    )
-    return table
 
 @callback(
-    Output(f"{id_page}_content", "children"),
+    Output(f"{id_page}_content", "children", allow_duplicate=True),    
     Input(f"{id_page}_dropdown", "value"),
-    State("store", "data"),
+    State("main_page_store", "data"),
     prevent_initial_call=True,)
-def add_data_to_fig(value, data):
-    content = ""
-    try:
-        df = read_json(data["df"])        
-        df = df.groupby(value).mean().reset_index()
-        
-        content = [f"df.groupby({value}).mean()",
-                   create_data_table(df)]
-    except TypeError as e:
-        content = str(e)
-    except KeyError:
-        pass
+def add_data_to_fig(value, data):   
+    return [html.H6(f"df.groupby({value}).mean()"),
+            my_div({"margin-top": "1%"}, "",                  
+                   my_button(f"{id_page}_accept",
+                             "Accept", {"float": "left"},
+                             color="black"
+                   ),)]     
 
-    return content
-"""try:
-        df = read_json(data["df"])        
-        df = df.groupby(['Localización']).mean()
-    except TypeError as e:
-        content = str(e)"""
+
+@callback(
+    [
+      Output(f"{id_page}_content", "children", allow_duplicate=True),
+      Output("main_page_store", "data", allow_duplicate=True),
+      Output(f"{id_page}_accept", "n_clicks"),
+    ],
+    Input(f"{id_page}_accept", "n_clicks"),
+    [      
+      State(f"{id_page}_dropdown", "value"),
+      State("main_page_store", "data"),
+    ],
+    prevent_initial_call=True,)
+def add_data_to_fig(accept, value, data):     
+    if accept:        
+        try:
+            df = read_json(data["df"]).groupby(value).mean()             
+            data["prov_df"] = df.to_json(orient="columns")
+            content = [dag.AgGrid(
+                           id=f"{id_page}_ag-table",
+                           className="ag-theme-alpine-dark",
+                           columnDefs=[{"headerName": x, "field": x}
+                                       for x in df.columns],
+                           rowData=df.to_dict("records"),
+                           columnSize="sizeToFit",
+                           dashGridOptions={"pagination": True},
+                           defaultColDef=dict(resizable=True,)
+                       ),
+                       my_div({"margin-top": "1%"}, "",                  
+                              my_button(f"{id_page}_save",
+                                       "Save", {},
+                                       color="black"
+                              ),
+                       )]
+        except TypeError:
+            content = html.H6("Hay columnas no númericas")
+    else:
+        raise PreventUpdate
+    return [content, data, 0]
+
+
+@callback(
+    [
+      Output(f"{id_page}_dropdown", "options", allow_duplicate=True),
+      Output(f"{id_page}_dropdown", "value", allow_duplicate=True),
+      Output("main_page_store", "data", allow_duplicate=True),
+      Output(f"{id_page}_save", "n_clicks"),
+    ],
+    Input(f"{id_page}_save", "n_clicks"),
+    State("main_page_store", "data"),
+    prevent_initial_call=True,)
+def save_button(save, data):
+    if save:
+        df = read_json(data["prov_df"])
+        data["df"] = df.to_json(orient="columns")
+        columns = list(df.columns)
+    else:
+        raise PreventUpdate
+    return [columns, columns[0], data, 0]
+    

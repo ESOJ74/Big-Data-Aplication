@@ -4,6 +4,7 @@ from tkinter import filedialog
 
 from dash import Input, Output, State, callback, html
 from dash.dependencies import Input, Output, State
+from dash.exceptions import PreventUpdate
 from pandas import read_sql
 from sqlalchemy import create_engine
 
@@ -74,11 +75,7 @@ def load_data(drop_dir, data):
         State("main_page_store", "data")
     ],
     prevent_initial_call=True)
-def load_data(accept, input_value, data):   
-    
-    load_data_content = ""
-    hidden = True
-    data["df"] = ""    
+def load_data(accept, input_value, data): 
     
     if accept:
         if input_value is not None and len(input_value) > 0:
@@ -87,7 +84,9 @@ def load_data(accept, input_value, data):
             load_data_content = html.H6("DataFrame Cargado")
             hidden = False
         else:
-            load_data_content = html.H6("Seleccione Archivos")    
+            load_data_content = html.H6("Seleccione Archivos") 
+    else:
+        raise PreventUpdate   
     return [data, load_data_content, hidden]
 
 
@@ -126,7 +125,7 @@ def load_data(n_clicks, data):
           prevent_initial_call=True
 )
 def load_data(n_clicks, user, password, host, port, bd, schema, table, data):
-    msg = my_div({"margin-left": "30%"}, "", html.H6("Datos Erroneos"))
+    
     try:
         engine = create_engine(f"postgresql://{user}:{password}@{host}:{port}/{bd}")
         query = f"select * from {table}"
@@ -136,5 +135,5 @@ def load_data(n_clicks, user, password, host, port, bd, schema, table, data):
         msg = my_div({"margin-left": "30%"}, "", html.H6(f"Archivo guardado como {table}.csv"))
         engine.dispose()
     except:
-        pass
+        msg = my_div({"margin-left": "30%"}, "", html.H6("Datos Erroneos"))
     return msg
