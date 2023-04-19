@@ -14,5 +14,4 @@ lista_de_paginas = {
           Input("url", "pathname"))
 def display_page(pathname):
     if pathname in lista_de_paginas:
-        return lista_de_paginas[pathname]
-    
+        return lista_de_paginas[pathname]    
