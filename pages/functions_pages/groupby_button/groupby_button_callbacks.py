@@ -57,7 +57,8 @@ def add_data_to_fig(value, data):
 def add_data_to_fig(accept, value, data):     
     if accept:        
         try:
-            df = read_json(data["df"]).groupby(value).mean()             
+            df = read_json(data["df"]).groupby(value).sum()
+            df = df.reset_index()          
             data["prov_df"] = df.to_json(orient="columns")
             content = [dag.AgGrid(
                            id=f"{id_page}_ag-table",
