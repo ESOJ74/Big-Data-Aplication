@@ -5,7 +5,7 @@ from my_dash.my_html.my_div import my_div
 
 style_div_content = {
     "position": "relative",
-    "top": "10%",
+    "top": "7%",
     "left": "10%",
     "width": "70%",
     "font-size": "1.2em",
@@ -36,5 +36,15 @@ layout = [
         State("main_page_store", "data"),
     prevent_initial_call=True,)
 def add_data_to_fig(n_clicks, data):     
-    return [my_div({"text-align": "center"}, "",
-                  html.Pre(read_json(data["df"]).describe().__str__())), ""]
+    return [
+            my_div({"text-align": "center"}, "",
+                   [
+                    my_div({"background": "black"}, "",
+                           html.H5("DataFrame Describe",
+                                   style={"font-weight": "bold", "color": "white"})
+                    ),
+                    my_div({}, "",
+                           html.Pre(read_json(data["df"]).describe().__str__())
+                    ),
+                   ],
+            ), ""]

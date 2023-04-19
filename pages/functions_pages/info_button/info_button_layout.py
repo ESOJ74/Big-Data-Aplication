@@ -5,7 +5,7 @@ from my_dash.my_html.my_div import my_div
 
 style_div_content = {
     "position": "relative",
-    "top": "10%",
+    "top": "1%",
     "left": "30%",
     "width": "25%",
     "font-size": "1.2em",
@@ -24,8 +24,7 @@ layout = [
               fullscreen=False,
           ),
           my_div(style_div_content, f"{id_page}_content")
-]
-       
+]       
 
 
 @callback(
@@ -47,8 +46,7 @@ def add_data_to_fig(n_clicks, data):
     list_non_null = [f"{stop - list_non_null[column]} non-null" for column in list_non_null]
     list_dtype = [df[column].dtype for column in columns]
     list_dtypes = dict((i, list_dtype.count(i)) for i in list_dtype)
-    maxi = len(max(columns, key=len))
-         
+    maxi = len(max(columns, key=len))         
     
     texto = "<class 'pandas.core.frame.DataFrame'>" + "\n" +\
             f"RangeIndex: {stop} entries, 0 to {stop - 1}" + "\n" +\
@@ -60,5 +58,13 @@ def add_data_to_fig(n_clicks, data):
     
     texto +=  "\n" + f"dtypes: {', '.join([f'{key}({list_dtypes[key]})' for key in  list_dtypes])}" +\
               "\n" + f"memory usage: {df.memory_usage(index=False).sum() / 1000} KB"
-    return [my_div({"margin-left": "2%"}, "",
-                  html.Pre(texto)), ""]
+    return [
+            my_div({}, "",
+                   [
+                    my_div({"text-align": "center", "background": "black"}, "",
+                           html.H5("DataFrame Info",
+                                   style={"font-weight": "bold", "color": "white"})
+                    ),
+                    my_div({"margin-left": "2%"}, "", html.Pre(texto)),
+                   ],
+            ), ""]
