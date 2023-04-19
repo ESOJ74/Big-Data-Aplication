@@ -25,7 +25,7 @@ s_selector2 = {
 
 s_utils = {
     "position": "relative",
-    "top": "16%",
+    "top": "10%",
     "width": "100%",
     "height": "78%",
     "background": "#95D3DE",

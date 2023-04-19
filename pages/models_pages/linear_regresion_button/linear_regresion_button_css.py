@@ -1,7 +1,7 @@
 s_selector = {
     "float" : "left",
-    "position": "relative",
-    "top": "20%",
+    
+    "margin-top": "1%",
     "width": "17.5%",
     "height": "48%",
     "border-radius": "7px 7px 5px 5px",
@@ -12,8 +12,8 @@ s_selector = {
 
 s_selector2 = {
     "float" : "left",
-    "position": "relative",
-    "top": "20%",
+    
+    "margin-top": "1%",
     "margin-left": "5%",
     "width": "17.5%",
     "height": "48%",
@@ -25,7 +25,7 @@ s_selector2 = {
 
 s_utils = {
     "position": "relative",
-    "top": "16%",
+    "top": "14%",
     "width": "100%",
     "height": "40%",
     "background": "#95D3DE",

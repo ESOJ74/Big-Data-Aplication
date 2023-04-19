@@ -6,7 +6,7 @@ id_page = "boxplot_button"
 
 s_utils = {
     "position": "relative",
-    "top": "15.5%",
+    "top": "10%",
     "width": "100%",
     "height": "50%",
     "background": "#95D3DE",

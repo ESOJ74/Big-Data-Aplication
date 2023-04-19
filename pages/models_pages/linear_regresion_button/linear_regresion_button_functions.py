@@ -12,8 +12,8 @@ id_page = "linear_regresion"
 
 
 def create_content_up(columns):
-    return my_div({"width": "100%", "height": "100%"}, "",
-                 [my_div({"position": "relative", "top": "2%", "width": "100%", "height": "7%"}, "",
+    return my_div({"width": "100%", "height": "100%", "margin-top": "-3%"}, "",
+                 [my_div({"width": "100%", "height": "7%"}, "",
                          [
                           my_div({"float": "left", "margin-left": "1%", "width": "22.5%", "height": "100%"}, "", html.H6("X")),
                           my_div({"float": "left", "width": "30%", "height": "100%"}, "", html.H6("Y")),
