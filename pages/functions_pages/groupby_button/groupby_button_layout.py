@@ -7,6 +7,8 @@ id_page = "groupby"
 
 layout = my_div({"height": "100%"}, "", 
                 [
+                  my_div({"margin-top": "2%", "margin-left": "2%"}, "",
+                         html.H5("DataFrame Groupby"),),
                   my_div({},f"{id_page}_div_dropdown"),                  
                   my_div(style_div_content, f"{id_page}_content"),
                   dcc.Loading(

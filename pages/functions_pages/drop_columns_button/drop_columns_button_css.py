@@ -4,8 +4,7 @@ style_div_content = {
 }
 
 s_selector = {
-    #"position": "relative",
-    "margin-top": "4%",
+    "margin-top": "1%",
     "margin-left": "2%",
     "width": "14%",
     "height": "48%",
