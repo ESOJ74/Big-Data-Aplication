@@ -5,16 +5,16 @@ from pandas import read_json
 
 from my_dash.my_dcc.my_dropdown import my_dropdown
 from my_dash.my_html.my_div import my_div
-from pages.visualization_pages.bar_button.bar_button_css import *
-from pages.visualization_pages.bar_button.bar_button_functions import \
+from pages.visualization_pages.scatter_button.scatter_button_css import *
+from pages.visualization_pages.scatter_button.scatter_button_functions import \
     create_utils
 
-id_page = "bar_button"
+id_page = "scatter_button"
 
 
 # Panel utils
 @callback(Output(f"{id_page}_utils", "children"),          
-          Input("bar_button", "n_clicks"),
+          Input("scatter_button", "n_clicks"),
           prevent_initial_call=True)
 def display_page(n_clicks):  
     return create_utils(id_page)
@@ -22,7 +22,7 @@ def display_page(n_clicks):
 
 # Panel content_up (dropdown)
 @callback(Output(f"{id_page}_content_up", "children"),
-          Input("bar_button", "n_clicks"),
+          Input("scatter_button", "n_clicks"),
           State('main_page_store', 'data'),
           prevent_initial_call=True)
 def display_page(n_clicks, data):   
@@ -47,11 +47,13 @@ def display_page(n_clicks, data):
 
 # Panel content_middle
 @callback([
-           Output(f"{id_page}_content_middle", "children"),   
+           Output(f"{id_page}_content_middle", "children"),
            Output(f"{id_page}_visualizations_loading", "children", allow_duplicate=True),
           ],
-          Input(f"{id_page}_drop_left", "value"),         
-          Input(f"{id_page}_drop_right", "value"),  
+          [
+           Input(f"{id_page}_drop_left", "value"),         
+           Input(f"{id_page}_drop_right", "value"),
+          ],
           [
            State('main_page_store', 'data'),
            State(f"{id_page}_drop_left", "value"),
@@ -75,7 +77,7 @@ def display_page(
     if drop_left_state and drop_right_state:
         # content_middle
         df = read_json(data["df"])
-        fig = px.bar(
+        fig = px.scatter(
             df,
             x=drop_left_state,
             y=drop_right_state,

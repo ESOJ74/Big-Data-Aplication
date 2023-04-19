@@ -38,6 +38,7 @@ def display_page(values, data):
 @callback([
            Output(f"{id_page}_content_middle", "children"),
            Output(f"{id_page}_content_down", "children"),
+           Output(f"{id_page}_model_loading", "children", allow_duplicate=True),
           ],
           Input(f"{id_page}_train", "n_clicks"),
           [
@@ -109,5 +110,5 @@ def display_page(n_clicks, value_x, value_y, data, test_size, random_state, pena
     except (KeyError, ValueError):
         obj_down = ""
         obj_middle = html.H6("Ambas columnas deben ser numéricas")
-    return [obj_middle, obj_down]
+    return [obj_middle, obj_down, ""]
 

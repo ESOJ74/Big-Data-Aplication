@@ -3,7 +3,7 @@ from my_dash.my_dbc.my_button import my_button
 from dash import dcc
 from my_dash.my_dcc.my_dropdown import my_dropdown
 
-id_page = "bar_button"
+id_page = "scatter_button"
 
 s_utils = {
     "position": "relative",

@@ -1,3 +1,5 @@
+from dash import dcc
+
 from my_dash.my_html.my_div import my_div
 
 style_main_div = {"width": "99%", "height": "100%"}
@@ -14,6 +16,12 @@ def create_models_layout(id_page, create_utils):
                    my_div(style_div_content, "",
                           [
                            my_div(style_div_content_up, f"{id_page}_content_up"),
+                           dcc.Loading(
+                               id="loading-2",
+                               children=[my_div({}, f"{id_page}_model_loading")],
+                               type="default",
+                               fullscreen=False,
+                           ),
                            my_div(style_div_content_middle, f"{id_page}_content_middle"),
                            my_div(style_div_content_down, f"{id_page}_content_down"),
                           ]

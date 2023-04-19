@@ -85,7 +85,7 @@ layout: dict = my_div(style_div_main, "",
                        my_div(style_down_panel, "", 
                               my_div({"margin-left": "2%"}, "",
                                       html.A("GitHub", href="https://github.com/ESOJ74/Big-Data-Aplication",
-                                             style={"color": "black"}
+                                             style={"color": "black"}, target='_blank',
                                       )
                               ), className="alert-primary"
                        ),

@@ -46,6 +46,7 @@ def add_data_to_fig(value, data):
       Output(f"{id_page}_content", "children", allow_duplicate=True),
       Output("main_page_store", "data", allow_duplicate=True),
       Output(f"{id_page}_accept", "n_clicks"),
+      Output(f"{id_page}_groupby_loading", "children", allow_duplicate=True),
     ],
     Input(f"{id_page}_accept", "n_clicks"),
     [      
@@ -78,7 +79,7 @@ def add_data_to_fig(accept, value, data):
             content = html.H6("Hay columnas no númericas")
     else:
         raise PreventUpdate
-    return [content, data, 0]
+    return [content, data, 0, ""]
 
 
 @callback(

@@ -1,11 +1,11 @@
-from dash import Input, Output, State, callback, html
+from dash import Input, Output, State, callback, dcc, html
 from pandas import read_json
 
 from my_dash.my_html.my_div import my_div
 
 style_div_content = {
     "position": "relative",
-    "top": "25%",
+    "top": "10%",
     "left": "30%",
     "width": "25%",
     "font-size": "1.2em",
@@ -16,14 +16,26 @@ style_div_content = {
 
 id_page = "info"
 
-layout = my_div(style_div_content, f"{id_page}_content")
+layout = [
+          dcc.Loading(
+              id="loading-2",
+              children=[my_div({"margin-top": "10%"}, f"{id_page}_info_loading")],
+              type="default",
+              fullscreen=False,
+          ),
+          my_div(style_div_content, f"{id_page}_content")
+]
+       
 
 
 @callback(
-    Output(f"{id_page}_content", "children"),
-    Input("info_button", "n_clicks"),
-    State("main_page_store", "data"),
-    prevent_initial_call=True,)
+        [
+         Output(f"{id_page}_content", "children"),
+         Output(f"{id_page}_info_loading", "children", allow_duplicate=True),
+        ],
+        Input("info_button", "n_clicks"),
+        State("main_page_store", "data"),
+        prevent_initial_call=True,)
 def add_data_to_fig(n_clicks, data): 
      
     df = read_json(data["df"])   
@@ -48,5 +60,5 @@ def add_data_to_fig(n_clicks, data):
     
     texto +=  "\n" + f"dtypes: {', '.join([f'{key}({list_dtypes[key]})' for key in  list_dtypes])}" +\
               "\n" + f"memory usage: {df.memory_usage(index=False).sum() / 1000} KB"
-    return my_div({"margin-left": "2%"}, "",
-                  html.Pre(texto))
+    return [my_div({"margin-left": "2%"}, "",
+                  html.Pre(texto)), ""]

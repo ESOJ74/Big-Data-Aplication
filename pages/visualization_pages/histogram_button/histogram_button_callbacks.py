@@ -43,7 +43,10 @@ def display_page(n_clicks, data):
 
 
 # Panel content_middle
-@callback(Output(f"{id_page}_content_middle", "children"),           
+@callback([
+           Output(f"{id_page}_content_middle", "children"),           
+           Output(f"{id_page}_visualizations_loading", "children", allow_duplicate=True),
+          ],
           Input(f"{id_page}_dropdown", "value"),  
           [
            State('main_page_store', 'data'),
@@ -70,7 +73,7 @@ def display_page(
             color=color_state,
             nbins=int(nbins_state))
         obj = [dcc.Graph(figure=fig)]               
-    return obj
+    return [obj, ""]
 
 
 # refresh button
