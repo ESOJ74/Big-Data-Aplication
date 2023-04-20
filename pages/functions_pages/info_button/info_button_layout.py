@@ -59,11 +59,15 @@ def add_data_to_fig(n_clicks, data):
     texto +=  "\n" + f"dtypes: {', '.join([f'{key}({list_dtypes[key]})' for key in  list_dtypes])}" +\
               "\n" + f"memory usage: {df.memory_usage(index=False).sum() / 1000} KB"
     return [
-            my_div({}, "",
+            my_div({"text-align": "center"}, "",
                    [
-                    my_div({"text-align": "center", "background": "black"}, "",
-                           html.H5("DataFrame Info",
-                                   style={"font-weight": "bold", "color": "white"})
+                    my_div({"background": "black"}, "",
+                           [
+                            html.H5("DataFrame.info()",
+                                   style={"font-weight": "bold", "color": "white"}),
+                            html.A("Documentacion",  href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.info.html",
+                                   target="_blank")
+                           ],
                     ),
                     my_div({"margin-left": "2%"}, "", html.Pre(texto)),
                    ],

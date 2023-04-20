@@ -78,6 +78,8 @@ def add_data_to_fig(accept, value, data):
                        )]
         except TypeError:
             content = html.H6("Hay columnas no númericas")
+        except ValueError:
+            content = html.H6("Seleccione columna")
     else:
         raise PreventUpdate
     return [content, data, 0, ""]

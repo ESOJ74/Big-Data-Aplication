@@ -44,15 +44,6 @@ layout: dict = my_div(style_div_main, "",
                                        # Div for Visualizations panel, Functions panel, Models panel
                                        my_div({"height": "70%"}, f"{id_page}_div_functions",
                                               [
-                                               # Visualizations panel
-                                               my_div(style_visualization_panel, "",
-                                                      html.H5("Visualizations", style={"color": "#0F1458"})
-                                               ),
-                                               create_div_buttons(
-                                                   style_div_2,
-                                                   style_button,
-                                                   visualizations,
-                                               ),
                                                # Functions panel
                                                my_div(style_visualization_panel, "",
                                                       html.H5("Functions", style={"color": "#0F1458"})
@@ -63,6 +54,15 @@ layout: dict = my_div(style_div_main, "",
                                                    functions,
                                                    
                                                ),
+                                               # Visualizations panel
+                                               my_div(style_visualization_panel, "",
+                                                      html.H5("Visualizations", style={"color": "#0F1458"})
+                                               ),
+                                               create_div_buttons(
+                                                   style_div_2,
+                                                   style_button,
+                                                   visualizations,
+                                               ),                                               
                                                # Models panel
                                                my_div(style_visualization_panel, "",
                                                       html.H5("Models", style={"color": "#0F1458"})

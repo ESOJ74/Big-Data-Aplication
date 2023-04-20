@@ -7,8 +7,14 @@ id_page = "groupby"
 
 layout = my_div({"height": "100%"}, "", 
                 [
-                  my_div({"margin-top": "2%", "margin-left": "2%"}, "",
-                         html.H5("DataFrame Groupby"),),
+                  my_div({"margin-top": "2%", "margin-left": "2%", "width": "60%", "height": "3%"}, "",
+                         [
+                          html.H5("DataFrame.groupby()", style={"float": "left", "width": "25%"}),
+                          html.A("Documentacion",
+                                 href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.groupby.html",
+                                 style={"float": "left", "width": "60%"}, target="_blank"),
+                         ],
+                  ), 
                   my_div({},f"{id_page}_div_dropdown"),                  
                   my_div(style_div_content, f"{id_page}_content"),
                   dcc.Loading(

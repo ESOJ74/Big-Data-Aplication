@@ -5,7 +5,7 @@ import plotly.graph_objects as go
 import plotly.express as px
 import numpy as np
 
-app = Dash(__name__)
+'''app = Dash(__name__)
 
 models = {'Regression': linear_model.LinearRegression,
           'Decision Tree': tree.DecisionTreeRegressor,
@@ -54,4 +54,10 @@ def train_and_display(name):
     
     return fig
 
-app.run_server(debug=True)
+app.run_server(debug=True)'''
+
+import pandas as pd
+
+df = pd.read_csv("users/Jose/data/iris.csv")
+corr = df.corr()
+print(corr)

@@ -57,7 +57,7 @@ def add_data_to_fig(accept, value, data):
     if accept:        
         df = read_json(data["df"]).drop([f"{value}"], axis=1)  
         data["prov_df"] = df.to_json(orient="columns")
-        content = [html.H6("The column has been dropped"),
+        content = [
                    dag.AgGrid(
                        id=f"{id_page}_ag-table",
                        className="ag-theme-alpine-dark",

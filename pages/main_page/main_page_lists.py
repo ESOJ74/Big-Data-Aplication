@@ -3,39 +3,35 @@ from pages.main_page.main_page_css import style_button
 buttons = list(map(lambda x: x + [style_button],
                    [
     ["load_data_button", "Load DataFrame"],
-    ["view_data_button", "View DataFrame"],
-    ["save_data_button", "Save DataFrame"]
+    ["save_data_button", "Save DataFrame"],
+    ["view_data_button", "View DataFrame"]
+    
 ]))
 
 functions = list(map(lambda x: x + [style_button],
                      [
-    ["info_button", "Info"],
+    ["corr_button", "Corr"],
+    ["cov_button", "Cov"],    
     ["describe_button", "Describe"],
     ["drop_columns_button", "Drop Columns"],
     ["groupby_button", "Groupby"],
-    ["funcion_3", "Funcion 3"],
-    ["funcion_4", "Funcion 4"],
-    ["Funcion_5", "Funcion 5"],
-    ["Funcion_6", "Funcion 6"],
-    ["Funcion_7", "Funcion 7"],
-    ["Funcion_8", "Funcion 8"],
-    ["Funcion_9", "Funcion 9"],
-    ["Funcion_10", "Funcion 10"],
-    ["Funcion_11", "Funcion 11"],
-    ["Funcion_12", "Funcion 12"],
+    ["info_button", "Info"],
+    ["kurt_button", "Kurt"],
+    ["sem_button", "Sem"],
+    ["var_button", "Var"],
     # [<id button>, <name button>]
 ]))
 
 visualizations = list(map(lambda x: x + [style_button],
                           [
-    ["histogram_button", "Histogram"],
+    ["area_button", "Area"],
     ["bar_button", "Bar"],
-    ["scatter_button", "Scatter Plot"],    
     ["boxplot_button", "Box Plot"],
     ["heatmap_button", "Heatmap"],
-    ["line_button", "Line"],
-    ["area_button", "Area"],
-    ["pie_button", "Pie"],
+    ["histogram_button", "Histogram"],
+    ["line_button", "Line"],    
+    ["pie_button", "Pie"],    
+    ["scatter_button", "Scatter Plot"],       
     # [<id button>, <name button>]
 ]))
 
