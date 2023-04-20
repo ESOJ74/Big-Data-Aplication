@@ -79,6 +79,7 @@ def display_page(
         df = read_json(data["df"])
         fig = px.scatter(
             df,
+            template='plotly_dark',
             x=drop_left_state,
             y=drop_right_state,
             color=color_state,

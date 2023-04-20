@@ -106,6 +106,7 @@ def display_page(
         if x_axis_state and len(x_axis_state) > 0:
             fig = px.box(
                       df,
+                      template='plotly_dark',
                       x=x_axis_state,
                       y=y_axis_state,
                       points=points_state,

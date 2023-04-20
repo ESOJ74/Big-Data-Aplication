@@ -1,10 +1,8 @@
 import numpy as np
-import plotly.express as px
 import plotly.graph_objs as go
 from dash import callback, dcc, html
 from dash.dependencies import Input, Output, State
-from pandas import DataFrame, read_json
-from sklearn.metrics import mean_squared_error, r2_score
+from pandas import read_json
 
 from my_dash.my_html.my_div import my_div
 from pages.models_pages.logistic_regresion_button.logistic_regresion_button_functions import (
@@ -33,6 +31,7 @@ def display_page(values, data):
         for value in values:
             cols.remove(value)    
     return cols
+
 
 # Panel content_down
 @callback([
@@ -79,27 +78,21 @@ def display_page(n_clicks, value_x, value_y, data, test_size, random_state, pena
         # Hacemos las predicciones
         y_pred = pred_model(regr, X_test)
         
-        # content_middle        
-        data = DataFrame({value_x[0]: list(map(lambda x: x[0], X_test)), 
-                        value_x[1]: list(map(lambda x: x[1], X_test)), 
-                        value_y: y_test})    
-         
-        x1_range = np.linspace(-3, 3, 50)
-        x2_range = np.linspace(-3, 3, 50)
-
-        #fig = px.scatter(df, x=value_x[0], y=value_x[1], color=value_y)        
-
-        fig = go.Figure()
-        fig.add_trace(go.Scatter(x=data[value_x[0]], y=data[value_x[1]], mode='markers', marker=dict(color=data[value_y], colorscale='RdBu')))
-        fig.add_trace(go.Contour(x=x1_range, y=x2_range, z=y_pred, 
-                          colorscale='RdBu', contours=dict(start=0.5, end=0.5), 
-                          line_width=2))
-
+        # content_middle      
+        x_range_test = np.linspace(0, X_test.shape[0], X_test.shape[0]) 
+        fig = go.Figure([
+            go.Scatter(x=x_range_test, y=y_test, 
+                    name='real'),
+            go.Scatter(x=x_range_test, y=y_pred, 
+                    name='predicción', mode='markers'),            
+        ])    
+        fig.update_layout(template='plotly_dark')
         obj_middle = dcc.Graph(figure=fig)
 
         # content_down
         obj_down = my_div({}, "",
-                          [html.H6(f"Classes: {regr.classes_}"),
+                          [
+                           html.H6(f"Classes: {regr.classes_}"),
                            html.H6(f"Independent term: {regr.intercept_}"),
                            html.H6(f"n_features_in: {regr.n_features_in_}"),
                            html.H6(f"n_iter_: {regr.n_iter_}"),

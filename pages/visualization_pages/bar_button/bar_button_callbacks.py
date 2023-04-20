@@ -77,9 +77,10 @@ def display_page(
         df = read_json(data["df"])
         fig = px.bar(
             df,
+            template='plotly_dark',
             x=drop_left_state,
             y=drop_right_state,
-            color=color_state,
+            color=color_state,            
         )
         obj = [dcc.Graph(figure=fig)]               
     return [obj, ""]

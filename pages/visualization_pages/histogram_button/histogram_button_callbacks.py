@@ -69,6 +69,7 @@ def display_page(
         df = read_json(data["df"])
         fig = px.histogram(
             df,
+            template='plotly_dark',
             x=dropdown_value,
             color=color_state,
             nbins=int(nbins_state))

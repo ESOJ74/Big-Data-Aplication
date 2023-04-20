@@ -1,7 +1,8 @@
-import plotly.express as px
+import numpy as np
+import plotly.graph_objs as go
 from dash import callback, dcc, html
 from dash.dependencies import Input, Output, State
-from pandas import DataFrame, read_json
+from pandas import read_json
 from sklearn.metrics import mean_squared_error, r2_score
 
 from my_dash.my_html.my_div import my_div
@@ -60,16 +61,19 @@ def display_page(n_clicks, value_x, value_y, data, test_size, random_state, fit_
                                                     value_x, value_y, int(test_size)/100, int(random_state))               
         # Entrenamos modelo
         regr = fit_model(X_train, y_train, fit_intercept, copy_X, n_jobs, positive)
+
         # Hacemos las predicciones
         y_pred = pred_model(regr, X_test)
         
-        # content_middle        
-        df = DataFrame({value_x[0]: list(map(lambda x: x[0], X_test)), value_y: y_test})     
-
-        fig = px.scatter(df, x=value_x[0], y=value_y)
-        fig.add_trace(px.line(x=df[value_x[0]], y=y_pred).data[0])
-        fig.update_traces(line_color='green')
-
+        # content_middle             
+        x_range_test = np.linspace(0, X_test.shape[0], X_test.shape[0]) 
+        fig = go.Figure([
+            go.Scatter(x=x_range_test, y=y_test, 
+                    name='real'),
+            go.Scatter(x=x_range_test, y=y_pred, 
+                    name='predicción', mode='markers'),            
+        ])    
+        fig.update_layout(template='plotly_dark')
         obj_middle = dcc.Graph(figure=fig)
 
         # content_down
