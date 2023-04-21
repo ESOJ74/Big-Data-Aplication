@@ -1,10 +1,11 @@
 from dash import dcc
-
+from dash_iconify import DashIconify
 from common_functions.user_registry import user_login
 from my_dash.my_html.my_div import my_div
+from my_dash.my_dbc.my_button import my_button
 from pages.main_page.main_page_callbacks import *
 from pages.main_page.main_page_css import *
-from pages.main_page.main_page_functions import create_div_buttons
+from pages.main_page.main_page_functions import create_div_buttons, button_left_right
 from pages.main_page.main_page_lists import (buttons, functions, models,
                                              visualizations)
 
@@ -27,9 +28,25 @@ layout: dict = my_div(style_div_main, "",
                                 )
                               ], className="alert-primary"),
                        # Middle Panel
+                       my_div({"position": "absolute","left": "0%", "top": "43px", },
+                              f"{id_page}_div_button_left",
+                              button_left_right(f"{id_page}_button_left", "btn btn-primary btn-sm",
+                                                {"background": "#060606", "border": "1px solid #060606"},
+                                                "ic:baseline-arrow-circle-right"
+                              ),
+                              hidden=True,  
+                       ),                    
                        my_div(style_middle_panel, "",
                               [
                                # Left Panel
+                               my_div({"position": "absolute","left": "17%", "top": "43px", },
+                                      f"{id_page}_div_button_right",
+                                      button_left_right(f"{id_page}_button_right", "btn btn-primary btn-sm",
+                                                       {"background": "#2a9fd6", "border": "1px solid #2a9fd6"},
+                                                       "ic:baseline-arrow-circle-left"
+                               ),
+                               hidden=True,  
+                               ), 
                                my_div(style_div_buttons, f"{id_page}_left",
                                       [
                                       # DataFrame panel
@@ -85,7 +102,7 @@ layout: dict = my_div(style_div_main, "",
                        my_div(style_down_panel, "", 
                               my_div({"margin-left": "2%"}, "",
                                       html.A("GitHub", href="https://github.com/ESOJ74/Big-Data-Aplication",
-                                             style={"color": "black"}, target='_blank',
+                                             style={"color": "black"}, target="_blank",
                                       )
                               ), className="alert-primary"
                        ),

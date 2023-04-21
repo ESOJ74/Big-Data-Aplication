@@ -30,34 +30,41 @@ style_panel_user = {
 
 style_div_buttons = {
     "float": "left",
-    "width": "11%",
+    "width": "20%",
     "height": "100%",
 }
 
 style_div_content = {
     "float": "left",
-    "width": "89%",
+    "width": "80%",
+    "height": "100%",
+}
+
+style_div_content2 = {
+    "float": "left",
+    "margin-left": "5%",
+    "width": "95%",
     "height": "100%",
 }
 
 style_div_1 = {
     "margin-top": "2%",
-    "width": "90%",
-    "height": "13%",
+    "width": "100%",
+    "height": "3%",
     "padding": "0px 12px 0px 2px",  
 }
 
 style_div_2 = {
     "margin-top": "2%",
-    "width": "92%",
+    "width": "95%",
     "height": "24%",  
     "overflow-y": "auto",
 }
 
-style_button = {    
+style_button = {       
     "margin-top": "1%",
     "margin-left": "5%",
-    "width": "98%",
+    "width": "100%",
     "font-size": "90%",
     "font-weight": "bold",
     "font-family": "Roboto, Helvetica, Arial, sans-serif",
@@ -97,12 +104,12 @@ style_middle_panel = {
 }
 
 style_dataframe_panel = {
-    "margin-top": "15%",
+    "margin-top": "10%",
     "margin-left": "8%",
 }
 
 style_visualization_panel = {
-    "margin-top": "10%",
+    "margin-top": "9%",
     "border-top": "1px solid black",
     "padding": "20px 0px 0px 15px",
 }

@@ -2,9 +2,9 @@ from pages.main_page.main_page_css import style_button
 
 buttons = list(map(lambda x: x + [style_button],
                    [
-    ["load_data_button", "Load DataFrame"],
-    ["save_data_button", "Save DataFrame"],
-    ["view_data_button", "View DataFrame"]
+    ["load_data_button", "Load"],
+    ["save_data_button", "Save"],
+    ["view_data_button", "View"]
     
 ]))
 
@@ -13,7 +13,7 @@ functions = list(map(lambda x: x + [style_button],
     ["corr_button", "Corr"],
     ["cov_button", "Cov"],    
     ["describe_button", "Describe"],
-    ["drop_columns_button", "Drop Columns"],
+    ["drop_columns_button", "Drop"],
     ["groupby_button", "Groupby"],
     ["info_button", "Info"],
     ["kurt_button", "Kurt"],
