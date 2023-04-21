@@ -21,4 +21,4 @@ app.layout = my_div({"width": "100%", "height": "100%"}, "",
 
 
 if __name__ == "__main__":
-    app.run_server(0.0.0.0)
+    app.run_server(host='0.0.0.0', port=8050, debug=True)
