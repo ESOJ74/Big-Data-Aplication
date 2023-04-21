@@ -94,6 +94,7 @@ style_boton_aceptar_load = {
 }
 
 style_boton_aceptar_up_file = {   
+    "margin-top": "2%",
     "font-size": "75%",
     "font-family": "Roboto, Helvetica, Arial, sans-serif",
 }
