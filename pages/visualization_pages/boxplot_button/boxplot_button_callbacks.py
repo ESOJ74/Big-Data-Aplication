@@ -5,7 +5,8 @@ from pandas import read_json
 
 from my_dash.my_html.my_div import my_div
 from pages.visualization_pages.boxplot_button.boxplot_button_css import *
-from pages.visualization_pages.boxplot_button.boxplot_button_functions import create_utils
+from pages.visualization_pages.boxplot_button.boxplot_button_functions import \
+    create_utils
 
 id_page = "boxplot_button"
 
