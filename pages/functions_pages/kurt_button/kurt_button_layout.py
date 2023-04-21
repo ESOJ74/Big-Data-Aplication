@@ -36,19 +36,25 @@ layout = [
         State("main_page_store", "data"),
     prevent_initial_call=True,)
 def add_data_to_fig(n_clicks, data):     
-    return [
-            my_div({"text-align": "center"}, "",
-                   [
-                    my_div({"background": "black"}, "",
-                           [
-                            html.H5("DataFrame.kurt()",
-                                   style={"font-weight": "bold", "color": "white"}),
-                            html.A("Documentacion",  href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.kurt.html",
-                                   target="_blank")
-                           ],
-                    ),
-                    my_div({}, "",
-                           html.Pre(read_json(data["df"]).kurt().__str__())
-                    ),
-                   ],
-            ), ""]
+    try:
+       return [
+              my_div({"text-align": "center"}, "",
+                     [
+                     my_div({"background": "black"}, "",
+                            [
+                                   html.H5("DataFrame.kurt()",
+                                          style={"font-weight": "bold", "color": "white"}),
+                                   html.A("Documentacion",  href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.kurt.html",
+                                          target="_blank")
+                            ],
+                     ),
+                     my_div({}, "",
+                            html.Pre(read_json(data["df"]).kurt().__str__())
+                     ),
+                     ],
+              ), ""]
+    except TypeError as msg:
+        return [
+                html.H6(msg.__str__(),
+                        style={"background": "#060606", "color": "white"}),
+                ""]
