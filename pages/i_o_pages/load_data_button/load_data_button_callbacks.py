@@ -9,8 +9,7 @@ from pandas import read_sql
 from sqlalchemy import create_engine
 
 from my_dash.my_html.my_div import my_div
-from pages.i_o_pages.load_data_button.load_data_button_functions import \
-    read_data
+from pages.i_o_pages.load_data_button.load_data_button_functions import read_data
 
 id_page = "load_data"
 
