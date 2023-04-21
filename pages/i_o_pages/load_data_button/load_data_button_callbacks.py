@@ -103,7 +103,7 @@ def load_data(n_clicks, data):
     if type(archivo) != tuple:
         filename = archivo.split('/')[-1]        
         shutil.copy(archivo, f"""users/{data["user"]}/data/{filename}""")    
-        msg = html.H6("Archivo subido")    
+        msg = html.H6("Archivo subido", style={"margin-left": "5%"})    
     else:
         msg = ""
     return msg

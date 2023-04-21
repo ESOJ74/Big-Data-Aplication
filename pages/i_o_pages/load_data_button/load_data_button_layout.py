@@ -53,7 +53,7 @@ layout = my_div(style_div_main, "",
                                  dcc.Input(id=f"{id_page}_table",style={"width": "100%"}),
                                 ],
                          ),
-                         my_button(f"{id_page}_aceptar_db", "Aceptar", style_boton_aceptar_up_file, color="black"),    
+                         my_button(f"{id_page}_aceptar_db", "Aceptar", style_boton_aceptar_up_file, className="btn btn-warning"),    
                         ], hidden=True,
                  ),          
                  my_div({}, f"{id_page}_content")

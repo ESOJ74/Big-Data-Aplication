@@ -70,7 +70,7 @@ s_selector_arch = {
 }
 
 s_selector_db = {     
-    "height": "100%",
+    "height": "96%",
     "width": "35%",
     "border-radius": "7px 7px 5px 5px",
     "padding": "2px 2px 0px 2px",
@@ -95,7 +95,7 @@ style_boton_aceptar_load = {
 
 style_boton_aceptar_up_file = {   
     "font-size": "75%",
-    "font-family": "Roboto, Helvetica, Arial, sans-serif"
+    "font-family": "Roboto, Helvetica, Arial, sans-serif",
 }
 
 style_button = {
