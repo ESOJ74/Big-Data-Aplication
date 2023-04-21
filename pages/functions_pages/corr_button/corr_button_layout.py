@@ -37,7 +37,7 @@ layout = [
     prevent_initial_call=True,)
 def add_data_to_fig(n_clicks, data):     
     try:
-       return [
+       return [        
               my_div({"text-align": "center"}, "",
                      [
                      my_div({"background": "black"}, "",
@@ -49,9 +49,12 @@ def add_data_to_fig(n_clicks, data):
                             ],
                      ),
                      my_div({}, "",
-                            html.Pre(read_json(data["df"]).corr().__str__())   #git revert
+                            html.Pre(read_json(data["df"]).corr().__str__())
                      ),
                      ],
               ), ""]
-    except ValueError:
-        return ["", ""]
+    except ValueError as msg:
+        return [
+                html.H6(msg.__str__(),
+                        style={"background": "#060606", "color": "white"}),
+                ""]

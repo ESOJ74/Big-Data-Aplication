@@ -22,7 +22,6 @@ id_page = "main_page"
           prevent_initial_call=True,)
 def auth_display(n_clicks):
     if n_clicks:
-        print('xxxxxxxxxxxxxxxxxxxxxxx')
         return  [True, False, False, style_div_content, 0]
     else:
         raise PreventUpdate
