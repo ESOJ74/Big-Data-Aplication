@@ -1,6 +1,6 @@
 import os
 import shutil
-from tkinter import filedialog
+#from tkinter import filedialog
 
 from dash import Input, Output, State, callback, html
 from dash.dependencies import Input, Output, State
@@ -97,15 +97,15 @@ def load_data(accept, input_value, data):
           prevent_initial_call=True
 )
 def load_data(n_clicks, data):
-    
-    archivo = filedialog.askopenfilename()
+    msg=''
+    '''archivo = filedialog.askopenfilename()
 
     if type(archivo) != tuple:
         filename = archivo.split('/')[-1]        
         shutil.copy(archivo, f"""users/{data["user"]}/data/{filename}""")    
         msg = html.H6("Archivo subido")    
     else:
-        msg = ""
+        msg = ""'''
     return msg
 
 
