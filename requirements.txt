@@ -3,7 +3,7 @@ dash_ag_grid==2.0.0a1
 dash_bootstrap_components==1.4.1
 dash_iconify==0.1.2
 Flask==2.2.3
-numpy==1.24.2
+numpy==1.21.6
 pandas==2.0.0
 plotly==5.14.0
 scikit_learn==1.2.2

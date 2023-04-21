@@ -18,9 +18,7 @@ app.layout = my_div({"width": "100%", "height": "100%"}, "",
                             "app_content")
                     ]
              )
-import os
-#port=os.environ["PORT"]
-  
+
+
 if __name__ == "__main__":
-    #app.run('0.0.0.0',int(port), debug=True)
     app.run_server(debug=True)
