@@ -1,6 +1,6 @@
 import os
 import shutil
-#from tkinter import filedialog
+from tkinter import filedialog
 
 from dash import Input, Output, State, callback, html
 from dash.dependencies import Input, Output, State
@@ -9,7 +9,8 @@ from pandas import read_sql
 from sqlalchemy import create_engine
 
 from my_dash.my_html.my_div import my_div
-from pages.i_o_pages.load_data_button.load_data_button_functions import read_data
+from pages.i_o_pages.load_data_button.load_data_button_functions import \
+    read_data
 
 id_page = "load_data"
 
@@ -96,15 +97,15 @@ def load_data(accept, input_value, data):
           prevent_initial_call=True
 )
 def load_data(n_clicks, data):
-    msg=''
-    '''archivo = filedialog.askopenfilename()
+    
+    archivo = filedialog.askopenfilename()
 
     if type(archivo) != tuple:
         filename = archivo.split('/')[-1]        
         shutil.copy(archivo, f"""users/{data["user"]}/data/{filename}""")    
         msg = html.H6("Archivo subido")    
     else:
-        msg = ""'''
+        msg = ""
     return msg
 
 

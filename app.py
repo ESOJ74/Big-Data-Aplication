@@ -1,6 +1,5 @@
 from dash import Dash, dcc
 from flask import Flask
-import streamlit as st
 
 from app_callbacks import *
 from my_dash.my_html.my_div import my_div
@@ -20,9 +19,6 @@ app.layout = my_div({"width": "100%", "height": "100%"}, "",
                     ]
              )
 
-def render_dashboard():
-    return app.index()
 
-st.write("My Dashboard")
-st.write("Below is my dashboard:")
-st.write(render_dashboard(), unsafe_allow_html=True)
+if __name__ == "__main__":
+    app.run_server(debug=True)

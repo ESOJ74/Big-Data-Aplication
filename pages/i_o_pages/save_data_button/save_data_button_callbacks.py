@@ -4,9 +4,8 @@ from pandas import read_json
 id_page = "save_data"
 
 
-def write_data(df, extension, path):   
-    df.to_csv(path + ".csv", index=False)  
-    '''match extension:
+def write_data(df, extension, path):     
+    match extension:
         case "csv" | "txt":
             df.to_csv(path + ".csv", index=False)
         case "json":
@@ -14,7 +13,7 @@ def write_data(df, extension, path):
         case "xlsx":
             df.to_excel(path + ".xlsx", index=False) 
         case _:
-            pass'''
+            pass
      
 
 @callback(Output(f"{id_page}_content", "children"),
@@ -33,14 +32,14 @@ def save_data(n_clicks, input_value, drop_value, data):
         try:
             df = read_json(data["df"])
             path = f"""users/{data["user"]}/data/{input_value}"""
-            write_data(df, "csv", path)
-            '''match drop_value:
+
+            match drop_value:
                 case "To CSV":
                     write_data(df, "csv", path)
                 case "To JSON":
                     write_data(df, "json", path)
                 case "To EXCEL":
-                    write_data(df, "xlsx", path)'''
+                    write_data(df, "xlsx", path)
         except (TypeError, KeyError, ValueError):
             load_data_content = html.H6("No hay DataFrame cargado")
     return load_data_content
