@@ -36,19 +36,22 @@ layout = [
         State("main_page_store", "data"),
     prevent_initial_call=True,)
 def add_data_to_fig(n_clicks, data):     
-    return [
-            my_div({"text-align": "center"}, "",
-                   [
-                    my_div({"background": "black"}, "",
-                           [
-                            html.H5("DataFrame.corr()",
-                                   style={"font-weight": "bold", "color": "white"}),
-                            html.A("Documentacion",  href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.corr.html",
-                                   target="_blank")
-                           ],
-                    ),
-                    my_div({}, "",
-                           html.Pre(read_json(data["df"]).corr().__str__())
-                    ),
-                   ],
-            ), ""]
+    try:
+       return [
+              my_div({"text-align": "center"}, "",
+                     [
+                     my_div({"background": "black"}, "",
+                            [
+                                   html.H5("DataFrame.corr()",
+                                          style={"font-weight": "bold", "color": "white"}),
+                                   html.A("Documentacion",  href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.corr.html",
+                                          target="_blank")
+                            ],
+                     ),
+                     my_div({}, "",
+                            html.Pre(read_json(data["df"]).corr().__str__())   #git revert
+                     ),
+                     ],
+              ), ""]
+    except ValueError:
+        return ["", ""]
