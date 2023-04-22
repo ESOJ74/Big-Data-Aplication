@@ -1,43 +1,34 @@
-from my_dash.my_html.my_div import my_div
+from dash import dcc, html
+
 from my_dash.my_dbc.my_button import my_button
-from dash import dcc
 from my_dash.my_dcc.my_dropdown import my_dropdown
+from my_dash.my_html.my_div import my_div
+from pages.visualization_pages.histogram_button.histogram_button_css import *
 
 id_page = "histogram_button"
 
-s_utils = {
-    "position": "relative",
-    "top": "10%",
-    "width": "100%",
-    "height": "50%",
-    "background": "#95D3DE",
-    "font-family": "Roboto, Helvetica, Arial, sans-serif",
-}
-
-style_div_input = {
-    "margin-left": "2%",
-    "font-weight": "bold",
-    "color": "#012A32"
-}
-
-style_input = {    
-    "width": "10%"
-}
-
 
 def create_utils(id_page):
-    return my_div(s_utils, "",
+    return my_div(style_div_utils, "",
                  [
-                   my_div(style_div_input, "", 
-                          [my_div({}, "", "nbins"),
+                   my_div(style_div_nbins, "",  
+                          [
+                           html.H6("nbins", style={"float": "left"}),
                            dcc.Input(id=f"{id_page}_nbins",
-                                          style={"width": "15%", "background": "white", "color": "black"},
-                                          value=20,
-                           ),
-                           my_div({}, "", "color"),
-                           my_dropdown(f"{id_page}_color", {"width": "70%", "color": "black", "font-size": "80%"},),                           
-                           my_button(f"{id_page}_refresh", "Refresh", {"margin-top": "2%"}, className="btn btn-outline-light", color="black")
+                                     style=style_input_nbins,
+                                     value=20,
+                           )
                           ]
-                   ),                   
+                   ),
+                   my_div(style_div_color, "",
+                          [
+                           html.H6("color", style={"float": "left"}),
+                           my_div(style_selector_color, "",
+                                  my_dropdown(f"{id_page}_color", {},),
+                           )
+                          ],
+                   ),                        
+                   my_button(f"{id_page}_refresh", "Refresh", style_button,
+                             className="btn btn-outline-warning", color="black")   
                  ]
-          )
+           )

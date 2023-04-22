@@ -1,22 +1,18 @@
 from dash import dcc, html
 
 from my_dash.my_html.my_div import my_div
-
-style_main_div = {"width": "99%", "height": "100%"}
-style_div_content = {"float": "left", "margin-left": "4%", "width": "80%", "height": "97%"}
-style_div_content_up = {"width": "95%", "height": "10%"}
-style_div_content_middle = {"width": "100%", "height": "50%"}
-style_div_content_down = {"width": "99.5%", "margin-top": "2%", "height": "38%", "color": "black"}
-style_div_utils = {"float": "left", "margin-left": "1%", "width": "15%", "height": "100%"}
+from common_functions.common_functions_css import *
 
 
 def create_visualization_layout(id_page):
     return my_div(style_main_div, "",
                   [
-                   my_div({"margin-top": "2%", "margin-left": "4%"}, "",
-                         html.H5(f"DataFrame {id_page.split('_')[0]}"),),
+                   
                    my_div(style_div_content, "",
                           [
+                           my_div(style_div_title, "",
+                                  html.H5(f"DataFrame {id_page.split('_')[0]}"),
+                           ),
                            my_div(style_div_content_up, f"{id_page}_content_up"),
                            dcc.Loading(
                                id="loading-2",

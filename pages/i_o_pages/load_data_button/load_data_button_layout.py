@@ -26,7 +26,7 @@ layout = my_div(style_div_main, "",
                         [
                          my_div(s_selector_arch, "",
                                 my_dropdown(f"{id_page}_drop_file",
-                                            {},
+                                            {"margin-top": "1.5%"},
                                             placeholder="Select format"
                                 ),
                          ),

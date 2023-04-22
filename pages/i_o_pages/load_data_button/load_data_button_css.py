@@ -59,14 +59,14 @@ style_div_dropdown_db = {
 
 s_selector_arch = {    
     "width": "46%",
-    "border-radius": "7px 7px 5px 5px",
+    "height": "2.5em",
+    "border-radius": "7px 5px 5px 5px",
     "padding-left": "2px",
-    "padding-right": "2px",
-    "padding-bottom": "2px",
+    "padding-right": "2px",    
     "font-size": "1em",
-    "color": "#158397",
-    "background":"#495D61",
-    "font-family": "Roboto, Helvetica, Arial, sans-serif",
+    "color": "black",
+    "background":"#2a9fd6",
+    "font-family": "Roboto, Helvetica, Arial, sans-serif",   
 }
 
 s_selector_db = {     
@@ -82,7 +82,7 @@ style_boton_files = {
     "float": "left", 
     "margin-left": "1%",
     "width": "20%",
-    "font-size": "90%",
+    "font-size": "0.8vmax",
     "font-family": "Roboto, Helvetica, Arial, sans-serif",
 }
 

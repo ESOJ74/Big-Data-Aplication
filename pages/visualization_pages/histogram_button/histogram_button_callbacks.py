@@ -26,7 +26,7 @@ def display_page(n_clicks):
           State('main_page_store', 'data'),
           prevent_initial_call=True)
 def display_page(n_clicks, data):     
-    return my_div(s_selector, "",
+    return my_div(style_selector, "",
                   my_dropdown(f"{id_page}_dropdown",
                               {},
                               read_json(data["df"]).columns,
@@ -72,7 +72,8 @@ def display_page(
             template='plotly_dark',
             x=dropdown_value,
             color=color_state,
-            nbins=int(nbins_state))
+            nbins=int(nbins_state),            
+        )
         obj = [dcc.Graph(figure=fig)]               
     return [obj, ""]
 

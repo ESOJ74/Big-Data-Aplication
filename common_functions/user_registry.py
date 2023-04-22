@@ -1,5 +1,6 @@
 from dash import dcc, html
 
+from common_functions.common_functions_css import *
 from my_dash.my_dbc.my_button import my_button
 from my_dash.my_html.my_div import my_div
 
@@ -18,17 +19,12 @@ style_div_input = {
     "font-family": "Roboto, Helvetica, Arial, sans-serif",
 }
 
-style_input = {
-    
-     
-}
-
 style_button = {    
     "margin-top": "1%",
     "margin-left": "12%",
-    "width": "22%",
+    "width": "6em",
     "height": "35%",
-    "font-size": "90%",
+    "font-size": "0.8vmax",
     "font-family": "Roboto, Helvetica, Arial, sans-serif",
 }
 
@@ -43,23 +39,42 @@ style_accept = {
     "width": "100%"
 }
 
-style_div_register = {"margin-left": "5%",
-                      "margin-top": "3%",
-                      "width": "100%"
+style_div_register = {
+    "margin-left": "5%",
+    "margin-top": "3%",
+    "width": "100%"
 }
 
+style_div_answer = {
+    "float": "left",
+    "width": "35%",
+    "font-size":"0.9vmax"
+}
+
+style_div_login = {
+    "float": "left",
+    "width": "60%",
+    "font-size": "0.9vmax"
+}
+
+style_input = {
+    "width": "10em",
+    "font-size": "1vmax"
+}
 
 def insert_user(id_page):
     return my_div(style_div_input, "",
                          [
-                          my_div({}, "",
+                          my_div({"width": "10em"}, "",
                                  dcc.Input(id=f"{id_page}_reg_user",
                                            placeholder="Usuario",
+                                           style=style_input,
                                  )
                           ),
-                          my_div({}, "",
+                          my_div({"width": "10em"}, "",
                                  dcc.Input(id=f"{id_page}_reg_pass",
                                            placeholder="Contraseña",
+                                           style=style_input,
                                  )
                           ),
                          ]
@@ -75,9 +90,9 @@ def user_login(id_page):
                   my_div(style_div_reg_answer, f"{id_page}_reg_answer"),      
                   my_div(style_div_register, "", 
                          [
-                          my_div({"float": "left", "width": "31%"}, "",
+                          my_div(style_div_answer, "",
                                  html.Label('Nuevo en Big Data App?'),),
-                          my_div({"float": "left", "width": "65%"}, "",
+                          my_div(style_div_login, "",
                                  html.A('Register', href='/registro'),),
                          ]
                   ),                    
@@ -94,9 +109,9 @@ def user_registry(id_page):
                   my_div(style_div_reg_answer, f"{id_page}_reg_answer"),   
                   my_div(style_div_register, "", 
                          [
-                          my_div({"float": "left", "width": "23%"}, "",
+                          my_div(style_div_answer, "",
                                  html.Label('Ir a Big Data App?'),),
-                          my_div({"float": "left", "width": "70%"}, "",
+                          my_div(style_div_login, "",
                                  html.A('Login', href='/'),),
                          ]
                   ),         

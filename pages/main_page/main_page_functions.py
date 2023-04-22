@@ -2,27 +2,28 @@ from importlib import import_module
 
 from dash import callback
 from dash.dependencies import Input, Output
-from dash_iconify import DashIconify
 
 from my_dash.my_dbc.my_button import my_button
 from my_dash.my_html.my_div import my_div
 
+style_div_button = {
+    "float": "left", "margin-top": "0%", "width": "32%", "font-weight": "bold"
+}
 
-def button_left_right(id, className, style, icon):
+def button_cover(id, className, style, children):
     return my_button(id, 
-                     DashIconify(
-                          icon=icon,   #2a9fd6
-                          width=30
-                     ),
-                     style, #{"position": "absolute","left": "0%", "top": "43px", "background": "#060606", "border": "1px solid #060606"},
+                     children,
+                     style, 
                      n_clicks=0,
-                     className=className) #"btn btn-primary disabled btn-sm")
+                     className=className)
 
 
-def create_div_buttons(style_div, style_button, button_list, color="black", classdiv="", className="btn btn-outline-light"):   
+def create_div_buttons(style_div, style_button, button_list, color="black",
+                       classdiv="", className="btn btn-outline-light"):   
+    
     return my_div(style_div, "", 
                   [
-                   *[my_div({ "float": "left", "margin-top": "0%", "width": "32%", "font-weight": "bold"}, "",
+                   *[my_div(style_div_button, "",
                              my_button(button[0],
                                        button[1],
                                        style_button,

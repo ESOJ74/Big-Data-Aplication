@@ -7,7 +7,7 @@ style_div_content = {
     "position": "relative",
     "top": "1%",
     "left": "30%",
-    "width": "25%",
+    "width": "30%",
     "font-size": "1.2em",
     "font-weight": "bold",
     "background": "#C5F4FD",
@@ -59,9 +59,9 @@ def add_data_to_fig(n_clicks, data):
     texto +=  "\n" + f"dtypes: {', '.join([f'{key}({list_dtypes[key]})' for key in  list_dtypes])}" +\
               "\n" + f"memory usage: {df.memory_usage(index=False).sum() / 1000} KB"
     return [
-            my_div({"text-align": "center"}, "",
+            my_div({}, "",
                    [
-                    my_div({"background": "black"}, "",
+                    my_div({"text-align": "center", "background": "#060606"}, "",
                            [
                             html.H5("DataFrame.info()",
                                    style={"font-weight": "bold", "color": "white"}),

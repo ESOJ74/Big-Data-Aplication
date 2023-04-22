@@ -1,6 +1,6 @@
 from dash import callback, html
 from dash.dependencies import Input, Output, State
-from dash.exceptions import PreventUpdate
+from dash_iconify import DashIconify
 from pandas import read_csv
 
 from pages.main_page.main_page_css import *
@@ -12,50 +12,44 @@ id_page = "main_page"
 
 
 @callback([
-           Output(f"{id_page}_div_button_left", "hidden", allow_duplicate=True),
-           Output(f"{id_page}_div_button_right", "hidden", allow_duplicate=True),
-           Output(f"{id_page}_left", "hidden", allow_duplicate=True),
-           Output(f"{id_page}_page_content", "style", allow_duplicate=True),
-           Output(f"{id_page}_button_left", "n_clicks"),
+           Output(f"{id_page}_div_button_cover", "style"),
+           Output(f"{id_page}_button_cover", "style"),
+           Output(f"{id_page}_button_cover", "children"),
+           Output(f"{id_page}_div_middle_left", "hidden", allow_duplicate=True),
+           Output(f"{id_page}_page_content", "style")
           ],
-          Input(f"{id_page}_button_left", "n_clicks"),
+          Input(f"{id_page}_button_cover", "n_clicks"),
           prevent_initial_call=True,)
 def auth_display(n_clicks):
-    if n_clicks:
-        return  [True, False, False, style_div_content, 0]
+    if n_clicks % 2 !=0:
+        return  [style_div_button_cover_left, style_button_cover_left,
+                 DashIconify(
+                             icon="ic:baseline-arrow-circle-right",   #2a9fd6
+                             width=30
+                ), True, style_div_content2]
     else:
-        raise PreventUpdate
+        return  [style_div_button_cover_right, style_button_cover_right,
+                 DashIconify(
+                             icon="ic:baseline-arrow-circle-left",   #2a9fd6
+                             width=30
+                 ), False, style_div_content]
 
 
 @callback([
-           Output(f"{id_page}_div_button_left", "hidden", allow_duplicate=True),
-           Output(f"{id_page}_div_button_right", "hidden", allow_duplicate=True),
-           Output(f"{id_page}_left", "hidden", allow_duplicate=True),
-           Output(f"{id_page}_page_content", "style", allow_duplicate=True),
-           Output(f"{id_page}_button_right", "n_clicks"),
-          ],
-          Input(f"{id_page}_button_right", "n_clicks"),
-          prevent_initial_call=True,)
-def auth_display(n_clicks):
-    if n_clicks:
-        return  [False, True, True, style_div_content2, 0]
-    else:
-        raise PreventUpdate
-
-@callback([
-           Output(f"{id_page}_left", "hidden"),
+           Output(f"{id_page}_div_middle_left", "hidden", allow_duplicate=True),
            Output(f"{id_page}_div_registry", "hidden"),
            Output(f"{id_page}_store", "data"),
            Output(f"{id_page}_panel_up_left", "children"),
            Output(f"{id_page}_panel_up_right", "children"),
            Output(f"{id_page}_reg_answer", "children"),
-           Output(f"{id_page}_div_button_right", "hidden")
+           Output(f"{id_page}_div_button_cover", "hidden"),
           ],
           Input(f"{id_page}_reg_accept", "n_clicks"),
           [
             State(f"{id_page}_reg_user", "value"),
             State(f"{id_page}_reg_pass", "value") 
-          ])
+          ],
+          prevent_initial_call=True,)
 def auth_display(n_clicks, reg_user, reg_pass):
     left_hidden = True
     registry_hidden = False
@@ -63,7 +57,8 @@ def auth_display(n_clicks, reg_user, reg_pass):
     sesion_div = ""
     reg_answer = ""
     data = {}
-    button_left_hidden = True
+    button_cover_hidden = True
+
     if n_clicks:
         df = read_csv("users.csv")        
         if reg_user in list(df["user"]):
@@ -74,12 +69,12 @@ def auth_display(n_clicks, reg_user, reg_pass):
                 user_div = html.H6(f"User: {reg_user}", style={"font-weight": "bold", "color": "black"})
                 sesion_div = html.A("Cerrar Sesión", href="/", style={"color": "black"})
                 data = {"user": reg_user}
-                button_left_hidden = False
+                button_cover_hidden = False
             else:
                 reg_answer = "Contraseña incorrecta"
         else:
             reg_answer =  "Usuario no registrado"
-    return [left_hidden, registry_hidden, data, user_div, sesion_div, reg_answer, button_left_hidden] 
+    return [left_hidden, registry_hidden, data, user_div, sesion_div, reg_answer, button_cover_hidden] 
 
 
 create_callback(buttons, "i_o_pages")

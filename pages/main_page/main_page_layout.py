@@ -1,11 +1,12 @@
 from dash import dcc
 from dash_iconify import DashIconify
+
 from common_functions.user_registry import user_login
 from my_dash.my_html.my_div import my_div
-from my_dash.my_dbc.my_button import my_button
 from pages.main_page.main_page_callbacks import *
 from pages.main_page.main_page_css import *
-from pages.main_page.main_page_functions import create_div_buttons, button_left_right
+from pages.main_page.main_page_functions import (button_cover,
+                                                 create_div_buttons)
 from pages.main_page.main_page_lists import (buttons, functions, models,
                                              visualizations)
 
@@ -14,7 +15,8 @@ id_page = "main_page"
 layout: dict = my_div(style_div_main, "",
                       [
                        dcc.Store(id=f"{id_page}_store"),        
-                       user_login(id_page),               
+                       user_login(id_page),   
+
                        # Up Panel
                        my_div(style_up_panel, "",
                               [
@@ -26,54 +28,52 @@ layout: dict = my_div(style_div_main, "",
                                 my_div(style_div_sesion, "",
                                        my_div(style_sesion, f"{id_page}_panel_up_right"),
                                 )
-                              ], className="alert-primary"),
-                       # Middle Panel
-                       my_div({"position": "absolute","left": "0%", "top": "43px", },
-                              f"{id_page}_div_button_left",
-                              button_left_right(f"{id_page}_button_left", "btn btn-primary btn-sm",
-                                                {"background": "#060606", "border": "1px solid #060606"},
-                                                "ic:baseline-arrow-circle-right"
-                              ),
-                              hidden=True,  
-                       ),                    
+                              ], className="alert-primary"),                              
+
+                       # Middle Panel                 
                        my_div(style_middle_panel, "",
-                              [
-                               # Left Panel
-                               my_div({"position": "absolute","left": "17%", "top": "43px", },
-                                      f"{id_page}_div_button_right",
-                                      button_left_right(f"{id_page}_button_right", "btn btn-primary btn-sm",
-                                                       {"background": "#2a9fd6", "border": "1px solid #2a9fd6"},
-                                                       "ic:baseline-arrow-circle-left"
-                               ),
-                               hidden=True,  
+                              [                                 
+                               # Button Cover
+                               my_div(style_div_button_cover_right,
+                                      f"{id_page}_div_button_cover",
+                                      button_cover(f"{id_page}_button_cover", "btn btn-primary btn-sm",
+                                                   style_button_cover_right,
+                                                   children=DashIconify(
+                                                                icon="ic:baseline-arrow-circle-left",   #2a9fd6
+                                                                width=30
+                                                            ),
+                                      ),
+                                      hidden=True
                                ), 
-                               my_div(style_div_buttons, f"{id_page}_left",
-                                      [
-                                      # DataFrame panel
+                               # Middle Left Panel                        
+                               my_div(style_div_middle_left,
+                                      f"{id_page}_div_middle_left",
+                                      [       
+                                       # DataFrame panel
                                        my_div(style_dataframe_panel, "",
-                                              html.H5("DataFrame", style={"color": "#0F1458"})
+                                              html.H5("DataFrame", style=style_title_color)
                                        ),
                                        create_div_buttons(
                                             style_div_1,
                                             style_button,
-                                            buttons, classdiv="table-success"                                           
+                                            buttons,
+                                            classdiv="table-success"                                           
                                        ),
                                        # Div for Visualizations panel, Functions panel, Models panel
                                        my_div({"height": "70%"}, f"{id_page}_div_functions",
                                               [
                                                # Functions panel
                                                my_div(style_visualization_panel, "",
-                                                      html.H5("Functions", style={"color": "#0F1458"})
+                                                      html.H5("Functions", style=style_title_color)
                                                ),
                                                create_div_buttons(
                                                    style_div_2,
                                                    style_button,
-                                                   functions,
-                                                   
+                                                   functions,                                                   
                                                ),
                                                # Visualizations panel
                                                my_div(style_visualization_panel, "",
-                                                      html.H5("Visualizations", style={"color": "#0F1458"})
+                                                      html.H5("Visualizations", style=style_title_color)
                                                ),
                                                create_div_buttons(
                                                    style_div_2,
@@ -82,7 +82,7 @@ layout: dict = my_div(style_div_main, "",
                                                ),                                               
                                                # Models panel
                                                my_div(style_visualization_panel, "",
-                                                      html.H5("Models", style={"color": "#0F1458"})
+                                                      html.H5("Models", style=style_title_color)
                                                ),
                                                create_div_buttons(
                                                    style_div_2,
@@ -92,7 +92,9 @@ layout: dict = my_div(style_div_main, "",
                                               ],
                                               hidden=True,
                                        ),
-                                     ],className="alert-primary",
+                                     ],
+                                     className="alert-primary",
+                                     hidden=True,
                                ),
                                # Central Panel
                                my_div(style_div_content, f"{id_page}_page_content"),                               

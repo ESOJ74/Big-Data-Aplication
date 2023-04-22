@@ -1,6 +1,7 @@
 from dash import dcc, html
 
 from my_dash.my_html.my_div import my_div
+from common_functions.common_functions_css import *
 
 style_main_div = {"width": "99%", "height": "100%"}
 style_div_content = {"float": "left", "margin-left": "4%", "margin-top": "3%", "width": "80%", "height": "90%"}

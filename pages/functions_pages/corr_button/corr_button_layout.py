@@ -40,7 +40,7 @@ def add_data_to_fig(n_clicks, data):
        return [        
               my_div({"text-align": "center"}, "",
                      [
-                     my_div({"background": "black"}, "",
+                     my_div({"background": "#060606"}, "",
                             [
                                    html.H5("DataFrame.corr()",
                                           style={"font-weight": "bold", "color": "white"}),
