@@ -13,7 +13,7 @@ def create_utils(id_page):
                  [
                    my_div(style_div_nbins, "",  
                           [
-                           html.H6("nbins", style={"float": "left"}),
+                           html.H6("nbins", style=style_params),
                            dcc.Input(id=f"{id_page}_nbins",
                                      style=style_input_nbins,
                                      value=20,
@@ -22,7 +22,7 @@ def create_utils(id_page):
                    ),
                    my_div(style_div_color, "",
                           [
-                           html.H6("color", style={"float": "left"}),
+                           html.H6("color", style=style_params),
                            my_div(style_selector_color, "",
                                   my_dropdown(f"{id_page}_color", {},),
                            )

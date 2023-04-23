@@ -7,29 +7,27 @@ from my_dash.my_dbc.my_button import my_button
 from my_dash.my_dcc.my_dropdown import my_dropdown
 from my_dash.my_html.my_div import my_div
 from pages.models_pages.logistic_regresion_button.logistic_regresion_button_css import *
-
 id_page = "logistic_regresion"
 
-
 def create_content_up(columns):
-    return my_div({"width": "100%", "height": "100%", "margin-top": "-3%"}, "",
-                 [my_div({"width": "100%", "height": "7%"}, "",
+    return my_div(style_div_selectors, "",
+                 [my_div(style_div_x_y, "",
                          [
-                          my_div({"float": "left", "margin-left": "1%", "width": "22.5%", "height": "100%"}, "", html.H6("X")),
-                          my_div({"float": "left", "width": "30%", "height": "100%"}, "", html.H6("Y")),
+                          my_div(style_div_x, "", html.H6("X", style={"color": "#acf4ed"})),
+                          my_div(style_div_y, "", html.H6("Y", style={"color": "#acf4ed"})),
                          ]
                   ),
-                  my_div(s_selector, "",
+                  my_div(style_selector, "",
                          my_dropdown(f"{id_page}_dropdown_x",
-                              {"color": "black"},
+                              {},
                               columns,
                               placeholder="Seleccione columna",
                               multi=True,
                          ),
                   ),
-                  my_div(s_selector2, "",
+                  my_div(style_selector2, "",
                          my_dropdown(f"{id_page}_dropdown_y",
-                              {"color": "black"},
+                              {},
                               placeholder="Seleccione columna"
                          ),
                   ),
@@ -38,11 +36,11 @@ def create_content_up(columns):
 
 
 def create_param_drop(id_param, options, value):
-    return my_div({"width": "100%"}, "", 
-                  [my_div({"float": "left", "width": "45%"}, "", id_param),
-                   my_div({"float": "left", "width": "55%"}, "",
-                          my_dropdown(f"{id_page}_{id_param}",
-                                      {"width": "80%", "color": "black"},
+    return my_div(style_div_color, "", 
+                  [
+                   html.H6(id_param, style=style_params),
+                   my_div(style_selector_color, "",
+                          my_dropdown(f"{id_page}_{id_param}",{},
                                       options=options,
                                       value=value,
                           ),
@@ -52,106 +50,100 @@ def create_param_drop(id_param, options, value):
 
 
 def create_utils(id_page):
-    return my_div(s_utils, "",
-                 [
-                   my_div(style_div_input, "", 
-                          [html.H5("train_test_split", style={"margin-left": "2%", "color": "black"}),
-                           my_div({"margin-left": "5%"}, "",
-                                  [my_div({}, "", 
-                                          ["test_size",
-                                           dcc.Input(id=f"{id_page}_test_size",
-                                                     style=style_dcc_input,
-                                                     value=20,
-                                           ),
-                                          ]
-                                  ),
-                                  my_div({}, "", 
-                                          ["random_state",
-                                           dcc.Input(id=f"{id_page}_random_state",
-                                                     style=style_dcc_input,
-                                                     value=42,
-                                           ),
-                                          ]
-                                  ),
-                                  ]
-                           ),  
-                           html.H5("Model", style={"margin-top": "10%", "margin-left": "2%", "color": "black"}),  
-                           my_div({"margin-left": "5%"}, "",
-                                  [create_param_drop("penalty", ["l1", "l2", "elasticnet"], "l2"),
-                                   create_param_drop("dual", ["True", "False"], "True"),
-                                   my_div({}, "", 
-                                          ["tol",
-                                           dcc.Input(id=f"{id_page}_tol",
-                                                     style=style_dcc_input2,
-                                                     value=1e-4,
-                                           ),
-                                          ]
-                                   ),
-                                   my_div({}, "", 
-                                          ["C",
-                                           dcc.Input(id=f"{id_page}_c",
-                                                     style=style_dcc_input,
-                                                     value=1.0,
-                                           ),
-                                          ]
-                                   ),
-                                   create_param_drop("fit_intercept", ["True", "False"], "True"),
-                                   my_div({}, "", 
-                                          ["intercept_scaling",
-                                           dcc.Input(id=f"{id_page}_intercept_scaling",
-                                                     style=style_dcc_input,
-                                                     value=1.0,
-                                           ),
-                                          ]
-                                   ),
-                                   my_div({}, "", 
-                                          ["random_state",
-                                           dcc.Input(id=f"{id_page}_random_state2",
-                                                     style=style_dcc_input,
-                                                     value=None,
-                                           ),
-                                          ]
-                                   ),
-                                   create_param_drop("solver", ["lbfgs", "liblinear", "newton-cg", "newton-cholesky", "sag", "saga"], "lbfgs"),
-                                   my_div({}, "", 
-                                          ["max_iter",
-                                           dcc.Input(id=f"{id_page}_max_iter",
-                                                     style=style_dcc_input2,
-                                                     value=100,
-                                           ),
-                                          ]
-                                   ),
-                                   create_param_drop("multi_class", ["auto", "ovr", "multinomial"], "auto"),
-                                   my_div({}, "", 
-                                          ["verbose",
-                                           dcc.Input(id=f"{id_page}_verbose",
-                                                     style=style_dcc_input,
-                                                     value=0,
-                                           ),
-                                          ]
-                                   ),
-                                   create_param_drop("warm_start", ["True", "False"], "False"),
-                                   my_div({}, "", 
-                                          ["n_jobs",
-                                           dcc.Input(id=f"{id_page}_n_jobs",
-                                                     style=style_dcc_input,
-                                                     value=None,
-                                           ),
-                                          ]
-                                   ),
-                                   my_div({}, "", 
-                                          ["l1_ratio",
-                                           dcc.Input(id=f"{id_page}_l1_ratio",
-                                                     style=style_dcc_input,
-                                                     value=None,
-                                           ),
-                                          ]
-                                   ),
-                                  ]
-                           ),
-                           my_button(f"{id_page}_train", "Train", {"margin-top": "2%"}, className="btn btn-outline-light", color="black")
+    return my_div(style_div_utils, "",
+                  [
+                   html.H5("train_test_split", style={"margin-left": "2%", "color": "black"}),
+                   my_div(style_div_input, "",  
+                          [
+                           html.H6("test_size", style=style_params),
+                           dcc.Input(id=f"{id_page}_test_size",
+                                     style=style_input,
+                                     value=20,
+                           )
                           ]
-                   ),                   
+                   ),
+                   my_div(style_div_input, "",  
+                          [
+                           html.H6("random_state", style=style_params),
+                           dcc.Input(id=f"{id_page}_random_state",
+                                     style=style_input,
+                                     value=42,
+                           )
+                          ]
+                   ),       
+                   html.H5("Model", style={"margin-top": "2%", "margin-left": "2%", "color": "black"}),  
+                   create_param_drop("penalty", ["l1", "l2", "elasticnet"], "l2"),
+                   create_param_drop("dual", ["True", "False"], "True"),
+                   my_div(style_div_input, "",  
+                          [
+                           html.H6("tol", style=style_params),
+                           dcc.Input(id=f"{id_page}_tol",
+                                     style=style_input,
+                                     value=1e-4,
+                           ),
+                           my_div({"float":"left", "margin-left": "10%"}, "", html.H6(" ", style=style_params),),
+                           html.H6("c", style=style_params),
+                           dcc.Input(id=f"{id_page}_c",
+                                     style=style_input,
+                                     value=1.0,
+                           )
+                          ]
+                   ), 
+                    
+                   create_param_drop("fit_intercept", ["True", "False"], "True"),
+                   my_div(style_div_input, "",  
+                          [
+                           html.H6("intercept_scaling", style=style_params),
+                           dcc.Input(id=f"{id_page}_intercept_scaling",
+                                     style=style_input,
+                                     value=1.0,
+                           )
+                          ]
+                   ), 
+                   my_div(style_div_input, "",  
+                          [
+                           html.H6("random_state", style=style_params),
+                           dcc.Input(id=f"{id_page}_random_state2",
+                                     style=style_input,
+                                     value=None,
+                           )
+                          ]
+                   ),
+                   create_param_drop("solver", ["lbfgs", "liblinear", "newton-cg", "newton-cholesky", "sag", "saga"], "lbfgs"),
+                   my_div(style_div_input, "",  
+                          [
+                           html.H6("max_iter", style=style_params),
+                           dcc.Input(id=f"{id_page}_max_iter",
+                                     style=style_input,
+                                     value=100,
+                           ),
+                           my_div({"float":"left", "margin-left": "5%"}, "", html.H6(" ", style=style_params),),
+                           html.H6("l1_ratio", style=style_params),
+                           dcc.Input(id=f"{id_page}_l1_ratio",
+                                     style=style_input,
+                                     value=None,                     
+                           )
+                          ]
+                   ),
+                   create_param_drop("multi_class", ["auto", "ovr", "multinomial"], "auto"),
+                   my_div(style_div_input, "",  
+                          [
+                           html.H6("verbose", style=style_params),
+                           dcc.Input(id=f"{id_page}_verbose",
+                                     style=style_input,
+                                     value=0,
+                           ),
+                           my_div({"float":"left", "margin-left": "10%"}, "", html.H6(" ", style=style_params),),
+                           html.H6("n_jobs", style=style_params),
+                           dcc.Input(id=f"{id_page}_n_jobs",
+                                     style=style_input,
+                                     value=None,
+                           )
+                          ]
+                   ),
+                   create_param_drop("warm_start", ["True", "False"], "False"),    
+                   my_button(f"{id_page}_train", "Train", style_button,
+                             className="btn btn-outline-warning", color="black"),                                          
                  ]
           )     
 

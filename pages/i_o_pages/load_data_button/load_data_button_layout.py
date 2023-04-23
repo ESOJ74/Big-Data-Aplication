@@ -20,7 +20,7 @@ layout = my_div(style_div_main, "",
                                    className="btn btn-outline-primary", color="black"),  
                          html.A("Documentacion",
                                  href="https://pandas.pydata.org/docs/reference/io.html",
-                                 style={"float": "left", "margin-left": "2%", "margin-top": "1%", "width": "20%"}, target="_blank"),
+                                 style={"float": "left", "margin-left": "2%", "margin-top": "2%", "width": "20%"}, target="_blank"),
                         ]),
                  my_div(style_div_dropdown_archivos, f"{id_page}_div_archivos",
                         [

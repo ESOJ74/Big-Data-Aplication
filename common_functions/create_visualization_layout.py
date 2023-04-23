@@ -6,12 +6,12 @@ from common_functions.common_functions_css import *
 
 def create_visualization_layout(id_page):
     return my_div(style_main_div, "",
-                  [
-                   
+                  [                   
                    my_div(style_div_content, "",
                           [
                            my_div(style_div_title, "",
-                                  html.H5(f"DataFrame {id_page.split('_')[0]}"),
+                                  html.H5(f"DataFrame {id_page.split('_')[0]}",
+                                          style = {"color": "#acf4ed"}),
                            ),
                            my_div(style_div_content_up, f"{id_page}_content_up"),
                            dcc.Loading(

@@ -2,7 +2,9 @@ import plotly.express as px
 from dash import callback, dcc
 from dash.dependencies import Input, Output, State
 from pandas import read_json
+from plotly.colors import sequential
 
+from assets.templates import template_visualizations
 from my_dash.my_dcc.my_dropdown import my_dropdown
 from my_dash.my_html.my_div import my_div
 from pages.visualization_pages.scatter_button.scatter_button_css import *
@@ -27,15 +29,15 @@ def display_page(n_clicks):
           prevent_initial_call=True)
 def display_page(n_clicks, data):   
     columns = read_json(data["df"]).columns  
-    return my_div({"width": "35%", "height": "50%", "position": "relative", "top": "20%"}, "",
+    return my_div(style_div_selectors, "",
                   [
-                   my_div(s_selector, "",
+                   my_div(style_selector, "",
                           my_dropdown(f"{id_page}_drop_left",
                                       {},
                                       columns,
                                       placeholder="Seleccione columna"),
                    ),
-                   my_div(s_selector, "",
+                   my_div(style_selector, "",
                           my_dropdown(f"{id_page}_drop_right",
                                       {},
                                       columns,
@@ -49,6 +51,7 @@ def display_page(n_clicks, data):
 @callback([
            Output(f"{id_page}_content_middle", "children"),
            Output(f"{id_page}_visualizations_loading", "children", allow_duplicate=True),
+           Output("main_page_div_button_cover", "hidden", allow_duplicate=True)
           ],
           [
            Input(f"{id_page}_drop_left", "value"),         
@@ -70,22 +73,29 @@ def display_page(
     color_state
     ):     
 
-    if color_state is not None and len(color_state) < 1 or color_state == " ":
-        color_state = None    
-     
     obj = ["", ""]
+    button_cover_hidden = True
+
+    if color_state is not None and len(color_state) < 1 or color_state == " ":
+        color_state = None         
+    
     if drop_left_state and drop_right_state:
-        # content_middle
+
         df = read_json(data["df"])
+        button_cover_hidden = False
+        
         fig = px.scatter(
             df,
-            template='plotly_dark',
+            template=template_visualizations,
             x=drop_left_state,
             y=drop_right_state,
-            color=color_state,
-        )
+            height=550,
+            color=color_state,     
+            color_discrete_sequence=sequential.Blugrn,  
+        ).update_layout(legend={"title_font_color": "#acf4ed"})        
+
         obj = [dcc.Graph(figure=fig)]               
-    return [obj, ""]
+    return [obj, "", button_cover_hidden]
                   
 
 # color options 

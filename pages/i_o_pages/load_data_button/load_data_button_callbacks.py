@@ -65,7 +65,7 @@ def load_data(drop_dir, data):
     [
         Output("main_page_store", "data", allow_duplicate=True),
         Output(f"{id_page}_content", "children"),
-        Output(f"main_page_div_functions", "hidden"),
+        Output(f"main_page_div_functions", "hidden"),        
     ],
     [
         Input(f"{id_page}_aceptar", "n_clicks")
@@ -81,13 +81,12 @@ def load_data(accept, input_value, data):
         if input_value is not None and len(input_value) > 0:
             path = f"""users/{data["user"]}/data/{input_value}"""  
             data["df"] = read_data(input_value.split('.')[-1], path)         
-            load_data_content = html.H6("DataFrame Cargado")
-            hidden = False
+            load_data_content = html.H6("DataFrame Cargado")             
         else:
             load_data_content = html.H6("Seleccione Archivos") 
     else:
         raise PreventUpdate   
-    return [data, load_data_content, hidden]
+    return [data, load_data_content, False]
 
 
 #up_file from local

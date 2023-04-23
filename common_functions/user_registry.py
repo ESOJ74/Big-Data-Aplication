@@ -9,7 +9,15 @@ style_div_regystry = {
     "top": "25%",
     "left": "35%",
     "width": "30%",
-    "height": "10%"
+    "height": "10%",
+}
+
+style_div_regystry2 = {
+    
+    "margin-top": "13%",
+    "margin-left": "35%",
+    "width": "30%",
+    "height": "10%",
 }
 
 style_div_input = {    
@@ -26,6 +34,8 @@ style_button = {
     "height": "35%",
     "font-size": "0.8vmax",
     "font-family": "Roboto, Helvetica, Arial, sans-serif",
+    "color": "#b0d8d3",
+    "border": "1.5px solid"
 }
 
 style_div_reg_answer = {  
@@ -48,7 +58,8 @@ style_div_register = {
 style_div_answer = {
     "float": "left",
     "width": "35%",
-    "font-size":"0.9vmax"
+    "font-size":"0.9vmax",
+    "color": "#b0d8d3",
 }
 
 style_div_login = {
@@ -59,7 +70,9 @@ style_div_login = {
 
 style_input = {
     "width": "10em",
-    "font-size": "1vmax"
+    "font-size": "1vmax",
+    "background": "#b0d8d3",
+    "border": "1px solid #020d11"
 }
 
 def insert_user(id_page):
@@ -84,7 +97,7 @@ def insert_user(id_page):
 def user_login(id_page):
     return my_div(style_div_regystry, f"{id_page}_div_registry",
                  [
-                  my_div({"margin-left": "4%"}, "", html.H2('Login'),),                  
+                  my_div({"margin-left": "4%"}, "", html.H2('Login', style={"color": "#b0d8d3"}),),                  
                   insert_user(id_page),
                   my_button(f"{id_page}_reg_accept", "Login", style_button),
                   my_div(style_div_reg_answer, f"{id_page}_reg_answer"),      
@@ -101,19 +114,22 @@ def user_login(id_page):
 
 
 def user_registry(id_page):
-    return my_div(style_div_regystry, f"{id_page}_div_registry",
-                 [
-                  my_div({"margin-left": "4%"}, "", html.H2('Sign In'),),                  
-                  insert_user(id_page),
-                  my_button(f"{id_page}_reg_accept", "Sing in", style_button),                  
-                  my_div(style_div_reg_answer, f"{id_page}_reg_answer"),   
-                  my_div(style_div_register, "", 
-                         [
-                          my_div(style_div_answer, "",
-                                 html.Label('Ir a Big Data App?'),),
-                          my_div(style_div_login, "",
-                                 html.A('Login', href='/'),),
-                         ]
-                  ),         
-                 ]
-           )
+    return my_div({"position": "absolute", "top": "0%", "left": "0%", "width": "100%", "height": "100%",
+                   "background": "radial-gradient(circle farthest-side at bottom left, #347eb7 0%, #204765 30%, #04212c 95%)"}, "",
+                   my_div(style_div_regystry2, f"{id_page}_div_registry",
+                          [
+                           my_div({"margin-left": "4%"}, "", html.H2('Sign In', style={"color": "#b0d8d3"}),),                  
+                           insert_user(id_page),
+                           my_button(f"{id_page}_reg_accept", "Sing in", style_button),                  
+                           my_div(style_div_reg_answer, f"{id_page}_reg_answer"),   
+                           my_div(style_div_register, "", 
+                                  [
+                                   my_div(style_div_answer, "",
+                                          html.Label('Ir a Big Data App?'),),
+                                   my_div(style_div_login, "",
+                                          html.A('Login', href='/'),),
+                                  ]
+                           ),         
+                          ]
+                    )
+        )

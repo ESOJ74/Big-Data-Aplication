@@ -7,7 +7,7 @@ from my_dash.my_dbc.my_button import my_button
 from my_dash.my_html.my_div import my_div
 
 style_div_button = {
-    "float": "left", "margin-top": "0%", "width": "32%", "font-weight": "bold"
+    "float": "left", "margin-left": "0.8%", "width": "32%", "font-weight": "bold"
 }
 
 def button_cover(id, className, style, children):
@@ -19,8 +19,7 @@ def button_cover(id, className, style, children):
 
 
 def create_div_buttons(style_div, style_button, button_list, color="black",
-                       classdiv="", className="btn btn-outline-light"):   
-    
+                       classdiv="", className="btn btn-outline-light"):      
     return my_div(style_div, "", 
                   [
                    *[my_div(style_div_button, "",
@@ -37,7 +36,8 @@ def create_div_buttons(style_div, style_button, button_list, color="black",
 def create_callback(buttons_list, module, button_name=""):
     @callback(
         [Output("main_page_page_content", "children", allow_duplicate=True)] +
-        list(map(lambda x: Output(x[0], "n_clicks"), buttons_list)),
+        list(map(lambda x: Output(x[0], "n_clicks"), buttons_list)) +
+        [Output("main_page_div_button_cover", "hidden", allow_duplicate=True)],
         list(map(lambda x: Input(x[0], "n_clicks"), buttons_list)),
         prevent_initial_call=True)
     def display_page(*args):
@@ -46,4 +46,4 @@ def create_callback(buttons_list, module, button_name=""):
             cont = [import_module(f'pages.{module}.{button}.{button}_layout').layout]
         except ModuleNotFoundError:
             cont = [f"{button_name} no implementada"]
-        return cont + [0 for x in buttons_list]
+        return cont + [0 for x in buttons_list] + [True]

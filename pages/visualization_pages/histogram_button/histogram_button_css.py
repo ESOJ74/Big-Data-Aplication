@@ -1,24 +1,24 @@
 style_selector = {
     "position": "relative",
     "top": "6%",
-    "width": "90%",
+    "width": "12vmax",
     "height": "2.5em",
     "border-radius": "7px 7px 5px 5px",
     "padding": "2px 2px 0px 2px",
     "font-size": "1em",
     "color": "black",
-    "background": "#2a9fd6",
+    "background": "radial-gradient(circle farthest-side at bottom left, #b0d8d3 0%, #051f28 95%",
 }
 
 # Create Utils
 style_div_utils = {
     "position": "relative",
-    "top": "18%",
+    "top": "7vmax",
     "width": "99%",
-    "height": "50%",
-    "background": "linear-gradient(90deg, #165b92 0%, #2c81a9 80%)",
+    "height": "64%",    
     "color": "#012A32",
     "font-family": "Roboto, Helvetica, Arial, sans-serif",
+    "background": "linear-gradient(90deg, #04212c 0%, #165b92 2%, #2c81a9 8%, #04212c 97%)",
 }
 
 style_div_input = {
@@ -59,10 +59,12 @@ style_selector_color = {
     "padding": "2px 2px 0px 2px",
     "font-size": "0.8em",
     "color": "black",
-    "background": "black",
+    "background": "#2f6374",
 }
 
 style_button = {
     "margin-top": "5%",
     "margin-left": "5%",
 }
+
+style_params = {"float": "left", "color": "#acf4ed"}

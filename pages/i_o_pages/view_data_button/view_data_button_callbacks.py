@@ -22,7 +22,7 @@ def view_data(n_clicks, data):
                 rowData=df.to_dict("records"),
                 columnSize="sizeToFit",
                 dashGridOptions={"pagination": True},
-                defaultColDef=dict(resizable=True,)
+                defaultColDef=dict(resizable=True,),
             ))
         obj.append(False)
     except (TypeError, KeyError, ValueError):
@@ -30,18 +30,23 @@ def view_data(n_clicks, data):
     return obj
 
 
-@callback(
-    [
-     Output("ag-table", "rowData"),
-     Output('add-data-rows', 'disabled', allow_duplicate=True),
-    ],
-    Input("add-data-rows", "n_clicks"),
-    State('main_page_store', 'data'),
-    prevent_initial_call=True,
-)
+@callback([
+           Output("ag-table", "rowData"),
+           Output('add-data-rows', 'disabled', allow_duplicate=True),
+          ],
+          Input("add-data-rows", "n_clicks"),
+          State('main_page_store', 'data'),
+          prevent_initial_call=True,)
 def add_data_to_fig(n_clicks, data):
     
     df = read_json(data["df"])[10:]
     patched_table = Patch()
     patched_table.extend(df.to_dict("records"))
     return [patched_table, True]
+
+
+@callback(Output("main_page_div_button_cover", "hidden", allow_duplicate=True),
+          Input("view_data_content", "children"),
+          prevent_initial_call=True)
+def display_page(values):
+    return False

@@ -2,7 +2,9 @@ import plotly.express as px
 from dash import callback, dcc
 from dash.dependencies import Input, Output, State
 from pandas import read_json
+from plotly.colors import sequential
 
+from assets.templates import template_visualizations
 from my_dash.my_dcc.my_dropdown import my_dropdown
 from my_dash.my_html.my_div import my_div
 from pages.visualization_pages.histogram_button.histogram_button_css import *
@@ -13,7 +15,7 @@ id_page = "histogram_button"
 
 
 # Panel utils
-@callback(Output(f"{id_page}_utils", "children"),          
+@callback(Output(f"{id_page}_utils", "children"),           
           Input("histogram_button", "n_clicks"),
           prevent_initial_call=True)
 def display_page(n_clicks):  
@@ -46,6 +48,7 @@ def display_page(n_clicks, data):
 @callback([
            Output(f"{id_page}_content_middle", "children"),           
            Output(f"{id_page}_visualizations_loading", "children", allow_duplicate=True),
+           Output("main_page_div_button_cover", "hidden", allow_duplicate=True)
           ],
           Input(f"{id_page}_dropdown", "value"),  
           [
@@ -58,24 +61,31 @@ def display_page(
     dropdown_value,
     data,
     nbins_state,
-    color_state):     
+    color_state):    
+
+    obj = ["", ""]
+    button_cover_hidden = True 
 
     if color_state is not None and len(color_state) < 1 or color_state == " ":
-        color_state = None     
-     
-    obj = ["", ""]
-    if dropdown_value:
-        # content_middle
+        color_state = None          
+    
+    if dropdown_value:             
         df = read_json(data["df"])
+        button_cover_hidden = False 
+        
         fig = px.histogram(
             df,
-            template='plotly_dark',
+            template=template_visualizations,
             x=dropdown_value,
+            height=550,
             color=color_state,
-            nbins=int(nbins_state),            
-        )
-        obj = [dcc.Graph(figure=fig)]               
-    return [obj, ""]
+            nbins=int(nbins_state),     
+            color_discrete_sequence=sequential.Blugrn,  
+        ).update_layout(legend={"title_font_color": "#acf4ed"})         
+
+        obj = [dcc.Graph(figure=fig)]    
+                 
+    return [obj, "", button_cover_hidden]
 
 
 # refresh button

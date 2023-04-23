@@ -41,8 +41,7 @@ def auth_display(n_clicks):
            Output(f"{id_page}_store", "data"),
            Output(f"{id_page}_panel_up_left", "children"),
            Output(f"{id_page}_panel_up_right", "children"),
-           Output(f"{id_page}_reg_answer", "children"),
-           Output(f"{id_page}_div_button_cover", "hidden"),
+           Output(f"{id_page}_reg_answer", "children")
           ],
           Input(f"{id_page}_reg_accept", "n_clicks"),
           [
@@ -57,7 +56,6 @@ def auth_display(n_clicks, reg_user, reg_pass):
     sesion_div = ""
     reg_answer = ""
     data = {}
-    button_cover_hidden = True
 
     if n_clicks:
         df = read_csv("users.csv")        
@@ -66,15 +64,14 @@ def auth_display(n_clicks, reg_user, reg_pass):
             if str(password) == str(reg_pass):
                 left_hidden = False
                 registry_hidden = True
-                user_div = html.H6(f"User: {reg_user}", style={"font-weight": "bold", "color": "black"})
+                user_div = html.H6(f"User: {reg_user}", style={"font-weight": "bold", "color": "#acf4ed"})
                 sesion_div = html.A("Cerrar Sesión", href="/", style={"color": "black"})
                 data = {"user": reg_user}
-                button_cover_hidden = False
             else:
                 reg_answer = "Contraseña incorrecta"
         else:
             reg_answer =  "Usuario no registrado"
-    return [left_hidden, registry_hidden, data, user_div, sesion_div, reg_answer, button_cover_hidden] 
+    return [left_hidden, registry_hidden, data, user_div, sesion_div, reg_answer] 
 
 
 create_callback(buttons, "i_o_pages")

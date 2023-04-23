@@ -34,7 +34,7 @@ style_div_titles = {
     "position": "relative",
     "top": "8%",
     "left": "2.5%",
-    "width": "70%",
+    "width": "75%",
     "height": "4%",
     "font-family": "Roboto, Helvetica, Arial, sans-serif",
 }
@@ -82,8 +82,10 @@ style_boton_files = {
     "float": "left", 
     "margin-left": "1%",
     "width": "20%",
-    "font-size": "0.8vmax",
+    "font-size": "0.9vmax",
+    "border": "2px solid",
     "font-family": "Roboto, Helvetica, Arial, sans-serif",
+    "color": "#b0d8d3",
 }
 
 style_boton_aceptar_load = {    

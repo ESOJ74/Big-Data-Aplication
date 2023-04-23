@@ -2,7 +2,9 @@ import plotly.express as px
 from dash import callback, dcc, html
 from dash.dependencies import Input, Output, State
 from pandas import read_json
+from plotly.colors import sequential
 
+from assets.templates import template_visualizations
 from my_dash.my_html.my_div import my_div
 from pages.visualization_pages.boxplot_button.boxplot_button_css import *
 from pages.visualization_pages.boxplot_button.boxplot_button_functions import \
@@ -29,7 +31,7 @@ def display_page(n_clicks, data):
     columns = df.columns  
     categoric_columns = [col for col in columns if df[col].dtype == "object"]
     
-    return my_div({"width": "70%", "height": "50%", "position": "relative", "top": "20%"}, "",
+    return my_div(style_div_selectors, "",
                   [         
                    my_div({"float": "left", "width": "50%"}, "",
                           [          
@@ -61,6 +63,7 @@ def display_page(n_clicks, data):
 @callback([
            Output(f"{id_page}_content_middle", "children"),   
            Output(f"{id_page}_visualizations_loading", "children", allow_duplicate=True),
+           Output("main_page_div_button_cover", "hidden", allow_duplicate=True)
           ],
           [
            Input(f"{id_page}_x-axis", "value"),         
@@ -89,6 +92,10 @@ def display_page(
     notched_state,
     hover_data_state,
     ):
+
+    obj = ["", ""]
+    button_cover_hidden = True
+
     if points_state == "false": points_state = False
 
     if color_state is not None and len(color_state) < 1 or color_state == " ":
@@ -97,36 +104,45 @@ def display_page(
     if notched_state == "false":
         notched = False
     if hover_data_state is not None and len(hover_data_state) < 1 or hover_data_state == " ":
-        hover_data_state = None
-     
-    obj = ["", ""]
+        hover_data_state = None    
+
     if y_axis_state and len(y_axis_state) > 0:
-        # content_middle
+        
         df = read_json(data["df"])
+        button_cover_hidden = False
+
         if x_axis_state and len(x_axis_state) > 0:
             fig = px.box(
                       df,
-                      template='plotly_dark',
+                      template=template_visualizations,
                       x=x_axis_state,
                       y=y_axis_state,
+                      height=550,
                       points=points_state,
                       color=color_state,
                       notched=notched,
                       hover_data=hover_data_state,
-                  )
+                      color_discrete_sequence=sequential.Blugrn,
+            ).update_layout(legend={"title_font_color": "#acf4ed"})
+
             fig.update_traces(quartilemethod=quartilemethod_state)
         else:
             fig = px.box(
                       df,
+                      template=template_visualizations,
                       y=y_axis_state,
+                      height=550,
                       points=points_state,
                       color=color_state,
                       notched=notched,
                       hover_data=hover_data_state,
-                  ) 
+                      color_discrete_sequence=sequential.Blugrn,
+            ).update_layout(legend={"title_font_color": "#acf4ed"})
+
             fig.update_traces(quartilemethod=quartilemethod_state)
         obj = [dcc.Graph(figure=fig)]               
-    return [obj, ""]
+
+    return [obj, "", button_cover_hidden]
 
        
 # color options 
