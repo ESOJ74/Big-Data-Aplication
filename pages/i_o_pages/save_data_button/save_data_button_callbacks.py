@@ -26,9 +26,11 @@ def write_data(df, extension, path):
           prevent_initial_call=True,)
 def save_data(n_clicks, input_value, drop_value, data):
     
-    load_data_content = html.H6("Introduzca el nombre para el archivo")
+    load_data_content = html.H6("Introduzca el nombre para el archivo",
+                                style={"color": "#b0d8d3"})
     if input_value is not None:
-        load_data_content = html.H6("DataFrame Guardado")
+        load_data_content = html.H6("DataFrame Guardado",
+                                    style={"color": "#b0d8d3"})
         try:
             df = read_json(data["df"])
             path = f"""users/{data["user"]}/data/{input_value}"""
@@ -41,5 +43,6 @@ def save_data(n_clicks, input_value, drop_value, data):
                 case "To EXCEL":
                     write_data(df, "xlsx", path)
         except (TypeError, KeyError, ValueError):
-            load_data_content = html.H6("No hay DataFrame cargado")
+            load_data_content = html.H6("No hay DataFrame cargado",
+                                        style={"color": "#b0d8d3"})
     return load_data_content

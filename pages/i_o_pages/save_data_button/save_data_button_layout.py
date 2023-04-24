@@ -14,7 +14,7 @@ layout = my_div(style_div_main, "",
                 [
                  my_div(style_div_dropdown_save, "",
                         [
-                         my_div(s_selector_save, "",
+                         my_div(style_selector, "",
                                 my_dropdown(f"{id_page}_dropdown",
                                             {},
                                             list_of_format,
@@ -22,14 +22,19 @@ layout = my_div(style_div_main, "",
                                             placeholder="Select format"
                                 ),
                          ),
-                         my_div({"margin-top": "1%"}, "",
+                         my_div({"margin-top": "3%"}, "",
                                 dcc.Input(id=f"{id_page}_input",
-                                          placeholder="Introduce el nombre del archivo",
-                                          style=style_input,
-                                          debounce=True
+                                          placeholder="Nombre del archivo",
+                                          style=style_input
                                 )
                          ),
-                         my_button(f"{id_page}_aceptar", "Aceptar", style_boton_aceptar, color="black")
+                         my_div({"margin-top": "3%"}, "",
+                             my_button(f"{id_page}_aceptar",
+                                       "Aceptar",
+                                       style_boton_aceptar,
+                                       className="btn btn-outline-warning",
+                                       color="black")
+                         )
                         ]
                  ),
                  my_div(style_div_save_data_content, f"{id_page}_content")

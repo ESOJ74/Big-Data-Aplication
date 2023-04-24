@@ -13,16 +13,6 @@ style_div_dropdown_save = {
     "font-family": "Roboto, Helvetica, Arial, sans-serif",
 }
 
-s_selector_save = {     
-    "width": "98%",
-    "border-radius": "7px 7px 5px 5px",
-    "padding": "3px",
-    "font-size": "1em",
-    "color": "#158397",
-    "background":"#495D61",
-    "font-family": "Roboto, Helvetica, Arial, sans-serif",
-}
-
 style_div_save_data_content = {
     "margin-top": "7%",
     "margin-left": "2.5%",
@@ -51,9 +41,9 @@ style_div_dropdown_archivos = {
 style_div_dropdown_db = {
     "position": "relative",
     "top": "9%",
-    "left": "32.5%",
+    "left": "25vmax",
     "width": "30%",
-    "height": "57%",
+    "height": "25vmax",
     "font-family": "Roboto, Helvetica, Arial, sans-serif",
 }
 
@@ -67,6 +57,17 @@ s_selector_arch = {
     "color": "black",
     "background":"#2a9fd6",
     "font-family": "Roboto, Helvetica, Arial, sans-serif",   
+}
+
+style_selector = {        
+    "margin-top": "2%",   
+    "width": "11vmax",
+    "height": "2.8em",
+    "border-radius": "7px 7px 5px 5px",
+    "padding": "2px 2px 0px 2px",
+    "font-size": "1em",
+    "color": "black",
+    "background": "radial-gradient(circle farthest-side at bottom left, #b0d8d3 0%, #051f28 95%",
 }
 
 s_selector_db = {     
@@ -88,22 +89,11 @@ style_boton_files = {
     "color": "#b0d8d3",
 }
 
-style_boton_aceptar_load = {    
+style_boton_aceptar = {    
     "margin-top": "1%",
     "margin-left": "0%",
     "font-size": "75%",
     "font-family": "Roboto, Helvetica, Arial, sans-serif"
-}
-
-style_boton_aceptar_up_file = {   
-    "margin-top": "2%",
-    "font-size": "75%",
-    "font-family": "Roboto, Helvetica, Arial, sans-serif",
-}
-
-style_button = {
-    "margin-left": "0.1%",
-    "margin-top": "0.1%",    
 }
 
 style_div_load_data_content = {
@@ -111,15 +101,21 @@ style_div_load_data_content = {
     "margin-left": "3.5%",
 }
 
-style_input = {
-    "font-family": "Roboto, Helvetica, Arial, sans-serif",
-    "width": "98%",
-    "color": "black",
-    "background": "#D3E3E6",
+style_title_db = {
+    "margin-top": "3%",
+    "color": "#b0d8d3"
 }
 
-style_boton_aceptar = {    
+style_input = {
+    "width": "10em",
+    "font-size": "1vmax",
+    "background": "#b0d8d3",
+    "border": "1px solid #020d11"
+}
+
+style_A = {
+    "float": "left",
+    "margin-left": "2%",
     "margin-top": "2%",
-    "font-size": "75%",
-    "font-family": "Roboto, Helvetica, Arial, sans-serif",
+    "width": "20%"
 }
