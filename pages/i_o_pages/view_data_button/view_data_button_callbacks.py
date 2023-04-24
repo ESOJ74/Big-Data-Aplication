@@ -2,6 +2,17 @@ import dash_ag_grid as dag
 from dash import Input, Output, Patch, State, callback, html
 from pandas import read_json
 
+from my_dash.my_dbc.my_button import my_button
+
+style_boton_files = {  
+    "margin-left": "1%",
+    "margin-bottom": "1%",
+    "width": "13%",
+    "font-size": "0.7vmax",
+    "border": "2px solid",
+    "font-family": "Roboto, Helvetica, Arial, sans-serif",
+    "color": "#b0d8d3",
+}
 
 @callback([
            Output('view_data_content', 'children'),
@@ -11,10 +22,15 @@ from pandas import read_json
           State('main_page_store', 'data'))
 def view_data(n_clicks, data):
 
-    obj = []                    #ag-theme-alpine, ag-theme-alpine-dark, ag-theme-balham, ag-theme-balham-dark, ag-theme-material, ag-theme-bootstrap
+    obj = []
     try:        
         df = read_json(data["df"])[0:10]
         obj.append(
+            [my_button("add-data-rows", "View full DataFrame",
+                                   style_boton_files,
+                                   className="btn btn-outline-primary",
+                                   color="black"
+                         ), 
             dag.AgGrid(
                 id="ag-table",
                 className="ag-theme-alpine-dark",
@@ -23,10 +39,10 @@ def view_data(n_clicks, data):
                 columnSize="sizeToFit",
                 dashGridOptions={"pagination": True},
                 defaultColDef=dict(resizable=True,),
-            ))
+            )])
         obj.append(False)
     except (TypeError, KeyError, ValueError):
-        obj = [html.H6('No hay ningún DataFrame Cargado'), True]
+        obj = [html.H6('No hay ningún DataFrame Cargado', style={"margin-left": "20%", "color": "#b0d8d3"}), True]
     return obj
 
 

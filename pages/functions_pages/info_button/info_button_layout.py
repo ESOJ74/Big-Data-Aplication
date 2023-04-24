@@ -61,10 +61,11 @@ def add_data_to_fig(n_clicks, data):
     return [
             my_div({}, "",
                    [
-                    my_div({"text-align": "center", "background": "#060606"}, "",
+                    my_div({"text-align": "center",
+                            "background": "radial-gradient(circle farthest-side at bottom left, #347eb7 0%, #204765 30%, #04212c 95%)"}, "",
                            [
                             html.H5("DataFrame.info()",
-                                   style={"font-weight": "bold", "color": "white"}),
+                                   style={"font-weight": "bold", "color": "#acf4ed"}),
                             html.A("Documentacion",  href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.info.html",
                                    target="_blank")
                            ],

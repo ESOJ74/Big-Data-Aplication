@@ -6,7 +6,7 @@ from pandas import read_json
 from my_dash.my_dbc.my_button import my_button
 from my_dash.my_dcc.my_dropdown import my_dropdown
 from my_dash.my_html.my_div import my_div
-from pages.functions_pages.drop_columns_button.drop_columns_button_css import *
+from pages.functions_pages.groupby_button.groupby_button_css import *
 
 id_page = "groupby"
 
@@ -18,7 +18,7 @@ id_page = "groupby"
     prevent_initial_call=True,)
 def add_data_to_fig(n_clicks, data):    
     columns = read_json(data["df"]).columns
-    return my_div(s_selector, "",
+    return my_div(style_selector, "",
                   my_dropdown(f"{id_page}_dropdown",
                               {},
                               columns,
@@ -33,12 +33,12 @@ def add_data_to_fig(n_clicks, data):
     State("main_page_store", "data"),
     prevent_initial_call=True,)
 def add_data_to_fig(value, data):   
-    return [html.H6(f"df.groupby({value}).mean()"),
-            my_div({"margin-top": "1%"}, "",                  
-                   my_button(f"{id_page}_accept",
-                             "Accept", {"float": "left"},
-                             color="black"
-                   ),)]     
+    return [html.H6(f"df.groupby({value}).mean()",
+                    style={"margin-top": "2%", "color": "#b0d8d3"}),
+            my_button(f"{id_page}_accept", "Aceptar",
+                                   style_boton_aceptar,
+                                   className="btn btn-outline-warning",
+                                   color="black")]     
 
 
 @callback(
@@ -60,26 +60,28 @@ def add_data_to_fig(accept, value, data):
             df = read_json(data["df"]).groupby(value).sum()
             df = df.reset_index()          
             data["prov_df"] = df.to_json(orient="columns")
-            content = [dag.AgGrid(
-                           id=f"{id_page}_ag-table",
-                           className="ag-theme-alpine-dark",
-                           columnDefs=[{"headerName": x, "field": x}
-                                       for x in df.columns],
-                           rowData=df.to_dict("records"),
-                           columnSize="sizeToFit",
-                           dashGridOptions={"pagination": True},
-                           defaultColDef=dict(resizable=True,)
+            content = [my_div({"margin-top": "3%", "width": "97%"}, "",
+                              dag.AgGrid(
+                                  id=f"{id_page}_ag-table",
+                                  className="ag-theme-alpine-dark",
+                                  columnDefs=[{"headerName": x, "field": x}
+                                              for x in df.columns],
+                                  rowData=df.to_dict("records"),
+                                  columnSize="sizeToFit",
+                                  dashGridOptions={"pagination": True},
+                                  defaultColDef=dict(resizable=True,)
+                               ),
                        ),
                        my_div({"margin-top": "1%"}, "",                  
-                              my_button(f"{id_page}_save",
-                                       "Save", {},
-                                       color="black"
-                              ),
+                              my_button(f"{id_page}_save", "Save",
+                                   style_boton_aceptar,
+                                   className="btn btn-outline-warning",
+                                   color="black"),
                        )]
         except TypeError:
-            content = html.H6("Hay columnas no númericas")
+            content = html.H6("Hay columnas no númericas", style={"color": "#b0d8d3"})
         except ValueError:
-            content = html.H6("Seleccione columna")
+            content = html.H6("Seleccione columna", style={"color": "#b0d8d3"})
     else:
         raise PreventUpdate
     return [content, data, 0, ""]
@@ -103,4 +105,10 @@ def save_button(save, data):
     else:
         raise PreventUpdate
     return [columns, columns[0], data, 0]
-    
+   
+
+@callback(Output("main_page_div_button_cover", "hidden", allow_duplicate=True),
+          Input(f"{id_page}_content", "children"),
+          prevent_initial_call=True)
+def display_page(values):
+    return False

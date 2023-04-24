@@ -40,21 +40,22 @@ def add_data_to_fig(n_clicks, data):
        return [        
               my_div({"text-align": "center"}, "",
                      [
-                     my_div({"background": "#060606"}, "",
-                            [
-                                   html.H5("DataFrame.corr()",
-                                          style={"font-weight": "bold", "color": "white"}),
-                                   html.A("Documentacion",  href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.corr.html",
-                                          target="_blank")
-                            ],
-                     ),
-                     my_div({}, "",
-                            html.Pre(read_json(data["df"]).corr().__str__())
-                     ),
-                     ],
-              ), ""]
+                      my_div({"background": "radial-gradient(circle farthest-side at bottom left, #347eb7 0%, #204765 30%, #04212c 95%)"}, "",
+                             [
+                              html.H5("DataFrame.corr()",
+                                      style={"font-weight": "bold", "color": "#acf4ed"}),
+                              html.A("Documentacion",
+                                     href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.corr.html",
+                                     target="_blank")
+                             ],
+                      ),
+                      my_div({}, "",
+                             html.Pre(read_json(data["df"]).corr().__str__())
+                      ),
+                      ],
+             ), ""]
     except ValueError as msg:
         return [
                 html.H6(msg.__str__(),
-                        style={"background": "#060606", "color": "white"}),
+                        style={"background": "#060606", "color": "#acf4ed"}),
                 ""]

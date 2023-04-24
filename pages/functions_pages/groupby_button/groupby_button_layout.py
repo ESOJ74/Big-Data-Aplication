@@ -9,7 +9,7 @@ layout = my_div({"height": "100%"}, "",
                 [
                   my_div({"margin-top": "2%", "margin-left": "2%", "width": "60%", "height": "3%"}, "",
                          [
-                          html.H5("DataFrame.groupby()", style={"float": "left", "width": "25%"}),
+                          html.H5("DataFrame.groupby()", style={"float": "left", "width": "28%", "color": "#acf4ed"}),
                           html.A("Documentacion",
                                  href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.groupby.html",
                                  style={"float": "left", "width": "60%"}, target="_blank"),

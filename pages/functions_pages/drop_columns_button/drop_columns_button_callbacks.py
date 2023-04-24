@@ -18,7 +18,7 @@ id_page = "drop_columns"
     prevent_initial_call=True,)
 def add_data_to_fig(n_clicks, data):    
     columns = read_json(data["df"]).columns
-    return my_div(s_selector, "",
+    return my_div(style_selector, "",
                   my_dropdown(f"{id_page}_dropdown",
                               {},
                               columns,
@@ -32,12 +32,12 @@ def add_data_to_fig(n_clicks, data):
     State("main_page_store", "data"),
     prevent_initial_call=True,)
 def add_data_to_fig(value, data):   
-    return [html.H6(f"df.drop([{value}], axis=1)"),
-            my_div({"margin-top": "1%"}, "",                  
-                   my_button(f"{id_page}_accept",
-                             "Accept", {"float": "left"},
-                             color="black"
-                   ),)]     
+    return [html.H6(f"df.drop([{value}], axis=1)",
+                    style={"margin-top": "2%", "color": "#b0d8d3"}),
+            my_button(f"{id_page}_accept", "Aceptar",
+                                   style_boton_aceptar,
+                                   className="btn btn-outline-warning",
+                                   color="black")]     
 
 
 @callback(
@@ -57,22 +57,23 @@ def add_data_to_fig(accept, value, data):
     if accept:        
         df = read_json(data["df"]).drop([f"{value}"], axis=1)  
         data["prov_df"] = df.to_json(orient="columns")
-        content = [
-                   dag.AgGrid(
-                       id=f"{id_page}_ag-table",
-                       className="ag-theme-alpine-dark",
-                       columnDefs=[{"headerName": x, "field": x}
-                                   for x in df.columns],
-                       rowData=df.to_dict("records"),
-                       columnSize="sizeToFit",
-                       dashGridOptions={"pagination": True},
-                       defaultColDef=dict(resizable=True,)
-                   ),
-                   my_div({"margin-top": "1%"}, "",                  
-                          my_button(f"{id_page}_save",
-                                   "Save", {},
-                                   color="black"
+        content = [my_div({"margin-top": "3%", "width": "97%"}, "",
+                          dag.AgGrid(
+                              id=f"{id_page}_ag-table",
+                              className="ag-theme-alpine-dark",
+                              columnDefs=[{"headerName": x, "field": x}
+                                          for x in df.columns],
+                              rowData=df.to_dict("records"),
+                              columnSize="sizeToFit",
+                              dashGridOptions={"pagination": True},
+                              defaultColDef=dict(resizable=True,)
                           ),
+                   ),
+                   my_div({"margin-top": "1%"}, "",    
+                          my_button(f"{id_page}_save", "Save",
+                                   style_boton_aceptar,
+                                   className="btn btn-outline-warning",
+                                   color="black") 
                    )]
     else:
         raise PreventUpdate
@@ -98,3 +99,9 @@ def save_button(save, data):
         raise PreventUpdate
     return [columns, columns[0], data, 0]
     
+
+@callback(Output("main_page_div_button_cover", "hidden", allow_duplicate=True),
+          Input(f"{id_page}_content", "children"),
+          prevent_initial_call=True)
+def display_page(values):
+    return False
