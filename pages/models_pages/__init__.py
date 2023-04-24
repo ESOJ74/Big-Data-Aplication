@@ -1,2 +1,3 @@
 from .import linear_regresion_button
 from .import logistic_regresion_button
+from .import canny_button

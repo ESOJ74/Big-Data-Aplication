@@ -9,8 +9,9 @@ from pages.i_o_pages.load_data_button.load_data_button_css import *
 id_page = "load_data"
 
 layout = my_div(style_div_main, "",
-                [my_div(style_div_titles, "",
-                        [my_button(f"{id_page}_archivos", "Archivos",
+                [my_div(style_div_titles, "",                        
+                        [
+                         my_button(f"{id_page}_archivos", "Archivos",
                                    style_boton_files,
                                    className="btn btn-outline-primary",
                                    color="black"

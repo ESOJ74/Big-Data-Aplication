@@ -41,7 +41,7 @@ style_div_dropdown_archivos = {
 style_div_dropdown_db = {
     "position": "relative",
     "top": "9%",
-    "left": "25vmax",
+    "left": "26vmax",
     "width": "30%",
     "height": "25vmax",
     "font-family": "Roboto, Helvetica, Arial, sans-serif",
@@ -107,7 +107,7 @@ style_title_db = {
 }
 
 style_input = {
-    "width": "10em",
+    "width": "9em",
     "font-size": "1vmax",
     "background": "#b0d8d3",
     "border": "1px solid #020d11"

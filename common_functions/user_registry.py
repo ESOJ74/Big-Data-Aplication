@@ -72,7 +72,8 @@ style_input = {
     "width": "10em",
     "font-size": "1vmax",
     "background": "#b0d8d3",
-    "border": "1px solid #020d11"
+    "border": "1px solid #020d11",
+    "color": "black"
 }
 
 def insert_user(id_page):

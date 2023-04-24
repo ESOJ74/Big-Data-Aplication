@@ -37,9 +37,9 @@ visualizations = list(map(lambda x: x + [style_button],
 
 models = list(map(lambda x: x + [style_button],
                   [
-    ["linear_regresion_button", "Linear Regresion"],
-    ["logistic_regresion_button", "Logistic Regresion"],
-    ["model_3", "Model 3"],
+    ["linear_regresion_button", "Linear Reg."],
+    ["logistic_regresion_button", "Logistic Reg."],
+    ["canny_button", "Canny"],
     ["model_4", "Model 4"],
     ["model_5", "Model 5"],
     # [<id button>, <name button>]
