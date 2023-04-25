@@ -5,46 +5,17 @@ from pandas import read_json
 from plotly.colors import sequential
 
 from assets.templates import template_visualizations
-from my_dash.my_dcc.my_dropdown import my_dropdown
-from my_dash.my_html.my_div import my_div
+from common_functions.common_div_utils import color_options, refresh_button
+from common_functions.create_callback_button_cover import \
+    create_callback_button_cover
+from common_functions.create_content_up import create_double_dropdown
 from pages.visualization_pages.bar_button.bar_button_css import *
-from pages.visualization_pages.bar_button.bar_button_functions import \
-    create_utils
 
 id_page = "bar_button"
 
 
-# Panel utils
-@callback(Output(f"{id_page}_utils", "children"),          
-          Input("bar_button", "n_clicks"),
-          prevent_initial_call=True)
-def display_page(n_clicks):  
-    return create_utils(id_page)
-
-
 # Panel content_up (dropdown)
-@callback(Output(f"{id_page}_content_up", "children"),
-          Input("bar_button", "n_clicks"),
-          State('main_page_store', 'data'),
-          prevent_initial_call=True)
-def display_page(n_clicks, data):   
-    columns = read_json(data["df"]).columns  
-    return my_div(style_div_selectors, "",
-                  [
-                   my_div(style_selector, "",
-                          my_dropdown(f"{id_page}_drop_left",
-                                      {},
-                                      columns,
-                                      placeholder="Seleccione columna"),
-                   ),
-                   my_div(style_selector2, "",
-                          my_dropdown(f"{id_page}_drop_right",
-                                      {},
-                                      columns,
-                                      placeholder="Seleccione columna"),
-                   ),
-                  ]         
-           )
+create_double_dropdown(id_page)
 
 
 # Panel content_middle
@@ -96,19 +67,11 @@ def display_page(
     return [obj, "", button_cover_hidden]
                   
 
-# color options 
-@callback(Output(f"{id_page}_color", 'options'),
-          Input(f"{id_page}_content_up", "children"),
-          State('main_page_store', 'data'),
-          prevent_initial_call=True)
-def display_page(n_clicks, data):          
-    return [" "] +  list(read_json(data["df"]).columns)  
+# color options
+color_options(id_page)
 
 
 # refresh button
-@callback(Output(f"{id_page}_drop_left", "value"),           
-          Input(f"{id_page}_refresh", "n_clicks"),  
-          State(f"{id_page}_drop_left", "value"),
-          prevent_initial_call=True)
-def display_page(n_clicks, drop_left_state):
-    return drop_left_state
+refresh_button(id_page)
+
+create_callback_button_cover(id_page, f"{id_page}_content_middle")

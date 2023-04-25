@@ -1,6 +1,6 @@
 style_selector = {
     "position": "relative",
-    "top": "6%",
+    "top": "25%",
     "width": "12vmax",
     "height": "2.5em",
     "border-radius": "7px 7px 5px 5px",

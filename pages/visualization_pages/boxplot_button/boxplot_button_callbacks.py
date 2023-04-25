@@ -5,20 +5,15 @@ from pandas import read_json
 from plotly.colors import sequential
 
 from assets.templates import template_visualizations
+from common_functions.common_div_utils import (color_options,
+                                               hover_data_options,
+                                               refresh_button)
+from common_functions.create_callback_button_cover import \
+    create_callback_button_cover
 from my_dash.my_html.my_div import my_div
 from pages.visualization_pages.boxplot_button.boxplot_button_css import *
-from pages.visualization_pages.boxplot_button.boxplot_button_functions import \
-    create_utils
 
 id_page = "boxplot_button"
-
-
-# Panel utils
-@callback(Output(f"{id_page}_utils", "children"),          
-          Input("boxplot_button", "n_clicks"),
-          prevent_initial_call=True)
-def display_page(n_clicks):  
-    return create_utils(id_page)
 
 
 # Panel content_up (dropdown)
@@ -63,11 +58,11 @@ def display_page(n_clicks, data):
 @callback([
            Output(f"{id_page}_content_middle", "children"),   
            Output(f"{id_page}_visualizations_loading", "children", allow_duplicate=True),
-           Output("main_page_div_button_cover", "hidden", allow_duplicate=True)
           ],
           [
            Input(f"{id_page}_x-axis", "value"),         
            Input(f"{id_page}_y-axis", "value"),  
+           Input(f"{id_page}_refresh", "n_clicks"),
           ],
           [
            State('main_page_store', 'data'),
@@ -83,6 +78,7 @@ def display_page(n_clicks, data):
 def display_page(
     x_axis,
     y_axist,
+    n_clicks,
     data,
     x_axis_state,
     y_axis_state,
@@ -94,7 +90,6 @@ def display_page(
     ):
 
     obj = ["", ""]
-    button_cover_hidden = True
 
     if points_state == "false": points_state = False
 
@@ -109,7 +104,6 @@ def display_page(
     if y_axis_state and len(y_axis_state) > 0:
         
         df = read_json(data["df"])
-        button_cover_hidden = False
 
         if x_axis_state and len(x_axis_state) > 0:
             fig = px.box(
@@ -142,31 +136,20 @@ def display_page(
             fig.update_traces(quartilemethod=quartilemethod_state)
         obj = [dcc.Graph(figure=fig)]               
 
-    return [obj, "", button_cover_hidden]
+    return [obj, ""]
 
        
-# color options 
-@callback(Output(f"{id_page}_color", 'options'),
-          Input(f"{id_page}_content_up", "children"),
-          State('main_page_store', 'data'),
-          prevent_initial_call=True)
-def display_page(n_clicks, data):          
-    return [" "] +  list(read_json(data["df"]).columns)  
 
-
-# color options 
-@callback(Output(f"{id_page}_hover_data", 'options'),
-          Input(f"{id_page}_content_up", "children"),
-          State('main_page_store', 'data'),
-          prevent_initial_call=True)
-def display_page(n_clicks, data):          
-    return [" "] +  list(read_json(data["df"]).columns)  
+# color options
+color_options(id_page)
 
 
 # refresh button
-@callback(Output(f"{id_page}_y-axis", "value"),           
-          Input(f"{id_page}_refresh", "n_clicks"),  
-          State(f"{id_page}_y-axis", "value"),
-          prevent_initial_call=True)
-def display_page(n_clicks, y_axis_state):
-    return y_axis_state
+refresh_button(id_page)
+
+
+# hover data options 
+hover_data_options(id_page)
+
+
+create_callback_button_cover(id_page, f"{id_page}_content_middle")

@@ -5,7 +5,7 @@ from my_dash.my_dcc.my_dropdown import my_dropdown
 from my_dash.my_html.my_div import my_div
 from pages.visualization_pages.histogram_button.histogram_button_css import *
 
-id_page = "histogram_button"
+id_page = "histogram"
 
 
 def create_utils(id_page):

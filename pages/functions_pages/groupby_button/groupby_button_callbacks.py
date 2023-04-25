@@ -1,30 +1,19 @@
-import dash_ag_grid as dag
 from dash import Input, Output, State, callback, html
 from dash.exceptions import PreventUpdate
 from pandas import read_json
 
+from common_functions.create_agGrid import create_adgrid
+from common_functions.create_callback_button_cover import \
+    create_callback_button_cover
+from common_functions.create_content_up import create_single_dropdown
 from my_dash.my_dbc.my_button import my_button
-from my_dash.my_dcc.my_dropdown import my_dropdown
 from my_dash.my_html.my_div import my_div
 from pages.functions_pages.groupby_button.groupby_button_css import *
 
 id_page = "groupby"
 
 
-@callback(
-    Output(f"{id_page}_div_dropdown", "children"),
-    Input("groupby_button", "n_clicks"),
-    State("main_page_store", "data"),
-    prevent_initial_call=True,)
-def add_data_to_fig(n_clicks, data):    
-    columns = read_json(data["df"]).columns
-    return my_div(style_selector, "",
-                  my_dropdown(f"{id_page}_dropdown",
-                              {},
-                              columns,
-                              value = columns[0],
-                              placeholder="Seleccione columna",
-                              multi=True,),)    
+create_single_dropdown(id_page, f"{id_page}_div_dropdown", style_selector, True)
 
 
 @callback(
@@ -61,16 +50,7 @@ def add_data_to_fig(accept, value, data):
             df = df.reset_index()          
             data["prov_df"] = df.to_json(orient="columns")
             content = [my_div({"margin-top": "3%", "width": "97%"}, "",
-                              dag.AgGrid(
-                                  id=f"{id_page}_ag-table",
-                                  className="ag-theme-alpine-dark",
-                                  columnDefs=[{"headerName": x, "field": x}
-                                              for x in df.columns],
-                                  rowData=df.to_dict("records"),
-                                  columnSize="sizeToFit",
-                                  dashGridOptions={"pagination": True},
-                                  defaultColDef=dict(resizable=True,)
-                               ),
+                              create_adgrid(f"{id_page}_ag-table", df),
                        ),
                        my_div({"margin-top": "1%"}, "",                  
                               my_button(f"{id_page}_save", "Save",
@@ -107,8 +87,4 @@ def save_button(save, data):
     return [columns, columns[0], data, 0]
    
 
-@callback(Output("main_page_div_button_cover", "hidden", allow_duplicate=True),
-          Input(f"{id_page}_content", "children"),
-          prevent_initial_call=True)
-def display_page(values):
-    return False
+create_callback_button_cover(id_page)

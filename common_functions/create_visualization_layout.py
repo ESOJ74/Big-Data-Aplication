@@ -4,7 +4,7 @@ from my_dash.my_html.my_div import my_div
 from common_functions.common_functions_css import *
 
 
-def create_visualization_layout(id_page):
+def create_visualization_layout(id_page, create_utils = "hola"):
     return my_div(style_main_div, "",
                   [                   
                    my_div(style_div_content, "",
@@ -24,5 +24,5 @@ def create_visualization_layout(id_page):
                            my_div(style_div_content_down, f"{id_page}_content_down"),
                           ]
                    ),
-                   my_div(style_div_utils, f"{id_page}_utils")
+                   my_div(style_div_utils, f"{id_page}_utils", create_utils)
                   ])

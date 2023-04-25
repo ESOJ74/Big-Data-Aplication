@@ -5,6 +5,8 @@ from dash.dependencies import Input, Output, State
 from pandas import read_json
 
 from assets.templates import template_visualizations
+from common_functions.create_callback_button_cover import \
+    create_callback_button_cover
 from my_dash.my_html.my_div import my_div
 from pages.models_pages.logistic_regresion_button.logistic_regresion_button_functions import (
     create_content_up, fit_model, pred_model, split_df)
@@ -112,8 +114,4 @@ def display_page(n_clicks, value_x, value_y, data, test_size, random_state, pena
     return [obj_middle, obj_down, ""]
 
 
-@callback(Output("main_page_div_button_cover", "hidden", allow_duplicate=True),
-          Input(f"{id_page}_content_middle", "children"),
-          prevent_initial_call=True)
-def display_page(values):
-    return False
+create_callback_button_cover(id_page, f"{id_page}_content_middle")

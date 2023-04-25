@@ -7,3 +7,4 @@ from .import cov_button
 from .import kurt_button
 from .import sem_button
 from .import var_button
+from .import t_button

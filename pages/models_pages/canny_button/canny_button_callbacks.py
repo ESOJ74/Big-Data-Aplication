@@ -7,12 +7,10 @@ import cv2
 from dash import Input, Output, State, callback, html
 from dash.dependencies import Input, Output, State
 from dash.exceptions import PreventUpdate
-from pandas import read_sql
-from sqlalchemy import create_engine
 
+from common_functions.create_callback_button_cover import \
+    create_callback_button_cover
 from my_dash.my_html.my_div import my_div
-from pages.i_o_pages.load_data_button.load_data_button_functions import \
-    read_data
 
 id_page = "canny"
 
@@ -131,8 +129,4 @@ def load_data(n_clicks, data):
     return msg
 
 
-@callback(Output("main_page_div_button_cover", "hidden", allow_duplicate=True),
-          Input(f"{id_page}_content", "children"),
-          prevent_initial_call=True)
-def display_page(values):
-    return False
+create_callback_button_cover(id_page)

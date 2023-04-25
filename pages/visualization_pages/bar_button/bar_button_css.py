@@ -1,28 +1,3 @@
-style_div_selectors = {
-    "position": "relative",
-    "top": "6%",
-    "width": "70%",
-    "height": "100%",
-    "position": "relative",
-    "top": "20%",
-}
-
-
-style_selector = {
-    "float": "left",       
-    "width": "12vmax",
-    "height": "2.5em",
-    "border-radius": "7px 7px 5px 5px",
-    "padding": "2px 2px 0px 2px",
-    "font-size": "1em",
-    "color": "black",
-    "background": "radial-gradient(circle farthest-side at bottom left, #b0d8d3 0%, #051f28 95%",
-}
-
-style_selector2 = style_selector.copy()
-style_selector2["margin-left"] = "2%"
-
-
 # Create Utils
 style_div_utils = {
     "margin-top": "7vmax",
