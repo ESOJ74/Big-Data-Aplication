@@ -1,6 +1,7 @@
-from dash import Input, Output, State, callback, dcc, html
+from dash import Input, Output, State, callback, html
 from pandas import read_json
 
+from common_functions.create_functions_layout import create_functions_layout
 from my_dash.my_html.my_div import my_div
 
 style_div_content = {
@@ -16,21 +17,13 @@ style_div_content = {
 
 id_page = "corr"
 
-layout = [
-          dcc.Loading(
-              id="loading-2",
-              children=[my_div({"margin-top": "10%"}, f"{id_page}_corr_loading")],
-              type="default",
-              fullscreen=False,
-          ),
-          my_div(style_div_content, f"{id_page}_content")
-]
+layout = create_functions_layout(id_page, style_div_content)
 
 
 @callback(
         [
          Output(f"{id_page}_content", "children"),
-         Output(f"{id_page}_corr_loading", "children", allow_duplicate=True),
+         Output(f"{id_page}_loading", "children", allow_duplicate=True),
         ],
         Input("corr_button", "n_clicks"),
         State("main_page_store", "data"),
