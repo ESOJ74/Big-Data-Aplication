@@ -19,6 +19,7 @@ functions = list(map(lambda x: x + [style_button],
     ["kurt_button", "Kurt"],
     ["sem_button", "Sem"],
     ["t_button", "Transpose"],
+    ["unique_button", "Unique"],
     ["var_button", "Var"],
     # [<id button>, <name button>]
 ]))

@@ -1,10 +1,11 @@
+from .import corr_button
+from .import cov_button
+from .import describe_button
 from .import drop_columns_button
 from .import groupby_button
 from .import info_button
-from .import describe_button
-from .import corr_button
-from .import cov_button
 from .import kurt_button
 from .import sem_button
-from .import var_button
 from .import t_button
+from .import unique_button
+from .import var_button

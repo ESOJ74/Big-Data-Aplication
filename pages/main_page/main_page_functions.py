@@ -10,6 +10,32 @@ style_div_button = {
     "float": "left", "margin-left": "0.8%", "width": "32%", "font-weight": "bold"
 }
 
+
+def get_resolution():
+    #Se importa el modulo subprocess
+    import subprocess
+
+    #Se define un par de variables con los comandos a pasar:
+    cmd = ['xrandr']
+    cmd2 = ['grep', '*']
+
+    #Se ejecuta el comando xrandr y luego se abre una tuberia.
+    p = subprocess.Popen(cmd, stdout=subprocess.PIPE)
+
+    #Se ejecuta el segundo comando
+    p2 = subprocess.Popen(cmd2, stdin=p.stdout, stdout=subprocess.PIPE)
+
+    #Se cierra la salida estandar.
+    p.stdout.close()
+
+
+    #Obteccion de la resolucion
+    resolution_string, junk = p2.communicate()
+    resolution = resolution_string.split()[0]
+    res = str(resolution).replace("b", "").replace("'", "").split('x')
+    return res[0], res[1]
+
+
 def button_cover(id, className, style, children):
     return my_button(id, 
                      children,

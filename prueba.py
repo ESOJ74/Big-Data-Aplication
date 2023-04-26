@@ -1,42 +1,22 @@
-import numpy as np
-import matplotlib.pyplot as plt
 
-from sklearn.datasets import load_iris
-from sklearn.decomposition import PCA, IncrementalPCA
+#Se importa el modulo subprocess
+import subprocess
 
-iris = load_iris()
-X = iris.data
-y = iris.target
+#Se define un par de variables con los comandos a pasar:
+cmd = ['xrandr']
+cmd2 = ['grep', '*']
 
-n_components = 2
-ipca = IncrementalPCA(n_components=n_components, batch_size=10)
-X_ipca = ipca.fit_transform(X)
+#Se ejecuta el comando xrandr y luego se abre una tuberia.
+p = subprocess.Popen(cmd, stdout=subprocess.PIPE)
 
-pca = PCA(n_components=n_components)
-X_pca = pca.fit_transform(X)
+#Se ejecuta el segundo comando
+p2 = subprocess.Popen(cmd2, stdin=p.stdout, stdout=subprocess.PIPE)
 
-colors = ["navy", "turquoise", "darkorange"]
+#Se cierra la salida estandar.
+p.stdout.close()
 
-for X_transformed, title in [(X_ipca, "Incremental PCA"), (X_pca, "PCA")]:
-    plt.figure(figsize=(8, 8))
-    for color, i, target_name in zip(colors, [0, 1, 2], iris.target_names):
-        plt.scatter(
-            X_transformed[y == i, 0],
-            X_transformed[y == i, 1],
-            color=color,
-            lw=2,
-            label=target_name, 
-        )
 
-    if "Incremental" in title:
-        err = np.abs(np.abs(X_pca) - np.abs(X_ipca)).mean()
-        plt.title(title + " of iris dataset\nMean absolute unsigned error %.6f" % err)
-    else:
-        plt.title(title + " of iris dataset")
-    plt.legend(loc="best", shadow=False, scatterpoints=1)
-    plt.axis([-4, 4, -1.5, 1.5])
-
-plt.show()
-
-from pandas import DataFrame
-
+#Obteccion de la resolucion
+resolution_string, junk = p2.communicate()
+resolution = resolution_string.split()[0]
+print(resolution)

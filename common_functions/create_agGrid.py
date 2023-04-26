@@ -21,7 +21,7 @@ def create_adgrid(id, df):
                       columnDefs=[{"headerName": x, "field": x}
                                   for x in df.columns],
                       rowData=df.to_dict("records"),
-                      columnSize="sizeToFit",
+                      #columnSize="sizeToFit",
                       dashGridOptions=dashGridOptions,
                       style=style,
            )
