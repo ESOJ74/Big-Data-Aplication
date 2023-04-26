@@ -7,43 +7,32 @@ from my_dash.my_dbc.my_button import my_button
 from my_dash.my_dcc.my_dropdown import my_dropdown
 from my_dash.my_html.my_div import my_div
 from pages.models_pages.logistic_regresion_button.logistic_regresion_button_css import *
-
 id_page = "logistic_regresion"
 
 def create_content_up(columns):
     return my_div(style_div_selectors, "",
-                  [
-                   my_div(style_div_dropdown, "",
-                          [my_div(style_div_target, "",
-                                  html.H6("Target", style={"color": "#acf4ed"})
-                           ),                  
-                           my_div(style_selector, "",
-                                  my_dropdown(f"{id_page}_dropdown_x",
-                                              {"background": "#b0d8d3"},
-                                              columns,
-                                              value=columns[-1]
-                                  ),
-                           ),
-                          ]
-                   ),
-                   my_div(style_div_model_name, "",
-                          [
-                           html.H6("Nombre Modelo", style=style_params_model_name),
-                           dcc.Input(id=f"{id_page}_model_name",
-                                     style=style_input_model_name,
-                           )
-                          ]
-                   ),
-                   my_div(style_div_buttons, "",
-                          [
-                           my_button(f"{id_page}_train", "Train", style_button,
-                             className="btn btn-outline-warning", color="black"),
-                           my_button(f"{id_page}_test", "Test", style_button,
-                             className="btn btn-outline-warning", color="black"),
-        
-                          ]),
-                  ]
-           )
+                 [my_div(style_div_x_y, "",
+                         [
+                          my_div(style_div_x, "", html.H6("X", style={"color": "#acf4ed"})),
+                          my_div(style_div_y, "", html.H6("Y", style={"color": "#acf4ed"})),
+                         ]
+                  ),
+                  my_div(style_selector, "",
+                         my_dropdown(f"{id_page}_dropdown_x",
+                              {},
+                              columns,
+                              placeholder="Seleccione columna",
+                              multi=True,
+                         ),
+                  ),
+                  my_div(style_selector2, "",
+                         my_dropdown(f"{id_page}_dropdown_y",
+                              {},
+                              placeholder="Seleccione columna"
+                         ),
+                  ),
+                 ]
+          )
 
 
 def create_param_drop(id_param, options, value):
@@ -51,7 +40,7 @@ def create_param_drop(id_param, options, value):
                   [
                    html.H6(id_param, style=style_params),
                    my_div(style_selector_color, "",
-                          my_dropdown(f"{id_page}_{id_param}",{"background": "#b0d8d3"},
+                          my_dropdown(f"{id_page}_{id_param}",{},
                                       options=options,
                                       value=value,
                           ),
@@ -82,7 +71,7 @@ def create_utils(id_page):
                            )
                           ]
                    ),       
-                   html.H5("Model", style={"margin-top": "0%", "margin-left": "2%", "color": "black"}),  
+                   html.H5("Model", style={"margin-top": "2%", "margin-left": "2%", "color": "black"}),  
                    create_param_drop("penalty", ["l1", "l2", "elasticnet"], "l2"),
                    create_param_drop("dual", ["True", "False"], "True"),
                    my_div(style_div_input, "",  
@@ -152,7 +141,9 @@ def create_utils(id_page):
                            )
                           ]
                    ),
-                   create_param_drop("warm_start", ["True", "False"], "False"), 
+                   create_param_drop("warm_start", ["True", "False"], "False"),    
+                   my_button(f"{id_page}_train", "Train", style_button,
+                             className="btn btn-outline-warning", color="black"),                                          
                  ]
           )     
 

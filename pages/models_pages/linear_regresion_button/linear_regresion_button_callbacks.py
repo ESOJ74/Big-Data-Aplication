@@ -64,22 +64,22 @@ def display_page(n_clicks, value_x, value_y, data, test_size, random_state, fit_
                                                     value_x, value_y, int(test_size)/100, int(random_state))               
         # Entrenamos modelo
         regr = fit_model(X_train, y_train, fit_intercept, copy_X, n_jobs, positive)
-
+        
         # Hacemos las predicciones
         y_pred = pred_model(regr, X_test)
         
         # content_middle             
         x_range_test = np.linspace(0, X_test.shape[0], X_test.shape[0]) 
-
+        
         fig = go.Figure([
-            go.Scatter(x=x_range_test, y=y_test, 
+            go.Scatter(x=x_range_test[-100:], y=y_test[-100:], 
                        name='real'),
-            go.Scatter(x=x_range_test, y=y_pred, 
+            go.Scatter(x=x_range_test[-100:], y=y_pred[-100:], 
                        name='predicción', mode='markers', ),            
         ])    
         fig.update_layout(template=template_visualizations, height=550)
         obj_middle = dcc.Graph(figure=fig)
-
+        
         # content_down
         obj_down = my_div({}, "",
                           [html.H6(f"Coefficients: {list(map(lambda x: round(x, 2), regr.coef_))}",
