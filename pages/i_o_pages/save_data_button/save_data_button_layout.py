@@ -16,7 +16,7 @@ layout = my_div(style_div_main, "",
                         [
                          my_div(style_selector, "",
                                 my_dropdown(f"{id_page}_dropdown",
-                                            {},
+                                            {"background": "#acf4ed"},
                                             list_of_format,
                                             value="To CSV",
                                             placeholder="Select format"

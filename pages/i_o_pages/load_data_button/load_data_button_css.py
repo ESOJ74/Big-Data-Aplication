@@ -86,7 +86,7 @@ style_boton_files = {
     "font-size": "0.9vmax",
     "border": "2px solid",
     "font-family": "Roboto, Helvetica, Arial, sans-serif",
-    "color": "#b0d8d3",
+    "color": "#acf4ed",
 }
 
 style_boton_aceptar = {    
@@ -103,13 +103,13 @@ style_div_load_data_content = {
 
 style_title_db = {
     "margin-top": "3%",
-    "color": "#b0d8d3"
+    "color": "#acf4ed"
 }
 
 style_input = {
     "width": "9em",
     "font-size": "1vmax",
-    "background": "#b0d8d3",
+    "background": "#acf4ed",
     "border": "1px solid #020d11"
 }
 

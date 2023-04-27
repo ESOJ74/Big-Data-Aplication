@@ -13,7 +13,7 @@ style_boton_files = {
     "font-size": "0.7vmax",
     "border": "2px solid",
     "font-family": "Roboto, Helvetica, Arial, sans-serif",
-    "color": "#b0d8d3",
+    "color": "#acf4ed",
 }
 
 id_page = "view_data"
@@ -39,7 +39,8 @@ def view_data(n_clicks, data):
             create_adgrid(f"{id_page}_ag-table", df)])
         obj.append(False)
     except (TypeError, KeyError, ValueError):
-        obj = [html.H6('No hay ningún DataFrame Cargado', style={"margin-left": "20%", "color": "#b0d8d3"}), True]
+        obj = [html.H6('No hay ningún DataFrame Cargado',
+                       style={"margin-left": "20%", "color": "#acf4ed"}), True]
     return obj
 
 

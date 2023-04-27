@@ -34,7 +34,7 @@ layout = my_div(style_div_main, "",
                  my_div(style_div_dropdown_archivos, f"{id_page}_div_archivos",
                         [
                          my_div(style_selector, "",
-                                my_dropdown(f"{id_page}_drop_file", {}),
+                                my_dropdown(f"{id_page}_drop_file", {"background": "#acf4ed"}),
                          ),
                          my_button(f"{id_page}_aceptar", "Aceptar",
                                    style_boton_aceptar,

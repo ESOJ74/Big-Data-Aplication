@@ -81,10 +81,10 @@ def load_data(accept, input_value, data):
             path = f"""users/{data["user"]}/data/{input_value}"""  
             data["df"] = read_data(input_value.split('.')[-1], path)         
             load_data_content = html.H6("DataFrame Cargado",
-                                        style={"color": "#b0d8d3"})             
+                                        style={"color": "#acf4ed"})             
         else:
             load_data_content = html.H6("No tiene Archivos guardados",
-                                        style={"color": "#b0d8d3"}) 
+                                        style={"color": "#acf4ed"}) 
     else:
         raise PreventUpdate   
     return [data, load_data_content, False]
@@ -104,7 +104,7 @@ def load_data(n_clicks, data):
         shutil.copy(archivo, f"""users/{data["user"]}/data/{filename}""")    
         msg = html.H6("Archivo subido", 
                       style={"margin-top": "7%", "margin-left": "3vmax",
-                             "color": "#b0d8d3"})    
+                             "color": "#acf4ed"})    
     else:
         msg = ""
     return msg
@@ -134,10 +134,10 @@ def load_data(n_clicks, user, password, host, port, bd, schema, table, data):
         read_sql(query, engine).to_csv(f"""users/{data["user"]}/data/{table}.csv""")
         msg = my_div({"margin-left": "22vmax"}, "",
                      html.H6(f"Archivo guardado como {table}.csv",
-                             style={"color": "#b0d8d3"}))
+                             style={"color": "#acf4ed"}))
         engine.dispose()
     except:
         msg = my_div({"margin-left": "23vmax"}, "",
                      html.H6("Datos Erroneos",
-                             style={"color": "#b0d8d3"}))
+                             style={"color": "#acf4ed"}))
     return msg
