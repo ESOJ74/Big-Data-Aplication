@@ -37,7 +37,8 @@ style_div_content_down = {
 
 style_div_utils = {
     "float": "left",
-    "margin-left": "1%",     
+    "margin-left": "1%", 
+    "margin-top": "1.4%",    
     "width": "15%",
     "height": "100%",
 }

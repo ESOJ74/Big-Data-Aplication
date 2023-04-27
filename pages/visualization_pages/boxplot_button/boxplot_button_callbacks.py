@@ -116,7 +116,7 @@ def display_page(
                       color=color_state,
                       notched=notched,
                       hover_data=hover_data_state,
-                      color_discrete_sequence=sequential.Blugrn,
+                      color_discrete_sequence=sequential.Plasma,
             ).update_layout(legend={"title_font_color": "#acf4ed"})
 
             fig.update_traces(quartilemethod=quartilemethod_state)
@@ -130,7 +130,7 @@ def display_page(
                       color=color_state,
                       notched=notched,
                       hover_data=hover_data_state,
-                      color_discrete_sequence=sequential.Blugrn,
+                      color_discrete_sequence=sequential.Plasma,
             ).update_layout(legend={"title_font_color": "#acf4ed"})
 
             fig.update_traces(quartilemethod=quartilemethod_state)

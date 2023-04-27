@@ -3,6 +3,7 @@ from dash import Input, Output, State, callback, dcc, html
 from numpy import float64
 from pandas import read_json
 
+from assets.templates import template_visualizations
 from common_functions.create_callback_button_cover import \
     create_callback_button_cover
 from my_dash.my_html.my_div import my_div
@@ -90,7 +91,8 @@ def second_callback(n_clicks, n_clicks_text, n_click_graph, refresh, data,
             
        if state_graph == "btn btn-warning":
           if state_axis == 0:
-              fig = px.bar(x=kurt.index, y=kurt.values, labels={"x": "Columns", "y": "unbiased kurtosis"})
+              fig = px.bar(x=kurt.index, y=kurt.values, labels={"x": "Columns", "y": "unbiased kurtosis"},
+                           template=template_visualizations,)
               obj = dcc.Graph(figure=fig, config={"displayModeBar": False, "responsive": True},
                               style={"width": "100%", "height": "100%"})
           else:

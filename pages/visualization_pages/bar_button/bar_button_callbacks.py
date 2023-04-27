@@ -60,7 +60,7 @@ def display_page(
             y=drop_right_state,
             height=550,
             color=color_state,     
-            color_discrete_sequence=sequential.Blugrn,  
+            color_discrete_sequence=sequential.Plasma,  
         ).update_layout(legend={"title_font_color": "#acf4ed"}) 
         
         obj = [dcc.Graph(figure=fig)]               
