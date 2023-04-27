@@ -10,6 +10,9 @@ style_div_button = {
     "float": "left", "margin-left": "0.8%", "width": "32%", "font-weight": "bold"
 }
 
+style_div_button2 = {
+    "margin-left": "0.8%", "width": "100%", "font-weight": "bold"
+}
 
 def get_resolution():
     #Se importa el modulo subprocess
@@ -43,6 +46,22 @@ def button_cover(id, className, style, children):
                      n_clicks=0,
                      className=className)
 
+
+
+
+def create_div_buttons1(style_div, style_button, button_list, color="black",
+                       classdiv="", className="btn btn-outline-light"):      
+    return my_div(style_div, "", 
+                  [
+                   *[my_div(style_div_button2, "",
+                             my_button(button[0],
+                                       button[1],
+                                       style_button,
+                                       color=color,
+                                       className=className)
+                      ) for button in button_list]
+                   ], className=classdiv,
+           )
 
 def create_div_buttons(style_div, style_button, button_list, color="black",
                        classdiv="", className="btn btn-outline-light"):      

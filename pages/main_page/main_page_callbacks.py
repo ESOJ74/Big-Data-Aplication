@@ -5,10 +5,38 @@ from pandas import read_csv
 
 from pages.main_page.main_page_css import *
 from pages.main_page.main_page_functions import create_callback
-from pages.main_page.main_page_lists import (buttons, functions, models,
+from pages.main_page.main_page_lists import (buttons, buttons_data, functions,
+                                             functions_info, models,
                                              visualizations)
 
 id_page = "main_page"
+
+@callback([
+           Output(f"{id_page}_div_data", "hidden"),
+           Output(f"{id_page}_div_duttons_info", "hidden"),
+           Output(f"{id_page}_button_data", "n_clicks"),
+           Output(f"{id_page}_button_drop_info","n_clicks"),
+          ],
+          [
+           Input(f"{id_page}_button_data", "n_clicks"),
+           Input(f"{id_page}_button_drop_info","n_clicks"),
+          ],
+          [
+           State(f"{id_page}_div_data", "hidden"),
+           State(f"{id_page}_div_duttons_info", "hidden"),
+          ],
+          prevent_initial_call=True,)
+def auth_display(click_data, clink_info, state_hidden_data, state_hidden_info):    
+   
+    if click_data:
+        state_hidden_data = not state_hidden_data
+        state_hidden_info = True
+    if clink_info:
+        state_hidden_info = not state_hidden_info
+        state_hidden_data = True
+    
+   
+    return [state_hidden_data, state_hidden_info, 0, 0]
 
 
 @callback([
@@ -73,8 +101,9 @@ def auth_display(n_clicks, reg_user, reg_pass):
             reg_answer =  "Usuario no registrado"
     return [left_hidden, registry_hidden, data, user_div, sesion_div, reg_answer] 
 
-
+create_callback(buttons_data, "i_o_pages")
 create_callback(buttons, "i_o_pages")
 create_callback(visualizations, "visualization_pages", "Visualización")
 create_callback(functions, "functions_pages", "Función")
+create_callback(functions_info, "functions_pages", "Función")
 create_callback(models, "models_pages", "Modelo")

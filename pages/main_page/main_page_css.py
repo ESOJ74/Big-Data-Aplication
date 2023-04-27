@@ -8,7 +8,6 @@ style_div_main = {
 }
 
 # Up Panel
-
 style_up_panel = {
     "width": "100%",
     "height": "4.25%",
@@ -65,7 +64,7 @@ style_middle_panel = {
 # Button Cover
 style_div_button_cover_right ={
     "position": "absolute",
-    "left": "17%",
+    "left": "15.5%",
     "top": "43px",
 }
 
@@ -93,23 +92,107 @@ style_button_cover_left = {
 # Middle Left Panel
 style_div_middle_left = {
     "float": "left",
-    "width": "20%",
+    "width": "18%",
     "height": "100%",
     "background": "linear-gradient(90deg,#165b92 0%, #2c81a9 10%, #04212c 99.9%)",
 }
 
 style_dataframe_panel = {
     "margin-top": "10%",
-    "margin-left": "8%",
+    "margin-left": "5%",
 }
 
-style_title_color = {"color": "#0F1458"}
+style_title_color = {
+    "color": "#0F1458"
+}
 
-style_div_1 = {
-    "margin-top": "2%",
+style_div_button_data = {
+    "float": "left",
+    "margin-left": "5%",
+    "width":"43%",
+    "font-family": "Roboto, Helvetica, Arial, sans-serif",    
+}
+
+style_button_data = {       
+    "margin-top": "1%",    
+    "width": "100%",
+    "font-size": "0.6vmax",
+    "font-weight": "bold",    
+    "border": "2px solid #b0d8d3",
+    "color": "#acf4ed",
+}
+
+style_div_button_view = {
+    "float": "left",
+    "margin-left": "5%",
+    "width":"43%",
+    "font-family": "Roboto, Helvetica, Arial, sans-serif",    
+}
+
+style_div_0 = {    
     "width": "100%",
     "height": "3%",
     "padding": "0px 12px 0px 2px",  
+}
+
+style_div_1 = {
+    "margin-left": "20%",
+    "padding": "2px",
+    "width": "100%",
+    "height": "100%",
+    "background": "radial-gradient(circle farthest-side at top left, #00c8ff 0%, #00fff9 80%)"
+}
+
+style_button = {       
+    "margin-top": "1%",
+    "margin-left": "5%",
+    "width": "100%",
+    "font-size": "0.6vmax",
+    "font-weight": "bold",
+    "font-family": "Roboto, Helvetica, Arial, sans-serif",
+    "border": "2px solid #b0d8d3",
+    "color": "#acf4ed",
+}
+
+style_button1 = {  
+    "float": "left",
+    "margin-left": "1%",
+    "width": "47%",    
+    "font-size": "0.6vmax",
+    "font-weight": "bold",
+    "font-family": "Roboto, Helvetica, Arial, sans-serif",
+    "border": "2px solid #26647c",
+    "color": "#26647c",
+}
+
+style_button2 = {       
+    "margin-top": "1%",
+    "margin-left": "5%",
+    "width": "100%",
+    "font-size": "0.6vmax",
+    "font-weight": "bold",
+    "font-family": "Roboto, Helvetica, Arial, sans-serif",
+    "border": "2px solid #26647c",
+    "color": "#26647c",
+}
+
+style_h5_panel = {
+    "margin-top": "1%",
+    "border-top": "1px solid black",
+    "padding": "20px 0px 0px 15px",
+}
+
+style_h5_panel_functions = {
+    "margin-top": "10%",
+    "border-top": "1px solid black",
+    "padding": "20px 0px 0px 15px",
+}
+
+style_div_buttons_functions = {
+    "margin-top": "1%",
+    "width": "95%",
+    "height": "14%",  
+    "overflow-y": "auto",
 }
 
 style_div_2 = {
@@ -119,23 +202,36 @@ style_div_2 = {
     "overflow-y": "auto",
 }
 
-style_button = {       
+style_div_button_drop_info = {       
     "margin-top": "1%",
-    "margin-left": "5%",
-    "width": "100%",
+    "margin-left": "1%", 
+    "height": "7%",
+    "width": "95%",
+}
+
+style_button_drop_info = {       
+    "margin-top": "1%",
+    "margin-left": "2%", 
+    "width": "97%",
     "font-size": "0.7vmax",
-    "font-weight": "bold",
-    "font-family": "Roboto, Helvetica, Arial, sans-serif",
+    "font-weight": "bold",    
     "border": "2px solid #b0d8d3",
     "color": "#acf4ed",
 }
 
-style_visualization_panel = {
-    "margin-top": "9%",
-    "border-top": "1px solid black",
-    "padding": "20px 0px 0px 15px",
+style_div_buttons_info = {
+    "margin-left": "5%",
+    "width": "86%",
+    "height": "20%",
+    "padding": "5px",
+    "background": "radial-gradient(circle farthest-side at top left, #00c8ff 0%, #00fff9 80%)"
 }
 
+style_div_3 = {    
+    "width": "98%",
+    "height": "100%",  
+    "overflow-y": "auto",
+}
 
 # Central Panel
 style_div_content = {

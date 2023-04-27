@@ -1,20 +1,22 @@
 from pages.main_page.main_page_css import style_button
 
+buttons_data = list(map(lambda x: x + [style_button],                   [
+    ["load_data_button", "Load"],
+    ["save_data_button", "Save"]    
+]))
+
 buttons = list(map(lambda x: x + [style_button],
                    [
-    ["load_data_button", "Load"],
-    ["save_data_button", "Save"],
+    
     ["view_data_button", "View"]
     
 ]))
 
-functions = list(map(lambda x: x + [style_button],
+functions_info = list(map(lambda x: x + [style_button],
                      [
     ["corr_button", "Corr"],
     ["cov_button", "Cov"],    
     ["describe_button", "Describe"],
-    ["drop_columns_button", "Drop"],
-    ["groupby_button", "Groupby"],
     ["info_button", "Info"],
     ["kurt_button", "Kurt"],
     ["sem_button", "Sem"],
@@ -22,6 +24,13 @@ functions = list(map(lambda x: x + [style_button],
     ["unique_button", "Unique"],
     ["var_button", "Var"],
     # [<id button>, <name button>]
+]))
+
+functions = list(map(lambda x: x + [style_button],
+                     [   
+    ["drop_columns_button", "Drop"],
+    ["groupby_button", "Groupby"],
+    ["funcion", "funcion"]
 ]))
 
 visualizations = list(map(lambda x: x + [style_button],
