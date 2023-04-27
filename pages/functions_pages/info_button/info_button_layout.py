@@ -4,20 +4,32 @@ from pandas import read_json
 from common_functions.create_functions_layout import create_functions_layout
 from my_dash.my_html.my_div import my_div
 
-style_div_content = {
-    "position": "relative",
-    "top": "1%",
-    "left": "30%",
-    "width": "30%",
-    "font-size": "1.2em",
+style_div_content ={    
+    "height": "80%",
+    "width": "50%",
+    "background": "#acf4ed"
+}
+
+style_div_title = {
+    "text-align": "center",
+    "background": "radial-gradient(circle farthest-side at bottom left, #347eb7 0%, #204765 30%, #04212c 95%)"
+}
+
+style_title = {
     "font-weight": "bold",
-    "background": "#C5F4FD",
-    "color": "#03353E",
+    "color": "#acf4ed"
+}
+
+style_div_obj = {
+    "margin-left": "5%",
+    "width": "95%",
+    "height": "87%",
+    
 }
 
 id_page = "info"
 
-layout = create_functions_layout(id_page, style_div_content)
+layout = create_functions_layout(id_page)
 
 @callback(
         [
@@ -51,17 +63,16 @@ def add_data_to_fig(n_clicks, data):
     texto +=  "\n" + f"dtypes: {', '.join([f'{key}({list_dtypes[key]})' for key in  list_dtypes])}" +\
               "\n" + f"memory usage: {df.memory_usage(index=False).sum() / 1000} KB"
     return [
-            my_div({}, "",
+            my_div(style_div_content, "",
                    [
-                    my_div({"text-align": "center",
-                            "background": "radial-gradient(circle farthest-side at bottom left, #347eb7 0%, #204765 30%, #04212c 95%)"}, "",
+                    my_div(style_div_title, "",
                            [
                             html.H5("DataFrame.info()",
-                                   style={"font-weight": "bold", "color": "#acf4ed"}),
+                                   style=style_title),
                             html.A("Documentacion",  href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.info.html",
-                                   target="_blank")
+                                   target="_blank", style={"overflow": "auto"})
                            ],
                     ),
-                    my_div({"margin-left": "2%"}, "", html.Pre(texto)),
+                    my_div(style_div_obj, "", html.Pre(texto, style={'width': '100%', 'height': '100%'})),
                    ],
             ), ""]
