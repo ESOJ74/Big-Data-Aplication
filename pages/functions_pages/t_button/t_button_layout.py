@@ -33,7 +33,7 @@ layout = create_functions_layout(id_page, style_div_content)
 def add_data_to_fig(n_clicks, data):     
     obj = []
     try:        
-        df = read_json(data["df"]).head().T.reset_index()        
+        df = read_json(data["df"]).head(10).T.reset_index()        
         df.rename(columns={'index': 'columns'}, inplace=True)
         df.to_csv("tmp.csv", index=False)
         df = read_csv("tmp.csv")    
