@@ -236,7 +236,7 @@ style_div_3 = {
 # Central Panel
 style_div_content = {
     "float": "left",
-    "width": "80%",
+    "width": "82%",
     "height": "100%",
 }
 

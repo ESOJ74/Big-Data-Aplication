@@ -46,17 +46,20 @@ def add_data_to_fig(value, data):
     prevent_initial_call=True,)
 def add_data_to_fig(accept, value, data):     
     if accept:        
-        df = read_json(data["df"]).drop([f"{value}"], axis=1)  
-        data["prov_df"] = df.to_json(orient="columns")
-        content = [my_div({"margin-top": "3%", "width": "97%"}, "",
-                          create_adgrid(f"{id_page}_ag-table", df.head())
-                   ),
-                   my_div({"margin-top": "1%"}, "",    
-                          my_button(f"{id_page}_save", "Save",
-                                   style_boton_aceptar,
-                                   className="btn btn-outline-warning",
-                                   color="black") 
-                   )]
+        try:
+            df = read_json(data["df"]).drop([f"{value}"], axis=1)  
+            data["prov_df"] = df.to_json(orient="columns")
+            content = [my_div({"margin-top": "3%", "width": "97%"}, "",
+                            create_adgrid(f"{id_page}_ag-table", df.head())
+                    ),
+                    my_div({"margin-top": "1%"}, "",    
+                            my_button(f"{id_page}_save", "Save",
+                                    style_boton_aceptar,
+                                    className="btn btn-outline-warning",
+                                    color="black") 
+                    )]
+        except KeyError:
+            content = html.H6("Seleccione una columna", style={"color": "#acf4ed"}),
     else:
         raise PreventUpdate
     return [content, data, 0, ""]

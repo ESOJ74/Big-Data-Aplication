@@ -53,7 +53,7 @@ style_params = {
 style_input = {
     "float": "left",
     "margin-left": "2%",
-    "width": "80%",
+    "width": "15%",
     "background": "#b0d8d3",
     "color": "black"
 }

@@ -41,7 +41,7 @@ style_button = {
 style_div_reg_answer = {  
     "margin-top": "2%",
     "margin-left": "5%",
-    "font-family": "Roboto, Helvetica, Arial, sans-serif",
+    "font-family": "Roboto, Helvetica, Arial, sans-serif",    
 }
 
 style_accept = {
@@ -71,7 +71,7 @@ style_div_login = {
 style_input = {
     "width": "10em",
     "font-size": "1vmax",
-    "background": "#b0d8d3",
+    "background": "radial-gradient(circle farthest-side at top left, #00c8ff 0%, #00fff9 80%)",
     "border": "1px solid #020d11",
     "color": "black"
 }
@@ -98,7 +98,7 @@ def insert_user(id_page):
 def user_login(id_page):
     return my_div(style_div_regystry, f"{id_page}_div_registry",
                  [
-                  my_div({"margin-left": "4%"}, "", html.H2('Login', style={"color": "#b0d8d3"}),),                  
+                  my_div({"margin-left": "4%"}, "", html.H2('Login'),),                  
                   insert_user(id_page),
                   my_button(f"{id_page}_reg_accept", "Login", style_button),
                   my_div(style_div_reg_answer, f"{id_page}_reg_answer"),      
@@ -119,7 +119,7 @@ def user_registry(id_page):
                    "background": "radial-gradient(circle farthest-side at bottom left, #347eb7 0%, #204765 30%, #04212c 95%)"}, "",
                    my_div(style_div_regystry2, f"{id_page}_div_registry",
                           [
-                           my_div({"margin-left": "4%"}, "", html.H2('Sign In', style={"color": "#b0d8d3"}),),                  
+                           my_div({"margin-left": "4%"}, "", html.H2('Sign In'),),                  
                            insert_user(id_page),
                            my_button(f"{id_page}_reg_accept", "Sing in", style_button),                  
                            my_div(style_div_reg_answer, f"{id_page}_reg_answer"),   

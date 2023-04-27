@@ -109,7 +109,7 @@ style_title_db = {
 style_input = {
     "width": "9em",
     "font-size": "1vmax",
-    "background": "#acf4ed",
+    "background": "radial-gradient(circle farthest-side at top left, #00c8ff 0%, #00fff9 80%)",
     "border": "1px solid #020d11"
 }
 
