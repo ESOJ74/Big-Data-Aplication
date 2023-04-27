@@ -40,7 +40,7 @@ layout: dict = my_div(style_div_main, "",
                                       button_cover(f"{id_page}_button_cover", "btn btn-primary btn-sm",
                                                    style_button_cover_right,
                                                    children=DashIconify(
-                                                                icon="ic:baseline-arrow-circle-left",   #2a9fd6
+                                                                icon="ic:baseline-arrow-circle-left",
                                                                 width=30
                                                             ),
                                       ),

@@ -19,7 +19,7 @@ def create_content_up(columns):
                            ),                  
                            my_div(style_selector, "",
                                   my_dropdown(f"{id_page}_dropdown_x",
-                                              {"background": "#b0d8d3"},
+                                              {"background": "radial-gradient(circle farthest-side at bottom left, #6da9d8 0%, #204765 50%, #04212c 95%)"},
                                               columns,
                                               value=columns[-1]
                                   ),
@@ -51,7 +51,7 @@ def create_param_drop(id_param, options, value):
                   [
                    html.H6(id_param, style=style_params),
                    my_div(style_selector_color, "",
-                          my_dropdown(f"{id_page}_{id_param}",{"background": "#b0d8d3"},
+                          my_dropdown(f"{id_page}_{id_param}",{"background": "radial-gradient(circle farthest-side at top left, #00c8ff 0%, #00fff9 80%)"},
                                       options=options,
                                       value=value,
                           ),

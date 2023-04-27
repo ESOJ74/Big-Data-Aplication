@@ -20,13 +20,13 @@ def create_double_dropdown(id_page):
                     [
                     my_div(style_selector, "",
                             my_dropdown(f"{id_page}_drop_left",
-                                        {},
+                                        {"background": "radial-gradient(circle farthest-side at bottom left, #6da9d8 0%, #204765 50%, #04212c 95%)"},
                                         columns,
                                         placeholder="Seleccione columna"),
                     ),
                     my_div(style_selector2, "",
                             my_dropdown(f"{id_page}_drop_right",
-                                        {"background": "#acf4ed"},
+                                        {"background": "radial-gradient(circle farthest-side at bottom left, #6da9d8 0%, #204765 50%, #04212c 95%)"},
                                         columns,
                                         placeholder="Seleccione columna"),
                     ),
@@ -41,7 +41,7 @@ def create_single_dropdown(id_page, id_output, style_selector, multi=False):
     def display_page(n_clicks, data):
         return my_div(style_selector, "", 
                       my_dropdown(f"{id_page}_dropdown",
-                                  {"background": "#acf4ed"},
+                                  {"background": "radial-gradient(circle farthest-side at bottom left, #6da9d8 0%, #204765 50%, #04212c 95%)"},
                                   read_json(data["df"]).columns,
                                   placeholder="Seleccione columna",
                                   multi=multi

@@ -92,7 +92,7 @@ style_params_model_name = {
 style_input_model_name = {
     "margin-top": "3%",
     "width": "70%",
-    "background": "#acf4ed",
+    "background": "radial-gradient(circle farthest-side at top left, #00c8ff 0%, #00fff9 80%)",
     "color": "black"
 }
 
@@ -176,6 +176,6 @@ style_input = {
     "float": "left",
     "margin-left": "2%",
     "width": "15%",
-    "background": "#b0d8d3",
+    "background": "radial-gradient(circle farthest-side at top left, #00c8ff 0%, #00fff9 80%)",
     "color": "black"
 }
