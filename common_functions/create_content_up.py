@@ -26,7 +26,7 @@ def create_double_dropdown(id_page):
                     ),
                     my_div(style_selector2, "",
                             my_dropdown(f"{id_page}_drop_right",
-                                        {},
+                                        {"background": "#acf4ed"},
                                         columns,
                                         placeholder="Seleccione columna"),
                     ),
@@ -41,7 +41,7 @@ def create_single_dropdown(id_page, id_output, style_selector, multi=False):
     def display_page(n_clicks, data):
         return my_div(style_selector, "", 
                       my_dropdown(f"{id_page}_dropdown",
-                                  {},
+                                  {"background": "#acf4ed"},
                                   read_json(data["df"]).columns,
                                   placeholder="Seleccione columna",
                                   multi=multi

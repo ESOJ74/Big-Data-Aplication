@@ -12,6 +12,7 @@ from pages.functions_pages.drop_columns_button.drop_columns_button_css import *
 
 id_page = "drop_columns"
 
+create_callback_button_cover(id_page)
 
 create_single_dropdown(id_page, f"{id_page}_div_dropdown", style_selector)
 
@@ -80,5 +81,3 @@ def save_button(save, data):
         raise PreventUpdate
     return [columns, columns[0], data, 0]
     
-
-create_callback_button_cover(id_page)
