@@ -51,7 +51,7 @@ def create_param_drop(id_param, options, value):
                   [
                    html.H6(id_param, style=style_params),
                    my_div(style_selector_color, "",
-                          my_dropdown(f"{id_page}_{id_param}",{"background": "radial-gradient(circle farthest-side at top left, #00c8ff 0%, #00fff9 80%)"},
+                          my_dropdown(f"{id_page}_{id_param}",{"background": background_light},
                                       options=options,
                                       value=value,
                           ),

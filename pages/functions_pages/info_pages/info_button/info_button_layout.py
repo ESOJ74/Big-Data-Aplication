@@ -1,30 +1,28 @@
 from dash import Input, Output, State, callback, html
 from pandas import read_json
 
+from assets.common_css import background_dark, background_light
 from common_functions.create_functions_layout import create_functions_layout
 from my_dash.my_html.my_div import my_div
 
 style_div_content ={    
-    "height": "80%",
-    "width": "50%",
-    "background": "#acf4ed"
+    "text-align": "center",
+    "height": "100%",
 }
 
 style_div_title = {
-    "text-align": "center",
-    "background": "radial-gradient(circle farthest-side at bottom left, #347eb7 0%, #204765 30%, #04212c 95%)"
+    "background": background_dark
 }
 
 style_title = {
-    "font-weight": "bold",
-    "color": "#acf4ed"
+      "font-weight": "bold",
+      "color": "#acf4ed"
 }
 
-style_div_obj = {
-    "margin-left": "5%",
-    "width": "95%",
-    "height": "87%",
-    
+style_div_text = {
+    "height": "90%",
+    "overflow": "auto",
+    "background": background_light
 }
 
 id_page = "info"
@@ -69,10 +67,11 @@ def add_data_to_fig(n_clicks, data):
                            [
                             html.H5("DataFrame.info()",
                                    style=style_title),
-                            html.A("Documentacion",  href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.info.html",
-                                   target="_blank", style={"overflow": "auto"})
+                            html.A("Documentacion",
+                                   href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.info.html",
+                                   target="_blank")
                            ],
                     ),
-                    my_div(style_div_obj, "", html.Pre(texto, style={'width': '100%', 'height': '100%'})),
+                    html.Pre(texto, style=style_div_text),
                    ],
             ), ""]

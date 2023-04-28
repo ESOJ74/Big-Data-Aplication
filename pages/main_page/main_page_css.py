@@ -1,3 +1,5 @@
+from assets.common_css import background_light, background_dark
+
 style_div_main = {
     "position": "absolute",
     "left": "0px",
@@ -58,7 +60,7 @@ style_middle_panel = {
     "margin-top": "0.1%",
     "width": "100%",
     "height": "90.9%",
-    "background": "radial-gradient(circle farthest-side at bottom left, #347eb7 0%, #204765 30%, #04212c 95%)"
+    "background": background_dark
 }
 
 # Button Cover
@@ -140,7 +142,7 @@ style_div_1 = {
     "padding": "2px",
     "width": "100%",
     "height": "100%",
-    "background": "radial-gradient(circle farthest-side at top left, #00c8ff 0%, #00fff9 80%)"
+    "background": background_light
 }
 
 style_button = {       
@@ -224,7 +226,7 @@ style_div_buttons_info = {
     "width": "86%",
     "height": "20%",
     "padding": "5px",
-    "background": "radial-gradient(circle farthest-side at top left, #00c8ff 0%, #00fff9 80%)"
+    "background": background_light
 }
 
 style_div_3 = {    

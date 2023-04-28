@@ -1,3 +1,5 @@
+from assets.common_css import background_light
+
 style_div_main = {
     "position": "relative",
     "width": "90%",
@@ -109,7 +111,7 @@ style_title_db = {
 style_input = {
     "width": "9em",
     "font-size": "1vmax",
-    "background": "radial-gradient(circle farthest-side at top left, #00c8ff 0%, #00fff9 80%)",
+    "background": background_light,
     "border": "1px solid #020d11"
 }
 

@@ -1,5 +1,6 @@
 from dash import dcc, html
 
+from assets.common_css import background_dark, background_light
 from common_functions.common_functions_css import *
 from my_dash.my_dbc.my_button import my_button
 from my_dash.my_html.my_div import my_div
@@ -71,7 +72,7 @@ style_div_login = {
 style_input = {
     "width": "10em",
     "font-size": "1vmax",
-    "background": "radial-gradient(circle farthest-side at top left, #00c8ff 0%, #00fff9 80%)",
+    "background": background_light,
     "border": "1px solid #020d11",
     "color": "black"
 }
@@ -116,7 +117,7 @@ def user_login(id_page):
 
 def user_registry(id_page):
     return my_div({"position": "absolute", "top": "0%", "left": "0%", "width": "100%", "height": "100%",
-                   "background": "radial-gradient(circle farthest-side at bottom left, #347eb7 0%, #204765 30%, #04212c 95%)"}, "",
+                   "background": background_dark}, "",
                    my_div(style_div_regystry2, f"{id_page}_div_registry",
                           [
                            my_div({"margin-left": "4%"}, "", html.H2('Sign In'),),                  

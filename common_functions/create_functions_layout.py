@@ -6,7 +6,7 @@ from common_functions.common_functions_css import (style_div_content_functions,
 from my_dash.my_html.my_div import my_div
 
 
-def create_functions_layout(id_page, style_div_conten="", create_utils=""):
+def create_functions_layout(id_page, create_utils=""):
     return [
             dcc.Loading(
                 id="loading-2",

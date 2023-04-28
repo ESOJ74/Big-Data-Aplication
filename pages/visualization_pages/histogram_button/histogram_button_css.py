@@ -1,3 +1,5 @@
+from assets.common_css import background_utils
+
 style_selector = {
     "position": "relative",
     "top": "25%",
@@ -18,7 +20,7 @@ style_div_utils = {
     "height": "64%",    
     "color": "#012A32",
     "font-family": "Roboto, Helvetica, Arial, sans-serif",
-    "background": "linear-gradient(90deg, #04212c 0%, #165b92 2%, #2c81a9 8%, #04212c 97%)",
+    "background": background_utils,
 }
 
 style_div_input = {

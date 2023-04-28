@@ -1,3 +1,5 @@
+from assets.common_css import background_light, background_utils
+
 style_main_div = {   
     "margin-left": "2%",
     "width": "98%",
@@ -92,7 +94,7 @@ style_params_model_name = {
 style_input_model_name = {
     "margin-top": "3%",
     "width": "70%",
-    "background": "radial-gradient(circle farthest-side at top left, #00c8ff 0%, #00fff9 80%)",
+    "background": background_light,
     "color": "black"
 }
 
@@ -118,7 +120,7 @@ style_div_utils = {
     "color": "#012A32",
     "overflow-y": "auto",
     "font-family": "Roboto, Helvetica, Arial, sans-serif",
-    "background": "linear-gradient(90deg, #04212c 0%, #165b92 2%, #2c81a9 8%, #04212c 97%)",
+    "background": background_utils,
 }
 
 style_div_color = {
@@ -176,6 +178,6 @@ style_input = {
     "float": "left",
     "margin-left": "2%",
     "width": "15%",
-    "background": "radial-gradient(circle farthest-side at top left, #00c8ff 0%, #00fff9 80%)",
+    "background": background_light,
     "color": "black"
 }

@@ -33,7 +33,7 @@ def add_data_to_fig(n_clicks, data):
        return [
               my_div({"text-align": "center"}, "",
                      [
-                     my_div({"background": "radial-gradient(circle farthest-side at bottom left, #347eb7 0%, #204765 30%, #04212c 95%)"}, "",
+                     my_div({"background": background_dark}, "",
                             [
                                    html.H5("DataFrame.var()",
                                           style={"font-weight": "bold", "color": "#acf4ed"}),

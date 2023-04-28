@@ -1,10 +1,12 @@
+from assets.common_css import background_dark, background_utils, background_light
+
 # Create Utils
 style_div_utils = {    
     "width": "100%",
     "height": "100%",    
     "color": "#012A32",
     "font-family": "Roboto, Helvetica, Arial, sans-serif",
-    "background": "linear-gradient(90deg, #04212c 0%, #165b92 2%, #2c81a9 8%, #04212c 97%)",
+    "background": background_utils,
 }
 
 style_div_buttons = {
@@ -80,7 +82,7 @@ style_div_content ={
 }
 
 style_div_title = {
-    "background": "radial-gradient(circle farthest-side at bottom left, #347eb7 0%, #204765 30%, #04212c 95%)"
+    "background": background_dark
 }
 
 style_title = {
@@ -91,7 +93,7 @@ style_title = {
 style_div_obj = {
     "width": "100%",
     "height": "92%",
-    "background": "#acf4ed"
+    "background": background_light
 }
 
 style_msg = {    
