@@ -8,12 +8,13 @@ from common_functions.create_callback_button_cover import \
 from common_functions.create_content_up import create_single_dropdown
 from my_dash.my_dbc.my_button import my_button
 from my_dash.my_html.my_div import my_div
-from pages.functions_pages.groupby_button.groupby_button_css import *
+from assets.functions_css import *
 
 id_page = "groupby"
 
 
 create_single_dropdown(id_page, f"{id_page}_div_dropdown", style_selector, True)
+create_callback_button_cover(id_page)
 
 
 @callback(
@@ -35,7 +36,7 @@ def add_data_to_fig(value, data):
       Output(f"{id_page}_content", "children", allow_duplicate=True),
       Output("main_page_store", "data", allow_duplicate=True),
       Output(f"{id_page}_accept", "n_clicks"),
-      Output(f"{id_page}_groupby_loading", "children", allow_duplicate=True),
+      Output(f"{id_page}_loading", "children", allow_duplicate=True),
     ],
     Input(f"{id_page}_accept", "n_clicks"),
     [      
@@ -86,5 +87,3 @@ def save_button(save, data):
         raise PreventUpdate
     return [columns, columns[0], data, 0]
    
-
-create_callback_button_cover(id_page)

@@ -28,7 +28,7 @@ functions_info = list(map(lambda x: x + [style_button],
 
 functions = list(map(lambda x: x + [style_button],
                      [   
-    ["drop_columns_button", "Drop"],
+    ["drop_button", "Drop"],
     ["groupby_button", "Groupby"],
     ["funcion", "funcion"]
 ]))

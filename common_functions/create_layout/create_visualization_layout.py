@@ -1,7 +1,7 @@
 from dash import dcc, html
 
 from my_dash.my_html.my_div import my_div
-from common_functions.common_functions_css import *
+from assets.visualizations_css import *
 
 
 def create_visualization_layout(id_page, create_utils = "hola"):

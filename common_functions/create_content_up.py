@@ -3,7 +3,7 @@ from dash.dependencies import Input, Output, State
 from pandas import read_json
 from my_dash.my_html.my_div import my_div
 from my_dash.my_dcc.my_dropdown import my_dropdown
-from common_functions.common_functions_css import (style_div_selectors,
+from assets.visualizations_css import (style_div_selectors,
                                                    style_selector,
                                                    style_selector2)
 

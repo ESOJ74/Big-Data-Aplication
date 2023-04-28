@@ -77,27 +77,3 @@ style_selector_single = {
     "color": "black",
     "background": "radial-gradient(circle farthest-side at bottom left, #b0d8d3 0%, #051f28 95%",
 }
-
-
-
-# create_functions
-style_div_content_functions = {
-    "float": "left",
-    
-    "margin-top": "3%",
-    "margin-left": "5%",
-    "width": "80%",
-    "height": "80vmin",
-    "font-size": "1.2em",
-    "font-weight": "bold",
-    
-    "color": "#03353E",
-}
-
-style_div_utils_functions = {
-    "float": "left",
-    "margin-top": "3%",
-    "margin-left": "1%",
-    "width": "14%",
-    "height": "80vmin",
-}

@@ -8,12 +8,11 @@ from common_functions.create_callback_button_cover import \
 from common_functions.create_content_up import create_single_dropdown
 from my_dash.my_dbc.my_button import my_button
 from my_dash.my_html.my_div import my_div
-from pages.functions_pages.drop_columns_button.drop_columns_button_css import *
+from assets.functions_css import *
 
-id_page = "drop_columns"
+id_page = "drop"
 
 create_callback_button_cover(id_page)
-
 create_single_dropdown(id_page, f"{id_page}_div_dropdown", style_selector)
 
 
@@ -36,7 +35,7 @@ def add_data_to_fig(value, data):
       Output(f"{id_page}_content", "children", allow_duplicate=True),
       Output("main_page_store", "data", allow_duplicate=True),
       Output(f"{id_page}_accept", "n_clicks"),
-      Output(f"{id_page}_drop_loading", "children", allow_duplicate=True),
+      Output(f"{id_page}_loading", "children", allow_duplicate=True),
     ],
     Input(f"{id_page}_accept", "n_clicks"),
     [      
