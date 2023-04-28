@@ -5,34 +5,15 @@ from pandas import read_json, set_option
 from assets.templates import template_visualizations
 from common_functions.create_callback_button_cover import \
     create_callback_button_cover
+from common_functions.panel_params.create_callbacks_text_graph import \
+    create_callback_text_graph
 from my_dash.my_html.my_div import my_div
-from pages.functions_pages.info_pages.cov_button.cov_button_css import *
+from pages.functions_pages.info_pages.common_css import *
 
 id_page = "cov"
 
-
 create_callback_button_cover(id_page)
-
-
-@callback(
-        [
-         Output(f"{id_page}_text", "className"),
-         Output(f"{id_page}_graph", "className"),                 
-         Output(f"{id_page}_text", "n_clicks"),
-         Output(f"{id_page}_graph", "n_clicks")
-        ],
-        [
-         Input(f"{id_page}_text", "n_clicks"),
-         Input(f"{id_page}_graph", "n_clicks"),
-        ],
-        prevent_initial_call=True,)
-def first_callback(n_clicks_text, n_click_graph):
-    button_text = "btn btn-warning"
-    button_graph = "btn btn-outline-warning"
-    if n_click_graph:
-        button_text = "btn btn-outline-warning"
-        button_graph = "btn btn-warning"
-    return [button_text, button_graph, 0, 0]
+create_callback_text_graph(id_page)
 
 
 @callback(
@@ -75,31 +56,27 @@ def second_callback(n_clicks, n_clicks_text, n_click_graph, refresh, data,
        if state_text == "btn btn-warning":
            set_option('display.max_columns', 500)
            set_option('display.width', 1000)
-           obj = html.Pre(cov.__str__(), style=style_cov_text)
+           obj = html.Pre(cov.__str__(), style=style_text)
               
        if state_graph == "btn btn-warning":
           fig = px.imshow(cov, template=template_visualizations,
                           color_continuous_scale="earth", aspect="auto")
           obj = dcc.Graph(figure=fig, config={'displayModeBar': False, 'responsive': True},
-                          style={'width': '100%', 'height': '100%'})
-          
+                          style=style_graph)
        return [        
-              my_div(style_div_content, "",
-                     [
-                      my_div(style_div_title, "",
-                             [
-                              html.H5("DataFrame.cov()",
-                                      style=style_title),
-                              html.A("Documentacion",
-                                     href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.cov.html",
-                                     target="_blank")
-                             ],
-                      ),
-                      my_div(style_div_obj, "", obj)
-                     ],
-              ), ""]
+               my_div(style_div_content, "",
+                      [
+                       my_div(style_div_title, "",
+                              [
+                               html.H5("DataFrame.cov()", style=style_title),
+                               html.A("Documentacion",
+                                      href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.cov.html",
+                                      target="_blank")
+                              ],
+                       ),
+                       my_div(style_div_obj, "", obj)
+                      ],
+               ), ""
+              ]         
     except ValueError as msg:
-        return [
-                html.H6(msg.__str__(),
-                        style=style_msg),
-                ""]
+        return [html.H6(msg.__str__(), style=style_msg), ""]

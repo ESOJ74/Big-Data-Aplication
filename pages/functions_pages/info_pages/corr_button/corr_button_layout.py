@@ -1,6 +1,7 @@
-from common_functions.create_layout.create_functions_layout import create_functions_layout
-from pages.functions_pages.info_pages.corr_button.corr_button_callbacks import *
+from common_functions.create_layout.create_functions_layout import \
+    create_functions_layout
 from common_functions.panel_params.create_panel_params import *
+from pages.functions_pages.info_pages.corr_button.corr_button_callbacks import *
 
 id_page = "corr"
 

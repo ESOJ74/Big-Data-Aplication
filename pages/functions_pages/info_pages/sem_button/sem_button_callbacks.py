@@ -6,34 +6,16 @@ from pandas import read_json
 from assets.templates import template_visualizations
 from common_functions.create_callback_button_cover import \
     create_callback_button_cover
+from common_functions.panel_params.create_callbacks_text_graph import \
+    create_callback_text_graph
 from my_dash.my_html.my_div import my_div
-from pages.functions_pages.info_pages.sem_button.sem_button_css import *
+from pages.functions_pages.info_pages.common_css import *
 
 id_page = "sem"
 
 
 create_callback_button_cover(id_page)
-
-
-@callback(
-        [
-         Output(f"{id_page}_text", "className"),
-         Output(f"{id_page}_graph", "className"),                 
-         Output(f"{id_page}_text", "n_clicks"),
-         Output(f"{id_page}_graph", "n_clicks")
-        ],
-        [
-         Input(f"{id_page}_text", "n_clicks"),
-         Input(f"{id_page}_graph", "n_clicks"),
-        ],
-        prevent_initial_call=True,)
-def first_callback(n_clicks_text, n_click_graph):
-    button_text = "btn btn-warning"
-    button_graph = "btn btn-outline-warning"
-    if n_click_graph:
-        button_text = "btn btn-outline-warning"
-        button_graph = "btn btn-warning"
-    return [button_text, button_graph, 0, 0]
+create_callback_text_graph(id_page)
 
 
 @callback(
@@ -50,8 +32,7 @@ def first_callback(n_clicks_text, n_click_graph):
         [
          State("main_page_store", "data"),
          State(f"{id_page}_text", "className"),
-         State(f"{id_page}_graph", "className"),
-         
+         State(f"{id_page}_graph", "className"),         
          State(f"{id_page}_axis", "value"),
          State(f"{id_page}_skipna", "value"),
          State(f"{id_page}_ddof", "value"),
@@ -79,22 +60,25 @@ def second_callback(n_clicks, n_clicks_text, n_click_graph, refresh, data,
        else:
            state_numeric_only = False
 
-       sem = read_json(data["df"]).sem(state_axis, state_skipna, state_ddof, state_numeric_only)
+       sem = read_json(data["df"]).sem(state_axis,
+                                       state_skipna,
+                                       state_ddof,
+                                       state_numeric_only)
        
        sem_info = sem
        if type(sem_info) != float64:
            sem_info = sem_info.to_string()      
        
-       obj = html.Pre(sem_info, style=style_sem_text)  
+       obj = html.Pre(sem_info, style=style_text)  
             
        if state_graph == "btn btn-warning":
           if state_axis == 0:
               fig = px.bar(x=sem.index, y=sem.values, labels={"x": "Columns", "y": "unbiased standard error of the mean"},
                            template=template_visualizations)
               obj = dcc.Graph(figure=fig, config={"displayModeBar": False, "responsive": True},
-                              style={"width": "100%", "height": "100%"})
+                              style=style_graph)
           else:
-              obj = html.Pre("Gráfico disponible solo para axis=0", style=style_sem_text)           
+              obj = html.Pre("Gráfico disponible solo para axis=0", style=style_text)           
           
        return [        
               my_div(style_div_content, "",

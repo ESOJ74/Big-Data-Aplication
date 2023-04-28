@@ -26,13 +26,15 @@ style_div_color = {
 
 style_params = {
     "float": "left",
+    "width": "50%",
     "color": "#acf4ed"
 }
 
 style_input = {
     "float": "left",
     "margin-left": "2%",
-    "width": "15%",
+    "margin-bottom": "4%",
+    "width": "45%",
     "background": background_light,
     "color": "black"
 }
@@ -76,13 +78,13 @@ def create_param_drop(id_page, id_param, options, value):
                    )                                           
                   ])
 
-def create_param_input(id_page, id_param):
+def create_param_input(id_page, id_param, value=1):
     return my_div({"margin-left": "5%"}, "",
                   [
-                   html.H6("min_periods", style=style_params),
+                   html.H6(id_param, style=style_params),
                    dcc.Input(id=f"{id_page}_{id_param}",
                              style=style_input,
-                             value=1,
+                             value=value,
                    ),
                   ])
 

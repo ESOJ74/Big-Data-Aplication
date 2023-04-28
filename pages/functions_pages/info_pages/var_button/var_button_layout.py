@@ -1,53 +1,19 @@
-from dash import Input, Output, State, callback, html
-from pandas import read_json
-
-from common_functions.create_layout.create_functions_layout import create_functions_layout
-from my_dash.my_html.my_div import my_div
-
-style_div_content = {
-    "position": "relative",
-    "top": "1%",
-    "left": "30%",
-    "width": "25%",
-    "font-size": "1.2em",
-    "font-weight": "bold",
-    "background": "#C5F4FD",
-    "color": "#03353E",   
-}
+from common_functions.create_layout.create_functions_layout import \
+    create_functions_layout
+from common_functions.panel_params.create_panel_params import *
+from pages.functions_pages.info_pages.var_button.var_button_callbacks import *
 
 id_page = "var"
 
-layout = create_functions_layout(id_page, style_div_content)
+params_utils = [
+                create_param_buttons_text_graph(id_page),
+                html.H4("Params", style=style_div_params),  
+                create_param_drop(id_page, "axis", [0, 1], 0),
+                create_param_drop(id_page, "skipna", ["True", "False"], "True"),
+                create_param_drop(id_page, "numeric_only", ["True", "False"], "False"),                 
+                create_param_input(id_page, "ddof"),
+                create_buttom_refresh(id_page)
+               ]
 
-
-@callback(
-        [
-         Output(f"{id_page}_content", "children"),
-         Output(f"{id_page}_loading", "children", allow_duplicate=True),
-        ],
-        Input("var_button", "n_clicks"),
-        State("main_page_store", "data"),
-    prevent_initial_call=True,)
-def add_data_to_fig(n_clicks, data):     
-    try:
-       return [
-              my_div({"text-align": "center"}, "",
-                     [
-                     my_div({"background": background_dark}, "",
-                            [
-                                   html.H5("DataFrame.var()",
-                                          style={"font-weight": "bold", "color": "#acf4ed"}),
-                                   html.A("Documentacion",  href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.var.html",
-                                          target="_blank")
-                            ],
-                     ),
-                     my_div({}, "",
-                            html.Pre(read_json(data["df"]).var().__str__())
-                     ),
-                     ],
-              ), ""]
-    except TypeError as msg:
-        return [
-                html.H6(msg.__str__(),
-                        style={"background": "#060606", "color": "#acf4ed"}),
-                ""]
+layout = create_functions_layout(id_page, create_utils=my_div(style_div_utils,
+                                                              "", params_utils))

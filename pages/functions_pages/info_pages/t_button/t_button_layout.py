@@ -1,25 +1,21 @@
 import os
 
 from dash import Input, Output, State, callback, html
-from pandas import read_json, read_csv
+from pandas import read_csv, read_json
 
 from common_functions.create_agGrid import create_adgrid
 from common_functions.create_callback_button_cover import \
     create_callback_button_cover
-from common_functions.create_layout.create_functions_layout import create_functions_layout
-
-style_div_content = {
-    "position": "relative",
-    "top": "-1vmax",
-    "left": "3%",
-    "width": "95%",
-    "font-size": "1.2em",
-    "font-weight": "bold",
-}
+from common_functions.create_layout.create_functions_layout import \
+    create_functions_layout
+from my_dash.my_html.my_div import my_div
+from pages.functions_pages.info_pages.common_css import *
 
 id_page = "t"
 
-layout = create_functions_layout(id_page, style_div_content)
+layout = create_functions_layout(id_page)
+
+create_callback_button_cover(id_page)
 
 
 @callback(
@@ -33,7 +29,7 @@ layout = create_functions_layout(id_page, style_div_content)
 def add_data_to_fig(n_clicks, data):     
     obj = []
     try:        
-        df = read_json(data["df"]).head(10).T.reset_index()        
+        df = read_json(data["df"]).head(15).T.reset_index()        
         df.rename(columns={'index': 'columns'}, inplace=True)
         df.to_csv("tmp.csv", index=False)
         df = read_csv("tmp.csv")    
@@ -43,7 +39,19 @@ def add_data_to_fig(n_clicks, data):
     except (TypeError, KeyError, ValueError):
         obj = [html.H6('No hay ningún DataFrame Cargado',
                        style={"margin-left": "20%", "color": "#b0d8d3"}), True]
-    return obj
-
-
-create_callback_button_cover(id_page)
+    return [        
+               my_div(style_div_content, "",
+                      [
+                       my_div(style_div_title, "",
+                              [
+                               html.H5("DataFrame.T()",
+                                       style=style_title),
+                               html.A("Documentacion",
+                                      href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.T.html",
+                                      target="_blank")
+                              ],
+                       ),
+                       my_div(style_div_obj2, "", obj)
+                      ],
+               ), ""
+              ]

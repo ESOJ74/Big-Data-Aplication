@@ -2,10 +2,12 @@ from dash import Input, Output, State, callback, html
 from pandas import read_json
 
 from assets.common_css import background_dark, background_light
-from common_functions.create_layout.create_functions_layout import create_functions_layout
+from common_functions.create_layout.create_functions_layout import \
+    create_functions_layout
 from my_dash.my_html.my_div import my_div
+from pages.functions_pages.info_pages.common_css import *
 
-style_div_content ={    
+'''style_div_content ={    
     "text-align": "center",
     "height": "100%",
 }
@@ -23,8 +25,8 @@ style_div_text = {
     "height": "90%",
     "overflow": "auto",
     "background": background_light
-}
-
+}'''
+{"position": "relative", "left": "1%", "top": "10%", "width": "98%"}
 id_page = "info"
 
 layout = create_functions_layout(id_page)
@@ -60,18 +62,21 @@ def add_data_to_fig(n_clicks, data):
     
     texto +=  "\n" + f"dtypes: {', '.join([f'{key}({list_dtypes[key]})' for key in  list_dtypes])}" +\
               "\n" + f"memory usage: {df.memory_usage(index=False).sum() / 1000} KB"
+    
     return [
             my_div(style_div_content, "",
                    [
                     my_div(style_div_title, "",
                            [
-                            html.H5("DataFrame.info()",
-                                   style=style_title),
+                            html.H5("DataFrame.info()", style=style_title),
                             html.A("Documentacion",
-                                   href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.info.html",
-                                   target="_blank")
+                                    href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.describe.html",
+                                    target="_blank")
                            ],
                     ),
-                    html.Pre(texto, style=style_div_text),
+                    my_div(style_div_obj, "",
+                           html.Pre(texto, style=style_text),
+                    ),
                    ],
             ), ""]
+    
