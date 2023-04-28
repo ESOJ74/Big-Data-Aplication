@@ -9,13 +9,18 @@ from common_functions.common_div_utils import color_options, refresh_button
 from common_functions.create_callback_button_cover import \
     create_callback_button_cover
 from common_functions.create_content_up import create_double_dropdown
-from pages.visualization_pages.bar_button.bar_button_css import *
 
 id_page = "bar_button"
 
 
 # Panel content_up (dropdown)
 create_double_dropdown(id_page)
+# color options
+color_options(id_page)
+# refresh button
+refresh_button(id_page)
+
+create_callback_button_cover(id_page, f"{id_page}_content_middle")
 
 
 # Panel content_middle
@@ -66,12 +71,3 @@ def display_page(
         obj = [dcc.Graph(figure=fig)]               
     return [obj, "", button_cover_hidden]
                   
-
-# color options
-color_options(id_page)
-
-
-# refresh button
-refresh_button(id_page)
-
-create_callback_button_cover(id_page, f"{id_page}_content_middle")

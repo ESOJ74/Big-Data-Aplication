@@ -9,14 +9,19 @@ from common_functions.common_div_utils import color_options, refresh_button
 from common_functions.create_callback_button_cover import \
     create_callback_button_cover
 from common_functions.create_content_up import create_single_dropdown
-from pages.visualization_pages.histogram_button.histogram_button_css import *
+from assets.visualizations_css import style_selector
 
 id_page = "histogram"
 
 
 # Panel content_up (dropdown)
 create_single_dropdown(id_page, f"{id_page}_content_up", style_selector)
+# color options
+color_options(id_page)
+# refresh button
+refresh_button(id_page)
 
+create_callback_button_cover(id_page, f"{id_page}_content_middle")
 
 # Panel content_middle
 @callback([
@@ -59,14 +64,3 @@ def display_page(
         obj = [dcc.Graph(figure=fig)]    
                  
     return [obj, ""]
-
-
-# color options
-color_options(id_page)
-
-
-# refresh button
-refresh_button(id_page)
-
-
-create_callback_button_cover(id_page, f"{id_page}_content_middle")

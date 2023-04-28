@@ -16,7 +16,7 @@ layout = my_div(style_div_main, "",
                         [
                          my_div(style_selector, "",
                                 my_dropdown(f"{id_page}_dropdown",
-                                            {"background": "radial-gradient(circle farthest-side at bottom left, #6da9d8 0%, #204765 50%, #04212c 95%)"},
+                                            {"background": background_in_dropdown},
                                             list_of_format,
                                             value="To CSV",
                                             placeholder="Select format"

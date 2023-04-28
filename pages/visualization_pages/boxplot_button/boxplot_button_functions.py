@@ -3,24 +3,9 @@ from dash import html
 from my_dash.my_dbc.my_button import my_button
 from my_dash.my_dcc.my_dropdown import my_dropdown
 from my_dash.my_html.my_div import my_div
-from pages.visualization_pages.boxplot_button.boxplot_button_css import *
+from assets.visualizations_css import *
 
 id_page = "boxplot_button"
-
-s_utils = {
-    "position": "relative",
-    "top": "10%",
-    "width": "100%",
-    "height": "50%",
-    "background": "#95D3DE",
-    "font-family": "Roboto, Helvetica, Arial, sans-serif",
-}
-
-style_div_input = {
-    "margin-left": "2%",
-    "font-weight": "bold",
-    "color": "#012A32"
-}
 
 
 def create_utils(id_page):

@@ -1,8 +1,8 @@
-import numpy as np
 from dash import dcc, html
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
 
+from assets.common_css import background_in_dropdown
 from my_dash.my_dbc.my_button import my_button
 from my_dash.my_dcc.my_dropdown import my_dropdown
 from my_dash.my_html.my_div import my_div
@@ -19,7 +19,7 @@ def create_content_up(columns):
                            ),                  
                            my_div(style_selector, "",
                                   my_dropdown(f"{id_page}_dropdown_x",
-                                              {"background": "radial-gradient(circle farthest-side at bottom left, #6da9d8 0%, #204765 50%, #04212c 95%)"},
+                                              {"background": background_in_dropdown},
                                               columns,
                                               value=columns[-1]
                                   ),

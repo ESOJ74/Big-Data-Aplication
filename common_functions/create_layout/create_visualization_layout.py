@@ -24,5 +24,5 @@ def create_visualization_layout(id_page, create_utils = "hola"):
                            my_div(style_div_content_down, f"{id_page}_content_down"),
                           ]
                    ),
-                   my_div(style_div_utils, f"{id_page}_utils", create_utils)
+                   my_div(style_content_utils, f"{id_page}_utils", create_utils)
                   ])

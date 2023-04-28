@@ -1,8 +1,7 @@
 from dash import dcc, html
 
 from my_dash.my_html.my_div import my_div
-from assets.functions_css import *
-from assets.visualizations_css import *
+from assets.models_css import *
 
 def create_models_layout(id_page, create_utils):
     return my_div(style_main_div, "",

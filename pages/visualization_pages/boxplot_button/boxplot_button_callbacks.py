@@ -11,10 +11,18 @@ from common_functions.common_div_utils import (color_options,
 from common_functions.create_callback_button_cover import \
     create_callback_button_cover
 from my_dash.my_html.my_div import my_div
-from pages.visualization_pages.boxplot_button.boxplot_button_css import *
+from assets.visualizations_css import style_div_selectors
 
 id_page = "boxplot_button"
 
+# color options
+color_options(id_page)
+# refresh button
+refresh_button(id_page)
+# hover data options 
+hover_data_options(id_page)
+
+create_callback_button_cover(id_page, f"{id_page}_content_middle")
 
 # Panel content_up (dropdown)
 @callback(Output(f"{id_page}_content_up", "children"),
@@ -137,19 +145,3 @@ def display_page(
         obj = [dcc.Graph(figure=fig)]               
 
     return [obj, ""]
-
-       
-
-# color options
-color_options(id_page)
-
-
-# refresh button
-refresh_button(id_page)
-
-
-# hover data options 
-hover_data_options(id_page)
-
-
-create_callback_button_cover(id_page, f"{id_page}_content_middle")

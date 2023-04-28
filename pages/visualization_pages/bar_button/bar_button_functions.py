@@ -1,9 +1,9 @@
-from dash import dcc, html
+from dash import html
 
 from my_dash.my_dbc.my_button import my_button
 from my_dash.my_dcc.my_dropdown import my_dropdown
 from my_dash.my_html.my_div import my_div
-from pages.visualization_pages.bar_button.bar_button_css import *
+from assets.visualizations_css import *
 
 id_page = "bar_button"
 
