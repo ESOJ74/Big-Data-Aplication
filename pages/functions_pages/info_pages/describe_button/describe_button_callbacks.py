@@ -1,8 +1,7 @@
 import numpy as np
-from dash import Input, Output, State, callback, dcc, html
+from dash import Input, Output, State, callback, html
 from pandas import read_json, set_option
 
-from assets.common_css import background_dark, background_light
 from common_functions.create_callback_button_cover import \
     create_callback_button_cover
 from my_dash.my_dbc.my_button import my_button

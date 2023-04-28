@@ -1,32 +1,11 @@
 from dash import Input, Output, State, callback, html
 from pandas import read_json
 
-from assets.common_css import background_dark, background_light
 from common_functions.create_layout.create_functions_layout import \
     create_functions_layout
 from my_dash.my_html.my_div import my_div
 from pages.functions_pages.info_pages.common_css import *
 
-'''style_div_content ={    
-    "text-align": "center",
-    "height": "100%",
-}
-
-style_div_title = {
-    "background": background_dark
-}
-
-style_title = {
-      "font-weight": "bold",
-      "color": "#acf4ed"
-}
-
-style_div_text = {
-    "height": "90%",
-    "overflow": "auto",
-    "background": background_light
-}'''
-{"position": "relative", "left": "1%", "top": "10%", "width": "98%"}
 id_page = "info"
 
 layout = create_functions_layout(id_page)
