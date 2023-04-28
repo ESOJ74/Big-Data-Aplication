@@ -1,11 +1,11 @@
-from dash import dcc, html
+from dash import html
 
 from my_dash.my_dbc.my_button import my_button
 from my_dash.my_dcc.my_dropdown import my_dropdown
 from my_dash.my_html.my_div import my_div
-from pages.functions_pages.sem_button.sem_button_css import *
+from pages.functions_pages.info_pages.kurt_button.kurt_button_css import *
 
-id_page = "sem"
+id_page = "kurt"
 
 def create_param_drop(id_param, options, value):
     return my_div(style_div_color, "", 
@@ -33,18 +33,9 @@ def create_utils(id_page):
                           ]
                    ),
                    html.H4("Params", style=style_div_params), 
-                   create_param_drop("axis", [0, 1], 0),
+                   create_param_drop("axis", ["", 0, 1], 0),
                    create_param_drop("skipna", ["True", "False"], "True"),
-                   create_param_drop("numeric_only", ["True", "False"], "False"), 
-                   my_div({"margin-left": "5%", "height" :"14%"}, "",
-                          [
-                           html.H6("ddof", style=style_params),
-                           dcc.Input(id=f"{id_page}_ddof",
-                                     style=style_input,
-                                     value=1,
-                           ),
-                          ]
-                   ),                 
+                   create_param_drop("numeric_only", ["True", "False"], "False"),                   
                    my_button(f"{id_page}_refresh", "Refresh", style_button_refresh,
                              className="btn btn-outline-warning", color="black"),            
                  ]

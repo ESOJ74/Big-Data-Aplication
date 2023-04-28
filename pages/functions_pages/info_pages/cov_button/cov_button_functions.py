@@ -3,7 +3,7 @@ from dash import dcc, html
 from my_dash.my_dbc.my_button import my_button
 from my_dash.my_dcc.my_dropdown import my_dropdown
 from my_dash.my_html.my_div import my_div
-from pages.functions_pages.cov_button.cov_button_css import *
+from pages.functions_pages.info_pages.cov_button.cov_button_css import *
 
 id_page = "cov"
 

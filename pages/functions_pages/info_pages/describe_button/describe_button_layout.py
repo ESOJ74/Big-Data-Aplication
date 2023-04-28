@@ -5,7 +5,7 @@ from common_functions.create_callback_button_cover import \
     create_callback_button_cover
 from common_functions.create_functions_layout import create_functions_layout
 from my_dash.my_html.my_div import my_div
-from pages.functions_pages.describe_button.describe_button_functions import \
+from pages.functions_pages.info_pages.describe_button.describe_button_functions import \
     create_utils
 import numpy as np
 

@@ -1,14 +1,15 @@
 import plotly.express as px
 from dash import Input, Output, State, callback, dcc, html
-from pandas import read_json, set_option
+from numpy import float64
+from pandas import read_json
 
 from assets.templates import template_visualizations
 from common_functions.create_callback_button_cover import \
     create_callback_button_cover
 from my_dash.my_html.my_div import my_div
-from pages.functions_pages.cov_button.cov_button_css import *
+from pages.functions_pages.info_pages.kurt_button.kurt_button_css import *
 
-id_page = "cov"
+id_page = "kurt"
 
 
 create_callback_button_cover(id_page)
@@ -41,7 +42,7 @@ def first_callback(n_clicks_text, n_click_graph):
          Output(f"{id_page}_loading", "children", allow_duplicate=True), 
         ],
         [
-         Input("cov_button", "n_clicks"),
+         Input("kurt_button", "n_clicks"),
          Input(f"{id_page}_text", "className"),
          Input(f"{id_page}_graph", "className"),
          Input(f"{id_page}_refresh", "n_clicks")
@@ -51,54 +52,69 @@ def first_callback(n_clicks_text, n_click_graph):
          State(f"{id_page}_text", "className"),
          State(f"{id_page}_graph", "className"),
          
-         State(f"{id_page}_ddof", "value"),
+         State(f"{id_page}_axis", "value"),
+         State(f"{id_page}_skipna", "value"),
          State(f"{id_page}_numeric_only", "value"),
-         State(f"{id_page}_min_periods", "value"),
         ],
         prevent_initial_call=True,)
 def second_callback(n_clicks, n_clicks_text, n_click_graph, refresh, data,
-                    state_text, state_graph, state_ddof, state_numeric_only,
-                    state_min_periods):    
+                    state_text, state_graph, state_axis, state_skipna,
+                    state_numeric_only):    
     
     try: 
-       obj = ""     
-       if state_min_periods: 
-           state_min_periods = int(state_min_periods)
+       obj = ""   
+
+       if type(state_axis) != int:
+           state_axis = None
+
+       if state_skipna == "True":
+           state_skipna = True
+       else:
+           state_skipna = False
 
        if state_numeric_only == "True":
            state_numeric_only = True
        else:
            state_numeric_only = False
 
-       cov = read_json(data["df"]).cov(state_min_periods, state_ddof, state_numeric_only)
+       kurt = read_json(data["df"]).kurt(state_axis, state_skipna, state_numeric_only)
+       
+       kurt_info = kurt
+       if type(kurt_info) != float64:
+           kurt_info = kurt_info.to_string()
 
-       if state_text == "btn btn-warning":
-           set_option('display.max_columns', 500)
-           set_option('display.width', 1000)
-           obj = html.Pre(cov.__str__(), style=style_cov_text)
-              
+       #if state_text == "btn btn-warning":          
+           
+       if state_axis not in (1, 0):
+           kurt_info = f"Agregación en ambos ejes: {kurt_info}"
+       obj = html.Pre(kurt_info, style=style_kurt_text)  
+            
        if state_graph == "btn btn-warning":
-          fig = px.imshow(cov, template=template_visualizations,
-                          color_continuous_scale="earth", aspect="auto")
-          obj = dcc.Graph(figure=fig, config={'displayModeBar': False, 'responsive': True},
-                          style={'width': '100%', 'height': '100%'})
+          if state_axis == 0:
+              fig = px.bar(x=kurt.index, y=kurt.values, labels={"x": "Columns", "y": "unbiased kurtosis"},
+                           template=template_visualizations,)
+              obj = dcc.Graph(figure=fig, config={"displayModeBar": False, "responsive": True},
+                              style={"width": "100%", "height": "100%"})
+          else:
+              obj = html.Pre("Gráfico disponible solo para axis=0", style=style_kurt_text) 
+          
           
        return [        
               my_div(style_div_content, "",
                      [
                       my_div(style_div_title, "",
                              [
-                              html.H5("DataFrame.cov()",
+                              html.H5("DataFrame.kurt()",
                                       style=style_title),
                               html.A("Documentacion",
-                                     href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.cov.html",
+                                     href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.kurt.html",
                                      target="_blank")
                              ],
                       ),
                       my_div(style_div_obj, "", obj)
                      ],
               ), ""]
-    except ValueError as msg:
+    except (ValueError, TypeError) as msg:
         return [
                 html.H6(msg.__str__(),
                         style=style_msg),

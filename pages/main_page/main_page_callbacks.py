@@ -101,9 +101,9 @@ def auth_display(n_clicks, reg_user, reg_pass):
             reg_answer =  "Usuario no registrado"
     return [left_hidden, registry_hidden, data, user_div, sesion_div, reg_answer] 
 
-create_callback(buttons_data, "i_o_pages")
-create_callback(buttons, "i_o_pages")
+create_callback(buttons_data, "dataframe_pages.data_pages")
+create_callback(buttons, "dataframe_pages")
 create_callback(visualizations, "visualization_pages", "Visualización")
 create_callback(functions, "functions_pages", "Función")
-create_callback(functions_info, "functions_pages", "Función")
+create_callback(functions_info, "functions_pages.info_pages", "Función")
 create_callback(models, "models_pages", "Modelo")
