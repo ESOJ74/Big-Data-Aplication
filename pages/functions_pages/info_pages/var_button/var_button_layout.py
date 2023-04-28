@@ -1,7 +1,7 @@
 from dash import Input, Output, State, callback, html
 from pandas import read_json
 
-from common_functions.create_functions_layout import create_functions_layout
+from common_functions.create_layout.create_functions_layout import create_functions_layout
 from my_dash.my_html.my_div import my_div
 
 style_div_content = {

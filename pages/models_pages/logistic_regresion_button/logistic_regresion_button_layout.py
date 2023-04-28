@@ -1,6 +1,6 @@
 from dash import dcc, html
 
-from common_functions.create_models_layout import create_models_layout
+from common_functions.create_layout.create_models_layout import create_models_layout
 from my_dash.my_html.my_div import my_div
 from pages.models_pages.logistic_regresion_button.logistic_regresion_button_callbacks import *
 from pages.models_pages.logistic_regresion_button.logistic_regresion_button_css import *
