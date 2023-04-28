@@ -81,10 +81,10 @@ def load_data(accept, input_value, data):
             path = f"""users/{data["user"]}/data/{input_value}"""  
             data["df"] = read_data(input_value.split('.')[-1], path)         
             load_data_content = html.H6("DataFrame Cargado",
-                                        style={"color": "#acf4ed"})             
+                                        style={"color": "#acf4ed", "margin-top": "8%"})             
         else:
             load_data_content = html.H6("No tiene Archivos guardados",
-                                        style={"color": "#acf4ed"}) 
+                                        style={"color": "#acf4ed", "margin-top": "8%"}) 
     else:
         raise PreventUpdate   
     return [data, load_data_content, False]

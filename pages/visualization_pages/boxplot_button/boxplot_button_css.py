@@ -1,4 +1,4 @@
-from assets.common_css import background_utils
+from assets.common_css import background_utils, background_dropdown
 
 style_div_selectors = {
     "position": "relative",
@@ -18,7 +18,7 @@ style_selector = {
     "padding": "2px 2px 0px 2px",
     "font-size": "1em",
     "color": "black",
-    "background": "radial-gradient(circle farthest-side at bottom left, #b0d8d3 0%, #051f28 95%",
+    "background": background_dropdown,
 }
 
 style_selector2 = style_selector.copy()

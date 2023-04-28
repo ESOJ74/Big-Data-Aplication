@@ -1,4 +1,4 @@
-from assets.common_css import background_light
+from assets.common_css import background_light, background_dropdown, background_in_dropdown
 
 style_div_main = {
     "position": "relative",
@@ -33,7 +33,7 @@ style_div_titles = {
 
 style_div_dropdown_archivos = {
     "position": "relative",
-    "top": "11%",
+    "top": "12%",
     "left": "3%",
     "width": "30%",
     "height": "10%",
@@ -63,13 +63,14 @@ s_selector_arch = {
 
 style_selector = {        
     "margin-top": "2%",   
+    "margin-left": "2%",
     "width": "11vmax",
-    "height": "2.8em",
+    "height": "2.7em",
     "border-radius": "7px 7px 5px 5px",
     "padding": "2px 2px 0px 2px",
     "font-size": "1em",
     "color": "black",
-    "background": "radial-gradient(circle farthest-side at bottom left, #b0d8d3 0%, #051f28 95%",
+    "background": background_dropdown,
 }
 
 s_selector_db = {     
@@ -92,14 +93,15 @@ style_boton_files = {
 }
 
 style_boton_aceptar = {    
-    "margin-top": "1%",
-    "margin-left": "0%",
+    "margin-top": "2%",
+    "margin-left": "2%",
+    "margin-bottom": "5%",
     "font-size": "75%",
     "font-family": "Roboto, Helvetica, Arial, sans-serif"
 }
 
 style_div_load_data_content = {
-    "margin-top": "7%",
+    "margin-top": "10%",
     "margin-left": "3.5%",
 }
 
