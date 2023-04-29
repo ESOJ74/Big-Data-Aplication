@@ -66,7 +66,8 @@ def load_data(drop_dir, data):
 @callback([
            Output("main_page_store", "data", allow_duplicate=True),
            Output(f"{id_page}_content", "children"),
-           Output(f"main_page_div_functions", "hidden"),        
+           Output(f"main_page_div_functions", "hidden"),    
+           Output(f"main_page_div_data", "hidden", allow_duplicate=True),    
           ],
           Input(f"{id_page}_aceptar", "n_clicks"),
           [
@@ -74,20 +75,22 @@ def load_data(drop_dir, data):
            State("main_page_store", "data")
           ],
           prevent_initial_call=True)
-def load_data(accept, input_value, data): 
-    
+def load_data(accept, input_value, data):     
+
     if accept:
         if input_value is not None and len(input_value) > 0:
             path = f"""users/{data["user"]}/data/{input_value}"""  
             data["df"] = read_data(input_value.split('.')[-1], path)         
             load_data_content = html.H6("DataFrame Cargado",
-                                        style={"color": "#acf4ed", "margin-top": "8%"})             
+                                        style={"color": "#acf4ed", "margin-top": "8%"})     
+            div_data_hidden = True        
         else:
             load_data_content = html.H6("No tiene Archivos guardados",
                                         style={"color": "#acf4ed", "margin-top": "8%"}) 
+            div_data_hidden = False
     else:
         raise PreventUpdate   
-    return [data, load_data_content, False]
+    return [data, load_data_content, False, div_data_hidden]
 
 
 #up_file from local

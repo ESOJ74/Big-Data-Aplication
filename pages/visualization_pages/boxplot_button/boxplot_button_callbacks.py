@@ -4,7 +4,7 @@ from dash.dependencies import Input, Output, State
 from pandas import read_json
 from plotly.colors import sequential
 
-from assets.templates import template_visualizations
+from assets.templates_plotly import template_visualizations
 from common_functions.common_div_utils import (color_options,
                                                hover_data_options,
                                                refresh_button)

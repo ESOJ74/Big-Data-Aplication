@@ -43,8 +43,9 @@ create_callback(models, "models_pages", "Modelo")
            Output(f"{id_page}_div_data", "hidden"),
            Output(f"{id_page}_div_buttons_info", "hidden"),
            Output(f"{id_page}_div_buttons", "hidden"),
+           Output(f"{id_page}_div_functions", "hidden", allow_duplicate=True),
            Output(f"{id_page}_button_data", "n_clicks"),
-           Output(f"{id_page}_button_drop_info","n_clicks"),
+           Output(f"{id_page}_button_drop_info","n_clicks"),           
           ],
           [
            Input(f"{id_page}_button_data", "n_clicks"),
@@ -56,10 +57,11 @@ create_callback(models, "models_pages", "Modelo")
           ],
           prevent_initial_call=True,)
 def auth_display(click_data, clink_info, state_hidden_data, state_hidden_info):    
-   
+    div_functions = False
     if click_data:
         state_hidden_data = not state_hidden_data
         state_hidden_info = True
+        div_functions = True
         
     if clink_info:
         state_hidden_info = not state_hidden_info
@@ -67,7 +69,7 @@ def auth_display(click_data, clink_info, state_hidden_data, state_hidden_info):
     state_hiden_button = True
     if state_hidden_info == True:
         state_hiden_button = False
-    return [state_hidden_data, state_hidden_info, state_hiden_button, 0, 0]
+    return [state_hidden_data, state_hidden_info, state_hiden_button, div_functions, 0, 0]
 
 
 @callback([

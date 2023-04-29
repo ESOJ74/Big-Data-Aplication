@@ -3,7 +3,7 @@ from dash import Input, Output, State, callback, dcc, html
 from numpy import float64
 from pandas import read_json
 
-from assets.templates import template_visualizations
+from assets.templates_plotly import template_visualizations
 from common_functions.create_callback_button_cover import \
     create_callback_button_cover
 from common_functions.create_layout.create_functions_layout import \
