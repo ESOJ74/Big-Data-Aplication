@@ -8,7 +8,7 @@ from dash.exceptions import PreventUpdate
 from pandas import read_sql
 from sqlalchemy import create_engine
 
-from my_dash.my_html.my_div import my_div
+from assets.my_dash.my_html.my_div import my_div
 from pages.dataframe_pages.data_pages.load_data_button.load_data_button_functions import \
     read_data
 

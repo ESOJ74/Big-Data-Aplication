@@ -4,7 +4,7 @@ from pandas import read_json
 from common_functions.create_agGrid import create_adgrid
 from common_functions.create_callback_button_cover import \
     create_callback_button_cover
-from my_dash.my_dbc.my_button import my_button
+from assets.my_dash.my_dbc.my_button import my_button
 
 style_boton_files = {  
     "margin-left": "1%",

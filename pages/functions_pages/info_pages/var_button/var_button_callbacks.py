@@ -10,7 +10,7 @@ from common_functions.create_layout.create_functions_layout import \
     create_functions_layout
 from common_functions.panel_params.create_callbacks_text_graph import \
     create_callback_text_graph
-from my_dash.my_html.my_div import my_div
+from assets.my_dash.my_html.my_div import my_div
 from pages.functions_pages.info_pages.common_css import *
 
 id_page = "var"

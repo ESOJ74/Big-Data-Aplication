@@ -3,9 +3,9 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
 
 from assets.common_css import background_in_dropdown
-from my_dash.my_dbc.my_button import my_button
-from my_dash.my_dcc.my_dropdown import my_dropdown
-from my_dash.my_html.my_div import my_div
+from assets.my_dash.my_dbc.my_button import my_button
+from assets.my_dash.my_dcc.my_dropdown import my_dropdown
+from assets.my_dash.my_html.my_div import my_div
 from pages.models_pages.logistic_regresion_button.logistic_regresion_button_css import *
 
 id_page = "logistic_regresion"

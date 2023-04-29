@@ -1,8 +1,8 @@
 from dash import callback
 from dash.dependencies import Input, Output, State
 from pandas import read_json
-from my_dash.my_html.my_div import my_div
-from my_dash.my_dcc.my_dropdown import my_dropdown
+from assets.my_dash.my_html.my_div import my_div
+from assets.my_dash.my_dcc.my_dropdown import my_dropdown
 from assets.common_css import background_dropdown, background_in_dropdown
 
 style_div_selectors = {

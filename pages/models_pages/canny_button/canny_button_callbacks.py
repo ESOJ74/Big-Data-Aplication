@@ -10,7 +10,7 @@ from dash.exceptions import PreventUpdate
 
 from common_functions.create_callback_button_cover import \
     create_callback_button_cover
-from my_dash.my_html.my_div import my_div
+from assets.my_dash.my_html.my_div import my_div
 
 id_page = "canny"
 

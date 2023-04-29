@@ -10,7 +10,7 @@ from common_functions.common_div_utils import (color_options,
                                                refresh_button)
 from common_functions.create_callback_button_cover import \
     create_callback_button_cover
-from my_dash.my_html.my_div import my_div
+from assets.my_dash.my_html.my_div import my_div
 from assets.visualizations_css import style_div_selectors
 
 id_page = "boxplot_button"

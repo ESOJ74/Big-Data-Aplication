@@ -1,8 +1,8 @@
 from dash import dcc
 
-from my_dash.my_dbc.my_button import my_button
-from my_dash.my_dcc.my_dropdown import my_dropdown
-from my_dash.my_html.my_div import my_div
+from assets.my_dash.my_dbc.my_button import my_button
+from assets.my_dash.my_dcc.my_dropdown import my_dropdown
+from assets.my_dash.my_html.my_div import my_div
 from pages.dataframe_pages.data_pages.load_data_button.load_data_button_css import *
 from pages.dataframe_pages.data_pages.save_data_button.save_data_button_callbacks import *
 from pages.dataframe_pages.data_pages.save_data_button.save_data_button_list import \

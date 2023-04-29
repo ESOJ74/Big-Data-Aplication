@@ -2,7 +2,7 @@
 from dash import dcc, html
 
 from assets.functions_css import *
-from my_dash.my_html.my_div import my_div
+from assets.my_dash.my_html.my_div import my_div
 
 
 def create_functions_layout(id_page, create_utils=""):

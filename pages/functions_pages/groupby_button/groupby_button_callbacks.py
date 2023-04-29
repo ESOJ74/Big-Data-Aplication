@@ -9,8 +9,8 @@ from common_functions.create_callback_button_cover import \
 from common_functions.create_callback_button_save import \
     create_callback_button_save
 from common_functions.create_content_up import create_single_dropdown
-from my_dash.my_dbc.my_button import my_button
-from my_dash.my_html.my_div import my_div
+from assets.my_dash.my_dbc.my_button import my_button
+from assets.my_dash.my_html.my_div import my_div
 
 id_page = "groupby"
 

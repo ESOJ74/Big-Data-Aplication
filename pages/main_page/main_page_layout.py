@@ -4,7 +4,7 @@ from assets.layout_templates.down_panel import down_panel
 from assets.layout_templates.middle_panel import middle_panel
 from assets.layout_templates.up_panel import up_panel
 from common_functions.user_registry import user_login
-from my_dash.my_html.my_div import my_div
+from assets.my_dash.my_html.my_div import my_div
 from pages.main_page.main_page_callbacks import *
 
 id_page = "main_page"

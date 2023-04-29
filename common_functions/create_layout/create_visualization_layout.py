@@ -1,6 +1,6 @@
 from dash import dcc, html
 
-from my_dash.my_html.my_div import my_div
+from assets.my_dash.my_html.my_div import my_div
 from assets.visualizations_css import *
 
 

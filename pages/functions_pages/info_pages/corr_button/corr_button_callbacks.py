@@ -7,7 +7,7 @@ from common_functions.create_callback_button_cover import \
     create_callback_button_cover
 from common_functions.panel_params.create_callbacks_text_graph import \
     create_callback_text_graph
-from my_dash.my_html.my_div import my_div
+from assets.my_dash.my_html.my_div import my_div
 from pages.functions_pages.info_pages.common_css import *
 
 id_page = "corr"

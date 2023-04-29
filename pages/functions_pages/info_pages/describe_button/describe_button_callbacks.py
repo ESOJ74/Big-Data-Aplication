@@ -4,8 +4,8 @@ from pandas import read_json, set_option
 
 from common_functions.create_callback_button_cover import \
     create_callback_button_cover
-from my_dash.my_dbc.my_button import my_button
-from my_dash.my_html.my_div import my_div
+from assets.my_dash.my_dbc.my_button import my_button
+from assets.my_dash.my_html.my_div import my_div
 from pages.functions_pages.info_pages.common_css import *
 
 id_page = "describe"

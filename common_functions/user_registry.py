@@ -1,8 +1,8 @@
 from dash import dcc, html
 
 from assets.common_css import background_dark, background_light
-from my_dash.my_dbc.my_button import my_button
-from my_dash.my_html.my_div import my_div
+from assets.my_dash.my_dbc.my_button import my_button
+from assets.my_dash.my_html.my_div import my_div
 
 style_div_regystry = {
     "position": "absolute",

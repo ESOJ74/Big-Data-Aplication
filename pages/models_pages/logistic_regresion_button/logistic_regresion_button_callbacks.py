@@ -12,7 +12,7 @@ from pandas import read_json
 from assets.templates import template_visualizations
 from common_functions.create_callback_button_cover import \
     create_callback_button_cover
-from my_dash.my_html.my_div import my_div
+from assets.my_dash.my_html.my_div import my_div
 from pages.models_pages.logistic_regresion_button.logistic_regresion_button_functions import (
     create_content_up, fit_model, pred_model, split_df)
 

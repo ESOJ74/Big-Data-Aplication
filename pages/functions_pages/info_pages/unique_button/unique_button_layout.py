@@ -4,7 +4,7 @@ from pandas import read_json
 from assets.common_css import background_dark, background_light
 from common_functions.create_layout.create_functions_layout import \
     create_functions_layout
-from my_dash.my_html.my_div import my_div
+from assets.my_dash.my_html.my_div import my_div
 
 id_page = "unique"
 
