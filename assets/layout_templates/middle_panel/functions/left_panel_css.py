@@ -1,111 +1,34 @@
-from assets.common_css import background_light, background_dark
+from assets.layout_templates.imports import *
 
-style_div_main = {
-    "position": "absolute",
-    "left": "0px",
-    "top": "0px",
-    "width": "100%",
-    "height": "100%",
-    "font-family": "Roboto, Helvetica, Arial, sans-serif",
-}
-
-# Up Panel
-style_up_panel = {
-    "width": "100%",
-    "height": "4.25%",
-    "background": "linear-gradient(90deg,#0f5779 0%, #062741 70%, #0f5779 90%)"
-}
-
-style_div_user = {
+style_div_button = {
     "float": "left",
-    "width": "10%",
+    "margin-left": "0.8%",
+    "width": "32%",
+    "font-weight": "bold"
 }
 
-style_user = {
-    "margin-left": "15%",
-    "margin-top": "5%",
-}
-
-style_div_app = {
-    "float": "left",
-    "width": "83%",
-}
-
-style_app = {
-    "margin-left": "35%",
-    "margin-top": "0.3%",
-    "color": "#acf4ed",
-}
-
-style_div_sesion = {
-    "float": "left",
-    "width": "7%",
-}
-
-style_sesion = {
-    "margin-top": "6%"
-}
-
-# Down Panel
-style_down_panel = {
-    "margin-top": "0.15%",
+style_div_button2 = {
+    "margin-left": "0.8%",
     "width": "100%",
-    "height": "4%",
-    "background": "linear-gradient(90deg,#0f5779 0%, #062741 70%, #0f5779 90%)",
+    "font-weight": "bold"
 }
 
-# Middle Panel
-
-style_middle_panel = {
-    "margin-top": "0.1%",
-    "width": "100%",
-    "height": "90.9%",
-    "background": background_dark
-}
-
-# Button Cover
-style_div_button_cover_right ={
-    "position": "absolute",
-    "left": "15.5%",
-    "top": "43px",
-}
-
-style_div_button_cover_left ={
-    "position": "absolute",
-    "left": "0%",
-    "top": "43px",
-}
-
-style_button_cover_right = {
-    "background": "#04212c",
-    "border": "0px solid #2a9fd6",
-    "border-radius": "80px",
-    "color": "#acf4ed",    
-}
-
-style_button_cover_left = {
-    "background": "#204765",
-    "border": "0px solid #060606",
-    "border-radius": "80px",
-    "color": "#acf4ed",
-}
-
-
-# Middle Left Panel
 style_div_middle_left = {
     "float": "left",
     "width": "18%",
     "height": "100%",
-    "background": "linear-gradient(90deg,#165b92 0%, #2c81a9 10%, #04212c 99.9%)",
+    "background": backgroud_left_panel,
 }
 
-style_dataframe_panel = {
-    "margin-top": "10%",
-    "margin-left": "5%",
+style_div_div_data = {
+    "margin-top": "2.7%",
+    "width": "38%",
+    "height": "50%"
 }
 
-style_title_color = {
-    "color": "#0F1458"
+style_div_data = {
+    "width": "100%",
+    "height": "9%",
 }
 
 style_div_button_data = {
@@ -122,6 +45,16 @@ style_button_data = {
     "font-weight": "bold",    
     "border": "2px solid #b0d8d3",
     "color": "#acf4ed",
+}
+
+style_title_data = {
+    "margin-top": "10%",
+    "margin-left": "5%"
+}
+
+style_title = {
+    "margin-top": "10%",
+    "margin-left": "5%"
 }
 
 style_div_button_view = {
@@ -224,26 +157,19 @@ style_button_drop_info = {
 style_div_buttons_info = {
     "margin-left": "5%",
     "width": "86%",
-    "height": "20%",
+    "height": "17%",
     "padding": "5px",
     "background": background_light
 }
 
-style_div_3 = {    
-    "width": "98%",
-    "height": "100%",  
-    "overflow-y": "auto",
-}
-
-# Central Panel
-style_div_content = {
-    "float": "left",
-    "width": "82%",
-    "height": "100%",
-}
-
-style_div_content2 = {
-    "float": "left",
+style_div_buttons_func = {    
     "width": "100%",
-    "height": "100%",
+    "height": "17%",
+    "padding-top": "4.8px","padding-bottom": "4.8px",     
+}
+
+style_border = {
+    "margin-top": "2.5%",
+    "border-top":
+    "1px solid black"
 }

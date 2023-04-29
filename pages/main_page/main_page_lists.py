@@ -1,4 +1,13 @@
-from pages.main_page.main_page_css import style_button
+style_button = {       
+    "margin-top": "1%",
+    "margin-left": "5%",
+    "width": "100%",
+    "font-size": "0.6vmax",
+    "font-weight": "bold",
+    "font-family": "Roboto, Helvetica, Arial, sans-serif",
+    "border": "2px solid #b0d8d3",
+    "color": "#acf4ed",
+}
 
 buttons_data = list(map(lambda x: x + [style_button],                   [
     ["load_data_button", "Load"],
@@ -30,7 +39,11 @@ functions = list(map(lambda x: x + [style_button],
                      [   
     ["drop_button", "Drop"],
     ["groupby_button", "Groupby"],
-    ["funcion", "funcion"]
+    ["funcion", "funcion"],
+    ["funcion1", "funcion"],
+    ["funcion2", "funcion"],
+    ["funcion3", "funcion"],
+    ["funcion4", "funcion"]
 ]))
 
 visualizations = list(map(lambda x: x + [style_button],
@@ -53,5 +66,10 @@ models = list(map(lambda x: x + [style_button],
     ["canny_button", "Canny"],
     ["model_4", "Model 4"],
     ["model_5", "Model 5"],
+    ["model_6", "Model 5"],
+    ["model_7", "Model 5"],
+    ["model_8", "Model 5"],
+    ["model_9", "Model 5"],
+    ["model_10", "Model 5"],
     # [<id button>, <name button>]
 ]))
