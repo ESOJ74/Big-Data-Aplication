@@ -29,7 +29,7 @@ style_div_div_data = {
 
 style_div_data = {
     "width": "100%",
-    "height": "9%",
+    "height": "9vmin",
 }
 
 style_div_button_data = {
@@ -83,7 +83,7 @@ style_button = {
     "margin-top": "1%",
     "margin-left": "5%",
     "width": "100%",
-    "font-size": "0.6vmax",
+    "font-size": "0.5vmax",
     "font-weight": "bold",
     "font-family": font_family,
     "border": "2px solid #b0d8d3",
@@ -98,7 +98,7 @@ style_button1 = {
     "font-weight": "bold",
     "font-family": font_family,
     "border": "2px solid #26647c",
-    "color": "red",
+    "color": "#26647c",
 }
 
 style_button2 = {       

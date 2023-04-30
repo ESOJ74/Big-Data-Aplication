@@ -5,10 +5,11 @@ from dash.dependencies import Input, Output, State
 from pandas import read_json
 from sklearn.metrics import mean_squared_error, r2_score
 
+from assets.common_css import *
+from assets.my_dash.my_html.my_div import my_div
 from assets.templates_plotly import template_visualizations
 from common_functions.create_callback_button_cover import \
     create_callback_button_cover
-from assets.my_dash.my_html.my_div import my_div
 from pages.models_pages.linear_regresion_button.linear_regresion_button_functions import (
     create_content_up, fit_model, pred_model, split_df)
 

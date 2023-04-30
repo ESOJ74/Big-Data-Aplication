@@ -4,12 +4,13 @@ from dash.dependencies import Input, Output, State
 from pandas import read_json
 from plotly.colors import sequential
 
+from assets.common_css import *
 from assets.templates_plotly import template_visualizations
+from assets.visualizations_css import style_selector
 from common_functions.common_div_utils import color_options, refresh_button
 from common_functions.create_callback_button_cover import \
     create_callback_button_cover
 from common_functions.create_content_up import create_single_dropdown
-from assets.visualizations_css import style_selector
 
 id_page = "histogram"
 

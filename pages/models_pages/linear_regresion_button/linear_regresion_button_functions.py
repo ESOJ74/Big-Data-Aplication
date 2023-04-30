@@ -3,6 +3,7 @@ from dash import dcc, html
 from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
 
+from assets.common_css import *
 from assets.my_dash.my_dbc.my_button import my_button
 from assets.my_dash.my_dcc.my_dropdown import my_dropdown
 from assets.my_dash.my_html.my_div import my_div

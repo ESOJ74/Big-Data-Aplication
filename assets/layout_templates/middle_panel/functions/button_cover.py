@@ -1,3 +1,4 @@
+from assets.common_css import *
 from assets.layout_templates.imports import *
 
 style_div_button_cover_right ={
