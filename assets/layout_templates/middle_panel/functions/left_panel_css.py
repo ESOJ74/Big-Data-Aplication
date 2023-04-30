@@ -35,7 +35,7 @@ style_div_button_data = {
     "float": "left",
     "margin-left": "5%",
     "width":"43%",
-    "font-family": "Roboto, Helvetica, Arial, sans-serif",    
+    "font-family": font_family,    
 }
 
 style_button_data = {       
@@ -61,7 +61,7 @@ style_div_button_view = {
     "float": "left",
     "margin-left": "5%",
     "width":"43%",
-    "font-family": "Roboto, Helvetica, Arial, sans-serif",    
+    "font-family": font_family,    
 }
 
 style_div_0 = {    
@@ -84,7 +84,7 @@ style_button = {
     "width": "100%",
     "font-size": "0.6vmax",
     "font-weight": "bold",
-    "font-family": "Roboto, Helvetica, Arial, sans-serif",
+    "font-family": font_family,
     "border": "2px solid #b0d8d3",
     "color": "#acf4ed",
 }
@@ -95,7 +95,7 @@ style_button1 = {
     "width": "47%",    
     "font-size": "0.6vmax",
     "font-weight": "bold",
-    "font-family": "Roboto, Helvetica, Arial, sans-serif",
+    "font-family": font_family,
     "border": "2px solid #26647c",
     "color": "#26647c",
 }
@@ -106,7 +106,7 @@ style_button2 = {
     "width": "100%",
     "font-size": "0.6vmax",
     "font-weight": "bold",
-    "font-family": "Roboto, Helvetica, Arial, sans-serif",
+    "font-family": font_family,
     "border": "2px solid #26647c",
     "color": "#26647c",
 }

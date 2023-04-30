@@ -1,4 +1,4 @@
-from assets.common_css import background_up_panel
+from assets.common_css import *
 
 style_up_panel = {
     "width": "100%",

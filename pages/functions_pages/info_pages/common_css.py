@@ -1,4 +1,4 @@
-from assets.common_css import background_light, background_dark, background_utils
+from assets.common_css import *
 
 # layout
 style_div_params = {
@@ -11,7 +11,7 @@ style_div_utils = {
     "width": "100%",
     "height": "100%",    
     "color": "#012A32",
-    "font-family": "Roboto, Helvetica, Arial, sans-serif",
+    "font-family": font_family,
     "background": background_utils,
 }
 
@@ -46,7 +46,7 @@ style_title = {
 
 style_div_obj = {
     "width": "100%",
-    "height": "92%",
+    "height": "70vmin",
     "background": background_light
 }
 

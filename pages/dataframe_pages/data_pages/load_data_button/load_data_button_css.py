@@ -1,4 +1,4 @@
-from assets.common_css import background_light, background_dropdown, background_in_dropdown
+from assets.common_css import *
 
 style_div_main = {
     "position": "relative",
@@ -12,7 +12,7 @@ style_div_dropdown_save = {
     "left": "2%",
     "width": "16%",
     "height": "15%",
-    "font-family": "Roboto, Helvetica, Arial, sans-serif",
+    "font-family": font_family,
 }
 
 style_div_save_data_content = {
@@ -28,7 +28,7 @@ style_div_titles = {
     "left": "2.5%",
     "width": "75%",
     "height": "4%",
-    "font-family": "Roboto, Helvetica, Arial, sans-serif",
+    "font-family": font_family,
 }
 
 style_div_dropdown_archivos = {
@@ -37,7 +37,7 @@ style_div_dropdown_archivos = {
     "left": "3%",
     "width": "30%",
     "height": "10%",
-    "font-family": "Roboto, Helvetica, Arial, sans-serif",
+    "font-family": font_family,
 }
 
 style_div_dropdown_db = {
@@ -46,7 +46,7 @@ style_div_dropdown_db = {
     "left": "26vmax",
     "width": "30%",
     "height": "25vmax",
-    "font-family": "Roboto, Helvetica, Arial, sans-serif",
+    "font-family": font_family,
 }
 
 s_selector_arch = {    
@@ -58,7 +58,7 @@ s_selector_arch = {
     "font-size": "1em",
     "color": "black",
     "background":"#2a9fd6",
-    "font-family": "Roboto, Helvetica, Arial, sans-serif",   
+    "font-family": font_family,   
 }
 
 style_selector = {        
@@ -88,7 +88,7 @@ style_boton_files = {
     "width": "20%",
     "font-size": "0.9vmax",
     "border": "2px solid",
-    "font-family": "Roboto, Helvetica, Arial, sans-serif",
+    "font-family": font_family,
     "color": "#acf4ed",
 }
 
@@ -97,7 +97,7 @@ style_boton_aceptar = {
     "margin-left": "2%",
     "margin-bottom": "5%",
     "font-size": "75%",
-    "font-family": "Roboto, Helvetica, Arial, sans-serif"
+    "font-family": font_family
 }
 
 style_div_load_data_content = {

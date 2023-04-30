@@ -1,4 +1,4 @@
-from assets.common_css import background_dropdown
+from assets.common_css import *
 
 style_div_main = {
     "position": "relative",
@@ -13,7 +13,7 @@ style_div_titles = {
     "left": "2.5%",
     "width": "75%",
     "height": "4%",
-    "font-family": "Roboto, Helvetica, Arial, sans-serif",
+    "font-family": font_family,
 }
 
 style_boton_files = {  
@@ -22,7 +22,7 @@ style_boton_files = {
     "width": "20%",
     "font-size": "0.9vmax",
     "border": "2px solid",
-    "font-family": "Roboto, Helvetica, Arial, sans-serif",
+    "font-family": font_family,
     "color": "#b0d8d3",
 }
 
@@ -32,7 +32,7 @@ style_div_dropdown_archivos = {
     "left": "3%",
     "width": "30%",
     "height": "10%",
-    "font-family": "Roboto, Helvetica, Arial, sans-serif",
+    "font-family": font_family,
 }
 
 style_selector = {        
@@ -50,5 +50,5 @@ style_boton_aceptar = {
     "margin-top": "1%",
     "margin-left": "0%",
     "font-size": "75%",
-    "font-family": "Roboto, Helvetica, Arial, sans-serif"
+    "font-family": font_family
 }

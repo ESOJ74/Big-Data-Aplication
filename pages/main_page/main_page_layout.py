@@ -1,10 +1,11 @@
 from dash import dcc
 
+from assets.common_css import *
 from assets.layout_templates.down_panel import down_panel
 from assets.layout_templates.middle_panel import middle_panel
 from assets.layout_templates.up_panel import up_panel
-from common_functions.user_registry import user_login
 from assets.my_dash.my_html.my_div import my_div
+from common_functions.user_registry import user_login
 from pages.main_page.main_page_callbacks import *
 
 id_page = "main_page"
@@ -15,7 +16,7 @@ style_div_main = {
     "top": "0px",
     "width": "100%",
     "height": "100%",
-    "font-family": "Roboto, Helvetica, Arial, sans-serif",
+    "font-family": font_family,
 }
 
 layout: dict = my_div(style_div_main, "",

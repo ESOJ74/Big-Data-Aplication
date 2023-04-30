@@ -1,6 +1,6 @@
 from dash import dcc, html
 
-from assets.common_css import background_light
+from assets.common_css import *
 from assets.my_dash.my_dbc.my_button import my_button
 from assets.my_dash.my_dcc.my_dropdown import my_dropdown
 from assets.my_dash.my_html.my_div import my_div

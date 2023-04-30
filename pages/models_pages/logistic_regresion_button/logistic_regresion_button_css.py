@@ -1,4 +1,4 @@
-from assets.common_css import background_light, background_utils, background_dropdown
+from assets.common_css import *
 
 style_main_div = {   
     "margin-left": "2%",
@@ -119,7 +119,7 @@ style_div_utils = {
     "height": "99.5%",  
     "color": "#012A32",
     "overflow-y": "auto",
-    "font-family": "Roboto, Helvetica, Arial, sans-serif",
+    "font-family": font_family,
     "background": background_utils,
 }
 

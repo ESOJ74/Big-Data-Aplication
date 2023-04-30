@@ -1,4 +1,4 @@
-from assets.common_css import background_dropdown, background_utils
+from assets.common_css import *
 
 # create_visualizations
 style_main_div = {   
@@ -54,7 +54,7 @@ style_div_utils = {
     "width": "99%",
     "height": "64%",    
     "color": "#012A32",
-    "font-family": "Roboto, Helvetica, Arial, sans-serif",
+    "font-family": font_family,
     "background": background_utils,
 }
 

@@ -1,4 +1,4 @@
-from assets.common_css import background_dropdown
+from assets.common_css import *
 
 style_div_content_functions = {
     "float": "left",
@@ -74,5 +74,5 @@ style_boton_aceptar = {
     "margin-top": "1%",
     "margin-left": "0%",
     "font-size": "75%",
-    "font-family": "Roboto, Helvetica, Arial, sans-serif"
+    "font-family": font_family
 }

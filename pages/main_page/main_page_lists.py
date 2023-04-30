@@ -1,10 +1,12 @@
+from assets.common_css import *
+
 style_button = {       
     "margin-top": "1%",
     "margin-left": "5%",
     "width": "100%",
     "font-size": "0.6vmax",
     "font-weight": "bold",
-    "font-family": "Roboto, Helvetica, Arial, sans-serif",
+    "font-family": font_family,
     "border": "2px solid #b0d8d3",
     "color": "#acf4ed",
 }

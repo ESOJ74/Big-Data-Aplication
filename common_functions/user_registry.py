@@ -1,6 +1,6 @@
 from dash import dcc, html
 
-from assets.common_css import background_dark, background_light
+from assets.common_css import *
 from assets.my_dash.my_dbc.my_button import my_button
 from assets.my_dash.my_html.my_div import my_div
 
@@ -24,7 +24,7 @@ style_div_input = {
     "margin-top": "6%",
     "margin-left": "5%",
     "width": "40%",
-    "font-family": "Roboto, Helvetica, Arial, sans-serif",
+    "font-family": font_family,
 }
 
 style_button = {    
@@ -33,7 +33,7 @@ style_button = {
     "width": "6em",
     "height": "35%",
     "font-size": "0.8vmax",
-    "font-family": "Roboto, Helvetica, Arial, sans-serif",
+    "font-family": font_family,
     "color": "#b0d8d3",
     "border": "1.5px solid"
 }
@@ -41,11 +41,11 @@ style_button = {
 style_div_reg_answer = {  
     "margin-top": "2%",
     "margin-left": "5%",
-    "font-family": "Roboto, Helvetica, Arial, sans-serif",    
+    "font-family": font_family,    
 }
 
 style_accept = {
-    "font-family": "Roboto, Helvetica, Arial, sans-serif",
+    "font-family": font_family,
     "width": "100%"
 }
 

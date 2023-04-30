@@ -1,10 +1,11 @@
 from dash import Input, Output, Patch, State, callback, html
 from pandas import read_json
 
+from assets.common_css import *
+from assets.my_dash.my_dbc.my_button import my_button
 from common_functions.create_agGrid import create_adgrid
 from common_functions.create_callback_button_cover import \
     create_callback_button_cover
-from assets.my_dash.my_dbc.my_button import my_button
 
 style_boton_files = {  
     "margin-left": "1%",
@@ -12,7 +13,7 @@ style_boton_files = {
     "width": "13%",
     "font-size": "0.7vmax",
     "border": "2px solid",
-    "font-family": "Roboto, Helvetica, Arial, sans-serif",
+    "font-family": font_family,
     "color": "#acf4ed",
 }
 

@@ -1,4 +1,4 @@
-from assets.common_css import background_utils, background_dropdown
+from assets.common_css import *
 
 style_div_selectors = {
     "position": "relative",
@@ -50,7 +50,7 @@ style_div_utils = {
     "height": "64%",    
     "color": "#012A32",
     "overflow-y": "auto",
-    "font-family": "Roboto, Helvetica, Arial, sans-serif",
+    "font-family": font_family,
     "background": background_utils,
 }
 

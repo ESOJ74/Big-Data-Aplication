@@ -1,4 +1,4 @@
-from assets.common_css import background_dark
+from assets.common_css import *
 
 from ..imports import *
 from .functions.button_cover import button_cover
