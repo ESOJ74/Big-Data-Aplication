@@ -50,7 +50,7 @@ def add_data_to_fig(accept, value, data):
                                         color="black") 
                        )]
         except KeyError:
-            content = html.H6("Seleccione una columna", style={"color": "#acf4ed"}),
+            content = html.H6("Seleccione una columna", style={"color": color_boton_1}),
     else:
         raise PreventUpdate
     return [content, data, ""]

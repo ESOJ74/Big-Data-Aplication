@@ -15,8 +15,8 @@ def create_content_up(columns):
     return my_div(style_div_selectors, "",
                  [my_div(style_div_x_y, "",
                          [
-                          my_div(style_div_x, "", html.H6("X", style={"color": "#acf4ed"})),
-                          my_div(style_div_y, "", html.H6("Y", style={"color": "#acf4ed"})),
+                          my_div(style_div_x, "", html.H6("X", style={"color": color_boton_1})),
+                          my_div(style_div_y, "", html.H6("Y", style={"color": color_boton_1})),
                          ]
                   ),
                   my_div(style_selector, "",

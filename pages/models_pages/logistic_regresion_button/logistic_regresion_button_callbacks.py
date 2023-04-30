@@ -145,17 +145,17 @@ def display_page(n_clicks, model_name, data):
                 obj_down = my_div({}, "",
                                 [
                                 html.H6(f"Classes: {regr.classes_}",
-                                        style={"color": "#acf4ed"}),
+                                        style={"color": color_boton_1}),
                                 html.H6(f"Independent term: {regr.intercept_}",
-                                        style={"color": "#acf4ed"}),
+                                        style={"color": color_boton_1}),
                                 html.H6(f"n_features_in: {regr.n_features_in_}",
-                                        style={"color": "#acf4ed"}),
+                                        style={"color": color_boton_1}),
                                 html.H6(f"n_iter_: {regr.n_iter_}",
-                                        style={"color": "#acf4ed"}),
+                                        style={"color": color_boton_1}),
                                 html.H6(f"Score train: {regr.score(X_train, y_train)}",
-                                        style={"color": "#acf4ed"}),
+                                        style={"color": color_boton_1}),
                                 html.H6(f"Score test: {regr.score(X_test, y_test)}",
-                                        style={"color": "#acf4ed"}),
+                                        style={"color": color_boton_1}),
                                 ]
                         ) 
                

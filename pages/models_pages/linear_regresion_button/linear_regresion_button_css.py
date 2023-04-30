@@ -84,20 +84,20 @@ style_button = {
     "margin-left": "5%",
 }
 
-style_params = {"float": "left", "color": "#acf4ed"}
+style_params = {"float": "left", "color": color_boton_1}
 
 style_dcc_input = {
     "margin-left": "2%",
     "width": "15%",
     "background": "white",
-    "color": "#acf4ed"
+    "color": color_boton_1
 }
 
 style_dcc_input2 = {
     "margin-left": "2%",
     "width": "30%",
     "background": "white",
-    "color": "#acf4ed"
+    "color": color_boton_1
 }
 
 style_div_input = {

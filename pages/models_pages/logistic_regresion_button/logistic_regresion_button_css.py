@@ -88,7 +88,7 @@ style_div_model_name = {
 }
 
 style_params_model_name = {
-    "color": "#acf4ed"
+    "color": color_boton_1
 }
 
 style_input_model_name = {
@@ -150,20 +150,20 @@ style_selector_color = {
 
 
 
-style_params = {"float": "left", "color": "#acf4ed"}
+style_params = {"float": "left", "color": color_boton_1}
 
 style_dcc_input = {
     "margin-left": "2%",
     "width": "15%",
     "background": "#b0d8d3",
-    "color": "#acf4ed"
+    "color": color_boton_1
 }
 
 style_dcc_input2 = {
     "margin-left": "2%",
     "width": "30%",
     "background": "#b0d8d3",
-    "color": "#acf4ed"
+    "color": color_boton_1
 }
 
 style_div_input = {

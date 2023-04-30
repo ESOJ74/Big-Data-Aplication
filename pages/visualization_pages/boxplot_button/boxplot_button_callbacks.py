@@ -125,7 +125,7 @@ def display_page(
                       notched=notched,
                       hover_data=hover_data_state,
                       color_discrete_sequence=sequential.Plasma,
-            ).update_layout(legend={"title_font_color": "#acf4ed"})
+            ).update_layout(legend={"title_font_color": color_boton_1})
 
             fig.update_traces(quartilemethod=quartilemethod_state)
         else:
@@ -139,7 +139,7 @@ def display_page(
                       notched=notched,
                       hover_data=hover_data_state,
                       color_discrete_sequence=sequential.Plasma,
-            ).update_layout(legend={"title_font_color": "#acf4ed"})
+            ).update_layout(legend={"title_font_color": color_boton_1})
 
             fig.update_traces(quartilemethod=quartilemethod_state)
         obj = [dcc.Graph(figure=fig)]               

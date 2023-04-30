@@ -27,7 +27,7 @@ style_div_color = {
 style_params = {
     "float": "left",
     "width": "50%",
-    "color": "#acf4ed"
+    "color": color_boton_1
 }
 
 style_input = {

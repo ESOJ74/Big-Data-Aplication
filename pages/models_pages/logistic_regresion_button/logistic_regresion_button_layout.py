@@ -17,7 +17,7 @@ def create_models_layout(id_page, create_utils):
                           [
                            my_div(style_div_title, "",
                                   html.H5(f"{' '.join(id_page.split('_'))}",
-                                          style = {"color": "#acf4ed"}),
+                                          style = {"color": color_boton_1}),
                            ),
                            my_div(style_div_content_up, f"{id_page}_content_up"),
                            dcc.Loading(

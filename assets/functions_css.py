@@ -36,7 +36,7 @@ style_title = {
     "float": "left",
     "width": "25%",
     "height": "99%",
-    "color": "#acf4ed"
+    "color": color_boton_1
 }
 
 style_div_A = {

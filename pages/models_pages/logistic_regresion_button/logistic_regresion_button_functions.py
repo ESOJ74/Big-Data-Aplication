@@ -15,7 +15,7 @@ def create_content_up(columns):
                   [
                    my_div(style_div_dropdown, "",
                           [my_div(style_div_target, "",
-                                  html.H6("Target", style={"color": "#acf4ed"})
+                                  html.H6("Target", style={"color": color_boton_1})
                            ),                  
                            my_div(style_selector, "",
                                   my_dropdown(f"{id_page}_dropdown_x",

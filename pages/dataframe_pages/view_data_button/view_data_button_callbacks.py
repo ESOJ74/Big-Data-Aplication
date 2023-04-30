@@ -14,7 +14,7 @@ style_boton_files = {
     "font-size": "0.7vmax",
     "border": "2px solid",
     "font-family": font_family,
-    "color": "#acf4ed",
+    "color": color_boton_1,
 }
 
 id_page = "view_data"
@@ -41,7 +41,7 @@ def view_data(n_clicks, data):
         obj.append(False)
     except (TypeError, KeyError, ValueError):
         obj = [html.H6('No hay ningún DataFrame Cargado',
-                       style={"margin-left": "20%", "color": "#acf4ed"}), True]
+                       style={"margin-left": "20%", "color": color_boton_1}), True]
     return obj
 
 

@@ -8,7 +8,7 @@ style_button = {
     "font-weight": "bold",
     "font-family": font_family,
     "border": "2px solid #b0d8d3",
-    "color": "#acf4ed",
+    "color": color_boton_1,
 }
 
 buttons_data = list(map(lambda x: x + [style_button],                   [

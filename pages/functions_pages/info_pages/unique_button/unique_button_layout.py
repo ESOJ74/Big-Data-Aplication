@@ -21,7 +21,7 @@ style_div_title = {
 
 style_title = {
       "font-weight": "bold",
-      "color": "#acf4ed"
+      "color": color_boton_1
 }
 
 style_div_text = {

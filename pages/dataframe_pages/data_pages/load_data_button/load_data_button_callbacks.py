@@ -8,6 +8,7 @@ from dash.exceptions import PreventUpdate
 from pandas import read_sql
 from sqlalchemy import create_engine
 
+from assets.common_css import *
 from assets.my_dash.my_html.my_div import my_div
 from pages.dataframe_pages.data_pages.load_data_button.load_data_button_functions import \
     read_data
@@ -82,11 +83,11 @@ def load_data(accept, input_value, data):
             path = f"""users/{data["user"]}/data/{input_value}"""  
             data["df"] = read_data(input_value.split('.')[-1], path)         
             load_data_content = html.H6("DataFrame Cargado",
-                                        style={"color": "#acf4ed", "margin-top": "8%"})     
+                                        style={"color": color_boton_1, "margin-top": "8%"})     
             div_data_hidden = True        
         else:
             load_data_content = html.H6("No tiene Archivos guardados",
-                                        style={"color": "#acf4ed", "margin-top": "8%"}) 
+                                        style={"color": color_boton_1, "margin-top": "8%"}) 
             div_data_hidden = False
     else:
         raise PreventUpdate   
@@ -107,7 +108,7 @@ def load_data(n_clicks, data):
         shutil.copy(archivo, f"""users/{data["user"]}/data/{filename}""")    
         msg = html.H6("Archivo subido", 
                       style={"margin-top": "7%", "margin-left": "3vmax",
-                             "color": "#acf4ed"})    
+                             "color": color_boton_1})    
     else:
         msg = ""
     return msg
@@ -137,10 +138,10 @@ def load_data(n_clicks, user, password, host, port, bd, schema, table, data):
         read_sql(query, engine).to_csv(f"""users/{data["user"]}/data/{table}.csv""")
         msg = my_div({"margin-left": "22vmax"}, "",
                      html.H6(f"Archivo guardado como {table}.csv",
-                             style={"color": "#acf4ed"}))
+                             style={"color": color_boton_1}))
         engine.dispose()
     except:
         msg = my_div({"margin-left": "23vmax"}, "",
                      html.H6("Datos Erroneos",
-                             style={"color": "#acf4ed"}))
+                             style={"color": color_boton_1}))
     return msg

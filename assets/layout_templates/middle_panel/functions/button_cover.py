@@ -10,7 +10,7 @@ style_button_cover_right = {
     "background": "#04212c",
     "border": "0px solid #2a9fd6",
     "border-radius": "80px",
-    "color": "#acf4ed",    
+    "color": color_boton_1,    
 }
 
 style_div_button_cover_left ={
@@ -23,7 +23,7 @@ style_button_cover_left = {
     "background": "#204765",
     "border": "0px solid #060606",
     "border-radius": "80px",
-    "color": "#acf4ed",
+    "color": color_boton_1,
 }
 
 def button_cover(id_page):

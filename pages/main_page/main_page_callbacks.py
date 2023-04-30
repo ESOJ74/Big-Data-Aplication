@@ -5,6 +5,7 @@ from dash.dependencies import Input, Output, State
 from dash_iconify import DashIconify
 from pandas import read_csv
 
+from assets.common_css import *
 from assets.layout_templates.middle_panel.functions.button_cover import (
     style_button_cover_left, style_button_cover_right,
     style_div_button_cover_left, style_div_button_cover_right)
@@ -126,7 +127,7 @@ def auth_display(n_clicks, reg_user, reg_pass):
             if str(password) == str(reg_pass):
                 left_hidden = False
                 registry_hidden = True
-                user_div = html.H6(f"User: {reg_user}", style={"font-weight": "bold", "color": "#acf4ed"})
+                user_div = html.H6(f"User: {reg_user}", style={"font-weight": "bold", "color": color_boton_1})
                 sesion_div = html.A("Cerrar Sesión", href="/", style={"color": "black"})
                 data = {"user": reg_user}
             else:

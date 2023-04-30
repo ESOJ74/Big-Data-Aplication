@@ -59,7 +59,7 @@ def display_page(
             color=color_state,
             nbins=int(nbins_state),     
             color_discrete_sequence=sequential.Plasma,  
-        ).update_layout(legend={"title_font_color": "#acf4ed"})         
+        ).update_layout(legend={"title_font_color": color_boton_1})         
 
         obj = [dcc.Graph(figure=fig)]    
                  

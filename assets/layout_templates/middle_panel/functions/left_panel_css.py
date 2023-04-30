@@ -1,4 +1,5 @@
 from assets.layout_templates.imports import *
+from assets.common_css import *
 
 style_div_button = {
     "float": "left",
@@ -44,7 +45,7 @@ style_button_data = {
     "font-size": "0.6vmax",
     "font-weight": "bold",    
     "border": "2px solid #b0d8d3",
-    "color": "#acf4ed",
+    "color": color_boton_1,
 }
 
 style_title_data = {
@@ -86,7 +87,7 @@ style_button = {
     "font-weight": "bold",
     "font-family": font_family,
     "border": "2px solid #b0d8d3",
-    "color": "#acf4ed",
+    "color": color_boton_1,
 }
 
 style_button1 = {  
@@ -97,7 +98,7 @@ style_button1 = {
     "font-weight": "bold",
     "font-family": font_family,
     "border": "2px solid #26647c",
-    "color": "#26647c",
+    "color": "red",
 }
 
 style_button2 = {       
@@ -151,7 +152,7 @@ style_button_drop_info = {
     "font-size": "0.7vmax",
     "font-weight": "bold",    
     "border": "2px solid #b0d8d3",
-    "color": "#acf4ed",
+    "color": color_boton_1,
 }
 
 style_div_buttons_info = {

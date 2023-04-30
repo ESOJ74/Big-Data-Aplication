@@ -83,19 +83,19 @@ def display_page(n_clicks, value_x, value_y, data, test_size, random_state, fit_
         # content_down
         obj_down = my_div({}, "",
                           [html.H6(f"Coefficients: {list(map(lambda x: round(x, 2), regr.coef_))}",
-                                   style={"color": "#acf4ed"}),
+                                   style={"color": color_boton_1}),
                            html.H6(f"Independent term: {round(regr.intercept_, 2)}",
-                                   style={"color": "#acf4ed"}),
+                                   style={"color": color_boton_1}),
                            html.H6(f"Mean squared error: {round(mean_squared_error(y_test, y_pred), 2)}",
-                                   style={"color": "#acf4ed"}),
+                                   style={"color": color_boton_1}),
                            html.H6(f"Variance score: {round(r2_score(y_test, y_pred), 2)}",
-                                   style={"color": "#acf4ed"}),
+                                   style={"color": color_boton_1}),
                           ]
                    )
     except (KeyError, ValueError):
         obj_down = ""
         obj_middle = html.H6("Ambas columnas deben ser numéricas",
-                             style={"color": "#acf4ed"})
+                             style={"color": color_boton_1})
     return [obj_middle, obj_down, ""]
 
 

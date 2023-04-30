@@ -24,7 +24,7 @@ style_div_app = {
 style_app = {
     "margin-left": "35%",
     "margin-top": "0.3%",
-    "color": "#acf4ed",
+    "color": color_boton_1,
 }
 
 style_div_sesion = {

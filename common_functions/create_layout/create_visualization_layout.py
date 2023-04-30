@@ -11,7 +11,7 @@ def create_visualization_layout(id_page, create_utils = "hola"):
                           [
                            my_div(style_div_title, "",
                                   html.H5(f"DataFrame {id_page.split('_')[0]}",
-                                          style = {"color": "#acf4ed"}),
+                                          style = {"color": color_boton_1}),
                            ),
                            my_div(style_div_content_up, f"{id_page}_content_up"),
                            dcc.Loading(
