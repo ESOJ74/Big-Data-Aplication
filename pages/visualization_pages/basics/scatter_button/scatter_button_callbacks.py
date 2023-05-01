@@ -62,7 +62,6 @@ def display_page(
     if state_color is not None and len(state_color) < 1 or state_color == " ":
         state_color = None   
 
-    print(state_size)
     if state_size is not None and len(state_size) < 1 or state_size == " ":
         state_size = None  
     
