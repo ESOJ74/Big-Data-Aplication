@@ -1,7 +1,7 @@
 from dash import Input, Output, State, callback, html
 from pandas import read_json
 
-from assets.common_css import *
+from assets.layout_templates.main_page.common_css import *
 
 id_page = "save_data"
 

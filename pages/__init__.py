@@ -1,2 +1,2 @@
-from .import (functions_pages, dataframe_pages, main_page, models_pages,
-               visualization_pages, users_registry)
+from . import (dataframe_pages, functions_pages, main_page, models_pages,
+               users_registry, visualization_pages)

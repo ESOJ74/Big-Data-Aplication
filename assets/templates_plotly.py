@@ -1,6 +1,6 @@
 import plotly.graph_objects as go
 
-from assets.common_css import *
+from assets.layout_templates.main_page.common_css import *
 
 template_visualizations = go.layout.Template()
 template_visualizations.layout.plot_bgcolor = "#22576a"

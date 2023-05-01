@@ -1,10 +1,10 @@
 from dash import Input, Output, Patch, State, callback, html
 from pandas import read_json
 
-from assets.common_css import *
+from assets.layout_templates.main_page.common_css import *
 from assets.my_dash.my_dbc.my_button import my_button
-from common_functions.create_agGrid import create_adgrid
-from common_functions.create_callback_button_cover import \
+from utils.create_agGrid import create_adgrid
+from utils.create_callback_button_cover import \
     create_callback_button_cover
 
 style_boton_files = {  

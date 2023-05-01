@@ -8,3 +8,4 @@ backgroud_left_panel = "linear-gradient(90deg,#165b92 0%, #2c81a9 10%, #04212c 9
 
 font_family = "Roboto, Helvetica, Arial, sans-serif"
 color_boton_1 = "#acf4ed"
+color_code = "#21F5F8"

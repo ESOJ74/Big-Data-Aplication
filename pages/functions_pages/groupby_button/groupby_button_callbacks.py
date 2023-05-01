@@ -2,59 +2,76 @@ from dash import Input, Output, State, callback, html
 from dash.exceptions import PreventUpdate
 from pandas import read_json
 
-from assets.functions_css import *
-from common_functions.create_agGrid import create_adgrid
-from common_functions.create_callback_button_cover import \
-    create_callback_button_cover
-from common_functions.create_callback_button_save import \
-    create_callback_button_save
-from common_functions.create_content_up import create_single_dropdown
-from assets.my_dash.my_dbc.my_button import my_button
 from assets.my_dash.my_html.my_div import my_div
+from utils.create_agGrid import create_adgrid
+from utils.create_callback_button_cover import create_callback_button_cover
+from utils.create_callback_button_save import create_callback_button_save
+
+from ..common_css import *
 
 id_page = "groupby"
 
 
 create_callback_button_cover(id_page)
 create_callback_button_save(id_page)
-create_single_dropdown(id_page, f"{id_page}_div_dropdown", style_selector, True)
 
+
+@callback(Output(f"{id_page}_content_up", "children"), 
+          Input("groupby_button", "n_clicks"), 
+          prevent_initial_call=True,)
+def second_callback(n_clicks):    
+    return my_div(style_div_title, "",
+                  [
+                   html.H5("DataFrame.groupby()",
+                           style=style_title),
+                   html.A("Documentacion",
+                          href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.groupby.html",
+                          target="_blank")
+                  ])
+
+
+@callback(Output(f"{id_page}_by", "options"),
+          Input(f"{id_page}_axis", "value"), 
+          State('main_page_store', 'data'),)
+def display_page(axis, data):
+    if axis:
+        return read_json(data["df"]).columns
+    else:
+        return read_json(data["df"]).index
+    
 
 @callback(
     [
-      Output(f"{id_page}_content", "children", allow_duplicate=True),
+      Output(f"{id_page}_div_graph", "children"),
       Output("main_page_store", "data", allow_duplicate=True),
-      Output(f"{id_page}_loading", "children", allow_duplicate=True),
+      Output(f"{id_page}_loading", "children"),
+      Output(f"{id_page}_save", "disabled"),
     ],
-    Input(f"{id_page}_dropdown", "value"),
-    [      
-      State(f"{id_page}_dropdown", "value"),
+    Input(f"{id_page}_refresh", "n_clicks"),
+    [ 
       State("main_page_store", "data"),
+      State(f"{id_page}_by", "value"),
+      State(f"{id_page}_axis", "value"),
     ],
     prevent_initial_call=True,)
-def add_data_to_fig(accept, value, data):     
-    if accept:        
+def add_data_to_fig(refresh, data, state_by, state_axis):       
+    if refresh:        
         try:
-            df = read_json(data["df"]).groupby(value).sum()
-            df = df.reset_index()          
+            df = read_json(data["df"]).groupby(state_by, axis=0).sum()           
+            df = df.reset_index()
             data["prov_df"] = df.to_json(orient="columns")
             content = [
-                       my_div({"margin-top": "3%", "width": "97%"}, "",
-                              create_adgrid(f"{id_page}_ag-table", df),
+                       my_div(style_div_table, "",
+                              create_adgrid(f"{id_page}_ag-table", df.head(9))
                        ),
-                       html.H6(f"df.groupby({value}).mean()",
-                               style={"margin-top": "2%", "color": "#b0d8d3"}),
-                       my_div({"margin-top": "1%"}, "",                  
-                              my_button(f"{id_page}_save", "Save",
-                                        style_boton_aceptar,
-                                        className="btn btn-outline-warning",
-                                       color="black"),
-                       )]
-        except TypeError:
-            content = html.H6("Hay columnas no númericas", style={"color": "#b0d8d3"})
-        except ValueError:
-            content = html.H6("Seleccione columna", style={"color": "#b0d8d3"})
+                       html.H6(f"df.groupby({state_by}).sum()",
+                               style=style_div_code),
+                       ]
+            save_disabled = False            
+        except (KeyError, ValueError) as err:
+            content = html.H6(err.__str__(), style={"color": color_code}),
+            save_disabled = True
     else:
         raise PreventUpdate
-    return [content, data, ""]
+    return [content, data, "", save_disabled]
    

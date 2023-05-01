@@ -1,0 +1,132 @@
+from pages.main_page.main_page_lists import (buttons, buttons_data, functions,
+                                             functions_info, models_supervised, models_deep,
+                                             visualizations_basic, visualizations_part_of_whole)
+
+from ..main_page_css import *
+from .left_panel_functions_css import *
+
+
+def title(title, style):
+    return my_div(style, "",
+                  html.H5(title, style={"color": "#0F1458"}))
+
+
+def button_drop(id, name, style):
+    return my_button(id, name,
+                     style, color="black",
+                     className="btn btn-outline-primary dropdown-toggle")
+
+
+def create_div_buttons(style_div, style_div_but, style_button, button_list, color="black",
+                       classdiv="", className="btn btn-outline-light"):      
+    return my_div(style_div, "", 
+                  [
+                   *[my_div(style_div_but, "",
+                             my_button(button[0],
+                                       button[1],
+                                       style_button,
+                                       color=color,
+                                       className=className)
+                      ) for button in button_list]
+                   ], className=classdiv,)
+
+
+def panel_dataFrame(id_page):
+    return my_div(style_div_data, "",
+                          [
+                           title("DataFrame", style_title_data ),
+                           my_div({"width": "100%", "height": "30%"},
+                                  f"{id_page}_content_data",
+                                  [
+                                   my_div(style_div_button_data, "",
+                                          button_drop(f"{id_page}_button_data",
+                                                     "Data", style_button_data
+                                          )
+                                   ),
+                                   my_div(style_div_button_view, "",
+                                          create_div_buttons(
+                                              style_div_0,
+                                              style_div_button2,
+                                              style_button_data,
+                                              buttons,
+                                              classdiv="table-success"                                           
+                                          ),
+                                   ),                                    
+                                  ]
+                           ),
+                           my_div(style_div_div_data,
+                                  f"{id_page}_div_data",
+                                  create_div_buttons(
+                                      style_div_1,
+                                      style_div_button2,
+                                      style_button1,
+                                      buttons_data,
+                                      classdiv="table-success"                                           
+                                  ),
+                                  hidden=True
+                           ),
+                          ])
+
+
+def div_button_drop(id_button, title):
+    return my_div(style_div_button_drop_info, "",
+                  button_drop(id_button, title,
+                              style_button_drop_info))
+
+
+def hidden_button_group(id_group, group_list):
+    return my_div(style_div_buttons_info,
+                  id_group,                                                      
+                  create_div_buttons(
+                      style_content_buttons_hidden,
+                      style_div_button_hidden,
+                      style_button2,
+                      group_list,                                                   
+                  ),
+                  hidden=True)
+
+
+
+def button_group(id_group, group_list):
+    return my_div(style_div_buttons_func,
+                  id_group,                                                      
+                  create_div_buttons(
+                      style_content_buttons,
+                      style_div_button,
+                      style_button,
+                      group_list,                                                   
+                  ),
+                  hidden=False)
+
+
+def panel_functions(id_page):
+    return my_div(style_border, "",
+                  [
+                   title("Functions", style_title),
+                   div_button_drop(f"{id_page}_button_drop_info", "Info"),
+                   hidden_button_group(f"{id_page}_div_buttons_info", functions_info),    
+                   button_group(f"{id_page}_div_buttons", functions),  
+                  ])
+
+
+
+def panel_visualizations(id_page):
+    return my_div(style_border, "",
+                  [
+                   title("Visualizations", style_title),
+                   div_button_drop(f"{id_page}_button_basics", "Basics"),
+                   hidden_button_group(f"{id_page}_div_buttons_basics", visualizations_basic),
+                   div_button_drop(f"{id_page}_button_part_of_whole", "Part Of Whole"),                   
+                   hidden_button_group(f"{id_page}_div_buttons_part_of_whole", visualizations_part_of_whole),                   
+                  ])
+
+
+def panel_models(id_page):
+    return my_div(style_border, "",
+                  [
+                   title("Models", style_title),
+                   div_button_drop(f"{id_page}_button_machine", "Machine Learning"),
+                   hidden_button_group(f"{id_page}_div_buttons_machine", models_supervised),
+                   div_button_drop(f"{id_page}_button_deep", "Deep Learning"),  
+                   hidden_button_group(f"{id_page}_div_buttons_deep", models_deep),                 
+                  ])

@@ -3,24 +3,38 @@ from dash import Input, Output, State, callback, dcc, html
 from numpy import float64
 from pandas import read_json
 
-from assets.templates_plotly import template_visualizations
-from common_functions.create_callback_button_cover import \
-    create_callback_button_cover
-from common_functions.panel_params.create_callbacks_text_graph import \
+from assets.layout_templates.panel_params.create_callbacks_text_graph import \
     create_callback_text_graph
 from assets.my_dash.my_html.my_div import my_div
-from pages.functions_pages.info_pages.common_css import *
+from assets.templates_plotly import template_visualizations
+from utils.create_callback_button_cover import create_callback_button_cover
+
+from ..common_css import *
 
 id_page = "kurt"
 
 
-create_callback_button_cover(id_page)
+create_callback_button_cover(id_page, f"{id_page}_content_down")
 create_callback_text_graph(id_page)
+
+
+@callback(Output(f"{id_page}_content_up", "children"), 
+          Input("kurt_button", "n_clicks"), 
+          prevent_initial_call=True,)
+def second_callback(n_clicks):    
+    return my_div(style_div_title, "",
+                  [
+                   html.H5("DataFrame.kurt()",
+                           style=style_title),
+                   html.A("Documentacion",
+                          href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.kurt.html",
+                          target="_blank")
+                  ])
 
 
 @callback(
         [
-         Output(f"{id_page}_content", "children"),
+         Output(f"{id_page}_content_down", "children"),
          Output(f"{id_page}_loading", "children", allow_duplicate=True), 
         ],
         [
@@ -85,18 +99,7 @@ def second_callback(n_clicks, n_clicks_text, n_click_graph, refresh, data,
           
        return [        
               my_div(style_div_content, "",
-                     [
-                      my_div(style_div_title, "",
-                             [
-                              html.H5("DataFrame.kurt()",
-                                      style=style_title),
-                              html.A("Documentacion",
-                                     href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.kurt.html",
-                                     target="_blank")
-                             ],
-                      ),
-                      my_div(style_div_obj, "", obj)
-                     ],
+                     my_div(style_div_obj, "", obj)                    
               ), ""]
     except (ValueError, TypeError) as msg:
         return [

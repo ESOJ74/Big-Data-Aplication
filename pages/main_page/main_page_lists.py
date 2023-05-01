@@ -1,4 +1,4 @@
-from assets.common_css import *
+from assets.layout_templates.main_page.common_css import *
 
 style_button = {       
     "margin-top": "1%",
@@ -34,44 +34,42 @@ functions_info = list(map(lambda x: x + [style_button],
     ["t_button", "Transpose"],
     ["unique_button", "Unique"],
     ["var_button", "Var"],
-    # [<id button>, <name button>]
 ]))
 
 functions = list(map(lambda x: x + [style_button],
                      [   
     ["drop_button", "Drop"],
     ["groupby_button", "Groupby"],
-    ["funcion", "funcion"],
-    ["funcion1", "funcion"],
-    ["funcion2", "funcion"],
-    ["funcion3", "funcion"],
-    ["funcion4", "funcion"]
+    ["prueba_button", "Prueba"]
 ]))
 
-visualizations = list(map(lambda x: x + [style_button],
+visualizations_basic = list(map(lambda x: x + [style_button],
                           [
     ["area_button", "Area"],
     ["bar_button", "Bar"],
-    ["boxplot_button", "Box Plot"],
-    ["heatmap_button", "Heatmap"],
-    ["histogram_button", "Histogram"],
-    ["line_button", "Line"],    
-    ["pie_button", "Pie"],    
-    ["scatter_button", "Scatter Plot"],       
-    # [<id button>, <name button>]
+    ["funnel_button", "Funnel"],    
+    ["line_button", "Line"],            
+    ["scatter_button", "Scatter Plot"], 
+    ["timeline_button", "Timeline"]
 ]))
 
-models = list(map(lambda x: x + [style_button],
+visualizations_part_of_whole = list(map(lambda x: x + [style_button],
+                          [  
+    ["icicle_button", "Icicle"],
+    ["pie_button", "Pie"],
+    ["sunburst_button", "Sunburst"],
+    ["treemap_button", "Treemap"],
+]))
+
+
+
+models_supervised = list(map(lambda x: x + [style_button],
                   [
     ["linear_regresion_button", "Linear Reg."],
-    ["logistic_regresion_button", "Logistic Reg."],
+    ["logistic_regresion_button", "Logistic Reg."],    
+]))
+
+models_deep = list(map(lambda x: x + [style_button],
+                  [
     ["canny_button", "Canny"],
-    ["model_4", "Model 4"],
-    ["model_5", "Model 5"],
-    ["model_6", "Model 5"],
-    ["model_7", "Model 5"],
-    ["model_8", "Model 5"],
-    ["model_9", "Model 5"],
-    ["model_10", "Model 5"],
-    # [<id button>, <name button>]
 ]))

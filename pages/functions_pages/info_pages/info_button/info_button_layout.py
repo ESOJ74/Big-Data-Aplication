@@ -1,19 +1,36 @@
 from dash import Input, Output, State, callback, html
 from pandas import read_json
 
-from common_functions.create_layout.create_functions_layout import \
-    create_functions_layout
+from assets.layout_templates.main_page.content_layout import \
+    create_content_layout
 from assets.my_dash.my_html.my_div import my_div
-from pages.functions_pages.info_pages.common_css import *
+
+from ..common_css import *
 
 id_page = "info"
 
-layout = create_functions_layout(id_page)
+layout = create_content_layout(id_page,
+                               my_div(style_div_content_up, f"{id_page}_content_up"),
+                               my_div(style_div_content_down, f"{id_page}_content_down"),
+                               my_div(style_div_params, ""))
+
+
+@callback(Output(f"{id_page}_content_up", "children"), 
+          Input("info_button", "n_clicks"), 
+          prevent_initial_call=True,)
+def second_callback(n_clicks):    
+    return my_div(style_div_title, "",
+                  [
+                   html.H5("DataFrame.info()",
+                           style=style_title),
+                  ])
+
 
 @callback(
         [
-         Output(f"{id_page}_content", "children"),
-         Output(f"{id_page}_loading", "children", allow_duplicate=True),
+         Output(f"{id_page}_content_down", "children"),
+         Output(f"{id_page}_loading", "children",
+                allow_duplicate=True),
         ],
         Input("info_button", "n_clicks"),
         State("main_page_store", "data"),
@@ -44,18 +61,9 @@ def add_data_to_fig(n_clicks, data):
     
     return [
             my_div(style_div_content, "",
-                   [
-                    my_div(style_div_title, "",
-                           [
-                            html.H5("DataFrame.info()", style=style_title),
-                            html.A("Documentacion",
-                                    href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.describe.html",
-                                    target="_blank")
-                           ],
-                    ),
-                    my_div(style_div_obj, "",
-                           html.Pre(texto, style=style_text),
-                    ),
-                   ],
+                   my_div(style_div_obj, "",
+                          html.Pre(texto, style=style_text2),
+                   ),
+                  
             ), ""]
     

@@ -1,1 +1,1 @@
-from .import groupby_button, drop_button, info_pages
+from .import drop_button, groupby_button, info_pages

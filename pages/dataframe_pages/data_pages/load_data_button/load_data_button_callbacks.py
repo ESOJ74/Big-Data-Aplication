@@ -8,10 +8,9 @@ from dash.exceptions import PreventUpdate
 from pandas import read_sql
 from sqlalchemy import create_engine
 
-from assets.common_css import *
+from assets.layout_templates.main_page.common_css import *
 from assets.my_dash.my_html.my_div import my_div
-from pages.dataframe_pages.data_pages.load_data_button.load_data_button_functions import \
-    read_data
+from utils.read_data import read_data
 
 id_page = "load_data"
 
@@ -22,8 +21,6 @@ id_page = "load_data"
            Output(f"{id_page}_div_db", "hidden"),
            Output(f"{id_page}_archivos", "n_clicks"),
            Output(f"{id_page}_database", "n_clicks"),
-           Output(f"{id_page}_content", "style"),
-           Output(f"{id_page}_content", "children", allow_duplicate=True),
           ],
           [
            Input(f"{id_page}_archivos", "n_clicks"),
@@ -31,19 +28,15 @@ id_page = "load_data"
            Input(f"{id_page}_database", "n_clicks"),
           ],
           prevent_initial_call=True)
-def load_data(click_archivos, click_up, click_db):    
+def load_data(click_archivos, click_up, click_db): 
     hidden_arch = True
-    hidden_db = True
-    style = {"margin-top": "5%", "margin-left": "15%"}
-    style2 = {"margin-top": "7%", "margin-left": "3.5%"}
+    hidden_db = True   
 
     if click_archivos:
-        hidden_arch = False
-        style = style2
+        hidden_arch = False        
     if click_db:
-        hidden_db = False
-        style = style2
-    return [hidden_arch, hidden_db, 0, 0, style, ""]
+        hidden_db = False       
+    return [hidden_arch, hidden_db, 0, 0]
 
             
 #dropdown Archivos
@@ -65,8 +58,7 @@ def load_data(drop_dir, data):
     
 # content archivos
 @callback([
-           Output("main_page_store", "data", allow_duplicate=True),
-           Output(f"{id_page}_content", "children"),
+           Output("main_page_store", "data", allow_duplicate=True),           
            Output(f"main_page_div_functions", "hidden"),    
            Output(f"main_page_div_data", "hidden", allow_duplicate=True),    
           ],
@@ -81,21 +73,17 @@ def load_data(accept, input_value, data):
     if accept:
         if input_value is not None and len(input_value) > 0:
             path = f"""users/{data["user"]}/data/{input_value}"""  
-            data["df"] = read_data(input_value.split('.')[-1], path)         
-            load_data_content = html.H6("DataFrame Cargado",
-                                        style={"color": color_boton_1, "margin-top": "8%"})     
+            data["df"] = read_data(input_value.split('.')[-1], path)      
             div_data_hidden = True        
         else:
-            load_data_content = html.H6("No tiene Archivos guardados",
-                                        style={"color": color_boton_1, "margin-top": "8%"}) 
             div_data_hidden = False
     else:
         raise PreventUpdate   
-    return [data, load_data_content, False, div_data_hidden]
+    return [data, False, div_data_hidden]
 
 
 #up_file from local
-@callback(Output(f"{id_page}_content", "children", allow_duplicate=True),      
+@callback(Output(f"{id_page}_up_file", "n_clicks"),      
           Input(f"{id_page}_up_file", "n_clicks"),
           State("main_page_store", "data"),
           prevent_initial_call=True)
@@ -105,17 +93,14 @@ def load_data(n_clicks, data):
 
     if type(archivo) != tuple:
         filename = archivo.split('/')[-1]        
-        shutil.copy(archivo, f"""users/{data["user"]}/data/{filename}""")    
-        msg = html.H6("Archivo subido", 
-                      style={"margin-top": "7%", "margin-left": "3vmax",
-                             "color": color_boton_1})    
+        shutil.copy(archivo, f"""users/{data["user"]}/data/{filename}""")   
     else:
         msg = ""
-    return msg
+    return 0
 
 
 #up file from database
-@callback(Output(f"{id_page}_content", "children", allow_duplicate=True),      
+@callback(Output(f"{id_page}_aceptar_db", "n_clicks"),      
           Input(f"{id_page}_aceptar_db", "n_clicks"),
           [
            State(f"{id_page}_user", "value"),
@@ -144,4 +129,4 @@ def load_data(n_clicks, user, password, host, port, bd, schema, table, data):
         msg = my_div({"margin-left": "23vmax"}, "",
                      html.H6("Datos Erroneos",
                              style={"color": color_boton_1}))
-    return msg
+    return 0
