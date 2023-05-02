@@ -40,7 +40,7 @@ style_content_left_down = {
 
 style_div_params = {    
     "width": "100%",
-    "height": "99%",    
+    "height": "98%",    
     "color": "#012A32",
     "font-family": font_family,
     "background": background_utils,

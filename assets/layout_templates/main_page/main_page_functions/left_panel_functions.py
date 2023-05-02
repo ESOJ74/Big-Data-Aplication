@@ -1,6 +1,4 @@
-from pages.main_page.main_page_lists import (buttons, buttons_data, functions,
-                                             functions_info, models_supervised, models_deep,
-                                             visualizations_basic, visualizations_part_of_whole)
+from pages.main_page.main_page_lists import *
 
 from ..main_page_css import *
 from .left_panel_functions_css import *
@@ -128,5 +126,6 @@ def panel_models(id_page):
                    div_button_drop(f"{id_page}_button_machine", "Machine Learning"),
                    hidden_button_group(f"{id_page}_div_buttons_machine", models_supervised),
                    div_button_drop(f"{id_page}_button_deep", "Deep Learning"),  
-                   hidden_button_group(f"{id_page}_div_buttons_deep", models_deep),                 
+                   hidden_button_group(f"{id_page}_div_buttons_deep", models_deep),   
+                   button_group(f"{id_page}_div_buttons_test_model", models_test),               
                   ])

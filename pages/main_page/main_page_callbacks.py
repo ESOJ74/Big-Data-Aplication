@@ -7,9 +7,7 @@ from pandas import read_csv
 
 from assets.layout_templates.main_page.common_css import *
 from assets.layout_templates.main_page.main_page_css import *
-from pages.main_page.main_page_lists import (buttons, buttons_data, functions,
-                                             functions_info, models_supervised, models_deep,
-                                             visualizations_basic, visualizations_part_of_whole)
+from pages.main_page.main_page_lists import *
 
 id_page = "main_page"
 
@@ -41,6 +39,7 @@ create_callback(functions, "functions_pages")
 create_callback(functions_info, "functions_pages.info_pages")
 create_callback(models_supervised, "models_pages.machine_learning.supervised")
 create_callback(models_deep, "models_pages.deep_learning")
+create_callback(models_test, "models_pages")
 
 
 @callback([

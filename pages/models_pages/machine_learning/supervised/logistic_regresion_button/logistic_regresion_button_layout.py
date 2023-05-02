@@ -1,36 +1,74 @@
-from dash import dcc, html
+from assets.layout_templates.main_page.content_layout import \
+    create_content_layout
+from assets.layout_templates.panel_params.create_panel_params import *
+from utils.create_div_split import create_div_split
 
-from assets.layout_templates.model_pages.create_models_layout import create_models_layout
-from assets.my_dash.my_html.my_div import my_div
 from .logistic_regresion_button_callbacks import *
-from .logistic_regresion_button_css import *
-from .logistic_regresion_button_functions import \
-    create_utils
 
-id_page = "logistic_regresion"
+id_page = "logistic"
 
 
-def create_models_layout(id_page, create_utils):
-    return my_div(style_main_div, "",
-                  [                   
-                   my_div(style_div_content, "",
-                          [
-                           my_div(style_div_title, "",
-                                  html.H5(f"{' '.join(id_page.split('_'))}",
-                                          style = {"color": color_boton_1}),
-                           ),
-                           my_div(style_div_content_up, f"{id_page}_content_up"),
-                           dcc.Loading(
-                               id="loading-2",
-                               children=[my_div({}, f"{id_page}_model_loading")],
-                               type="default",
-                               fullscreen=False,
-                           ),
-                           my_div(style_div_content_middle, f"{id_page}_content_middle"),
-                           my_div(style_div_content_down, f"{id_page}_content_down"),
-                          ]
-                   ),
-                   my_div(style_div_content_utils, f"{id_page}_utils", create_utils)
-                  ])
+params_utils = [                
+                html.H5("Params", style=style_title_params), 
+                create_param_drop(id_page, "penalty",
+                                  ["l1", "l2", "elasticnet"],
+                                  "l2"),
+                create_param_drop(id_page, "dual", ["True", "False"],
+                                  "True"),
+                create_param_drop(id_page, "fit_intercept",
+                                  ["True", "False"],
+                                  "True"),
+                create_param_drop(id_page, "solver",
+                                  ["lbfgs", "liblinear", "newton-cg",
+                                   "newton-cholesky", "sag", "saga"],
+                                   "lbfgs"),
+                create_param_drop(id_page, "multi_class",
+                                  ["auto", "ovr", "multinomial"],
+                                  "auto"),
+                create_param_drop(id_page, "warm_start",
+                                  ["True", "False"],
+                                  "False"),
+                create_param_input(id_page, "tol", 1e-4),
+                create_param_input(id_page, "c", 1.0),                
+                create_param_input(id_page, "intercept_scaling", 1.0),
+                create_param_input(id_page, "random_state", None),               
+                create_param_input(id_page, "max_iter", 100),
+                create_param_input(id_page, "l1_ratio", None),                
+                create_param_input(id_page, "verbose", 0),
+                create_param_input(id_page, "n_jobs", None),
+               ]
 
-layout = create_models_layout(id_page, create_utils(id_page))
+content_down = my_div(style_content, "",
+                      [
+                       my_div(style_div_target, f"{id_page}_div_derecha",
+                              [
+                               my_div(style_title_target, "", html.A("Target")),
+                               my_div(style_selector_target, "",
+                                      my_dropdown(f"{id_page}_target",
+                                                  {"background": background_in_dropdown},
+                                                  placeholder="Select Target"
+                                      ),
+                               ),                       
+                              ]
+                       ),   
+                       create_div_split(id_page),   
+                       dcc.Loading(
+                           id="loading-2",
+                           children=[my_div({"margin-top": "1%"},
+                                            f"{id_page}_model_loading")],
+                           type="default",
+                           fullscreen=False,
+                       ),
+                       my_div(style_div_down , f"{id_page}_div_result"),
+                      ])
+
+
+layout = create_content_layout(id_page,
+                               my_div(style_div_content_up,
+                                      f"{id_page}_content_up"
+                               ),
+                               content_down,                               
+                               my_div(style_div_params,
+                                      f"{id_page}_div_params",
+                                      params_utils
+                               ),)

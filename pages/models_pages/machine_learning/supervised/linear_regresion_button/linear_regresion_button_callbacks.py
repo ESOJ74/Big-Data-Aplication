@@ -11,9 +11,9 @@ from assets.my_dash.my_html.my_div import my_div
 from utils.create_callback_button_cover import create_callback_button_cover
 
 from ....common_css import *
-from .logistic_regresion_button_functions import fit_model, split_df
+from .linear_regresion_button_functions import fit_model, split_df
 
-id_page = "logistic"
+id_page = "linear"
 
 create_callback_button_cover(id_page, f"{id_page}_content_down")
 
@@ -24,10 +24,10 @@ create_callback_button_cover(id_page, f"{id_page}_content_down")
 def second_callback(n_clicks):    
     return my_div(style_div_title, "",
                   [
-                   html.H5("sklearn.linear_model.LogisticRegression()",
+                   html.H5("sklearn.linear_model.LinearRegression()",
                            style=style_title),
                    html.A("Documentacion",
-                          href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html",
+                          href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html",
                           target="_blank")
                   ])
 
@@ -84,7 +84,7 @@ def display_page(n_clicks, options_y, value_y, data, test_size, random_state, pe
     if n_clicks:      
   
         df = read_json(data["df"])
-        value_x = [x for x in df.columns if x not in options_y]          
+        value_x = [x for x in df.columns if x not in options_y]        
 
         if len(value_x) == 0:
             value_x = list(df.columns)
@@ -93,28 +93,26 @@ def display_page(n_clicks, options_y, value_y, data, test_size, random_state, pe
         try:         
             # train_test_split        
             X_train, X_test, y_train, y_test = split_df(df,
-                                                        value_x, value_y, int(test_size)/100, int(random_state))  
-                 
+                                                        value_x, value_y, int(test_size)/100, int(random_state))          
             # Entrenamos modelo            
             regr = fit_model(X_train, y_train, penalty, dual, tol, c,fit_intercept, intercept_scaling,
                             random_state2, solver, max_iter,multi_class, verbose, warm_start, n_jobs,
-                            l1_ratio)  
+                            l1_ratio)     
+            date_model = str(datetime.now()).split('.')[0]    
 
-            date_model = str(datetime.now()).split('.')[0]
-                    
             obj_middle = html.H6(f"Modelo Entrenado. Guardado como {value_y}_{date_model}",
                                  style={"color": "#b0d8d3"})
 
             # Guardamos Modelo
-            path = f"""users/{data["user"]}/models/logistic_regresion"""   
+            path = f"""users/{data["user"]}/models/linear_regresion"""   
             try:
                 os.stat(path)
             except:
                 os.makedirs(path)     
-            path = path + f"/{value_y}_{date_model}"    
+            path = path + f"/{value_y}_{date_model}"     
             os.makedirs(path)
-            dump(regr, f"{path}/model.joblib")              
-                                      
+            dump(regr, f"{path}/model.joblib")             
+             
             with open(f"{path}/X_train.pickle", "wb") as f:
                 pickle.dump(X_train, f)
             with open(f"{path}/y_train.pickle", "wb") as f:
@@ -122,10 +120,10 @@ def display_page(n_clicks, options_y, value_y, data, test_size, random_state, pe
             with open(f"{path}/X_test.pickle", "wb") as f:
                 pickle.dump(X_test, f)
             with open(f"{path}/y_test.pickle", "wb") as f:
-                pickle.dump(y_test, f)           
+                pickle.dump(y_test, f)         
+                
         except (KeyError, ValueError) as err:        
             obj_middle = html.H6(err.__str__(), style={"color": "#b0d8d3"})
-
         return [obj_middle, ""]
     else:
         raise PreventUpdate

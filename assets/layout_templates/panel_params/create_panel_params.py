@@ -8,7 +8,14 @@ from assets.my_dash.my_html.my_div import my_div
 style_div_selector = {
     "margin-left": "5%",
     "margin-top": "2%",
-    "height": "12%",
+    "height": "6%",
+    "width": "95%",
+}
+
+style_div_input = {
+    "margin-left": "5%",
+    "margin-top": "2%",
+    "height": "4%",
     "width": "95%",
 }
 
@@ -16,10 +23,10 @@ style_selector = {
     "float": "left",
     "margin-left": "2%",
     "width": "45%",
-    "height": "3.2em",
+    "height": "80%",
     "border-radius": "7px 7px 5px 5px",
     "padding": "2px 2px 0px 2px",
-    "font-size": "0.8em",
+    "font-size": "0.7em",
     "color": "black",
     "background": "#2f6374",
 }
@@ -56,10 +63,12 @@ style_params2 = {
 
 style_input = {
     "float": "left",
-    "margin-left": "2%",
+    "margin-left": "12%",
     "margin-bottom": "4%",
-    "width": "45%",
+    "width": "35%",
     "background": background_light,
+    "font-size": "0.8em",
+    "text-align": "right",
     "color": "black"
 }
 
@@ -107,7 +116,7 @@ def create_select(id_page, id_param, options=[], value="", multi=False):
 def create_param_drop(id_page, id_param, options=[], value="", multi=False):
     return my_div(style_div_selector, "", 
                   [
-                   html.H6(id_param, style=style_params),
+                   html.A(id_param, style=style_params),
                    my_div(style_selector, "",
                           my_dropdown(f"{id_page}_{id_param}",
                                       {"background": background_light},
@@ -119,9 +128,9 @@ def create_param_drop(id_page, id_param, options=[], value="", multi=False):
                   ])
 
 def create_param_input(id_page, id_param, value=1):
-    return my_div({"margin-left": "5%"}, "",
+    return my_div(style_div_input, "",
                   [
-                   html.H6(id_param, style=style_params),
+                   html.A(id_param, style=style_params),
                    dcc.Input(id=f"{id_page}_{id_param}",
                              style=style_input,
                              value=value,
@@ -148,7 +157,7 @@ def create_buttom_refresh(id_page):
                      className="btn btn-outline-warning", color="black")
 
 
-def create_buttom_save(id_page):
-    return my_button(f"{id_page}_save", "Save changes", style_button_save,
+def create_buttom_save(id_page, title="Save changes"):
+    return my_button(f"{id_page}_save", title, style_button_save,
                      className="btn btn-outline-warning", color="black",
                      disabled=True)

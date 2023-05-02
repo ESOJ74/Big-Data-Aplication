@@ -73,3 +73,8 @@ models_deep = list(map(lambda x: x + [style_button],
                   [
     ["canny_button", "Canny"],
 ]))
+
+models_test = list(map(lambda x: x + [style_button],
+                  [
+    ["test_models_button", "Test Models"],
+]))
