@@ -68,8 +68,7 @@ def load_data(drop_dir, data):
           ],
           prevent_initial_call=True)
 def load_data(accept, refresh, input_value, threshold1,
-              threshold2, aperture_size, l2gradient, data): 
-    
+              threshold2, aperture_size, l2gradient, data):     
     if accept:
         try:
             if input_value is not None and len(input_value) > 0:
@@ -81,26 +80,28 @@ def load_data(accept, refresh, input_value, threshold1,
 
                 path = f"""users/{data["user"]}/fotos/{input_value}"""   
                 img = cv2.imread(path)      
+                # Redimensionar la imagen (por ejemplo, a 300x300 píxeles)                
+                resized_img = cv2.resize(img, (300, 300))     
+                # Codificar la imagen redimensionada en formato JPG y luego en base64
+                jpg_img = cv2.imencode('.jpg', resized_img)
+                b64_string = base64.b64encode(jpg_img[1]).decode('utf-8')
+                # Añadir el prefijo para la representación de datos
+                img_data = "{}{}".format("data:image/jpg;base64, ", b64_string)
+                                # Foto Bordes
+                
+                # Canny
                 # Convertir la imagen a escala de grises
-                gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+                gray = cv2.cvtColor(resized_img, cv2.COLOR_BGR2GRAY)
                 # Aplicar el algoritmo Canny
                 edges = cv2.Canny(image=gray, threshold1=threshold1,
                                   threshold2=threshold2, apertureSize=aperture_size,
-                                  L2gradient=l2gradient)           
-                #cv2.Canny()
-                cv2.imwrite('bordes.jpg', edges)                   
-                
-                # Foto original
-                with open(path, "rb") as image_file:
-                    img_data = base64.b64encode(image_file.read())
-                    img_data = img_data.decode()
-                    img_data = "{}{}".format("data:image/jpg;base64, ", img_data)
-                # Foto Bordes
-                with open('bordes.jpg', "rb") as image_file:
-                    bordes = base64.b64encode(image_file.read())
-                    bordes = bordes.decode()
-                    bordes = "{}{}".format("data:image/jpg;base64, ", bordes)
-                os.remove("bordes.jpg")
+                                  L2gradient=l2gradient)   
+                # Codificar la imagen redimensionada en formato JPG y luego en base64
+                jpg_img = cv2.imencode('.jpg', edges)
+                b64_string = base64.b64encode(jpg_img[1]).decode('utf-8')
+                # Añadir el prefijo para la representación de datos
+                bordes = "{}{}".format("data:image/jpg;base64, ", b64_string)
+                                # Foto Bordes                
 
                 load_data_content = my_div({}, "",
                                            [
