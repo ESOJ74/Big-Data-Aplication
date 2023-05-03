@@ -20,8 +20,7 @@ create_callback_button_cover(id_page, f"{id_page}_div_result")
 @callback(Output(f"{id_page}_content_up", "children"), 
           Input("canny_button", "n_clicks"), 
           prevent_initial_call=True,)
-def second_callback(n_clicks):    
-    print('...............')
+def second_callback(n_clicks):
     return my_div(style_div_title, "",
                   [
                    html.H5("cv2.Canny()",
