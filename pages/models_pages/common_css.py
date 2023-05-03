@@ -158,7 +158,11 @@ style_test_result = {
 
 style_div_test_result = {
     "position": "relative",
-    "top": "27%",
+    "top": "12%",
+    "left": "2%",
+    "width": "97%",
+    "height": "70%",
     "padding-left": "20px",
-    "padding-right": "5px"
+    "padding-right": "5px",
+    "overflow-y": "auto",
 }
