@@ -51,8 +51,8 @@ def second_callback(n_clicks, data):
 
 
 @callback([
-           Output(f"{id_page}_div_result", "children", allow_duplicate=True),           
-           Output(f"{id_page}_model_loading", "children", allow_duplicate=True), 
+           Output(f"{id_page}_div_result", "children"),           
+           Output(f"{id_page}_model_loading", "children"), 
           ],
           Input(f"{id_page}_button_start", "n_clicks"),
           [             
@@ -61,26 +61,14 @@ def second_callback(n_clicks, data):
            State('main_page_store', 'data'),
            State(f"{id_page}_test_size", "value"),
            State(f"{id_page}_random_state_split", "value"),
-           State(f"{id_page}_penalty", "value"),
-           State(f"{id_page}_dual", "value"),
-           State(f"{id_page}_tol", "value"),
-           State(f"{id_page}_c", "value"),
            State(f"{id_page}_fit_intercept", "value"),
-           State(f"{id_page}_intercept_scaling", "value"),
-           State(f"{id_page}_random_state", "value"),
-           State(f"{id_page}_solver", "value"),
-           State(f"{id_page}_max_iter", "value"),
-           State(f"{id_page}_multi_class", "value"),
-           State(f"{id_page}_verbose", "value"),
-           State(f"{id_page}_warm_start", "value"),           
+           State(f"{id_page}_copy_X", "value"),
            State(f"{id_page}_n_jobs", "value"),
-           State(f"{id_page}_l1_ratio", "value")
+           State(f"{id_page}_positive", "value")
           ],
           prevent_initial_call=True)
-def display_page(n_clicks, options_y, value_y, data, test_size, random_state, penalty, dual, tol, c,
-                 fit_intercept, intercept_scaling, random_state2, solver, max_iter,
-                 multi_class, verbose, warm_start, n_jobs, l1_ratio):     
-
+def display_page(n_clicks, options_y, value_y, data, test_size,
+                 random_state, fit_intercept,copy_X, n_jobs, positive):      
     if n_clicks:      
   
         df = read_json(data["df"])
@@ -92,15 +80,17 @@ def display_page(n_clicks, options_y, value_y, data, test_size, random_state, pe
 
         try:         
             # train_test_split        
-            X_train, X_test, y_train, y_test = split_df(df,
-                                                        value_x, value_y, int(test_size)/100, int(random_state))          
+            X_train, X_test, y_train, y_test =\
+                  split_df(df, value_x, value_y,
+                           int(test_size)/100, int(random_state))          
             # Entrenamos modelo            
-            regr = fit_model(X_train, y_train, penalty, dual, tol, c,fit_intercept, intercept_scaling,
-                            random_state2, solver, max_iter,multi_class, verbose, warm_start, n_jobs,
-                            l1_ratio)     
+            regr = fit_model(X_train, y_train, fit_intercept,
+                             copy_X, n_jobs, positive)
+                                
             date_model = str(datetime.now()).split('.')[0]    
 
-            obj_middle = html.H6(f"Modelo Entrenado. Guardado como {value_y}_{date_model}",
+            obj_middle = html.H6(f"""Modelo Entrenado.
+                                     Guardado como {value_y}_{date_model}""",
                                  style={"color": "#b0d8d3"})
 
             # Guardamos Modelo
@@ -123,7 +113,8 @@ def display_page(n_clicks, options_y, value_y, data, test_size, random_state, pe
                 pickle.dump(y_test, f)         
                 
         except (KeyError, ValueError) as err:        
-            obj_middle = html.H6(err.__str__(), style={"color": "#b0d8d3"})
+            obj_middle = html.H6(err.__str__(),
+                                 style={"color": "#b0d8d3"})
         return [obj_middle, ""]
     else:
         raise PreventUpdate

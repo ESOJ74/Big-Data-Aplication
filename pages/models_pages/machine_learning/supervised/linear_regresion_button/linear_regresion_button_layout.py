@@ -9,24 +9,11 @@ id_page = "linear"
 
 
 params_utils = [                
-                html.H5("Params", style=style_title_params), 
-                create_param_drop(id_page, "penalty", ["l1", "l2", "elasticnet"], "l2"),
-                create_param_drop(id_page, "dual", ["True", "False"], "True"),
-                create_param_drop(id_page, "fit_intercept", ["True", "False"], "True"),
-                create_param_drop(id_page, "solver", ["lbfgs", "liblinear", "newton-cg", "newton-cholesky", "sag", "saga"], "lbfgs"),
-                create_param_drop(id_page, "multi_class", ["auto", "ovr", "multinomial"], "auto"),
-                create_param_drop(id_page, "warm_start", ["True", "False"], "False"),
-                create_param_input(id_page, "tol", 1e-4),
-                create_param_input(id_page, "c", 1.0),                
-                create_param_input(id_page, "intercept_scaling", 1.0),
-                create_param_input(id_page, "random_state", None),               
-                create_param_input(id_page, "max_iter", 100),
-                create_param_input(id_page, "l1_ratio", None),                
-                create_param_input(id_page, "verbose", 0),
+                html.H5("Params", style=style_title_params),                 
+                create_param_drop(id_page, "fit_intercept", ["True", "False"], "True"),                
+                create_param_drop(id_page, "copy_X", ["True", "False"], "True"),
                 create_param_input(id_page, "n_jobs", None),
-                
-                #create_buttom_refresh(id_page),
-                #create_buttom_save(id_page, "Save Model") 
+                create_param_drop(id_page, "positive", ["True", "False"], "False"),
                ]
 
 content_down = my_div(style_content, "",
