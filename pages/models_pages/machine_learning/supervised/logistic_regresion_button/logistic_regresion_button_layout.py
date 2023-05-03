@@ -14,7 +14,7 @@ params_utils = [
                                   ["l1", "l2", "elasticnet"],
                                   "l2"),
                 create_param_drop(id_page, "dual", ["True", "False"],
-                                  "True"),
+                                  "False"),
                 create_param_drop(id_page, "fit_intercept",
                                   ["True", "False"],
                                   "True"),
