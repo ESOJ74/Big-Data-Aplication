@@ -11,73 +11,71 @@ style_button = {
     "color": color_boton_1,
 }
 
-buttons_data = list(map(lambda x: x + [style_button],                   [
-    ["load_data_button", "Load"],
-    ["save_data_button", "Save"]    
-]))
+buttons_data = list(map(lambda x: x + [style_button],
+                        [
+                         ["load_data_button", "Load"],
+                         ["save_data_button", "Save"]    
+                        ]))
 
 buttons = list(map(lambda x: x + [style_button],
                    [
-    
-    ["view_data_button", "View"]
-    
-]))
+                    ["view_data_button", "View"]
+                   ]))
 
 functions_info = list(map(lambda x: x + [style_button],
-                     [
-    ["corr_button", "Corr"],
-    ["cov_button", "Cov"],    
-    ["describe_button", "Describe"],
-    ["info_button", "Info"],
-    ["kurt_button", "Kurt"],
-    ["sem_button", "Sem"],
-    ["t_button", "Transpose"],
-    ["unique_button", "Unique"],
-    ["var_button", "Var"],
-]))
+                          [
+                           ["corr_button", "Corr"],
+                           ["cov_button", "Cov"],    
+                           ["describe_button", "Describe"],
+                           ["info_button", "Info"],
+                           ["kurt_button", "Kurt"],
+                           ["sem_button", "Sem"],
+                           ["t_button", "Transpose"],
+                           ["unique_button", "Unique"],
+                           ["var_button", "Var"],
+                          ]))
 
 functions = list(map(lambda x: x + [style_button],
                      [   
-    ["drop_button", "Drop"],
-    ["groupby_button", "Groupby"],
-    ["prueba_button", "Prueba"]
-]))
+                      ["drop_button", "Drop"],
+                      ["groupby_button", "Groupby"],
+                     ]))
 
 visualizations_basic = list(map(lambda x: x + [style_button],
-                          [
-    ["area_button", "Area"],
-    ["bar_button", "Bar"],
-    ["funnel_button", "Funnel"],    
-    ["line_button", "Line"],            
-    ["scatter_button", "Scatter Plot"], 
-    ["timeline_button", "Timeline"]
-]))
+                                [
+                                 ["area_button", "Area"],
+                                 ["bar_button", "Bar"],
+                                 ["funnel_button", "Funnel"],    
+                                 ["line_button", "Line"],            
+                                 ["scatter_button", "Scatter Plot"], 
+                                 ["timeline_button", "Timeline"]
+                                ]))
 
 visualizations_part_of_whole = list(map(lambda x: x + [style_button],
-                          [  
-    ["icicle_button", "Icicle"],
-    ["pie_button", "Pie"],
-    ["sunburst_button", "Sunburst"],
-    ["treemap_button", "Treemap"],
-]))
-
-
+                                        [  
+                                         ["icicle_button", "Icicle"],
+                                         ["pie_button", "Pie"],
+                                         ["sunburst_button", "Sunburst"],
+                                         ["treemap_button", "Treemap"],
+                                        ]))
 
 models_supervised = list(map(lambda x: x + [style_button],
-                  [
-    ["linear_regresion_button", "Linear Reg."],
-    ["logistic_regresion_button", "Logistic Reg."],    
-]))
+                             [
+                              ["linear_regresion_button", "Linear Reg."],
+                              ["logistic_regresion_button", "Logistic Reg."],    
+                             ]))
 
-models_deep = list(map(lambda x: x + [style_button],                  [
-    ["prueba2", "prueba"],
-]))
+models_deep = list(map(lambda x: x + [style_button],
+                       [
+                        ["prueba", "-----"]
+                       ]))
 
-existing_models = list(map(lambda x: x + [style_button],                  [
-    ["canny_button", "Canny"],
-]))
+existing_models = list(map(lambda x: x + [style_button],
+                           [
+                            ["canny_button", "Canny"],
+                           ]))
 
 models_test = list(map(lambda x: x + [style_button],
-                  [
-    ["test_models_button", "Test Models"],
-]))
+                       [
+                        ["test_models_button", "Test Models"],
+                       ]))
