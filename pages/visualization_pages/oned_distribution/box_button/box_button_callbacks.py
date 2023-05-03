@@ -62,11 +62,15 @@ def display_page(
     state_hover_data
     ):     
     
-    if state_color is not None and len(state_color) < 1 or state_color == " ":
+    if state_color is not None and len(state_color) < 1\
+        or state_color == " ":
         state_color = None   
+
     if state_Y is not None and len(state_Y) < 1 or state_Y == " ":
         state_Y = None  
-    if state_hover_data is not None and len(state_hover_data) < 1 or state_hover_data == " ":
+
+    if state_hover_data is not None and len(state_hover_data) < 1\
+        or state_hover_data == " ":
         state_hover_data = None 
     if state_points == "False":
         state_points = False
@@ -92,4 +96,3 @@ def display_page(
         return [dcc.Graph(figure=fig), ""]
     else:
         return[html.H6("X", style=style_msg), ""]
-    

@@ -10,10 +10,20 @@ params_utils = [
                 create_select(id_page, "X"),
                 create_select(id_page, "Y"),
                 html.H4("Params", style=style_title_params),  
-                create_param_drop(id_page, "points", options=["False", "all", "outliers", 'suspectedoutliers'], value="outliers"),  
+                create_param_drop(id_page, "points",
+                                  options=["False", "all",
+                                           "outliers", 'suspectedoutliers'],
+                                  value="outliers"
+                ),  
                 create_param_drop(id_page, "color"),   
-                create_param_drop(id_page, "quartilemethod", options=["exclusive", "inclusive", "linear"], value="linear"),       
-                create_param_drop(id_page, "notched", options=["True", "False"], value="False"),       
+                create_param_drop(id_page, "quartilemethod",
+                                  options=["exclusive", "inclusive",
+                                           "linear"],
+                                  value="linear"
+                ),       
+                create_param_drop(id_page, "notched",
+                                  options=["True", "False"], value="False"
+                ),       
                 create_param_drop(id_page, "hover_data"),              
                 create_buttom_refresh(id_page)
                ]
