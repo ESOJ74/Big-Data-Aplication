@@ -126,6 +126,8 @@ def panel_models(id_page):
                    div_button_drop(f"{id_page}_button_machine", "Machine Learning"),
                    hidden_button_group(f"{id_page}_div_buttons_machine", models_supervised),
                    div_button_drop(f"{id_page}_button_deep", "Deep Learning"),  
-                   hidden_button_group(f"{id_page}_div_buttons_deep", models_deep),   
+                   hidden_button_group(f"{id_page}_div_buttons_deep", models_deep),  
+                   div_button_drop(f"{id_page}_button_existing_models", "Existing Models"), 
+                   hidden_button_group(f"{id_page}_div_buttons_existing_models", existing_models), 
                    button_group(f"{id_page}_div_buttons_test_model", models_test),               
                   ])

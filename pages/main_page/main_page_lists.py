@@ -69,8 +69,11 @@ models_supervised = list(map(lambda x: x + [style_button],
     ["logistic_regresion_button", "Logistic Reg."],    
 ]))
 
-models_deep = list(map(lambda x: x + [style_button],
-                  [
+models_deep = list(map(lambda x: x + [style_button],                  [
+    ["prueba2", "prueba"],
+]))
+
+existing_models = list(map(lambda x: x + [style_button],                  [
     ["canny_button", "Canny"],
 ]))
 
