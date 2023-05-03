@@ -115,7 +115,9 @@ def panel_visualizations(id_page):
                    div_button_drop(f"{id_page}_button_basics", "Basics"),
                    hidden_button_group(f"{id_page}_div_buttons_basics", visualizations_basic),
                    div_button_drop(f"{id_page}_button_part_of_whole", "Part Of Whole"),                   
-                   hidden_button_group(f"{id_page}_div_buttons_part_of_whole", visualizations_part_of_whole),                   
+                   hidden_button_group(f"{id_page}_div_buttons_part_of_whole", visualizations_part_of_whole),    
+                   div_button_drop(f"{id_page}_button_1d_distribution", "1D Distribution"),                   
+                   hidden_button_group(f"{id_page}_div_buttons_1d_distribution", visualizations_1d_distribution),                 
                   ])
 
 

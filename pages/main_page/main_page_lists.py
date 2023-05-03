@@ -59,6 +59,15 @@ visualizations_part_of_whole = list(map(lambda x: x + [style_button],
                                          ["treemap_button", "Treemap"],
                                         ]))
 
+visualizations_1d_distribution = list(map(lambda x: x + [style_button],
+                                        [  
+                                         ["histogram_button", "Histogram"],
+                                         ["box_button", "Box"],
+                                         ["violin_button", "Violin"],
+                                         ["strip_button", "Strip"],
+                                         ["ecdf_button", "Ecdf"]
+                                        ]))
+
 models_supervised = list(map(lambda x: x + [style_button],
                              [
                               ["linear_regresion_button", "Linear Reg."],
