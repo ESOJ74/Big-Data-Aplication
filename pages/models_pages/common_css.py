@@ -103,7 +103,6 @@ style_div_down = {
     "height": "50%",
 }
 
-
 style_div_drop_test = {    
     "float": "left",
     "margin-left": "2%",
@@ -165,4 +164,29 @@ style_div_test_result = {
     "padding-left": "20px",
     "padding-right": "5px",
     "overflow-y": "auto",
+}
+
+style_div_drop_foto = {       
+    "margin-left": "2%",
+    "margin-top": "2%",
+    "width": "90%",
+    "height": "8%" 
+}
+
+style_selector_foto = {  
+    "float": "left",     
+    "width": "20%",
+    "height": "2.65em",
+    "border-radius": "7px 7px 5px 5px",
+    "padding": "2px 2px 0px 2px",
+    "font-size": "1em",
+    "color": "black",
+    "background": "#2f6374",
+}
+
+style_div_button_foto = {
+    "float": "left",    
+    "margin-left": "5%", 
+    "width": "20%",
+    "height": "2.65em",
 }
