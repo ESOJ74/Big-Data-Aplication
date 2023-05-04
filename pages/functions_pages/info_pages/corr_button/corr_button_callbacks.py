@@ -86,7 +86,5 @@ def second_callback(n_clicks, n_clicks_text, n_click_graph, refresh, data,
                       my_div(style_div_obj, "", obj),
                ), ""
               ]
-    except (TypeError, ValueError) as msg:
+    except ValueError as msg:
         return [html.H6(msg.__str__(), style=style_msg), ""]
-    except KeyError:
-        return [html.H6("No ha cargado ningún fichero", style=style_msg), ""]

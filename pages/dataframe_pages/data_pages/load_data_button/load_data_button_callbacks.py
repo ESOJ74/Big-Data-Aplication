@@ -52,7 +52,7 @@ def load_data(n_clicks, data):
            Output("main_page_store", "data", allow_duplicate=True),           
            Output(f"main_page_div_functions", "hidden"),    
            Output(f"main_page_div_data", "hidden", allow_duplicate=True),   
-           Output(f"{id_page}_content_down", "children", allow_duplicate=True),           
+           Output(f"{id_page}_content_down", "children", allow_duplicate=True),       
           ],
           Input(f"{id_page}_aceptar", "n_clicks"),
           [
@@ -74,7 +74,7 @@ def load_data(accept, input_value, data):
         raise PreventUpdate   
     return [data, False, div_data_hidden,
             html.H6(f"DataFrame {input_value.split('.')[0]} preparado",
-                    style=style_msg) ]
+                    style=style_msg)]
 
 
 @callback(Output(f"{id_page}_content_down", "children", allow_duplicate=True),

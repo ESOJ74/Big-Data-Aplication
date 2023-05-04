@@ -51,9 +51,10 @@ def add_data_to_fig(n_clicks, data):
         df = read_csv("tmp.csv")    
         os.remove("tmp.csv")           
         obj.append(create_adgrid(f"{id_page}_ag-table", df))
-        obj.append(False)    
+        obj.append(False)
     except (TypeError, KeyError, ValueError):
-        obj = [html.H6("No ha cargado ningún fichero", style=style_msg), True]
+        obj = [html.H6('No hay ningún DataFrame Cargado',
+                       style={"margin-left": "20%", "color": "#b0d8d3"}), True]
     return [        
                my_div(style_div_content, "",
                       my_div({}, "",

@@ -86,7 +86,5 @@ def add_data_to_fig(n_clicks, n_clicks2, data, percentiles, include, exclude):
                                        style=style_text)
                        ),
                 ), ""]
-    except KeyError:
-        return [html.H6("No ha cargado ningún fichero", style=style_msg), ""]
     except Exception as err:        
         return [html.Pre(str(err), style=style_msg), ""]

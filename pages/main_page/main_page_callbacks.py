@@ -53,8 +53,7 @@ create_callback(models_test, "models_pages")
 @callback([
            Output(f"{id_page}_div_data", "hidden"),
            Output(f"{id_page}_div_buttons_info", "hidden"),
-           Output(f"{id_page}_div_functions", "hidden",
-                  allow_duplicate=True),
+           
            Output(f"{id_page}_div_buttons_basics", "hidden"), 
            Output(f"{id_page}_div_buttons_part_of_whole", "hidden"),       
            Output(f"{id_page}_div_buttons_machine", "hidden"), 
@@ -213,7 +212,7 @@ def auth_display(click_data, click_info, click_basics, click_whole,
         state_panel_model = False
 
     return [state_hidden_data, state_hidden_info,
-            div_functions, state_basics, state_whole, state_machine,
+            state_basics, state_whole, state_machine,
             state_deep, state_existing_models, state_1d_distribution,
             state_panel_functions, state_panel_visualizations,
             state_panel_model, 0, 0, 0, 0, 0, 0, 0, 0]

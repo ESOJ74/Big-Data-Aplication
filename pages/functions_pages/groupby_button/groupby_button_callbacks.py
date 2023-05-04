@@ -30,28 +30,19 @@ def second_callback(n_clicks):
                   ])
 
 
-@callback([
-           Output(f"{id_page}_by", "options"),
-           Output(f"{id_page}_div_graph", "children", allow_duplicate=True),
-          ],
+@callback(Output(f"{id_page}_by", "options"),
           Input(f"{id_page}_axis", "value"), 
-          State('main_page_store', 'data'),
-          prevent_initial_call=True,)
+          State('main_page_store', 'data'),)
 def display_page(axis, data):
-    try:
-        df = read_json(data["df"])
-    except Exception:
-        return [[], html.H6("No ha cargado ningún fichero", style={"color": "#31EDF0"})]
     if axis:
-        return [df.columns, ""]
+        return read_json(data["df"]).columns
     else:
-        return [df.index, ""]
-    
+        return read_json(data["df"]).index
     
 
 @callback(
     [
-      Output(f"{id_page}_div_graph", "children", allow_duplicate=True),
+      Output(f"{id_page}_div_graph", "children"),
       Output("main_page_store", "data", allow_duplicate=True),
       Output(f"{id_page}_loading", "children"),
       Output(f"{id_page}_save", "disabled"),
@@ -76,11 +67,8 @@ def add_data_to_fig(refresh, data, state_by, state_axis):
                        html.H6(f"df.groupby({state_by}).sum()",
                                style=style_div_code),
                        ]
-            save_disabled = False 
-        except KeyError:
-            content = html.H6("No ha cargado ningún fichero", style={"color": "#31EDF0"})    
-            save_disabled = True     
-        except ValueError as err:
+            save_disabled = False            
+        except (KeyError, ValueError) as err:
             content = html.H6(err.__str__(), style={"color": color_code}),
             save_disabled = True
     else:

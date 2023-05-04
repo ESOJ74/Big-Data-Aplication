@@ -97,8 +97,6 @@ def add_data_to_fig(n_clicks, n_clicks_text, n_click_graph, refresh, data,
               my_div(style_div_content, "",
                      my_div(style_div_obj, "", obj)    
               ), ""]
-    except KeyError:
-        return [html.H6("No ha cargado ningún fichero", style=style_msg), ""]
     except TypeError as msg:
         return [
                 html.H6(msg.__str__(),

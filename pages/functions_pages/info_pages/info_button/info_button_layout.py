@@ -36,10 +36,8 @@ def second_callback(n_clicks):
         State("main_page_store", "data"),
         prevent_initial_call=True,)
 def add_data_to_fig(n_clicks, data): 
-    try:
-        df = read_json(data["df"])   
-    except KeyError:
-        return [html.H6("No ha cargado ningún fichero", style=style_msg), ""]
+     
+    df = read_json(data["df"])   
     
     stop = df.shape[0]
     columns = list(df.columns)
