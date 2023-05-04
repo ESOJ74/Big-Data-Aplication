@@ -37,6 +37,60 @@ content_up = my_div(style_div_content_up,
                            ]))
 
 
+"""content_down = my_div(style_div_content_down,
+                      f"{id_page}_content",
+                      my_div({"width": "100%", "height": "90%"}, "",
+                            [
+                             my_div(style_div_dropdown_archivos, f"{id_page}_div_archivos",
+                                    [
+                                     my_div(style_selector, "",
+                                            my_dropdown(f"{id_page}_drop_file",
+                                                         {"background": background_in_dropdown}
+                                            ),
+                                     ),
+                                     my_button(f"{id_page}_aceptar", "Aceptar",
+                                               style_boton_aceptar,
+                                               className="btn btn-outline-warning",
+                                               color="black"
+                                     ),    
+                                    ], hidden=True,
+                             ),        
+                             my_div(style_div_dropdown_db,
+                                    f"{id_page}_div_db",
+                                    [
+                                     my_div(s_selector_db, "",
+                                            [
+                                             html.H6("User", style=style_title_db),
+                                             dcc.Input(id=f"{id_page}_user",
+                                                       style=style_input),                                 
+                                             html.H6("Password", style=style_title_db),
+                                             dcc.Input(id=f"{id_page}_password",
+                                                       style=style_input),     
+                                             html.H6("Host", style=style_title_db),
+                                             dcc.Input(id=f"{id_page}_host",
+                                                       style=style_input),  
+                                             html.H6("Port", style=style_title_db),
+                                             dcc.Input(id=f"{id_page}_port",
+                                                       style=style_input),
+                                             html.H6("DataBase", style=style_title_db),
+                                             dcc.Input(id=f"{id_page}_bd",
+                                                       style=style_input), 
+                                             html.H6("Schema", style=style_title_db),
+                                             dcc.Input(id=f"{id_page}_schema",
+                                                       style=style_input),
+                                             html.H6("Table", style=style_title_db),
+                                             dcc.Input(id=f"{id_page}_table",
+                                                       style=style_input),
+                                            ],
+                                     ),
+                                     my_button(f"{id_page}_aceptar_db", "Aceptar",
+                                               style_boton_aceptar,
+                                               className="btn btn-outline-warning",
+                                               color="black"
+                                     ),    
+                                    ], hidden=True,
+                             )]))"""
+
 content_down = my_div(style_div_content_down,
                       f"{id_page}_content",
                       my_div({"width": "100%", "height": "90%"}, "",

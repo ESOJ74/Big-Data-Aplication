@@ -60,7 +60,8 @@ def load_data(drop_dir, data):
 @callback([
            Output("main_page_store", "data", allow_duplicate=True),           
            Output(f"main_page_div_functions", "hidden"),    
-           Output(f"main_page_div_data", "hidden", allow_duplicate=True),    
+           Output(f"main_page_div_data", "hidden", allow_duplicate=True),   
+           Output(f"{id_page}_content", "children") 
           ],
           Input(f"{id_page}_aceptar", "n_clicks"),
           [
@@ -79,7 +80,7 @@ def load_data(accept, input_value, data):
             div_data_hidden = False
     else:
         raise PreventUpdate   
-    return [data, False, div_data_hidden]
+    return [data, False, div_data_hidden, "hola"]
 
 
 #up_file from local
