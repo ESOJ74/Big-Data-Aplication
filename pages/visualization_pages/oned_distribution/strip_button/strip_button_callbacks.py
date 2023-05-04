@@ -16,8 +16,8 @@ create_callback_button_cover(id_page, f"{id_page}_content_down")
 selector_options(id_page, f"{id_page}_X", False)
 selector_options(id_page, f"{id_page}_Y", False)
 selector_options(id_page, f"{id_page}_color")
-selector_options(id_page, f"{id_page}_line_group")
-
+selector_options(id_page, f"{id_page}_hover_data")
+selector_options(id_page, f"{id_page}_facet_col")
 
 @callback(Output(f"{id_page}_content_up", "children"), 
           Input("strip_button", "n_clicks"), 
@@ -43,8 +43,10 @@ def second_callback(n_clicks):
            State('main_page_store', 'data'),
            State(f"{id_page}_X", "value"),
            State(f"{id_page}_Y", "value"),
+           State(f"{id_page}_stripmode", 'value'),
            State(f"{id_page}_color", 'value'),
-           State(f"{id_page}_line_group", 'value'),
+           State(f"{id_page}_hover_data", 'value'),
+           State(f"{id_page}_facet_col", 'value')
           ],
           prevent_initial_call=True)
 def display_page(
@@ -52,28 +54,33 @@ def display_page(
     data,
     state_X,
     state_Y,
+    state_stripmode,
     state_color,
-    state_line_group
+    state_hover_data,
+    state_facet_col
     ):     
     
     if state_color is not None and len(state_color) < 1 or state_color == " ":
         state_color = None   
-
-    if state_line_group is not None and len(state_line_group) < 1 or state_line_group == " ":
-        state_line_group = None  
+    if state_hover_data is not None and len(state_hover_data) < 1 or state_hover_data == " ":
+        state_hover_data = None
+    if state_facet_col is not None and len(state_facet_col) < 1 or state_facet_col == " ":
+        state_facet_col = None       
 
     if state_X and state_Y:
 
         df = read_json(data["df"])
 
-        fig = px.area(
+        fig = px.strip(
             df,
             template=template_visualizations,
             x=state_X,
             y=state_Y,
-            height=550,
+            hover_data=state_hover_data,
+            stripmode=state_stripmode,
             color=state_color,
-            line_group=state_line_group, 
+            facet_col=state_facet_col,
+            height=550,
             color_discrete_sequence=sequential.Plasma,  
         ).update_layout(legend={"title_font_color": color_boton_1})   
         return [dcc.Graph(figure=fig), ""]
