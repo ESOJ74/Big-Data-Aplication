@@ -33,14 +33,18 @@ def create_callback(buttons_list, module, button_name=""):
 
 create_callback(buttons, "dataframe_pages")
 create_callback(buttons_data, "dataframe_pages.data_pages")
-create_callback(visualizations_basic, "visualization_pages.basics")
-create_callback(visualizations_part_of_whole, "visualization_pages.part_of_whole")
-create_callback(visualizations_1d_distribution, "visualization_pages.oned_distribution")
+create_callback(visualizations_basic,
+                "visualization_pages.basics")
+create_callback(visualizations_part_of_whole,
+                "visualization_pages.part_of_whole")
+create_callback(visualizations_1d_distribution,
+                "visualization_pages.oned_distribution")
 
 
 create_callback(functions, "functions_pages")
 create_callback(functions_info, "functions_pages.info_pages")
-create_callback(models_supervised, "models_pages.machine_learning.supervised")
+create_callback(models_supervised,
+                "models_pages.machine_learning.supervised")
 create_callback(models_deep, "models_pages.deep_learning")
 create_callback(existing_models, "models_pages.existing_models")
 create_callback(models_test, "models_pages")
@@ -49,7 +53,6 @@ create_callback(models_test, "models_pages")
 @callback([
            Output(f"{id_page}_div_data", "hidden"),
            Output(f"{id_page}_div_buttons_info", "hidden"),
-           Output(f"{id_page}_div_buttons", "hidden"),
            Output(f"{id_page}_div_functions", "hidden",
                   allow_duplicate=True),
            Output(f"{id_page}_div_buttons_basics", "hidden"), 
@@ -57,10 +60,12 @@ create_callback(models_test, "models_pages")
            Output(f"{id_page}_div_buttons_machine", "hidden"), 
            Output(f"{id_page}_div_buttons_deep", "hidden"),
            Output(f"{id_page}_div_buttons_existing_models", "hidden"),
-
            Output(f"{id_page}_div_buttons_1d_distribution", "hidden"),
 
-           
+           Output("panel_functions", "hidden"),
+           Output("panel_visualizations", "hidden"),
+           Output("panel_models", "hidden"),
+
            Output(f"{id_page}_button_data", "n_clicks"),
            Output(f"{id_page}_button_drop_info", "n_clicks"), 
            Output(f"{id_page}_button_basics", "n_clicks"), 
@@ -112,6 +117,9 @@ def auth_display(click_data, click_info, click_basics, click_whole,
         state_deep = True
         state_existing_models = True
         state_1d_distribution = True
+        state_panel_functions = True
+        state_panel_visualizations = True
+        state_panel_model = True
         
     if click_info:
         state_hidden_info = not state_hidden_info
@@ -122,6 +130,9 @@ def auth_display(click_data, click_info, click_basics, click_whole,
         state_deep = True
         state_existing_models = True
         state_1d_distribution = True
+        state_panel_functions = False
+        state_panel_visualizations = True
+        state_panel_model = True
 
     if click_basics:
         state_basics = not state_basics
@@ -132,6 +143,9 @@ def auth_display(click_data, click_info, click_basics, click_whole,
         state_deep = True
         state_existing_models = True
         state_1d_distribution = True
+        state_panel_visualizations = False
+        state_panel_functions = True
+        state_panel_model = True
 
     if click_whole:
         state_whole = not state_whole
@@ -142,36 +156,9 @@ def auth_display(click_data, click_info, click_basics, click_whole,
         state_deep = True
         state_existing_models = True
         state_1d_distribution = True
-
-    if click_machine:
-        state_machine = not state_machine        
-        state_hidden_data = True
-        state_hidden_info = True
-        state_basics = True
-        state_whole = True
-        state_deep = True
-        state_existing_models = True
-        state_1d_distribution = True
-
-    if click_deep:
-        state_deep = not state_deep       
-        state_hidden_data = True
-        state_hidden_info = True
-        state_basics = True
-        state_whole = True
-        state_machine = True
-        state_existing_models = True
-        state_1d_distribution = True
-
-    if click_existing_models:
-        state_existing_models = not state_existing_models
-        state_hidden_data = True
-        state_hidden_info = True
-        state_basics = True
-        state_whole = True        
-        state_machine = True
-        state_deep = True
-        state_1d_distribution = True
+        state_panel_visualizations = False
+        state_panel_functions = True
+        state_panel_model = True
 
     if click_1d_distribution:
         state_1d_distribution = not state_1d_distribution
@@ -182,13 +169,54 @@ def auth_display(click_data, click_info, click_basics, click_whole,
         state_machine = True
         state_deep = True
         state_existing_models = True
+        state_panel_visualizations = False
+        state_panel_functions = True
+        state_panel_model = True
 
-    state_hiden_button = True
-    if state_hidden_info == True:
-        state_hiden_button = False
-    return [state_hidden_data, state_hidden_info, state_hiden_button,
+    if click_machine:
+        state_machine = not state_machine        
+        state_hidden_data = True
+        state_hidden_info = True
+        state_basics = True
+        state_whole = True
+        state_deep = True
+        state_existing_models = True
+        state_1d_distribution = True
+        state_panel_visualizations = True
+        state_panel_functions = True
+        state_panel_model = False
+
+    if click_deep:
+        state_deep = not state_deep       
+        state_hidden_data = True
+        state_hidden_info = True
+        state_basics = True
+        state_whole = True
+        state_machine = True
+        state_existing_models = True
+        state_1d_distribution = True
+        state_panel_visualizations = True
+        state_panel_functions = True
+        state_panel_model = False
+
+    if click_existing_models:
+        state_existing_models = not state_existing_models
+        state_hidden_data = True
+        state_hidden_info = True
+        state_basics = True
+        state_whole = True        
+        state_machine = True
+        state_deep = True
+        state_1d_distribution = True
+        state_panel_visualizations = True
+        state_panel_functions = True
+        state_panel_model = False
+
+    return [state_hidden_data, state_hidden_info,
             div_functions, state_basics, state_whole, state_machine,
-            state_deep, state_existing_models, state_1d_distribution, 0, 0, 0, 0, 0, 0, 0, 0]
+            state_deep, state_existing_models, state_1d_distribution,
+            state_panel_functions, state_panel_visualizations,
+            state_panel_model, 0, 0, 0, 0, 0, 0, 0, 0]
 
 
 @callback([
@@ -264,3 +292,54 @@ def auth_display(n_clicks, reg_user, reg_pass):
             reg_answer =  "Usuario no registrado"
     return [left_hidden, registry_hidden, data,
             user_div, sesion_div, reg_answer] 
+
+
+
+@callback([
+           Output("panel_functions", "hidden", allow_duplicate=True),
+           Output("panel_visualizations", "hidden", allow_duplicate=True),
+           Output("panel_models", "hidden", allow_duplicate=True),
+
+           Output(f"{id_page}_div_data", "hidden", allow_duplicate=True),
+           Output(f"{id_page}_div_buttons_info", "hidden",
+                  allow_duplicate=True),
+           Output(f"{id_page}_div_buttons_basics", "hidden",
+                  allow_duplicate=True), 
+           Output(f"{id_page}_div_buttons_part_of_whole", "hidden",
+                  allow_duplicate=True),       
+           Output(f"{id_page}_div_buttons_machine", "hidden",
+                  allow_duplicate=True), 
+           Output(f"{id_page}_div_buttons_deep", "hidden",
+                  allow_duplicate=True),
+           Output(f"{id_page}_div_buttons_existing_models", "hidden",
+                  allow_duplicate=True),
+           Output(f"{id_page}_div_buttons_1d_distribution", "hidden",
+                  allow_duplicate=True),
+
+           Output("button_show_functions", "n_clicks"),
+           Output("button_show_visualizations", "n_clicks"),
+           Output("button_show_models", "n_clicks"),
+          ],
+          [
+          Input("button_show_functions", "n_clicks"),
+          Input("button_show_visualizations", "n_clicks"),
+          Input("button_show_models", "n_clicks"),
+          ],
+          [
+           State("panel_functions", "hidden"),
+           State("panel_visualizations", "hidden"),
+           State("panel_models", "hidden")
+          ],
+          prevent_initial_call=True,)
+def auth_display(button_functions, button_visualizations, button_models,
+                 state_panel_functions, state_panel_visualizations,
+                 state_panel_models):    
+    if button_functions:
+        state_panel_functions = not state_panel_functions
+    if button_visualizations:
+        state_panel_visualizations = not state_panel_visualizations
+    if button_models:
+        state_panel_models = not state_panel_models
+    return [state_panel_functions, state_panel_visualizations,
+            state_panel_models, True, True, True, True, True, True,
+            True, True, 0, 0, 0]
