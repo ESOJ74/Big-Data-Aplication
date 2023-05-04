@@ -19,21 +19,7 @@ params_utils = [
                                   options=["overlay", "group"],
                                   value="group"),
                 create_param_drop(id_page, "color"),   
-                create_param_drop(id_page, "hover_data"),  
-                #create_param_input(id_page, "nbins", 20),
-                #create_param_input(id_page, "bargap", 0),
-                #create_param_drop(id_page, "histnorm",
-                #                  options=[" ", "percent", "probability",
-                #                           "density", "probability density"],
-                #                           value=" "),  
-                #create_param_input(id_page, "opacity", 1),
-                #create_param_drop(id_page, "log_y", options=["True", "False"],
-                #                  value="False"),     
-                 
-                #create_param_drop(id_page, "histfunc",
-                #                  options=["count","sum","avg", "min", "max"],
-                #                  value="count"),  
-                #create_param_drop(id_page, "pattern_shape"),                      
+                create_param_drop(id_page, "hover_data"),           
                 create_buttom_refresh(id_page),
                ]
 
