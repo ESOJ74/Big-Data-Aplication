@@ -20,11 +20,13 @@ create_callback_button_cover(id_page, f"{id_page}_content_down")
 def view_data(n_clicks, data):
 
     obj = []
-    try:        
-        df = read_json(data["df"])       
-        obj.append(False)
-    except (TypeError, KeyError, ValueError):
+    if "df" in data:
+        df = read_json(data["df"]) 
+        obj = my_div({"margin-top": "1%"}, "",
+                     create_adgrid(f"{id_page}_ag-table", df))
+    else:
         obj = [html.H6('No hay ningún DataFrame Cargado',
-                       style={"margin-left": "20%", "color": color_boton_1})]
-    return [my_div({"margin-top": "1%"}, "",
-                   create_adgrid(f"{id_page}_ag-table", df)), ""]
+                       style={"margin-left": "4%", 
+                              "margin-top": "2%",
+                              "color": color_boton_1})]
+    return [obj, ""]
