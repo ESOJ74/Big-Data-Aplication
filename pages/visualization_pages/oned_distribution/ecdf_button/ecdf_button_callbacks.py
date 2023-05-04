@@ -14,7 +14,7 @@ id_page = "ecdf"
 
 create_callback_button_cover(id_page, f"{id_page}_content_down")
 selector_options(id_page, f"{id_page}_X", False)
-selector_options(id_page, f"{id_page}_Y", False)
+selector_options(id_page, f"{id_page}_Y")
 selector_options(id_page, f"{id_page}_color")
 selector_options(id_page, f"{id_page}_line_group")
 
@@ -44,7 +44,9 @@ def second_callback(n_clicks):
            State(f"{id_page}_X", "value"),
            State(f"{id_page}_Y", "value"),
            State(f"{id_page}_color", 'value'),
-           State(f"{id_page}_line_group", 'value'),
+           State(f"{id_page}_ecdfnorm", 'value'),
+           State(f"{id_page}_ecdfmode", 'value'),
+           State(f"{id_page}_markers", 'value'),
           ],
           prevent_initial_call=True)
 def display_page(
@@ -53,30 +55,37 @@ def display_page(
     state_X,
     state_Y,
     state_color,
-    state_line_group
+    state_ecdfnorm,
+    state_ecdfmode,
+    state_markers
     ):     
     
+    if state_Y is not None and len(state_Y) < 1 or state_Y == " ":
+        state_Y = None 
+    if state_ecdfnorm is not None and len(state_ecdfnorm) < 1 or state_ecdfnorm == " ":
+        state_ecdfnorm = None 
     if state_color is not None and len(state_color) < 1 or state_color == " ":
-        state_color = None   
+        state_color = None  
+    state_markers = False if state_markers == "False" else True
+    if state_X:
+        try:
+            df = read_json(data["df"])
 
-    if state_line_group is not None and len(state_line_group) < 1 or state_line_group == " ":
-        state_line_group = None  
-
-    if state_X and state_Y:
-
-        df = read_json(data["df"])
-
-        fig = px.area(
-            df,
-            template=template_visualizations,
-            x=state_X,
-            y=state_Y,
-            height=550,
-            color=state_color,
-            line_group=state_line_group, 
-            color_discrete_sequence=sequential.Plasma,  
-        ).update_layout(legend={"title_font_color": color_boton_1})   
-        return [dcc.Graph(figure=fig), ""]
+            fig = px.ecdf(
+                df,
+                template=template_visualizations,
+                x=state_X,
+                y=state_Y,            
+                color=state_color,
+                ecdfnorm=state_ecdfnorm, 
+                ecdfmode=state_ecdfmode,
+                markers=state_markers,
+                height=550,
+                color_discrete_sequence=sequential.Plasma,  
+            ).update_layout(legend={"title_font_color": color_boton_1})   
+            return [dcc.Graph(figure=fig), ""]
+        except Exception as err:
+            return [html.H6(err.__str__(), style=style_msg), ""]
     else:
         return[html.H6("X e Y deben tener valor", style=style_msg), ""]
     
