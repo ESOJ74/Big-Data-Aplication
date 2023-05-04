@@ -92,4 +92,5 @@ models_test = list(map(lambda x: x + [style_button],
 pipeline = list(map(lambda x: x + [style_button],
                        [
                         ["show_pipeline_button", "Show Pipeline"],
+                        ["drop_file_button", "Drop File"]
                        ]))
