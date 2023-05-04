@@ -54,7 +54,7 @@ style_title_data = {
 
 style_title = {
     "float": "left",
-    "margin-top": "10%",
+    "margin-top": "8%",
     "margin-left": "5%",
     "height": "100%",
     "width": "70%",
@@ -182,12 +182,12 @@ style_div_buttons_func = {
 }
 
 style_border = {
-    "margin-top": "2.5%",
+    "margin-top": "0%",
 }
 
 style_button_show = {
     "float": "left",
-    "margin-top": "8%",
+    "margin-top": "5%",
     "margin-left": "5%",
     "width": "20%",
     "border": "0px solid #2a9fd6",

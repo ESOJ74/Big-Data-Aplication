@@ -5,7 +5,7 @@ from tkinter import filedialog
 from dash import Input, Output, State, callback, dcc, html
 from dash.dependencies import Input, Output, State
 from dash.exceptions import PreventUpdate
-from pandas import read_sql
+from pandas import DataFrame, read_sql
 from sqlalchemy import create_engine
 
 from assets.layout_templates.main_page.common_css import *
@@ -52,7 +52,7 @@ def load_data(n_clicks, data):
            Output("main_page_store", "data", allow_duplicate=True),           
            Output(f"main_page_div_functions", "hidden"),    
            Output(f"main_page_div_data", "hidden", allow_duplicate=True),   
-           Output(f"{id_page}_content_down", "children", allow_duplicate=True) 
+           Output(f"{id_page}_content_down", "children", allow_duplicate=True),           
           ],
           Input(f"{id_page}_aceptar", "n_clicks"),
           [
@@ -63,7 +63,12 @@ def load_data(n_clicks, data):
 def load_data(accept, input_value, data):
     if accept:
         path = f"""users/{data["user"]}/data/{input_value}"""  
-        data["df"] = read_data(input_value.split('.')[-1], path)      
+        data["df"] = read_data(input_value.split('.')[-1], path)  
+        ext = input_value.split(".")[1]   
+        data['pipeline'] = DataFrame(
+                               {"codigo": ["import pandas as pd",
+                                           f"""df = pd.read_{ext}("{input_value}")"""]}
+                           ).to_json(orient="columns")
         div_data_hidden = True  
     else:
         raise PreventUpdate   

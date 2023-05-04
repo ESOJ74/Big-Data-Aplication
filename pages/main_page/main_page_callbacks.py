@@ -112,7 +112,7 @@ def auth_display(click_data, click_info, click_basics, click_whole,
         state_hidden_info = True
         state_basics = True
         state_whole = True
-        div_functions = True
+        #div_functions = True
         state_machine = True
         state_deep = True
         state_existing_models = True

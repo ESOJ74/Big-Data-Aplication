@@ -10,7 +10,7 @@ def left_panel(id_page):
                    # DataFrame panel
                    panel_dataFrame(id_page),
                    # Div for Visualizations panel, Functions panel, Models panel
-                   my_div({"height": "85%", "overflow-y": "auto"},                          
+                   my_div({"margin-top": "12%", "height": "81.5%", "overflow-y": "auto"},                          
                           f"{id_page}_div_functions",
                           [
                            # Functions panel
