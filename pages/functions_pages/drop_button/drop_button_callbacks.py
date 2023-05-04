@@ -67,7 +67,7 @@ def add_data_to_fig(refresh, data, labels, state_axis):
                         )
             data["prov_cod"] = concat([read_json(data["pipeline"]),
                                        df_codigo]
-                               ).reset_index().to_json(orient="columns")
+                               ).reset_index(drop=True).to_json(orient="columns")
 
             content = [
                        my_div(style_div_table, "",

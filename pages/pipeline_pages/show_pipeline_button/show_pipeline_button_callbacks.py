@@ -29,6 +29,6 @@ def add_data_to_fig(refres, data):
         for line in file:
             print(line)
             obj.append(html.P(line, style={"margin-bottom": "0%","white-space": "pre-wrap"}))
-    #os.remove("output.txt")
+    os.remove("output.txt")
      
-    return [my_div({}, "", obj)]
+    return [my_div({"margin-left": "3%", "margin-top": "10%"}, "", obj)]

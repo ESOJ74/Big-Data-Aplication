@@ -35,9 +35,9 @@ def second_callback(n_clicks):
           State('main_page_store', 'data'),)
 def display_page(axis, data):
     if axis:
-        return read_json(data["df"]).columns
-    else:
         return read_json(data["df"]).index
+    else:
+        return read_json(data["df"]).columns
     
 
 @callback(
@@ -66,7 +66,7 @@ def add_data_to_fig(refresh, data, state_by, state_axis):
                         )
             data["prov_cod"] = concat([read_json(data["pipeline"]),
                                        df_codigo]
-                               ).reset_index().to_json(orient="columns")
+                               ).reset_index(drop=True).to_json(orient="columns")
             
             content = [
                        my_div(style_div_table, "",

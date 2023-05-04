@@ -10,7 +10,7 @@ params_utils = [
                 html.H4("Params", style=style_title_params),  
                 create_param_drop(id_page, "by", multi=True),
                 create_param_drop(id_page, "axis",
-                                  [0, 1], 1),                
+                                  [0, 1], 0),                
                 create_buttom_refresh(id_page),
                 create_buttom_save(id_page)
                ]
