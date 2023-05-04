@@ -18,7 +18,7 @@ id_page = "show_pipeline"
     prevent_initial_call=True,)
 def add_data_to_fig(refres, data):  
     df = read_json(data["pipeline"])
-    print(df)
+   
     with open("output.txt", "w") as file:
         for x in df["codigo"]:
             file.write(x+"\n")        
@@ -28,7 +28,7 @@ def add_data_to_fig(refres, data):
     obj = []
     with open("output.txt", "r") as file:
         for line in file:
-            print(line)
+         
             obj.append(html.P(line, style={"margin-bottom": "0%","white-space": "pre-wrap"}))
     os.remove("output.txt")
      
