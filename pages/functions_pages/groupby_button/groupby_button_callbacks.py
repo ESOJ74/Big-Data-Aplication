@@ -1,6 +1,6 @@
 from dash import Input, Output, State, callback, html
 from dash.exceptions import PreventUpdate
-from pandas import read_json
+from pandas import DataFrame, concat, read_json
 
 from assets.my_dash.my_html.my_div import my_div
 from utils.create_agGrid import create_adgrid
@@ -57,9 +57,17 @@ def display_page(axis, data):
 def add_data_to_fig(refresh, data, state_by, state_axis):       
     if refresh:        
         try:
-            df = read_json(data["df"]).groupby(state_by, axis=0).sum()           
+            df = read_json(data["df"]).groupby(state_by, axis=state_axis).sum()           
             df = df.reset_index()
             data["prov_df"] = df.to_json(orient="columns")
+
+            df_codigo = DataFrame(
+                           {"codigo": [f"""df.groupby({state_by}, axis={state_axis}).sum()"""]}
+                        )
+            data["prov_cod"] = concat([read_json(data["pipeline"]),
+                                       df_codigo]
+                               ).reset_index().to_json(orient="columns")
+            
             content = [
                        my_div(style_div_table, "",
                               create_adgrid(f"{id_page}_ag-table", df.head(9))

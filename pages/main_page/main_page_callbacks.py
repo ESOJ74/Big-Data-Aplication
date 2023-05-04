@@ -49,6 +49,7 @@ create_callback(models_deep, "models_pages.deep_learning")
 create_callback(existing_models, "models_pages.existing_models")
 create_callback(models_test, "models_pages")
 
+create_callback(pipeline, "pipeline_pages")
 
 @callback([
            Output(f"{id_page}_div_data", "hidden"),
@@ -298,6 +299,7 @@ def auth_display(n_clicks, reg_user, reg_pass):
            Output("panel_functions", "hidden", allow_duplicate=True),
            Output("panel_visualizations", "hidden", allow_duplicate=True),
            Output("panel_models", "hidden", allow_duplicate=True),
+           Output("panel_pipeline", "hidden", allow_duplicate=True),
 
            Output(f"{id_page}_div_data", "hidden", allow_duplicate=True),
            Output(f"{id_page}_div_buttons_info", "hidden",
@@ -318,27 +320,34 @@ def auth_display(n_clicks, reg_user, reg_pass):
            Output("button_show_functions", "n_clicks"),
            Output("button_show_visualizations", "n_clicks"),
            Output("button_show_models", "n_clicks"),
+           Output("button_show_pipeline", "n_clicks"),
           ],
           [
           Input("button_show_functions", "n_clicks"),
           Input("button_show_visualizations", "n_clicks"),
           Input("button_show_models", "n_clicks"),
+          Input("button_show_pipeline", "n_clicks"),
           ],
           [
            State("panel_functions", "hidden"),
            State("panel_visualizations", "hidden"),
-           State("panel_models", "hidden")
+           State("panel_models", "hidden"),
+           State("panel_pipeline", "hidden")
           ],
           prevent_initial_call=True,)
 def auth_display(button_functions, button_visualizations, button_models,
+                 button_pipeline,
                  state_panel_functions, state_panel_visualizations,
-                 state_panel_models):    
+                 state_panel_models, state_panel_pipeline):    
     if button_functions:
         state_panel_functions = not state_panel_functions
     if button_visualizations:
         state_panel_visualizations = not state_panel_visualizations
     if button_models:
         state_panel_models = not state_panel_models
+    if button_pipeline:
+        state_panel_pipeline = not state_panel_pipeline
+
     return [state_panel_functions, state_panel_visualizations,
-            state_panel_models, True, True, True, True, True, True,
-            True, True, 0, 0, 0]
+            state_panel_models, state_panel_pipeline, True, True, True,
+            True, True, True, True, True, 0, 0, 0, 0]

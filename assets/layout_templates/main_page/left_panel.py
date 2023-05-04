@@ -19,6 +19,8 @@ def left_panel(id_page):
                            panel_visualizations(id_page),                                               
                            # Models panel
                            panel_models(id_page),
+                           # Models panel
+                           panel_pipeline(id_page),
                           ],
                           hidden=True,
                    ),

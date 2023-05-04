@@ -1,6 +1,6 @@
 from dash import Input, Output, State, callback, html
 from dash.exceptions import PreventUpdate
-from pandas import read_json
+from pandas import DataFrame, concat, read_json
 
 from assets.my_dash.my_html.my_div import my_div
 from utils.create_agGrid import create_adgrid
@@ -61,13 +61,21 @@ def add_data_to_fig(refresh, data, labels, state_axis):
         try:
             df = read_json(data["df"]).drop(labels, axis=state_axis)  
             data["prov_df"] = df.to_json(orient="columns")
+                     
+            df_codigo = DataFrame(
+                           {"codigo": [f"""df.drop({labels}, axis={state_axis})"""]}
+                        )
+            data["prov_cod"] = concat([read_json(data["pipeline"]),
+                                       df_codigo]
+                               ).reset_index().to_json(orient="columns")
+
             content = [
                        my_div(style_div_table, "",
                               create_adgrid(f"{id_page}_ag-table", df.head(9))
                        ),
                        html.H6(f"df.drop(labels={labels}, axis={state_axis})",
                                style=style_div_code),
-                       ]
+                      ]
             save_disabled = False
         except (KeyError, ValueError) as err:
             content = html.H6(err.__str__(), style={"color": color_code}),

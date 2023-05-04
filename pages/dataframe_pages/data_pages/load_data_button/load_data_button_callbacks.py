@@ -67,6 +67,7 @@ def load_data(accept, input_value, data):
         ext = input_value.split(".")[1]   
         data['pipeline'] = DataFrame(
                                {"codigo": ["import pandas as pd",
+                                           "",
                                            f"""df = pd.read_{ext}("{input_value}")"""]}
                            ).to_json(orient="columns")
         div_data_hidden = True  

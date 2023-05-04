@@ -17,7 +17,7 @@ def create_callback_button_save(id_page):
         if save:
             df = read_json(data["prov_df"])
             data["df"] = df.to_json(orient="columns")
-            columns = list(df.columns)
+            data["pipeline"] = data["prov_cod"]
         else:
             raise PreventUpdate
         return [data, 0, True]
