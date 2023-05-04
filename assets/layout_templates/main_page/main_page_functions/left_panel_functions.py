@@ -18,7 +18,7 @@ def button_drop(id, name, style):
 def div_button_drop(id_button, title):
     return my_div(style_div_button_drop_info, "",
                   button_drop(id_button, title,
-                              style_button_drop_info))
+                              style_button_drop))
 
 
 def create_div_buttons(style_div, style_div_but, style_button, button_list,
@@ -37,7 +37,7 @@ def create_div_buttons(style_div, style_div_but, style_button, button_list,
 
 
 def hidden_button_group(id_group, group_list):
-    return my_div(style_div_buttons_info,
+    return my_div(style_div_buttons_hidden,
                   id_group,                                                      
                   create_div_buttons(
                       style_content_buttons_hidden,

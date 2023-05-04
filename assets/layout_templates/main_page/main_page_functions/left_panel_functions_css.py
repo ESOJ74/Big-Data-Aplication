@@ -2,15 +2,15 @@ from assets.layout_templates.main_page.common_css import *
 
 style_div_button_hidden = {
     "float": "left",
-    "margin-left": "0.1%",
-    "width": "33.2%",
+    "margin-left": "1%",
+    "width": "48%",
     "font-weight": "bold"
 }
 
 style_div_button = {
     "float": "left",
-    "margin-left": "0.8%",
-    "width": "30%",
+    "margin-left": "2%",
+    "width": "43%",
     "font-weight": "bold"
 }
 
@@ -21,7 +21,7 @@ style_div_button2 = {
 }
 
 style_div_div_data = {
-    "margin-top": "2.7%",
+    "margin-top": "3.5%",
     "width": "38%",
     "height": "50%"
 }
@@ -41,7 +41,7 @@ style_div_button_data = {
 style_button_data = {       
     "margin-top": "1%",    
     "width": "100%",
-    "font-size": "0.6vmax",
+    "font-size": "0.7vmax",
     "font-weight": "bold",    
     "border": "2px solid #b0d8d3",
     "color": color_boton_1,
@@ -78,6 +78,7 @@ style_div_1 = {
     "padding": "2px",
     "width": "100%",
     "height": "100%",
+    "border-radius": "8px",
     "background": background_light
 }
 
@@ -85,7 +86,7 @@ style_button = {
     "margin-top": "1%",
     "margin-left": "5%",
     "width": "100%",
-    "font-size": "0.5vmax",
+    "font-size": "0.7vmax",
     "font-weight": "bold",
     "font-family": font_family,
     "border": "2px solid #b0d8d3",
@@ -107,7 +108,7 @@ style_button2 = {
     "margin-top": "1%",
     "margin-left": "1%",
     "width": "99.5%",
-    "font-size": "0.5vmax",
+    "font-size": "0.6vmax",
     "font-weight": "bold",
     "font-family": font_family,
     "border": "1.5px solid #26647c",
@@ -155,21 +156,22 @@ style_div_button_drop_info = {
     "width": "95%",
 }
 
-style_button_drop_info = {       
+style_button_drop = {       
     "margin-top": "1%",
     "margin-left": "2%", 
     "width": "97%",
-    "font-size": "0.7vmax",
+    "font-size": "0.8vmax",
     "font-weight": "bold",    
     "border": "2px solid #b0d8d3",
     "color": color_boton_1,
 }
 
-style_div_buttons_info = {
+style_div_buttons_hidden = {
     "margin-left": "3%",
     "width": "91%",
     "height": "17%",
     "padding": "5px",
+    "border-radius": "10px",
     "background": background_light
 }
 
