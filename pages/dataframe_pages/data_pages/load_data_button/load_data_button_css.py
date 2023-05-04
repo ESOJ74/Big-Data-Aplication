@@ -87,3 +87,9 @@ style_input = {
     "background": background_light,
     "border": "1px solid #020d11"
 }
+
+style_msg = {
+    "margin-left": "4%",
+    "margin-top": "2%",
+    "color": color_boton_1
+}
