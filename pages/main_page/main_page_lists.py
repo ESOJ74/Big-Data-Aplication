@@ -40,6 +40,7 @@ functions = list(map(lambda x: x + [style_button],
                       ["drop_button", "Drop"],
                       ["groupby_button", "Groupby"],
                       ["pipe_button", "Pipe"],
+                      ["get_dummies_button", "Get Dummies"]
                      ]))
 
 visualizations_basic = list(map(lambda x: x + [style_button],
