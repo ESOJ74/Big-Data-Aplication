@@ -341,12 +341,24 @@ def auth_display(button_functions, button_visualizations, button_models,
                  state_panel_models, state_panel_pipeline):    
     if button_functions:
         state_panel_functions = not state_panel_functions
+        state_panel_visualizations = True
+        state_panel_models = True
+        state_panel_pipeline = True
     if button_visualizations:
         state_panel_visualizations = not state_panel_visualizations
+        state_panel_functions = True
+        state_panel_models = True
+        state_panel_pipeline = True
     if button_models:
         state_panel_models = not state_panel_models
+        state_panel_functions = True
+        state_panel_visualizations = True
+        state_panel_pipeline = True
     if button_pipeline:
         state_panel_pipeline = not state_panel_pipeline
+        state_panel_functions = True
+        state_panel_visualizations = True
+        state_panel_models = True
 
     return [state_panel_functions, state_panel_visualizations,
             state_panel_models, state_panel_pipeline, True, True, True,
