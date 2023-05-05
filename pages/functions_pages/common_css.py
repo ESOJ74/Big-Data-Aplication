@@ -57,3 +57,7 @@ style_title = {
     "font-weight": "bold",
     "color": color_boton_1,
 }
+
+style_msg = {    
+    "color": "#31EDF0"
+}
