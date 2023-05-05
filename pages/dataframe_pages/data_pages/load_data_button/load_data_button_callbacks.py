@@ -64,6 +64,7 @@ def load_data(accept, input_value, data):
     if accept:
         path = f"""users/{data["user"]}/data/{input_value}"""  
         data["df"] = read_data(input_value.split('.')[-1], path)  
+        data["name_df"] = input_value.split(".")[0]
         ext = input_value.split(".")[1]   
         data['pipeline'] = DataFrame(
                                {"codigo": ["import pandas as pd",
