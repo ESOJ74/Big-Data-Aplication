@@ -97,6 +97,24 @@ style_selector_target = {
     "background": "#2f6374",
 }
 
+style_selector_target_pipe = {  
+    "float": "left",     
+    "width": "35%",
+    "height": "2.65em",
+    "border-radius": "7px 7px 5px 5px",
+    "padding": "2px 2px 0px 2px",
+    "font-size": "1em",
+    "color": "black",
+    "background": "#2f6374",
+}
+
+style_div_button_apply_pipe = {
+    "float": "left",
+    "margin-left": "5%",
+    "width": "20%",
+    "height": "60%",
+}
+
 style_div_down = {
     "margin-left": "2%",
     "width": "98%",
