@@ -15,10 +15,11 @@ id_page = "drop_file"
           prevent_initial_call=True,)
 def add_data_to_fig(refres, data):  
     df = read_json(data["pipeline"])
+    user = data["user"]
     try:     
       date = str(datetime.now()).split(".")[0]
       
-      with open(f"""pipeline{date}.py""", "w") as file:
+      with open(f"""users/{user}/pipelines/{data['name_df']}_{date}.py""", "w") as file:
           for x in df["codigo"]:
               file.write(x+"\n")     
 
