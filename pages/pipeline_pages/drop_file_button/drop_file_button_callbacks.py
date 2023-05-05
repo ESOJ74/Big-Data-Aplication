@@ -19,12 +19,12 @@ def add_data_to_fig(refres, data):
     try:     
       date = str(datetime.now()).split(".")[0]
       
-      with open(f"""users/{user}/pipelines/{data['name_df']}_{date}.py""", "w") as file:
+      with open(f"""users/{user}/pipelines/{data['name_df']}_{date}.txt""", "w") as file:
           for x in df["codigo"]:
               if len(x) > 5:
                 file.write(x+"\n")     
 
-      subprocess.run(["black", f"""pipeline{date}.py"""], capture_output=True, text=True)      
+      #subprocess.run(["black", f"""pipeline{date}.py"""], capture_output=True, text=True)      
     except:
         return "No se ha podido descargar el archivo"
      

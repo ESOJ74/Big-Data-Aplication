@@ -7,9 +7,16 @@ from .get_dummies_button_callbacks import *
 params_utils = [
                 my_div(style_div_buttons, ""),
                 html.H4("Params", style=style_title_params),  
-                create_param_drop(id_page, "labels", multi=True),
-                create_param_drop(id_page, "axis",
-                                  [0, 1], 1),                
+                create_param_drop(id_page, "prefix", multi=True),
+                create_param_drop(id_page, "dummy_na",
+                                  ["True", "False"], "False"),      
+                create_param_drop(id_page, "columns", multi=True),  
+                create_param_drop(id_page, "sparse",
+                                  ["True", "False"], "False"),
+                create_param_drop(id_page, "drop_first",
+                                  ["True", "False"], "False"),   
+                create_param_drop(id_page, "dtype",
+                                  ["int", "float", "str", "bool"], "bool"),  
                 create_buttom_refresh(id_page),
                 create_buttom_save(id_page)
                ]

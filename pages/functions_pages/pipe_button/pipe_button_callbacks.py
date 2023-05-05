@@ -1,9 +1,9 @@
 import os
 
+import pandas as pd
 from dash import callback, html
 from dash.dependencies import Input, Output, State
 from dash.exceptions import PreventUpdate
-from pandas import read_json
 
 from assets.my_dash.my_html.my_div import my_div
 
@@ -77,8 +77,8 @@ def add_data_to_fig(file_name, data):
 def add_data_to_fig(n_clicks, file_name, data):      
     if n_clicks:
         try:            
-            df = read_json(data["df"])    
-            df_pipeline = read_json(data["pipeline"])
+            df = pd.read_json(data["df"])    
+            df_pipeline = pd.read_json(data["pipeline"])
 
             pipe_file = f"""users/{data["user"]}/pipelines/{file_name}"""
             max_index = df_pipeline.shape[0]

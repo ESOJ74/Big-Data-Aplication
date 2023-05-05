@@ -1,16 +1,9 @@
-
-from .show_pipeline_button_callbacks import *
-
-
-
-layout = my_div({}, f"{id_page}_result")
-
 from assets.layout_templates.main_page.content_layout import \
     create_content_layout
 from assets.layout_templates.panel_params.create_panel_params import *
+from assets.my_dash.my_html.my_div import my_div
 
-
-
+from .show_pipeline_button_callbacks import *
 
 params_utils = [                
                 create_select(id_page, "X"),

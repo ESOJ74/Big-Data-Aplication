@@ -5,8 +5,6 @@ from dash import callback, html
 from dash.dependencies import Input, Output, State
 from pandas import read_json
 
-from assets.my_dash.my_html.my_div import my_div
-
 from .common_css import *
 
 id_page = "show_pipeline"
@@ -23,7 +21,7 @@ def add_data_to_fig(refres, data):
         for x in df["codigo"]:
             file.write(x+"\n")        
 
-    subprocess.run(["black", "output.txt"], capture_output=True, text=True)
+    #subprocess.run(["black", "output.txt"], capture_output=True, text=True)
 
     obj = []
     with open("output.txt", "r") as file:        
