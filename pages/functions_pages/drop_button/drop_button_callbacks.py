@@ -61,7 +61,8 @@ def add_data_to_fig(refresh, data, labels, state_axis):
         try:
             df = read_json(data["df"]).drop(labels, axis=state_axis)  
             data["prov_df"] = df.to_json(orient="columns")
-                     
+            if type(labels) == str:
+                labels = [labels]
             df_codigo = DataFrame(
                            {"codigo": [f"""df.drop({labels}, axis={state_axis})"""]}
                         )
