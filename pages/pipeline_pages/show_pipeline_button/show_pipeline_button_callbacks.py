@@ -26,9 +26,10 @@ def add_data_to_fig(refres, data):
     subprocess.run(["black", "output.txt"], capture_output=True, text=True)
 
     obj = []
-    with open("output.txt", "r") as file:
-        for line in file:         
-            obj.append(html.P(line, style={"margin-bottom": "0%","white-space": "pre-wrap"}))
+    with open("output.txt", "r") as file:        
+        for line in file:      
+            if len(line) > 5:                
+                obj.append(html.P(line, style={"margin-bottom": "0%","white-space": "pre-wrap"}))
             
     os.remove("output.txt")
      

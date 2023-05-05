@@ -21,7 +21,8 @@ def add_data_to_fig(refres, data):
       
       with open(f"""users/{user}/pipelines/{data['name_df']}_{date}.py""", "w") as file:
           for x in df["codigo"]:
-              file.write(x+"\n")     
+              if len(x) > 5:
+                file.write(x+"\n")     
 
       subprocess.run(["black", f"""pipeline{date}.py"""], capture_output=True, text=True)      
     except:
