@@ -78,7 +78,7 @@ def add_data_to_fig(n_clicks, file_name, data):
             for i, linea in enumerate(file):
                 if i > 2:
                     df = eval(linea)    
-                        
+    
         data["df"] = df.to_json(orient="columns")  
         return [data, 0]
     else:
