@@ -7,9 +7,11 @@ from pandas import read_json
 
 from assets.my_dash.my_html.my_div import my_div
 
+from .common_css import *
+
 id_page = "show_pipeline"
 
-@callback(Output(f"{id_page}_result", "children"),
+@callback(Output(f"{id_page}_div_graph", "children"),
           Input("show_pipeline_button", "n_clicks"),
           State("main_page_store", "data"),
           prevent_initial_call=True,)
@@ -30,4 +32,4 @@ def add_data_to_fig(refres, data):
             
     os.remove("output.txt")
      
-    return [my_div({"margin-left": "3%", "margin-top": "10%"}, "", obj)]
+    return [html.H6(obj, style=style_msg)]
