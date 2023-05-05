@@ -94,5 +94,7 @@ def create_div_split(id_page):
                    create_div(id_page, "test_size", f"{id_page}_test_size", 20),
                    create_div(id_page, "random_state", f"{id_page}_random_state_split", 42),
                    my_div(style_div_button_start, "",
-                          my_button(f"{id_page}_button_start", "Start Training", style_button_start, color="black"))                               
+                          my_button(f"{id_page}_button_start", "Start Training",
+                                    style_button_start,className="btn btn-outline-warning",
+                                    color="black"))                               
                   ])    
