@@ -3,6 +3,7 @@ import os
 from dash import callback, html
 from dash.dependencies import Input, Output, State
 from dash.exceptions import PreventUpdate
+from pandas import read_json
 
 from assets.my_dash.my_html.my_div import my_div
 
