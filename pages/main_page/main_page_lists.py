@@ -35,12 +35,29 @@ functions_info = list(map(lambda x: x + [style_button],
                            ["var_button", "Var"],
                           ]))
 
-functions = list(map(lambda x: x + [style_button],
+functions_a_j = list(map(lambda x: x + [style_button],
                      [   
                       ["drop_button", "Drop"],
                       ["groupby_button", "Groupby"],
-                      ["pipe_button", "Pipe"],
                       ["get_dummies_button", "Get Dummies"]
+                     ]))
+
+functions_k_s = list(map(lambda x: x + [style_button],
+                     [   
+                      ["pipe_button", "Pipe"],
+                     ]))
+
+functions_t_z = list(map(lambda x: x + [style_button],
+                     [   
+                      
+                     ]))
+
+functions = list(map(lambda x: x + [style_button],
+                     [   
+                      #["drop_button", "Drop"],
+                      #["groupby_button", "Groupby"],
+                      ["pipe_button", "Pipe"],
+                      #["get_dummies_button", "Get Dummies"]
                      ]))
 
 visualizations_basic = list(map(lambda x: x + [style_button],

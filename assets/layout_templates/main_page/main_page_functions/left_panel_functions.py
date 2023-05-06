@@ -131,6 +131,24 @@ def panel_functions(id_page):
                         hidden_button_group(f"{id_page}_div_buttons_info",
                                              functions_info
                         ),    
+                        div_button_drop(f"{id_page}_button_a_j",
+                                        "A-J"
+                        ),
+                        hidden_button_group(f"{id_page}_div_buttons_a_j",
+                                             functions_a_j
+                        ),
+                        div_button_drop(f"{id_page}_button_k_s",
+                                        "K-S"
+                        ),
+                        hidden_button_group(f"{id_page}_div_buttons_k_s",
+                                             functions_k_s
+                        ),
+                        div_button_drop(f"{id_page}_button_t_z",
+                                        "T-Z"
+                        ),
+                        hidden_button_group(f"{id_page}_div_buttons_t_z",
+                                             functions_t_z
+                        ),  
                         button_group(f"{id_page}_div_buttons",
                                      functions
                         ),  

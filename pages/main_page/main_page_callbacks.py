@@ -54,7 +54,9 @@ create_callback(pipeline, "pipeline_pages")
 @callback([
            Output(f"{id_page}_div_data", "hidden"),
            Output(f"{id_page}_div_buttons_info", "hidden"),
-           
+           Output(f"{id_page}_div_buttons_a_j", "hidden"),
+           Output(f"{id_page}_div_buttons_k_s", "hidden"),
+           Output(f"{id_page}_div_buttons_t_z", "hidden"),
            Output(f"{id_page}_div_buttons_basics", "hidden"), 
            Output(f"{id_page}_div_buttons_part_of_whole", "hidden"),       
            Output(f"{id_page}_div_buttons_machine", "hidden"), 
@@ -62,34 +64,37 @@ create_callback(pipeline, "pipeline_pages")
            Output(f"{id_page}_div_buttons_existing_models", "hidden"),
            Output(f"{id_page}_div_buttons_1d_distribution", "hidden"),
 
-           Output("panel_functions", "hidden"),
-           Output("panel_visualizations", "hidden"),
-           Output("panel_models", "hidden"),
-
            Output(f"{id_page}_button_data", "n_clicks"),
            Output(f"{id_page}_button_drop_info", "n_clicks"), 
+           Output(f"{id_page}_button_a_j", "n_clicks"),
+           Output(f"{id_page}_button_k_s", "n_clicks"),
+           Output(f"{id_page}_button_t_z", "n_clicks"),
            Output(f"{id_page}_button_basics", "n_clicks"), 
            Output(f"{id_page}_button_part_of_whole", "n_clicks"),  
            Output(f"{id_page}_button_machine", "n_clicks"), 
            Output(f"{id_page}_button_deep", "n_clicks"),  
            Output(f"{id_page}_button_existing_models", "n_clicks"),
-           Output(f"{id_page}_button_1d_distribution", "n_clicks"),       
-
+           Output(f"{id_page}_button_1d_distribution", "n_clicks"),
           ],
           [
            Input(f"{id_page}_button_data", "n_clicks"),
            Input(f"{id_page}_button_drop_info", "n_clicks"),
+           Input(f"{id_page}_button_a_j", "n_clicks"),
+           Input(f"{id_page}_button_k_s", "n_clicks"),
+           Input(f"{id_page}_button_t_z", "n_clicks"),
            Input(f"{id_page}_button_basics", "n_clicks"),
            Input(f"{id_page}_button_part_of_whole", "n_clicks"),
            Input(f"{id_page}_button_machine", "n_clicks"), 
            Input(f"{id_page}_button_deep", "n_clicks"), 
            Input(f"{id_page}_button_existing_models", "n_clicks"),
            Input(f"{id_page}_button_1d_distribution", "n_clicks"),
-
           ],
           [
            State(f"{id_page}_div_data", "hidden"),
            State(f"{id_page}_div_buttons_info", "hidden"),
+           State(f"{id_page}_div_buttons_a_j", "hidden"),
+           State(f"{id_page}_div_buttons_k_s", "hidden"),
+           State(f"{id_page}_div_buttons_t_z", "hidden"),
            State(f"{id_page}_div_buttons_basics", "hidden"),
            State(f"{id_page}_div_buttons_part_of_whole", "hidden"),
            State(f"{id_page}_div_buttons_machine", "hidden"), 
@@ -99,124 +104,98 @@ create_callback(pipeline, "pipeline_pages")
 
           ],
           prevent_initial_call=True,)
-def auth_display(click_data, click_info, click_basics, click_whole, 
+def auth_display(click_data, click_info, click_a_j, click_k_s, click_t_z,
+                 click_basics, click_whole, 
                  click_machine, click_deep, click_existing_models,
                  click_1d_distribution,
-                 state_hidden_data, state_hidden_info, state_basics,
+                 state_hidden_data, state_hidden_info, state_hidden_a_j,
+                 state_hidden_k_s, state_hidden_t_z, state_basics,
                  state_whole, state_machine, state_deep,
-                 state_existing_models, state_1d_distribution):    
-    
-    div_functions = False
+                 state_existing_models, state_1d_distribution):   
+
     if click_data:
         state_hidden_data = not state_hidden_data
-        state_hidden_info = True
-        state_basics = True
-        state_whole = True
-        #div_functions = True
-        state_machine = True
-        state_deep = True
-        state_existing_models = True
-        state_1d_distribution = True
-        state_panel_functions = True
-        state_panel_visualizations = True
-        state_panel_model = True
-        
+
     if click_info:
         state_hidden_info = not state_hidden_info
-        state_hidden_data = True
-        state_basics = True
-        state_whole = True
-        state_machine = True
-        state_deep = True
-        state_existing_models = True
-        state_1d_distribution = True
-        state_panel_functions = False
-        state_panel_visualizations = True
-        state_panel_model = True
+
+    if click_a_j:
+        state_hidden_a_j = not state_hidden_a_j
+
+    if click_k_s:
+        state_hidden_k_s = not state_hidden_k_s
+
+    if click_t_z:
+        state_hidden_t_z = not state_hidden_t_z
 
     if click_basics:
         state_basics = not state_basics
-        state_hidden_data = True
-        state_hidden_info = True
-        state_whole = True
-        state_machine = True
-        state_deep = True
-        state_existing_models = True
-        state_1d_distribution = True
-        state_panel_visualizations = False
-        state_panel_functions = True
-        state_panel_model = True
 
     if click_whole:
         state_whole = not state_whole
-        state_hidden_data = True
-        state_hidden_info = True
-        state_basics = True
-        state_machine = True
-        state_deep = True
-        state_existing_models = True
-        state_1d_distribution = True
-        state_panel_visualizations = False
-        state_panel_functions = True
-        state_panel_model = True
 
     if click_1d_distribution:
         state_1d_distribution = not state_1d_distribution
-        state_hidden_data = True
-        state_hidden_info = True
-        state_basics = True
-        state_whole = True        
-        state_machine = True
-        state_deep = True
-        state_existing_models = True
-        state_panel_visualizations = False
-        state_panel_functions = True
-        state_panel_model = True
 
     if click_machine:
-        state_machine = not state_machine        
-        state_hidden_data = True
-        state_hidden_info = True
-        state_basics = True
-        state_whole = True
-        state_deep = True
-        state_existing_models = True
-        state_1d_distribution = True
-        state_panel_visualizations = True
-        state_panel_functions = True
-        state_panel_model = False
+        state_machine = not state_machine
 
     if click_deep:
-        state_deep = not state_deep       
-        state_hidden_data = True
-        state_hidden_info = True
-        state_basics = True
-        state_whole = True
-        state_machine = True
-        state_existing_models = True
-        state_1d_distribution = True
-        state_panel_visualizations = True
-        state_panel_functions = True
-        state_panel_model = False
+        state_deep = not state_deep
 
     if click_existing_models:
         state_existing_models = not state_existing_models
-        state_hidden_data = True
-        state_hidden_info = True
-        state_basics = True
-        state_whole = True        
-        state_machine = True
-        state_deep = True
-        state_1d_distribution = True
-        state_panel_visualizations = True
-        state_panel_functions = True
-        state_panel_model = False
 
-    return [state_hidden_data, state_hidden_info,
+    return [state_hidden_data, state_hidden_info, state_hidden_a_j,
+            state_hidden_k_s, state_hidden_t_z,
             state_basics, state_whole, state_machine,
             state_deep, state_existing_models, state_1d_distribution,
-            state_panel_functions, state_panel_visualizations,
-            state_panel_model, 0, 0, 0, 0, 0, 0, 0, 0]
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+
+
+@callback([
+           Output("panel_functions", "hidden", allow_duplicate=True),
+           Output("panel_visualizations", "hidden", allow_duplicate=True),
+           Output("panel_models", "hidden", allow_duplicate=True),
+           Output("panel_pipeline", "hidden", allow_duplicate=True),           
+
+           Output("button_show_functions", "n_clicks"),
+           Output("button_show_visualizations", "n_clicks"),
+           Output("button_show_models", "n_clicks"),
+           Output("button_show_pipeline", "n_clicks"),
+          ],
+          [
+          Input("button_show_functions", "n_clicks"),
+          Input("button_show_visualizations", "n_clicks"),
+          Input("button_show_models", "n_clicks"),
+          Input("button_show_pipeline", "n_clicks"),
+          ],
+          [
+           State("panel_functions", "hidden"),
+           State("panel_visualizations", "hidden"),
+           State("panel_models", "hidden"),
+           State("panel_pipeline", "hidden")
+          ],
+          prevent_initial_call=True,)
+def auth_display(button_functions, button_visualizations, button_models,
+                 button_pipeline,
+                 state_panel_functions, state_panel_visualizations,
+                 state_panel_models, state_panel_pipeline):    
+    
+    if button_functions:
+        state_panel_functions = not state_panel_functions
+        
+    if button_visualizations:
+        state_panel_visualizations = not state_panel_visualizations
+        
+    if button_models:
+        state_panel_models = not state_panel_models
+        
+    if button_pipeline:
+        state_panel_pipeline = not state_panel_pipeline       
+
+    return [state_panel_functions, state_panel_visualizations,
+            state_panel_models, state_panel_pipeline, 0, 0, 0, 0]
 
 
 @callback([
@@ -292,74 +271,3 @@ def auth_display(n_clicks, reg_user, reg_pass):
             reg_answer =  "Usuario no registrado"
     return [left_hidden, registry_hidden, data,
             user_div, sesion_div, reg_answer] 
-
-
-
-@callback([
-           Output("panel_functions", "hidden", allow_duplicate=True),
-           Output("panel_visualizations", "hidden", allow_duplicate=True),
-           Output("panel_models", "hidden", allow_duplicate=True),
-           Output("panel_pipeline", "hidden", allow_duplicate=True),
-
-           Output(f"{id_page}_div_data", "hidden", allow_duplicate=True),
-           Output(f"{id_page}_div_buttons_info", "hidden",
-                  allow_duplicate=True),
-           Output(f"{id_page}_div_buttons_basics", "hidden",
-                  allow_duplicate=True), 
-           Output(f"{id_page}_div_buttons_part_of_whole", "hidden",
-                  allow_duplicate=True),       
-           Output(f"{id_page}_div_buttons_machine", "hidden",
-                  allow_duplicate=True), 
-           Output(f"{id_page}_div_buttons_deep", "hidden",
-                  allow_duplicate=True),
-           Output(f"{id_page}_div_buttons_existing_models", "hidden",
-                  allow_duplicate=True),
-           Output(f"{id_page}_div_buttons_1d_distribution", "hidden",
-                  allow_duplicate=True),
-
-           Output("button_show_functions", "n_clicks"),
-           Output("button_show_visualizations", "n_clicks"),
-           Output("button_show_models", "n_clicks"),
-           Output("button_show_pipeline", "n_clicks"),
-          ],
-          [
-          Input("button_show_functions", "n_clicks"),
-          Input("button_show_visualizations", "n_clicks"),
-          Input("button_show_models", "n_clicks"),
-          Input("button_show_pipeline", "n_clicks"),
-          ],
-          [
-           State("panel_functions", "hidden"),
-           State("panel_visualizations", "hidden"),
-           State("panel_models", "hidden"),
-           State("panel_pipeline", "hidden")
-          ],
-          prevent_initial_call=True,)
-def auth_display(button_functions, button_visualizations, button_models,
-                 button_pipeline,
-                 state_panel_functions, state_panel_visualizations,
-                 state_panel_models, state_panel_pipeline):    
-    if button_functions:
-        state_panel_functions = not state_panel_functions
-        state_panel_visualizations = True
-        state_panel_models = True
-        state_panel_pipeline = True
-    if button_visualizations:
-        state_panel_visualizations = not state_panel_visualizations
-        state_panel_functions = True
-        state_panel_models = True
-        state_panel_pipeline = True
-    if button_models:
-        state_panel_models = not state_panel_models
-        state_panel_functions = True
-        state_panel_visualizations = True
-        state_panel_pipeline = True
-    if button_pipeline:
-        state_panel_pipeline = not state_panel_pipeline
-        state_panel_functions = True
-        state_panel_visualizations = True
-        state_panel_models = True
-
-    return [state_panel_functions, state_panel_visualizations,
-            state_panel_models, state_panel_pipeline, True, True, True,
-            True, True, True, True, True, 0, 0, 0, 0]
