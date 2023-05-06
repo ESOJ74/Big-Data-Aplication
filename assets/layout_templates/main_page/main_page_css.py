@@ -6,6 +6,15 @@ from assets.layout_templates.main_page.common_css import *
 
 from ...my_dash.my_html.my_div import my_div
 
+style_div_main_page = {
+    "position": "absolute",
+    "left": "0px",
+    "top": "0px",
+    "width": "100%",
+    "height": "100%",
+    "font-family": font_family,
+}
+
 #up panel
 style_up_panel = {
     "width": "100%",
