@@ -2,16 +2,18 @@ from assets.layout_templates.main_page.content_layout import \
     create_content_layout
 from assets.layout_templates.panel_params.create_panel_params import *
 
-from .rename_button_callbacks import *
+from .replace_button_callbacks import *
 
-id_page = "rename"
+id_page = "replace"
 
 params_utils = [
                 my_div(style_div_buttons, ""),
-                html.H4("Params", style=style_title_params),  
-                create_param_drop(id_page, "labels", multi=True),
-                create_param_drop(id_page, "axis",
-                                  [0, 1], 1),                
+                html.H4("Params", style=style_title_params),       
+                create_param_input(id_page, "to_replace", None),
+                create_param_input(id_page, "value", None),
+                create_param_input(id_page, "limit", " "),
+                create_param_drop(id_page, "regex",
+                                  ["True", "False"], "False"),  
                 create_buttom_refresh(id_page),
                 create_buttom_save(id_page)
                ]

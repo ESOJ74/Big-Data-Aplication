@@ -5,42 +5,29 @@ from pandas import DataFrame, concat, read_json
 from assets.my_dash.my_html.my_div import my_div
 from utils.create_agGrid import create_adgrid
 from utils.create_callback_button_cover import create_callback_button_cover
-from utils.create_callback_button_save import (
-    create_callback_button_save, create_callback_updates_button_save)
+from utils.create_callback_button_save import create_callback_button_save
 
 from ...common_css import *
 
-id_page = "rename"
+id_page = "replace"
 
 
 create_callback_button_cover(id_page, f"{id_page}_content_down")
 create_callback_button_save(id_page)
-create_callback_updates_button_save(id_page, "labels")
 
 
 @callback(Output(f"{id_page}_content_up", "children"), 
-          Input("rename_button", "n_clicks"), 
+          Input("replace_button", "n_clicks"), 
           prevent_initial_call=True,)
 def second_callback(n_clicks):    
     return my_div(style_div_title, "",
                   [
-                   html.H5("DataFrame.rename()",
+                   html.H5("DataFrame.replace()",
                            style=style_title),
                    html.A("Documentacion",
-                          href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.rename.html",
+                          href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.replace.html",
                           target="_blank")
                   ])
-
-
-@callback(Output(f"{id_page}_labels", "options"),
-          Input(f"{id_page}_axis", "value"), 
-          State('main_page_store', 'data'),)
-def display_page(axis, data):
-    if axis:
-        return read_json(data["df"]).columns
-    else:
-        return read_json(data["df"]).index
-
 
 @callback(
     [
@@ -52,19 +39,48 @@ def display_page(axis, data):
     Input(f"{id_page}_refresh", "n_clicks"),
     [ 
       State("main_page_store", "data"),
-      State(f"{id_page}_labels", "value"),
-      State(f"{id_page}_axis", "value"),
+      State(f"{id_page}_to_replace", "value"),
+      State(f"{id_page}_value", "value"),
+      State(f"{id_page}_limit", "value"),
+      State(f"{id_page}_regex", "value"),
     ],
     prevent_initial_call=True,)
-def add_data_to_fig(refresh, data, labels, state_axis):    
+def add_data_to_fig(refresh, data, to_replace, value, limit, regex):    
     if refresh:        
         try:
-            df = read_json(data["df"]).drop(labels, axis=state_axis)  
+            try:
+                to_replace = float(to_replace) if "." in to_replace else int(to_replace)
+            except:
+                pass
+
+            try:
+                value = float(value) if "." in value else int(value)
+            except:
+                pass
+            
+            limit = None if limit == " " else int(limit)            
+            regex = True if regex == "True" else False
+            
+            cod1 = f"""df.replace(to_replace="{to_replace}", """
+            cod2 = f"value={value}, "
+            cod3 = f"limit={limit}, regex={regex})"
+
+            if regex == True:
+                import re
+                to_replace = re.compile(to_replace)
+                cod1 = f"""df.replace(to_replace={to_replace}, """                
+            if value:
+                cod2 = f"""value="{value}", """                   
+            cod = cod1 + cod2 + cod3
+
+            df = read_json(data["df"]).replace(to_replace=to_replace,
+                                               value=value, limit=limit,
+                                               regex=regex)  
+            
             data["prov_df"] = df.to_json(orient="columns")
-            if type(labels) == str:
-                labels = [labels]
+            
             df_codigo = DataFrame(
-                           {"codigo": [f"""df.drop({labels}, axis={state_axis})"""]}
+                           {"codigo": [cod]}
                         )
             data["prov_cod"] = concat([read_json(data["pipeline"]),
                                        df_codigo]
@@ -74,11 +90,10 @@ def add_data_to_fig(refresh, data, labels, state_axis):
                        my_div(style_div_table, "",
                               create_adgrid(f"{id_page}_ag-table", df.head(9))
                        ),
-                       html.H6(f"df.drop(labels={labels}, axis={state_axis})",
-                               style=style_div_code),
+                       html.H6(cod, style=style_div_code),
                       ]
             save_disabled = False
-        except (KeyError, ValueError) as err:
+        except (KeyError, ValueError, TypeError) as err:
             content = html.H6(err.__str__(), style={"color": color_code}),
             save_disabled = True
     else:

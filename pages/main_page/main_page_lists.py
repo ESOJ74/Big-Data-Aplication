@@ -49,7 +49,7 @@ functions_h_p = list(map(lambda x: x + [style_button],
 
 functions_q_z = list(map(lambda x: x + [style_button],
                      [   
-                      ["rename_button", "Rename"]
+                      ["replace_button", "Replace"]
                      ]))
 
 visualizations_basic = list(map(lambda x: x + [style_button],
