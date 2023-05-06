@@ -7,7 +7,7 @@ from utils.create_agGrid import create_adgrid
 from utils.create_callback_button_cover import create_callback_button_cover
 from utils.create_callback_button_save import create_callback_button_save
 
-from ..common_css import *
+from ...common_css import *
 
 id_page = "groupby"
 

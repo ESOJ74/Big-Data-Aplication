@@ -7,7 +7,7 @@ from dash.exceptions import PreventUpdate
 
 from assets.my_dash.my_html.my_div import my_div
 
-from ..common_css import *
+from ...common_css import *
 
 id_page = "pipe"
 

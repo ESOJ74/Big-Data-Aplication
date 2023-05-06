@@ -9,7 +9,7 @@ from utils.create_callback_button_cover import create_callback_button_cover
 from utils.create_callback_button_save import (
     create_callback_button_save, create_callback_updates_button_save)
 
-from ..common_css import *
+from ...common_css import *
 
 id_page = "get_dummies"
 

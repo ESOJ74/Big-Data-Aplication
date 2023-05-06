@@ -3,7 +3,7 @@ from assets.layout_templates.main_page.content_layout import \
     create_content_layout
 from assets.layout_templates.panel_params.create_panel_params import *
 
-from ...models_pages.common_css import *
+from ....models_pages.common_css import *
 from .pipe_button_callbacks import *
 
 params_utils = [                

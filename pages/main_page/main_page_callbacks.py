@@ -41,8 +41,12 @@ create_callback(visualizations_1d_distribution,
                 "visualization_pages.oned_distribution")
 
 
-create_callback(functions, "functions_pages")
+
 create_callback(functions_info, "functions_pages.info_pages")
+create_callback(functions_a_g, "functions_pages.a_g")
+create_callback(functions_h_p, "functions_pages.h_p")
+create_callback(functions_q_z, "functions_pages.q_z")
+
 create_callback(models_supervised,
                 "models_pages.machine_learning.supervised")
 create_callback(models_deep, "models_pages.deep_learning")
@@ -54,9 +58,9 @@ create_callback(pipeline, "pipeline_pages")
 @callback([
            Output(f"{id_page}_div_data", "hidden"),
            Output(f"{id_page}_div_buttons_info", "hidden"),
-           Output(f"{id_page}_div_buttons_a_j", "hidden"),
-           Output(f"{id_page}_div_buttons_k_s", "hidden"),
-           Output(f"{id_page}_div_buttons_t_z", "hidden"),
+           Output(f"{id_page}_div_buttons_a_g", "hidden"),
+           Output(f"{id_page}_div_buttons_h_p", "hidden"),
+           Output(f"{id_page}_div_buttons_q_z", "hidden"),
            Output(f"{id_page}_div_buttons_basics", "hidden"), 
            Output(f"{id_page}_div_buttons_part_of_whole", "hidden"),       
            Output(f"{id_page}_div_buttons_machine", "hidden"), 
@@ -66,9 +70,9 @@ create_callback(pipeline, "pipeline_pages")
 
            Output(f"{id_page}_button_data", "n_clicks"),
            Output(f"{id_page}_button_drop_info", "n_clicks"), 
-           Output(f"{id_page}_button_a_j", "n_clicks"),
-           Output(f"{id_page}_button_k_s", "n_clicks"),
-           Output(f"{id_page}_button_t_z", "n_clicks"),
+           Output(f"{id_page}_button_a_g", "n_clicks"),
+           Output(f"{id_page}_button_h_p", "n_clicks"),
+           Output(f"{id_page}_button_q_z", "n_clicks"),
            Output(f"{id_page}_button_basics", "n_clicks"), 
            Output(f"{id_page}_button_part_of_whole", "n_clicks"),  
            Output(f"{id_page}_button_machine", "n_clicks"), 
@@ -79,9 +83,9 @@ create_callback(pipeline, "pipeline_pages")
           [
            Input(f"{id_page}_button_data", "n_clicks"),
            Input(f"{id_page}_button_drop_info", "n_clicks"),
-           Input(f"{id_page}_button_a_j", "n_clicks"),
-           Input(f"{id_page}_button_k_s", "n_clicks"),
-           Input(f"{id_page}_button_t_z", "n_clicks"),
+           Input(f"{id_page}_button_a_g", "n_clicks"),
+           Input(f"{id_page}_button_h_p", "n_clicks"),
+           Input(f"{id_page}_button_q_z", "n_clicks"),
            Input(f"{id_page}_button_basics", "n_clicks"),
            Input(f"{id_page}_button_part_of_whole", "n_clicks"),
            Input(f"{id_page}_button_machine", "n_clicks"), 
@@ -92,9 +96,9 @@ create_callback(pipeline, "pipeline_pages")
           [
            State(f"{id_page}_div_data", "hidden"),
            State(f"{id_page}_div_buttons_info", "hidden"),
-           State(f"{id_page}_div_buttons_a_j", "hidden"),
-           State(f"{id_page}_div_buttons_k_s", "hidden"),
-           State(f"{id_page}_div_buttons_t_z", "hidden"),
+           State(f"{id_page}_div_buttons_a_g", "hidden"),
+           State(f"{id_page}_div_buttons_h_p", "hidden"),
+           State(f"{id_page}_div_buttons_q_z", "hidden"),
            State(f"{id_page}_div_buttons_basics", "hidden"),
            State(f"{id_page}_div_buttons_part_of_whole", "hidden"),
            State(f"{id_page}_div_buttons_machine", "hidden"), 
@@ -104,12 +108,12 @@ create_callback(pipeline, "pipeline_pages")
 
           ],
           prevent_initial_call=True,)
-def auth_display(click_data, click_info, click_a_j, click_k_s, click_t_z,
+def auth_display(click_data, click_info, click_a_g, click_h_p, click_q_z,
                  click_basics, click_whole, 
                  click_machine, click_deep, click_existing_models,
                  click_1d_distribution,
-                 state_hidden_data, state_hidden_info, state_hidden_a_j,
-                 state_hidden_k_s, state_hidden_t_z, state_basics,
+                 state_hidden_data, state_hidden_info, state_hidden_a_g,
+                 state_hidden_h_p, state_hidden_q_z, state_basics,
                  state_whole, state_machine, state_deep,
                  state_existing_models, state_1d_distribution):   
 
@@ -119,14 +123,14 @@ def auth_display(click_data, click_info, click_a_j, click_k_s, click_t_z,
     if click_info:
         state_hidden_info = not state_hidden_info
 
-    if click_a_j:
-        state_hidden_a_j = not state_hidden_a_j
+    if click_a_g:
+        state_hidden_a_g = not state_hidden_a_g
 
-    if click_k_s:
-        state_hidden_k_s = not state_hidden_k_s
+    if click_h_p:
+        state_hidden_h_p = not state_hidden_h_p
 
-    if click_t_z:
-        state_hidden_t_z = not state_hidden_t_z
+    if click_q_z:
+        state_hidden_q_z = not state_hidden_q_z
 
     if click_basics:
         state_basics = not state_basics
@@ -146,8 +150,8 @@ def auth_display(click_data, click_info, click_a_j, click_k_s, click_t_z,
     if click_existing_models:
         state_existing_models = not state_existing_models
 
-    return [state_hidden_data, state_hidden_info, state_hidden_a_j,
-            state_hidden_k_s, state_hidden_t_z,
+    return [state_hidden_data, state_hidden_info, state_hidden_a_g,
+            state_hidden_h_p, state_hidden_q_z,
             state_basics, state_whole, state_machine,
             state_deep, state_existing_models, state_1d_distribution,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]

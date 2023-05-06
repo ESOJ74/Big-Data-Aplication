@@ -8,9 +8,9 @@ from utils.create_callback_button_cover import create_callback_button_cover
 from utils.create_callback_button_save import (
     create_callback_button_save, create_callback_updates_button_save)
 
-from ..common_css import *
+from ...common_css import *
 
-id_page = "drop"
+id_page = "rename"
 
 
 create_callback_button_cover(id_page, f"{id_page}_content_down")
@@ -19,15 +19,15 @@ create_callback_updates_button_save(id_page, "labels")
 
 
 @callback(Output(f"{id_page}_content_up", "children"), 
-          Input("drop_button", "n_clicks"), 
+          Input("rename_button", "n_clicks"), 
           prevent_initial_call=True,)
 def second_callback(n_clicks):    
     return my_div(style_div_title, "",
                   [
-                   html.H5("DataFrame.drop()",
+                   html.H5("DataFrame.rename()",
                            style=style_title),
                    html.A("Documentacion",
-                          href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.drop.html",
+                          href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.rename.html",
                           target="_blank")
                   ])
 

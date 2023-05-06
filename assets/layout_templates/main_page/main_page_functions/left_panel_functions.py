@@ -131,27 +131,24 @@ def panel_functions(id_page):
                         hidden_button_group(f"{id_page}_div_buttons_info",
                                              functions_info
                         ),    
-                        div_button_drop(f"{id_page}_button_a_j",
-                                        "A-J"
+                        div_button_drop(f"{id_page}_button_a_g",
+                                        "A-G"
                         ),
-                        hidden_button_group(f"{id_page}_div_buttons_a_j",
-                                             functions_a_j
+                        hidden_button_group(f"{id_page}_div_buttons_a_g",
+                                             functions_a_g
                         ),
-                        div_button_drop(f"{id_page}_button_k_s",
-                                        "K-S"
+                        div_button_drop(f"{id_page}_button_h_p",
+                                        "H-P"
                         ),
-                        hidden_button_group(f"{id_page}_div_buttons_k_s",
-                                             functions_k_s
+                        hidden_button_group(f"{id_page}_div_buttons_h_p",
+                                             functions_h_p
                         ),
-                        div_button_drop(f"{id_page}_button_t_z",
-                                        "T-Z"
+                        div_button_drop(f"{id_page}_button_q_z",
+                                        "Q-Z"
                         ),
-                        hidden_button_group(f"{id_page}_div_buttons_t_z",
-                                             functions_t_z
-                        ),  
-                        button_group(f"{id_page}_div_buttons",
-                                     functions
-                        ),  
+                        hidden_button_group(f"{id_page}_div_buttons_q_z",
+                                             functions_q_z
+                        ),                          
                        ]
                    )
                   ])
