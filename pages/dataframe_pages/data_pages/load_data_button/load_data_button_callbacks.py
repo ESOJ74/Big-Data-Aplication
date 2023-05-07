@@ -5,7 +5,7 @@ from tkinter import filedialog
 from dash import Input, Output, State, callback, dcc, html
 from dash.dependencies import Input, Output, State
 from dash.exceptions import PreventUpdate
-from pandas import DataFrame, read_sql
+from pandas import read_sql
 from sqlalchemy import create_engine
 
 from assets.layout_templates.main_page.common_css import *
@@ -65,12 +65,16 @@ def load_data(accept, input_value, data):
         path = f"""users/{data["user"]}/data/{input_value}"""  
         data["df"] = read_data(input_value.split('.')[-1], path)  
         data["name_df"] = input_value.split(".")[0]
-        ext = input_value.split(".")[1]   
-        data['pipeline'] = DataFrame(
-                               {"codigo": ["import pandas as pd",
-                                           "",
-                                           f"""df = pd.read_{ext}("{input_value}")"""]}
-                           ).to_json(orient="columns")
+        ext = input_value.split(".")[1]  
+
+        actions = ["import pandas as pd",
+                   "",
+                   f"""df = pd.read_{ext}("{input_value}")"""]
+
+        with open(f"""users/{data["user"]}/workflow.txt""", "w") as file:
+            for action in actions:
+                file.write(action+"\n")  
+        
         div_data_hidden = True  
     else:
         raise PreventUpdate   

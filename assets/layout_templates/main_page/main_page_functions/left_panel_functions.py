@@ -199,15 +199,15 @@ def panel_models(id_page):
                    )          
                   ])
 
-def panel_pipeline(id_page):
+def panel_workflow(id_page):
     return my_div(style_border, "",
                   [                   
-                   create_div_title_panel("Pipeline", "button_show_pipeline"),
-                   create_div_buttons_panel("panel_pipeline",
+                   create_div_title_panel("Workflow", "button_show_workflow"),
+                   create_div_buttons_panel("panel_workflow",
                           [
-                           button_group(f"{id_page}_div_buttons",
-                                        pipeline
-                           ),  
+                           button_group(f"{id_page}_div_workflow",
+                                        workflow
+                           ),    
                           ]  
                    )          
                   ])

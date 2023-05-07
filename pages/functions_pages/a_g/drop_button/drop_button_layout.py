@@ -12,8 +12,7 @@ params_utils = [
                 create_param_drop(id_page, "labels", multi=True),
                 create_param_drop(id_page, "axis",
                                   [0, 1], 1),                
-                create_buttom_refresh(id_page),
-                create_buttom_save(id_page)
+                create_buttom_refresh(id_page)
                ]
 
 content_down = my_div(style_div_content_down, f"{id_page}_content_down",

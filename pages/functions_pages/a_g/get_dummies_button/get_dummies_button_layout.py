@@ -18,7 +18,6 @@ params_utils = [
                 create_param_drop(id_page, "dtype",
                                   ["int", "float", "str", "bool"], "bool"),  
                 create_buttom_refresh(id_page),
-                create_buttom_save(id_page)
                ]
 
 content_down = my_div(style_div_content_down, f"{id_page}_content_down",

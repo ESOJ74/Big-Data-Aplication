@@ -53,7 +53,7 @@ create_callback(models_deep, "models_pages.deep_learning")
 create_callback(existing_models, "models_pages.existing_models")
 create_callback(models_test, "models_pages")
 
-create_callback(pipeline, "pipeline_pages")
+create_callback(workflow, "workflow_pages")
 
 @callback([
            Output(f"{id_page}_div_data", "hidden"),
@@ -161,30 +161,30 @@ def auth_display(click_data, click_info, click_a_g, click_h_p, click_q_z,
            Output("panel_functions", "hidden", allow_duplicate=True),
            Output("panel_visualizations", "hidden", allow_duplicate=True),
            Output("panel_models", "hidden", allow_duplicate=True),
-           Output("panel_pipeline", "hidden", allow_duplicate=True),           
+           Output("panel_workflow", "hidden", allow_duplicate=True),           
 
            Output("button_show_functions", "n_clicks"),
            Output("button_show_visualizations", "n_clicks"),
            Output("button_show_models", "n_clicks"),
-           Output("button_show_pipeline", "n_clicks"),
+           Output("button_show_workflow", "n_clicks"),
           ],
           [
           Input("button_show_functions", "n_clicks"),
           Input("button_show_visualizations", "n_clicks"),
           Input("button_show_models", "n_clicks"),
-          Input("button_show_pipeline", "n_clicks"),
+          Input("button_show_workflow", "n_clicks"),
           ],
           [
            State("panel_functions", "hidden"),
            State("panel_visualizations", "hidden"),
            State("panel_models", "hidden"),
-           State("panel_pipeline", "hidden")
+           State("panel_workflow", "hidden")
           ],
           prevent_initial_call=True,)
 def auth_display(button_functions, button_visualizations, button_models,
-                 button_pipeline,
+                 button_workflow,
                  state_panel_functions, state_panel_visualizations,
-                 state_panel_models, state_panel_pipeline):    
+                 state_panel_models, state_panel_workflow):    
     
     if button_functions:
         state_panel_functions = not state_panel_functions
@@ -195,11 +195,11 @@ def auth_display(button_functions, button_visualizations, button_models,
     if button_models:
         state_panel_models = not state_panel_models
         
-    if button_pipeline:
-        state_panel_pipeline = not state_panel_pipeline       
+    if button_workflow:
+        state_panel_workflow = not state_panel_workflow       
 
     return [state_panel_functions, state_panel_visualizations,
-            state_panel_models, state_panel_pipeline, 0, 0, 0, 0]
+            state_panel_models, state_panel_workflow, 0, 0, 0, 0]
 
 
 @callback([
