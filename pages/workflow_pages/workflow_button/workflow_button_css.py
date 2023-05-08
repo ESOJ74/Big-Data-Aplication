@@ -22,9 +22,21 @@ style_div_result = {
 }
 
 style_boton_aceptar = {    
+    "float": "left",
     "margin-top": "0.1%",
     "margin-left": "2%",
     "font-size": "1.6vmin",
+    "font-family": font_family
+}
+
+style_div_download = {
+    "float": "left",
+    "margin-top": "0.1%",
+    "margin-left": "31%"
+}
+
+style_boton_down_file = {        
+    "font-size": "1.4vmin",
     "font-family": font_family
 }
 

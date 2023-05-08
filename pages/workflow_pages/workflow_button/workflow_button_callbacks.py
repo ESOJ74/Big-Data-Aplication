@@ -1,13 +1,17 @@
 import os
-from datetime import datetime
-from dash import callback, html, dcc
-from dash.dependencies import Input, Output, State
-from pandas import read_json
 import shutil
-from .workflow_button_css import *
+from datetime import datetime
+
+from dash import callback, dcc, html
+from dash.dependencies import Input, Output, State
 from dash.exceptions import PreventUpdate
+from pandas import read_json
+
+from .workflow_button_css import *
 
 id_page = "workflow"
+global file_path
+file_path = ""
 
 
 @callback(
@@ -45,19 +49,23 @@ def add_data_to_fig(drop_workflow):
     prevent_initial_call=True,
 )
 def add_data_to_fig(drop_workflow, data):
+    global file_path
     if drop_workflow == "Actual":
         pipe_file = f"""users/{data["user"]}/workflow.txt"""
+
+        file_path = pipe_file
     else:
         pipe_file = f"""users/{data["user"]}/pipelines/{drop_workflow}"""
+        file_path = pipe_file
 
     with open(pipe_file) as file:
         codigo_python = file.read()
-    obj = dcc.Markdown("```python\n" + codigo_python + "```",
-                       style=style_div_markdown,
-                       highlight_config={
-                           "theme": "dark"
-                       })
-   
+    obj = dcc.Markdown(
+        "```python\n" + codigo_python + "```",
+        style=style_div_markdown,
+        highlight_config={"theme": "dark"},
+    )
+
     data["pipeline"] = codigo_python
     return [html.H6(obj), data]
 
@@ -81,7 +89,7 @@ def add_data_to_fig(n_clicks, name_button, data):
             date = str(datetime.now()).split(".")[0]
             path_file = f"""users/{data["user"]}/workflow.txt"""
             path_end = (
-                f"""users/{data["user"]}/pipelines/{data['name_df']}_{date}.txt"""
+                f"""users/{data["user"]}/pipelines/{data['name_df']}-{date}.txt"""
             )
             shutil.copy2(path_file, path_end)
         else:
@@ -90,8 +98,8 @@ def add_data_to_fig(n_clicks, name_button, data):
             df = read_json(data["df"])
             df_pipeline = data["pipeline"]
 
-            for x, line in enumerate(df_pipeline.split("\n")[3:]):                
-                if len(line) > 1:                    
+            for x, line in enumerate(df_pipeline.split("\n")[3:]):
+                if len(line) > 1:
                     line = line.replace("df =", "")
                     df = eval(line)
             data["df"] = df.to_json(orient="columns")
@@ -101,3 +109,22 @@ def add_data_to_fig(n_clicks, name_button, data):
         return [name_button, data, "Aplicado"]
     else:
         raise PreventUpdate
+
+
+@callback(
+    Output("download-text", "data"),
+    Input("btn-download-txt", "n_clicks"),
+    State("main_page_store", "data"),
+    prevent_initial_call=True,
+)
+def func(n_clicks, data):
+    global file_path
+    filename = (
+        file_path.split(".")[0]
+        .replace("_", "")
+        .replace("users/", "")
+        .replace("pipelines/", "")
+        .replace(f"{data['user']}/", "")
+    )
+    filename = filename
+    return dcc.send_file(file_path, filename=f"{filename}.py")

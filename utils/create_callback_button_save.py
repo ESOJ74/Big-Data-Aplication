@@ -44,7 +44,6 @@ def create_callback_updates_button_save1(id_page, id_drop):
             df = read_json(data["prov_df"])
             data["df"] = df.to_json(orient="columns")
             columns = list(df.columns)
-            print(columns)
             return [columns, columns[0]]
         else:
             raise PreventUpdate
