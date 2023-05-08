@@ -52,7 +52,6 @@ def add_data_to_fig(drop_workflow, data):
     global file_path
     if drop_workflow == "Actual":
         pipe_file = f"""users/{data["user"]}/workflow.txt"""
-
         file_path = pipe_file
     else:
         pipe_file = f"""users/{data["user"]}/pipelines/{drop_workflow}"""
@@ -65,7 +64,6 @@ def add_data_to_fig(drop_workflow, data):
         style=style_div_markdown,
         highlight_config={"theme": "dark"},
     )
-
     data["pipeline"] = codigo_python
     return [html.H6(obj), data]
 
@@ -92,9 +90,9 @@ def add_data_to_fig(n_clicks, name_button, data):
                 f"""users/{data["user"]}/pipelines/{data['name_df']}-{date}.txt"""
             )
             shutil.copy2(path_file, path_end)
+            msg = "Workflow guardado"
         else:
             import pandas as pd  # se utiliza en eval()
-
             df = read_json(data["df"])
             df_pipeline = data["pipeline"]
 
@@ -103,10 +101,16 @@ def add_data_to_fig(n_clicks, name_button, data):
                     line = line.replace("df =", "")
                     df = eval(line)
             data["df"] = df.to_json(orient="columns")
+
             with open(f"""users/{data["user"]}/workflow.txt""", "w") as file:
                 for line in df_pipeline.split("\n"):
                     file.write(line + "\n")
-        return [name_button, data, "Aplicado"]
+            msg = "Workflow Aplicado"
+        return [
+            name_button,
+            data,
+            html.H6(msg, style=style_msg),
+        ]
     else:
         raise PreventUpdate
 

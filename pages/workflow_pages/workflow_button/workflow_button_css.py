@@ -47,5 +47,10 @@ style_div_markdown = {
     "height": "100%",
     "padding": "5px 5px 1px 5px",
     "background": background_up_panel
+}
 
+style_msg = {
+    "margin-left": "2%",
+    "margin-top": "2%",
+    "color": color_boton_1
 }
