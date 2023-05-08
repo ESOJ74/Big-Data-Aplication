@@ -90,12 +90,10 @@ def add_data_to_fig(n_clicks, name_button, data):
             df = read_json(data["df"])
             df_pipeline = data["pipeline"]
 
-            for x, line in enumerate(df_pipeline.split("\n")[3:]):
-                print(x, line)
+            for x, line in enumerate(df_pipeline.split("\n")[3:]):                
                 if len(line) > 1:                    
                     line = line.replace("df =", "")
                     df = eval(line)
-
             data["df"] = df.to_json(orient="columns")
             with open(f"""users/{data["user"]}/workflow.txt""", "w") as file:
                 for line in df_pipeline.split("\n"):
