@@ -62,7 +62,7 @@ def add_data_to_fig(clicks_button, data, to_replace, value, limit, regex, name_b
         
         limit = None if limit == " " else int(limit)            
         regex = True if regex == "True" else False
-        cod1 = f"""df.replace(to_replace="{to_replace}", """
+        cod1 = f"""df = df.replace(to_replace="{to_replace}", """
         cod2 = f"value={value}, "
         cod3 = f"limit={limit}, regex={regex})"
         if regex == True:

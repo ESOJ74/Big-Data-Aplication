@@ -57,7 +57,7 @@ def display_page(axis, data):
     ],
     prevent_initial_call=True,)
 def add_data_to_fig(clicks_button, click, data, state_by, state_axis, name_button):       
-    action = f"""df.groupby({state_by}, axis={state_axis}).sum()"""
+    action = f"""df = df.groupby({state_by}, axis={state_axis}).sum()"""
     if clicks_button:
         if name_button == "Apply":        
             try:

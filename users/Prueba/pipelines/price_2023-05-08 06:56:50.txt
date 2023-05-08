@@ -9,4 +9,3 @@ df = df.groupby(['carat'], axis=0).sum()
 df = pd.get_dummies(df, prefix=None, dummy_na=False, columns=['cut'], sparse=False, drop_first=False, dtype=bool)
 
 df = df.replace(to_replace="EFEDF", value="feote", limit=None, regex=False)
-

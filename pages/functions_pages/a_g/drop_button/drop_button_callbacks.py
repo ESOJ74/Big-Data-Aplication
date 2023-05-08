@@ -57,7 +57,7 @@ def display_page(axis, data):
     ],
     prevent_initial_call=True,)
 def add_data_to_fig(clicks_button, click, data, state_labels_value, state_axis, name_button):    
-    action = f"""df.drop({state_labels_value}, axis={state_axis})"""
+    action = f"""df = df.drop({state_labels_value}, axis={state_axis})"""
     if clicks_button:
         if name_button == "Apply":        
             try:

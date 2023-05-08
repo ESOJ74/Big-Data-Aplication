@@ -71,7 +71,7 @@ def add_data_to_fig(clicks_button, data, state_prefix, state_dummy_na, state_col
             case "bool":
                 state_dtype_2 = bool
 
-        cod1 = f"pd.get_dummies(df, prefix={state_prefix}, dummy_na={state_dummy_na},"
+        cod1 = f"df = pd.get_dummies(df, prefix={state_prefix}, dummy_na={state_dummy_na},"
         cod2 = f" columns={state_columns}, sparse={state_sparse}, drop_first={state_drop_first},"
         cod3 = f" dtype={state_dtype})"  
         action = cod1 + cod2 + cod3

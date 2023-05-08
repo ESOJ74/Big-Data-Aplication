@@ -37,23 +37,28 @@ def add_data_to_fig(drop_workflow):
 
 @callback(
     [
-     Output(f"{id_page}_div_code", "children"),
-     Output("main_page_store", "data", allow_duplicate=True)
+        Output(f"{id_page}_div_code", "children"),
+        Output("main_page_store", "data", allow_duplicate=True),
     ],
     Input(f"{id_page}_workflow", "value"),
     State("main_page_store", "data"),
     prevent_initial_call=True,
 )
 def add_data_to_fig(drop_workflow, data):
-    if drop_workflow == "Actual":  
+    if drop_workflow == "Actual":
         pipe_file = f"""users/{data["user"]}/workflow.txt"""
     else:
-        pipe_file = f"""users/{data["user"]}/pipelines/{drop_workflow}"""   
-    
+        pipe_file = f"""users/{data["user"]}/pipelines/{drop_workflow}"""
+
     with open(pipe_file) as file:
-            codigo_python = file.read()   
-    obj = dcc.Markdown('```python\n' + codigo_python + '\n```', style={"width": "45%"})     
-    data["pipeline"] = codigo_python  
+        codigo_python = file.read()
+    obj = dcc.Markdown("```python\n" + codigo_python + "```",
+                       style=style_div_markdown,
+                       highlight_config={
+                           "theme": "dark"
+                       })
+   
+    data["pipeline"] = codigo_python
     return [html.H6(obj), data]
 
 
@@ -70,31 +75,31 @@ def add_data_to_fig(drop_workflow, data):
     ],
     prevent_initial_call=True,
 )
-def add_data_to_fig(n_clicks, name_button, data):    
-    
+def add_data_to_fig(n_clicks, name_button, data):
     if n_clicks:
         if name_button == "Save":
-            date = str(datetime.now()).split('.')[0]
+            date = str(datetime.now()).split(".")[0]
             path_file = f"""users/{data["user"]}/workflow.txt"""
-            path_end = f"""users/{data["user"]}/pipelines/{data['name_df']}_{date}.txt"""
-            shutil.copy2(path_file, path_end)        
-        else:     
-            import pandas as pd #se utiliza en eval()
+            path_end = (
+                f"""users/{data["user"]}/pipelines/{data['name_df']}_{date}.txt"""
+            )
+            shutil.copy2(path_file, path_end)
+        else:
+            import pandas as pd  # se utiliza en eval()
 
-            df = read_json(data["df"])    
-            df_pipeline = data["pipeline"]            
-            
-            for line in df_pipeline.split("\n"):
-                if len(line) > 1:
-                    if line[0] == "i" or line[:4] == "df =":
-                        pass
-                    else:
-                        df = eval(line) 
-               
-            data["df"] = df.to_json(orient="columns") 
+            df = read_json(data["df"])
+            df_pipeline = data["pipeline"]
+
+            for x, line in enumerate(df_pipeline.split("\n")[3:]):
+                print(x, line)
+                if len(line) > 1:                    
+                    line = line.replace("df =", "")
+                    df = eval(line)
+
+            data["df"] = df.to_json(orient="columns")
             with open(f"""users/{data["user"]}/workflow.txt""", "w") as file:
                 for line in df_pipeline.split("\n"):
-                    file.write(line + "\n")             
+                    file.write(line + "\n")
         return [name_button, data, "Aplicado"]
     else:
         raise PreventUpdate

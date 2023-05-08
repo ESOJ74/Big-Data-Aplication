@@ -1,5 +1,0 @@
-import pandas as pd
-
-df = pd.read_csv("price.csv")
-
-pd.get_dummies(df, prefix=None, dummy_na=False, columns=['cut', 'color', 'clarity'], sparse=False, drop_first=True, dtype=int)

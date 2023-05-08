@@ -1,6 +1,4 @@
 from assets.common_css import *
-from plotly.colors import sequential
-
 
 style_selector_workflow = {  
     "float": "left",     
@@ -18,30 +16,24 @@ style_code = {
     "white-space": "pre-wrap",
     "color": color_code}
 
-
 style_div_result = {
     "margin-top": "2%",
     "width": "100%",
 }
 
 style_boton_aceptar = {    
-    "margin-top": "2%",
+    "margin-top": "0.1%",
     "margin-left": "2%",
-    "margin-bottom": "5%",
     "font-size": "1.6vmin",
     "font-family": font_family
 }
 
-"""style_div_title = {
-    "text-align": "center",
-    "width": "100%",
+style_div_markdown = {
+    "margin-left": "2%",
+    "margin-top": "2%",
+    "width": "45%",
     "height": "100%",
-    "background": background_dark
+    "padding": "5px 5px 1px 5px",
+    "background": background_up_panel
+
 }
-
-style_title = {  
-    "font-weight": "bold",
-    "color": color_boton_1,
-}"""
-
-
