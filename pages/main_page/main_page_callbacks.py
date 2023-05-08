@@ -39,8 +39,10 @@ create_callback(visualizations_part_of_whole,
                 "visualization_pages.part_of_whole")
 create_callback(visualizations_1d_distribution,
                 "visualization_pages.oned_distribution")
-
-
+create_callback(visualizations_2d_distribution,
+                "visualization_pages.twod_distribution")
+create_callback(visualizations_three_dimensional,
+                "visualization_pages.three_dimensional")
 
 create_callback(functions_info, "functions_pages.info_pages")
 create_callback(functions_a_g, "functions_pages.a_g")
@@ -67,6 +69,8 @@ create_callback(workflow, "workflow_pages")
            Output(f"{id_page}_div_buttons_deep", "hidden"),
            Output(f"{id_page}_div_buttons_existing_models", "hidden"),
            Output(f"{id_page}_div_buttons_1d_distribution", "hidden"),
+           Output(f"{id_page}_div_buttons_2d_distribution", "hidden"),
+           Output(f"{id_page}_div_buttons_3d_dimensional", "hidden"),
 
            Output(f"{id_page}_button_data", "n_clicks"),
            Output(f"{id_page}_button_drop_info", "n_clicks"), 
@@ -79,6 +83,8 @@ create_callback(workflow, "workflow_pages")
            Output(f"{id_page}_button_deep", "n_clicks"),  
            Output(f"{id_page}_button_existing_models", "n_clicks"),
            Output(f"{id_page}_button_1d_distribution", "n_clicks"),
+           Output(f"{id_page}_button_2d_distribution", "n_clicks"),
+           Output(f"{id_page}_button_3d_dimensional", "n_clicks"),
           ],
           [
            Input(f"{id_page}_button_data", "n_clicks"),
@@ -92,6 +98,8 @@ create_callback(workflow, "workflow_pages")
            Input(f"{id_page}_button_deep", "n_clicks"), 
            Input(f"{id_page}_button_existing_models", "n_clicks"),
            Input(f"{id_page}_button_1d_distribution", "n_clicks"),
+           Input(f"{id_page}_button_2d_distribution", "n_clicks"),
+           Input(f"{id_page}_button_3d_dimensional", "n_clicks"),
           ],
           [
            State(f"{id_page}_div_data", "hidden"),
@@ -105,17 +113,20 @@ create_callback(workflow, "workflow_pages")
            State(f"{id_page}_div_buttons_deep", "hidden"),
            State(f"{id_page}_div_buttons_existing_models", "hidden"),
            State(f"{id_page}_div_buttons_1d_distribution", "hidden"),
-
+           State(f"{id_page}_div_buttons_2d_distribution", "hidden"),
+           State(f"{id_page}_div_buttons_3d_dimensional", "hidden"),
           ],
           prevent_initial_call=True,)
 def auth_display(click_data, click_info, click_a_g, click_h_p, click_q_z,
                  click_basics, click_whole, 
                  click_machine, click_deep, click_existing_models,
-                 click_1d_distribution,
+                 click_1d_distribution, click_2d_distribution,
+                 click_3d_dimensional,
                  state_hidden_data, state_hidden_info, state_hidden_a_g,
                  state_hidden_h_p, state_hidden_q_z, state_basics,
                  state_whole, state_machine, state_deep,
-                 state_existing_models, state_1d_distribution):   
+                 state_existing_models, state_1d_distribution,
+                 state_2d_distribution, state_3d_dimensional):   
 
     if click_data:
         state_hidden_data = not state_hidden_data
@@ -141,6 +152,12 @@ def auth_display(click_data, click_info, click_a_g, click_h_p, click_q_z,
     if click_1d_distribution:
         state_1d_distribution = not state_1d_distribution
 
+    if click_2d_distribution:
+        state_2d_distribution = not state_2d_distribution
+    
+    if click_3d_dimensional:
+        state_3d_dimensional = not state_3d_dimensional
+
     if click_machine:
         state_machine = not state_machine
 
@@ -154,7 +171,8 @@ def auth_display(click_data, click_info, click_a_g, click_h_p, click_q_z,
             state_hidden_h_p, state_hidden_q_z,
             state_basics, state_whole, state_machine,
             state_deep, state_existing_models, state_1d_distribution,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+            state_2d_distribution, state_3d_dimensional,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 
 
 @callback([

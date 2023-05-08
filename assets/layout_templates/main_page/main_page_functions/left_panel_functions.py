@@ -173,6 +173,14 @@ def panel_visualizations(id_page):
                                            "1D Distribution"),                   
                            hidden_button_group(f"{id_page}_div_buttons_1d_distribution",
                                                visualizations_1d_distribution),
+                           div_button_drop(f"{id_page}_button_2d_distribution",
+                                           "2D Distribution"),                   
+                           hidden_button_group(f"{id_page}_div_buttons_2d_distribution",
+                                               visualizations_2d_distribution),
+                           div_button_drop(f"{id_page}_button_3d_dimensional",
+                                           "3D Dimensional"),                   
+                           hidden_button_group(f"{id_page}_div_buttons_3d_dimensional",
+                                               visualizations_three_dimensional),
                           ],  
                    )
                   ])

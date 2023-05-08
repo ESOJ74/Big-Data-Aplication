@@ -79,6 +79,18 @@ visualizations_1d_distribution = list(map(lambda x: x + [style_button],
                                          ["ecdf_button", "Ecdf"]
                                         ]))
 
+visualizations_2d_distribution = list(map(lambda x: x + [style_button],
+                                        [  
+                                         ["density_heatmap_button", "Density Heatmap"],
+                                         ["density_contour_button", "Density Contour"],
+                                        ]))
+
+visualizations_three_dimensional = list(map(lambda x: x + [style_button],
+                                        [  
+                                         ["scatter_3d_button", "Scatter 3D"],
+                                         ["line_3d_button", "Line 3D"],
+                                        ]))
+
 models_supervised = list(map(lambda x: x + [style_button],
                              [
                               ["linear_regresion_button", "Linear Reg."],
