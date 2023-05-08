@@ -20,6 +20,25 @@ style_boton_files = {
     "color": color_boton_1,
 }
 
+style_div_up_load = {
+    "float": "left", 
+    "margin-left": "1%",
+    "width": "20%",
+    "height": "98%"
+}
+
+style_dcc_upload = {
+    "width": "100%",
+    "font-size": "0.9vmax",     
+    "font-family": font_family,
+    "color": color_boton_1,
+    "lineHeight": "37px",
+    "borderWidth": "1px",
+    "borderStyle": "dashed",
+    "borderRadius": "5px",
+    "textAlign": "center",                            
+}
+
 style_A = {
     "float": "left",
     "margin-left": "2%",
