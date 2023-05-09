@@ -185,6 +185,28 @@ def load_data(n_clicks, user, password, host, port, bd, schema, table, data):
 # up_file from local
 @callback(
     Output(f"{id_page}_content_down", "children", allow_duplicate=True),
+    Input(f"{id_page}_up_file", "n_clicks"),
+    prevent_initial_call=True,
+)
+def load_data(n_clicks):
+    return my_div(
+                style_div_up_load,
+                "",
+                [
+                    dcc.Upload(
+                        id="upload-data",
+                        children=html.Div(
+                            ["Drag and Drop or ", html.A("Select Files")]
+                        ),
+                        style=style_dcc_upload,
+                        # Allow multiple files to be uploaded
+                        multiple=True,
+                    ),
+                ],
+            )
+
+@callback(
+    Output(f"{id_page}_content_down", "children", allow_duplicate=True),
     Input("upload-data", "contents"),
     State("upload-data", "filename"),
     State("main_page_store", "data"),
@@ -196,3 +218,5 @@ def update_output(list_of_contents, list_of_names, data):
             parse_contents(c, n, data) for c, n in zip(list_of_contents, list_of_names)
         ]
         return html.H6(msg, style=style_msg)
+    else:
+        raise PreventUpdate

@@ -22,7 +22,8 @@ style_boton_files = {
 
 style_div_up_load = {
     "float": "left", 
-    "margin-left": "1%",
+    "margin-top": "2%",
+    "margin-left": "24.5%",
     "width": "20%",
     "height": "98%"
 }
@@ -32,7 +33,7 @@ style_dcc_upload = {
     "font-size": "0.9vmax",     
     "font-family": font_family,
     "color": color_boton_1,
-    "lineHeight": "37px",
+    "lineHeight": "100px",
     "borderWidth": "1px",
     "borderStyle": "dashed",
     "borderRadius": "5px",
