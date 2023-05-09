@@ -14,7 +14,6 @@ style_content_left = {
     "left": "0%",
     "width": "85%",
     "height": "100%",
-    "border-left": "2px solid black",
 }
 
 style_content_right = {
@@ -72,3 +71,4 @@ style_div_content_down = {
     "font-weight": "bold",    
     "color": "#03353E",
 }
+
