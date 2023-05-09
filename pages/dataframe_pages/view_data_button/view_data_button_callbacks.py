@@ -11,22 +11,25 @@ id_page = "view_data"
 
 create_callback_button_cover(id_page, f"{id_page}_content_down")
 
-@callback([
-           Output(f"{id_page}_content_down", 'children'),
-           Output(f"{id_page}_loading", "children")
-          ],       
-          Input('view_data_button', 'n_clicks'),
-          State('main_page_store', 'data'))
-def view_data(n_clicks, data):
 
+@callback(
+    [
+        Output(f"{id_page}_content_down", "children"),
+        Output(f"{id_page}_loading", "children"),
+    ],
+    Input("view_data_button", "n_clicks"),
+    State("main_page_store", "data"),
+)
+def view_data(n_clicks, data):
     obj = []
     if "df" in data:
-        df = read_json(data["df"]) 
-        obj = my_div({"margin-top": "1%"}, "",
-                     create_adgrid(f"{id_page}_ag-table", df))
+        df = read_json(data["df"])
+        obj = my_div({"margin-top": "1%"}, "", create_adgrid(f"{id_page}_ag-table", df))
     else:
-        obj = [html.H6('No hay ningún DataFrame Cargado',
-                       style={"margin-left": "4%", 
-                              "margin-top": "2%",
-                              "color": color_boton_1})]
+        obj = [
+            html.H6(
+                "No hay ningún DataFrame Cargado",
+                style={"margin-left": "4%", "margin-top": "2%", "color": color_boton_1},
+            )
+        ]
     return [obj, ""]

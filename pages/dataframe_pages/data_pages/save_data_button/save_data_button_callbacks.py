@@ -1,38 +1,41 @@
 from dash import Input, Output, State, callback, html
 from pandas import read_json
 
-from assets.layout_templates.main_page.common_css import *
+from assets.layout_templates.main_page.common_css import color_boton_1
 
 id_page = "save_data"
 
 
-def write_data(df, extension, path):     
+def write_data(df, extension, path):
     match extension:
         case "csv" | "txt":
             df.to_csv(path + ".csv", index=False)
         case "json":
             df.to_json(path + ".json")
         case "xlsx":
-            df.to_excel(path + ".xlsx", index=False) 
+            df.to_excel(path + ".xlsx", index=False)
         case _:
             pass
-     
 
-@callback(Output(f"{id_page}_content", "children"),
-          Input(f"{id_page}_aceptar", "n_clicks"),
-          [
-            State(f"{id_page}_input", "value"),
-            State(f"{id_page}_dropdown", "value"),
-            State("main_page_store", "data"),
-          ],
-          prevent_initial_call=True,)
+
+@callback(
+    Output(f"{id_page}_content", "children"),
+    Input(f"{id_page}_aceptar", "n_clicks"),
+    [
+        State(f"{id_page}_input", "value"),
+        State(f"{id_page}_dropdown", "value"),
+        State("main_page_store", "data"),
+    ],
+    prevent_initial_call=True,
+)
 def save_data(n_clicks, input_value, drop_value, data):
-    
-    load_data_content = html.H6("Introduzca el nombre para el archivo",
-                                style={"color": color_boton_1})
+    load_data_content = html.H6(
+        "Introduzca el nombre para el archivo", style={"color": color_boton_1}
+    )
     if input_value is not None:
-        load_data_content = html.H6("DataFrame Guardado",
-                                    style={"color": color_boton_1})
+        load_data_content = html.H6(
+            "DataFrame Guardado", style={"color": color_boton_1}
+        )
         try:
             df = read_json(data["df"])
             path = f"""users/{data["user"]}/data/{input_value}"""
@@ -45,6 +48,7 @@ def save_data(n_clicks, input_value, drop_value, data):
                 case "To EXCEL":
                     write_data(df, "xlsx", path)
         except (TypeError, KeyError, ValueError):
-            load_data_content = html.H6("No hay DataFrame cargado",
-                                        style={"color": color_boton_1})
+            load_data_content = html.H6(
+                "No hay DataFrame cargado", style={"color": color_boton_1}
+            )
     return load_data_content
