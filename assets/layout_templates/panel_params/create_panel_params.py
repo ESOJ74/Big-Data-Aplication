@@ -7,14 +7,23 @@ from assets.my_dash.my_html.my_div import my_div
 from .create_panel_params_css import *
 
 
-def create_select(id_page, id_param, options=[], value="", multi=False):
+def create_select(
+    id_page,
+    id_param,
+    options=[],
+    value="",
+    multi=False,
+    s_div_selector=style_div_selector2,
+    s_selector=style_selector2,
+    s_params=style_params2,
+):
     return my_div(
-        style_div_selector2,
+        s_div_selector,
         "",
         [
-            html.H6(id_param, style=style_params2),
+            html.H6(id_param, style=s_params),
             my_div(
-                style_selector2,
+                s_selector,
                 "",
                 my_dropdown(
                     f"{id_page}_{id_param}",
@@ -29,23 +38,15 @@ def create_select(id_page, id_param, options=[], value="", multi=False):
 
 
 def create_param_drop(id_page, id_param, options=[], value="", multi=False):
-    return my_div(
+    return create_select(
+        id_page,
+        id_param,
+        options,
+        value,
+        multi,
         style_div_selector,
-        "",
-        [
-            html.A(id_param, style=style_params),
-            my_div(
-                style_selector,
-                "",
-                my_dropdown(
-                    f"{id_page}_{id_param}",
-                    {"background": background_light},
-                    options=options,
-                    value=value,
-                    multi=multi,
-                ),
-            ),
-        ],
+        style_selector,
+        style_params,
     )
 
 
