@@ -51,7 +51,7 @@ def load_data(n_clicks, data):
                     ),
                     my_button(
                         f"{id_page}_aceptar",
-                        "Aceptar",
+                        "Load",
                         style_boton_aceptar,
                         className="btn btn-outline-warning",
                         color="black",

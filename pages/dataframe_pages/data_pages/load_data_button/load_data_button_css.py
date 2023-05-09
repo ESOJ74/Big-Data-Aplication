@@ -58,9 +58,8 @@ style_div_dropdown_archivos = {
 }
 
 style_selector = {        
-    "margin-top": "2%",   
-    "margin-left": "2%",
-    "width": "11vmax",
+    "margin-top": "7%",   
+    "width": "13vmax",
     "height": "2.2em",
     "border-radius": "7px 7px 5px 5px",
     "padding": "2px 2px 0px 2px",
@@ -70,7 +69,7 @@ style_selector = {
 }
 
 style_boton_aceptar = {    
-    "margin-top": "2%",
+    "margin-top": "4%",
     "margin-left": "2%",
     "margin-bottom": "5%",
     "font-size": "1.6vmin",
