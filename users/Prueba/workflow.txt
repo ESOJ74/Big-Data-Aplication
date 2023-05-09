@@ -1,3 +1,5 @@
 import pandas as pd
 
 df = pd.read_csv("price.csv")
+
+df = df.drop(['carat', 'cut'], axis=1)
