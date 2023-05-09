@@ -9,3 +9,6 @@ template_visualizations.layout.xaxis.color = color_boton_1
 template_visualizations.layout.yaxis.color = color_boton_1
 template_visualizations.layout.xaxis.title.font.color = color_boton_1
 template_visualizations.layout.yaxis.title.font.color = color_boton_1
+
+template_visualizations_2 = go.layout.Template()
+template_visualizations_2.layout.paper_bgcolor = "#54BEE5"
