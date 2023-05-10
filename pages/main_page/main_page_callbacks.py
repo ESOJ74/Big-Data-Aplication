@@ -17,9 +17,7 @@ def create_callback(buttons_list, module, button_name=""):
         [Output("main_page_page_content", "children",
                 allow_duplicate=True)] +
         list(map(lambda x: Output(x[0], "n_clicks"),
-                 buttons_list)) +
-        [Output("main_page_div_button_cover", "hidden",
-                allow_duplicate=True)],
+                 buttons_list)),      
         list(map(lambda x: Input(x[0], "n_clicks"),
                  buttons_list)),
         prevent_initial_call=True)
@@ -29,7 +27,8 @@ def create_callback(buttons_list, module, button_name=""):
             import_module(
                 f'pages.{module}.{button}.{button}_layout'
             ).layout]        
-        return cont + [0 for x in buttons_list] + [True]
+        return cont + [0 for x in buttons_list] 
+
 
 create_callback(buttons, "dataframe_pages")
 create_callback(buttons_data, "dataframe_pages.data_pages")
