@@ -21,9 +21,7 @@ params_utils = [
 
 content_down = my_div(
     style_div_content_down,
-    f"{id_page}_content_down",
-    my_div(style_div_result, f"{id_page}_div_graph"),
-)
+    f"{id_page}_content_down")
 
 layout = create_content_layout(
     id_page,

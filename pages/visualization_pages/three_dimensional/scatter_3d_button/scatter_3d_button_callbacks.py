@@ -86,34 +86,34 @@ def display_page(
 
         fig = (
             px.scatter_3d(
-                df,
-                template=template_visualizations_2,
+                df,                
                 x=state_X,
                 y=state_Y,
-                z=state_Z,
-                height=550,
+                z=state_Z,                
                 color=state_color,
                 symbol=state_symbol,
                 size=state_size,
                 opacity=state_opacity,
                 size_max=18,
-                color_discrete_sequence=sequential.Plasma,
+                template=template_visualizations_2,
+                color_discrete_sequence=sequential.Agsunset,
             )
             .update_layout(
                 legend={"title_font_color": color_boton_1},
-                margin=dict(l=0, r=0, t=0, b=30),
-                width=None,
+                margin=dict(l=1, r=1, t=1, b=1),
                 scene=dict(
                     xaxis=dict(gridcolor=color_axis_scatter_3d),
                     yaxis=dict(gridcolor=color_axis_scatter_3d),
                     zaxis=dict(gridcolor=color_axis_scatter_3d),
-                ),
+                    aspectratio= {'x': 0.7, 'y': 0.8, 'z': 0.7},
+                    bgcolor = color_bgcolor_scatter_3d,                   
+                ),                
             )
             .update_traces(
                 marker=dict(line=dict(width=0.05, color="Black")),
                 selector=dict(mode="markers"),
             )
         )
-        return [dcc.Graph(figure=fig), ""]
-    except ValueError as msg:
+        return [dcc.Graph(figure=fig, style={"height": "95%"}), ""]
+    except Exception as msg:
         return [html.H6(msg.__str__(), style=style_msg), ""]
