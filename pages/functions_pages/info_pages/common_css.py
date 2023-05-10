@@ -80,11 +80,6 @@ style_div_obj = {
     "background": background_light
 }
 
-style_div_obj2 = {
-    "width": "100%",
-    "height": "80%",
-}
-
 style_msg = {    
     "color": "#31EDF0"
 }
