@@ -56,6 +56,9 @@ def second_callback(n_clicks):
         State(f"{id_page}_symbol", "value"),
         State(f"{id_page}_size", "value"),
         State(f"{id_page}_opacity", "value"),
+        State(f"{id_page}_log_x", "value"),
+        State(f"{id_page}_log_y", "value"),
+        State(f"{id_page}_log_z", "value"),
     ],
     prevent_initial_call=True,
 )
@@ -69,6 +72,9 @@ def display_page(
     state_symbol,
     state_size,
     state_opacity,
+    state_log_x,
+    state_log_y,
+    state_log_z,
 ):
     try:
         if state_color is not None and len(state_color) < 1 or state_color == " ":
@@ -81,19 +87,25 @@ def display_page(
             state_size = None
 
         state_opacity = float(state_opacity)
+        state_log_x = False if state_log_x == "False" else True
+        state_log_y = False if state_log_y == "False" else True
+        state_log_z = False if state_log_z == "False" else True
 
         df = read_json(data["df"])
 
         fig = (
             px.scatter_3d(
-                df,                
+                df,
                 x=state_X,
                 y=state_Y,
-                z=state_Z,                
+                z=state_Z,
                 color=state_color,
                 symbol=state_symbol,
                 size=state_size,
                 opacity=state_opacity,
+                log_x=state_log_x,
+                log_y=state_log_y,
+                log_z=state_log_z,
                 size_max=18,
                 template=template_visualizations_2,
                 color_discrete_sequence=sequential.Agsunset,
@@ -105,9 +117,9 @@ def display_page(
                     xaxis=dict(gridcolor=color_axis_scatter_3d),
                     yaxis=dict(gridcolor=color_axis_scatter_3d),
                     zaxis=dict(gridcolor=color_axis_scatter_3d),
-                    aspectratio= {'x': 0.7, 'y': 0.8, 'z': 0.7},
-                    bgcolor = color_bgcolor_scatter_3d,                   
-                ),                
+                    aspectratio={"x": 0.7, "y": 0.8, "z": 0.7},
+                    bgcolor=color_bgcolor_scatter_3d,
+                ),
             )
             .update_traces(
                 marker=dict(line=dict(width=0.05, color="Black")),

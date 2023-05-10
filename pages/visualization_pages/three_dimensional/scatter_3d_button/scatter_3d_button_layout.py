@@ -16,6 +16,15 @@ params_utils = [
     create_param_drop(id_page, "symbol"),
     create_param_drop(id_page, "size"),
     create_param_drop(id_page, "opacity", options=list(arange(0.1, 1.1, 0.1)), value=1),
+    create_param_drop(id_page, "log_x",
+                      options=["True", "False"],
+                      value="False"),
+    create_param_drop(id_page, "log_y",
+                      options=["True", "False"],
+                      value="False"),
+    create_param_drop(id_page, "log_z",
+                      options=["True", "False"],
+                      value="False"),
     create_buttom_refresh(id_page),
 ]
 
