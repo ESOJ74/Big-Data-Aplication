@@ -1,0 +1,5 @@
+import pandas as pd
+
+df = pd.read_csv("price.csv")
+
+df = df.replace(to_replace="Ideal", value="feote", limit=None, regex=False)

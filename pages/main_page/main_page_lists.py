@@ -44,7 +44,7 @@ functions_a_g = list(map(lambda x: x + [style_button],
 
 functions_h_p = list(map(lambda x: x + [style_button],
                      [   
-                      ["pipe_button", "Pipe"],
+                      ["-----", "---------"],
                      ]))
 
 functions_q_z = list(map(lambda x: x + [style_button],

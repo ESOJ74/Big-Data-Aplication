@@ -52,7 +52,7 @@ style_title = {
 style_text = {
     "text-align": "center",
     "margin-left":"0%",
-    "width":"98%",
+    "width":"100%",
     "height": "100%",
     "overflow": "auto",
 }
