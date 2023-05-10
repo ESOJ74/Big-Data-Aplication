@@ -22,3 +22,8 @@ style_title = {
 style_msg = {    
     "color": "#31EDF0"
 }
+
+style_graph = {
+    "width": "100%",
+    "height": "90%"
+}

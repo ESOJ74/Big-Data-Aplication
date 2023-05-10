@@ -15,41 +15,42 @@ id_page = "treemap"
 create_callback_button_cover(id_page, f"{id_page}_content_down")
 
 
-@callback(Output(f"{id_page}_content_up", "children"), 
-          Input("treemap_button", "n_clicks"), 
-          prevent_initial_call=True,)
-def second_callback(n_clicks):    
-    return my_div(style_div_title, "",
-                  [
-                   html.H5("plotly.express.treemap()",
-                           style=style_title),
-                   html.A("Documentacion",
-                          href="https://plotly.com/python/treemaps/",
-                          target="_blank")
-                  ])
+@callback(
+    Output(f"{id_page}_content_up", "children"),
+    Input("treemap_button", "n_clicks"),
+    prevent_initial_call=True,
+)
+def second_callback(n_clicks):
+    return my_div(
+        style_div_title,
+        "",
+        [
+            html.H5("plotly.express.treemap()", style=style_title),
+            html.A(
+                "Documentacion",
+                href="https://plotly.com/python/treemaps/",
+                target="_blank",
+            ),
+        ],
+    )
 
 
-@callback([
-           Output(f"{id_page}_content_down", "children"),   
-           Output(f"{id_page}_loading", "children",
-                  allow_duplicate=True),           
-          ],
-          Input(f"{id_page}_refresh", "n_clicks"),
-          [
-           State('main_page_store', 'data'),           
-          ],
-          prevent_initial_call=True)
-def display_page(
-    n_clicks,
-    data    
-    ):      
-
+@callback(
+    [
+        Output(f"{id_page}_content_down", "children"),
+        Output(f"{id_page}_loading", "children", allow_duplicate=True),
+    ],
+    Input(f"{id_page}_refresh", "n_clicks"),
+    [
+        State("main_page_store", "data"),
+    ],
+    prevent_initial_call=True,
+)
+def display_page(n_clicks, data):
     fig = px.treemap(
-        names = ["Eve","Cain", "Seth", "Enos", "Noam", "Abel", "Awan", "Enoch", "Azura"],
-        parents = ["", "Eve", "Eve", "Seth", "Seth", "Eve", "Eve", "Awan", "Eve"],
-        height=550
+        names=["Eve", "Cain", "Seth", "Enos", "Noam", "Abel", "Awan", "Enoch", "Azura"],
+        parents=["", "Eve", "Eve", "Seth", "Seth", "Eve", "Eve", "Awan", "Eve"],
     )
     fig.update_traces(root_color="lightgrey")
-    fig.update_layout(margin = dict(t=50, l=25, r=25, b=25))
-    return [dcc.Graph(figure=fig), ""]
-    
+    fig.update_layout(margin=dict(t=50, l=25, r=25, b=25))
+    return [dcc.Graph(figure=fig, style=style_graph), ""]

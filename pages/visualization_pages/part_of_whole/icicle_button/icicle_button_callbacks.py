@@ -54,9 +54,8 @@ def display_page(
         names='character',
         parents='parent',
         values='value',
-        height=550
     )
     fig.update_traces(root_color="lightgrey")
     fig.update_layout(margin = dict(t=50, l=25, r=25, b=25))
-    return [dcc.Graph(figure=fig), ""]
+    return [dcc.Graph(figure=fig, style=style_graph), ""]
     

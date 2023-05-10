@@ -36,7 +36,7 @@ content_down = my_div(style_content, "",
                                type="default",
                                fullscreen=False,
                        ),
-                       my_div(style_div_down , f"{id_page}_div_result"),
+                       my_div(style_div_down_testing , f"{id_page}_div_result"),
                       ])
 
 

@@ -19,36 +19,43 @@ selector_options(id_page, f"{id_page}_color")
 selector_options(id_page, f"{id_page}_line_group")
 
 
-@callback(Output(f"{id_page}_content_up", "children"), 
-          Input("ecdf_button", "n_clicks"), 
-          prevent_initial_call=True,)
-def second_callback(n_clicks):    
-    return my_div(style_div_title, "",
-                  [
-                   html.H5("plotly.express.ecdf()",
-                           style=style_title),
-                   html.A("Documentacion",
-                          href="https://plotly.com/python/ecdf-plots/",
-                          target="_blank")
-                  ])
+@callback(
+    Output(f"{id_page}_content_up", "children"),
+    Input("ecdf_button", "n_clicks"),
+    prevent_initial_call=True,
+)
+def second_callback(n_clicks):
+    return my_div(
+        style_div_title,
+        "",
+        [
+            html.H5("plotly.express.ecdf()", style=style_title),
+            html.A(
+                "Documentacion",
+                href="https://plotly.com/python/ecdf-plots/",
+                target="_blank",
+            ),
+        ],
+    )
 
 
-@callback([
-           Output(f"{id_page}_content_down", "children"),   
-           Output(f"{id_page}_loading", "children",
-                  allow_duplicate=True),           
-          ],
-          Input(f"{id_page}_refresh", "n_clicks"),
-          [
-           State('main_page_store', 'data'),
-           State(f"{id_page}_X", "value"),
-           State(f"{id_page}_Y", "value"),
-           State(f"{id_page}_color", 'value'),
-           State(f"{id_page}_ecdfnorm", 'value'),
-           State(f"{id_page}_ecdfmode", 'value'),
-           State(f"{id_page}_markers", 'value'),
-          ],
-          prevent_initial_call=True)
+@callback(
+    [
+        Output(f"{id_page}_content_down", "children"),
+        Output(f"{id_page}_loading", "children", allow_duplicate=True),
+    ],
+    Input(f"{id_page}_refresh", "n_clicks"),
+    [
+        State("main_page_store", "data"),
+        State(f"{id_page}_X", "value"),
+        State(f"{id_page}_Y", "value"),
+        State(f"{id_page}_color", "value"),
+        State(f"{id_page}_ecdfnorm", "value"),
+        State(f"{id_page}_ecdfmode", "value"),
+        State(f"{id_page}_markers", "value"),
+    ],
+    prevent_initial_call=True,
+)
 def display_page(
     n_clicks,
     data,
@@ -57,15 +64,14 @@ def display_page(
     state_color,
     state_ecdfnorm,
     state_ecdfmode,
-    state_markers
-    ):     
-    
+    state_markers,
+):
     if state_Y is not None and len(state_Y) < 1 or state_Y == " ":
-        state_Y = None 
+        state_Y = None
     if state_ecdfnorm is not None and len(state_ecdfnorm) < 1 or state_ecdfnorm == " ":
-        state_ecdfnorm = None 
+        state_ecdfnorm = None
     if state_color is not None and len(state_color) < 1 or state_color == " ":
-        state_color = None  
+        state_color = None
     state_markers = False if state_markers == "False" else True
     if state_X:
         try:
@@ -75,17 +81,15 @@ def display_page(
                 df,
                 template=template_visualizations,
                 x=state_X,
-                y=state_Y,            
+                y=state_Y,
                 color=state_color,
-                ecdfnorm=state_ecdfnorm, 
+                ecdfnorm=state_ecdfnorm,
                 ecdfmode=state_ecdfmode,
                 markers=state_markers,
-                height=550,
-                color_discrete_sequence=sequential.Plasma,  
-            ).update_layout(legend={"title_font_color": color_boton_1})   
-            return [dcc.Graph(figure=fig), ""]
+                color_discrete_sequence=sequential.Plasma,
+            ).update_layout(legend={"title_font_color": color_boton_1})
+            return [dcc.Graph(figure=fig, style=style_graph), ""]
         except Exception as err:
             return [html.H6(err.__str__(), style=style_msg), ""]
     else:
-        return[html.H6("X e Y deben tener valor", style=style_msg), ""]
-    
+        return [html.H6("X e Y deben tener valor", style=style_msg), ""]

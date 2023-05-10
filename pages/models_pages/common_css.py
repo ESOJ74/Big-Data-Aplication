@@ -1,13 +1,10 @@
 from assets.common_css import *
-from plotly.colors import sequential
 
 style_div_result1 = {
     "margin-top": "2%",
     "width": "100%",
     "height": "88%"
 }
-
-
 
 style_div_arriba1 = {
     "margin-top": "0.5%",
@@ -46,9 +43,6 @@ style_div_results1 = {
     "font-family": font_family,
 }
 
-
-
-
 style_div_title = {
     "text-align": "center",
     "width": "100%",
@@ -64,8 +58,6 @@ style_title = {
 style_msg = {    
     "color": "#31EDF0"
 }
-
-
 
 style_content = {
     "width": "99%",
@@ -119,6 +111,17 @@ style_div_down = {
     "margin-left": "2%",
     "width": "98%",
     "height": "50%",
+}
+
+style_div_down_testing = {
+    "margin-left": "2%",
+    "width": "98%",
+    "height": "95%"
+}
+
+style_graph = {
+    "width": "100%",
+    "height": "100%"
 }
 
 style_div_drop_test = {    
@@ -207,4 +210,9 @@ style_div_button_foto = {
     "margin-left": "5%", 
     "width": "20%",
     "height": "2.65em",
+}
+
+style_graph = {
+    "width": "100%",
+    "height": "95%"
 }
