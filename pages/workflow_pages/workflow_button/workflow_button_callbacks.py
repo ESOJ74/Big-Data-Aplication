@@ -7,11 +7,15 @@ from dash.dependencies import Input, Output, State
 from dash.exceptions import PreventUpdate
 from pandas import read_json
 
+from utils.create_callback_hidden_button_cover import create_callback_hidden_button_cover
+
 from .workflow_button_css import *
 
 id_page = "workflow"
 global file_path
 file_path = ""
+
+create_callback_hidden_button_cover(f"{id_page}_workflow", True)
 
 
 @callback(
@@ -93,6 +97,7 @@ def add_data_to_fig(n_clicks, name_button, data):
             msg = "Workflow guardado"
         else:
             import pandas as pd  # se utiliza en eval()
+
             df = read_json(data["df"])
             df_pipeline = data["pipeline"]
 

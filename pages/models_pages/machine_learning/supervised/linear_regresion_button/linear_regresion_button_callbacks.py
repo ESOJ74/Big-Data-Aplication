@@ -8,14 +8,14 @@ from joblib import dump
 from pandas import read_json
 
 from assets.my_dash.my_html.my_div import my_div
-from utils.create_callback_button_cover import create_callback_button_cover
+from utils.create_callback_hidden_button_cover import create_callback_hidden_button_cover
 
 from ....common_css import *
 from .linear_regresion_button_functions import fit_model, split_df
 
 id_page = "linear"
 
-create_callback_button_cover(id_page, f"{id_page}_content_down")
+create_callback_hidden_button_cover(f"{id_page}_content_up", True)
 
 
 @callback(Output(f"{id_page}_content_up", "children"), 

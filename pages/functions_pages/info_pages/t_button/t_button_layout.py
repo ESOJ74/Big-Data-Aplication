@@ -3,11 +3,17 @@ import os
 from dash import Input, Output, State, callback, html
 from pandas import read_csv, read_json
 
+from assets.layout_templates.main_page.common_css import (
+    style_content_left,
+    style_content_left2,
+)
 from assets.layout_templates.main_page.content_layout import create_content_layout
 from assets.my_dash.my_html.my_div import my_div
 from pages.functions_pages.info_pages.common_css import *
 from utils.create_agGrid import create_adgrid
-from utils.create_callback_button_cover import create_callback_button_cover
+from utils.create_callback_hidden_button_cover import (
+    create_callback_hidden_button_cover,
+)
 
 id_page = "t"
 
@@ -18,7 +24,18 @@ layout = create_content_layout(
     my_div(style_div_params, ""),
 )
 
-create_callback_button_cover(id_page, f"{id_page}_content_down")
+create_callback_hidden_button_cover(f"{id_page}_content_down")
+
+
+@callback(
+    Output(f"{id_page}_content_left", "style"),
+    Input("main_page_button_cover", "n_clicks"),
+    prevent_initial_call=True,
+)
+def auth_display(n_clicks):
+    if n_clicks % 2 != 0:
+        return style_content_left2
+    return style_content_left
 
 
 @callback(

@@ -1,18 +1,34 @@
 import plotly.figure_factory as ff
 from dash import Input, Output, State, callback, dcc, html
 from pandas import read_json
-
+from assets.layout_templates.main_page.common_css import (
+    style_content_left,
+    style_content_left2,
+)
 from assets.my_dash.my_html.my_div import my_div
 from utils.common_div_utils import selector_options
-from utils.create_callback_button_cover import create_callback_button_cover
+from utils.create_callback_hidden_button_cover import (
+    create_callback_hidden_button_cover,
+)
 
 from ...common_css import *
 
 id_page = "timeline"
 
 
-create_callback_button_cover(id_page, f"{id_page}_content_down")
+create_callback_hidden_button_cover(f"{id_page}_content_down")
 selector_options(id_page, f"{id_page}_index_col")
+
+
+@callback(
+    Output(f"{id_page}_content_left", "style"),
+    Input("main_page_button_cover", "n_clicks"),
+    prevent_initial_call=True,
+)
+def auth_display(n_clicks):
+    if n_clicks % 2 != 0:
+        return style_content_left2
+    return style_content_left
 
 
 @callback(
@@ -75,7 +91,7 @@ def display_page(
                 colors=colors,
                 index_col=state_index_col,
                 show_colorbar=state_show_colorbar,
-                group_tasks=state_group_task,               
+                group_tasks=state_group_task,
             )
             return [dcc.Graph(figure=fig, style=style_graph), ""]
         except Exception as msg:

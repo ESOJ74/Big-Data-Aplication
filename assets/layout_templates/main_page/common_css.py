@@ -12,13 +12,22 @@ style_content_left = {
     "position": "relative",
     "top": "0%",
     "left": "0%",
-    "width": "85%",
+    "width": "66vmax",
+    "height": "100%",
+}
+
+style_content_left2 = {
+    "float": "left",
+    "position": "relative",
+    "top": "0%",
+    "left": "0%",
+    "width": "84vmax",
     "height": "100%",
 }
 
 style_content_right = {
     "float": "left",
-    "width": "15%",
+    "width": "15vmax",
     "height": "100%",
     "border-left": "2px solid black",
     "background": background_utils,

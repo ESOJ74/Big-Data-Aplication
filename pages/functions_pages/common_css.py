@@ -8,9 +8,10 @@ style_div_dropdown = {
 }
 
 style_div_result = {
-    "margin-top": "2%",
+    "position": "relative",
+    "top": "2%",
     "width": "100%",
-    "height": "88%"
+    "height": "88%",
 }
 
 style_div_table = {

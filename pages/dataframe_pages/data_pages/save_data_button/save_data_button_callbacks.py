@@ -1,9 +1,13 @@
 from dash import Input, Output, State, callback, html
 from pandas import read_json
 
-from assets.layout_templates.main_page.common_css import color_boton_1
+from utils.create_callback_hidden_button_cover import create_callback_hidden_button_cover
+
+from .save_data_button_css import *
 
 id_page = "save_data"
+
+create_callback_hidden_button_cover(f"{id_page}_content", True)
 
 
 def write_data(df, extension, path):
@@ -29,13 +33,9 @@ def write_data(df, extension, path):
     prevent_initial_call=True,
 )
 def save_data(n_clicks, input_value, drop_value, data):
-    load_data_content = html.H6(
-        "Introduzca el nombre para el archivo", style={"color": color_boton_1}
-    )
-    if input_value is not None:
-        load_data_content = html.H6(
-            "DataFrame Guardado", style={"color": color_boton_1}
-        )
+    load_data_content = html.H6("Introduzca el nombre para el archivo", style=style_msg)
+    if input_value is not None and len(input_value) > 0:
+        load_data_content = html.H6("DataFrame Guardado", style=style_msg)
         try:
             df = read_json(data["df"])
             path = f"""users/{data["user"]}/data/{input_value}"""
@@ -48,7 +48,5 @@ def save_data(n_clicks, input_value, drop_value, data):
                 case "To EXCEL":
                     write_data(df, "xlsx", path)
         except (TypeError, KeyError, ValueError):
-            load_data_content = html.H6(
-                "No hay DataFrame cargado", style={"color": color_boton_1}
-            )
+            load_data_content = html.H6("No hay DataFrame cargado", style=style_msg)
     return load_data_content

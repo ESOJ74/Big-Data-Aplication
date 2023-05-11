@@ -3,7 +3,7 @@ from utils.create_agGrid import create_adgrid
 
 style_div_table = {
     "widht": "100%",
-    "height": "80%",
+    "height": "80%"
 }
 
 def button_apply(id_page, df, msg):   

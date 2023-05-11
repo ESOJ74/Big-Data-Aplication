@@ -108,7 +108,8 @@ style_input = {
 }
 
 style_msg = {
-    "margin-left": "4%",
-    "margin-top": "2%",
+    "position": "relative",
+    "left": "4%",
+    "top": "2%",
     "color": color_boton_1
 }

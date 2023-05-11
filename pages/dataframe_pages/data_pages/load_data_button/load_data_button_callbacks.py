@@ -10,12 +10,16 @@ from assets.layout_templates.main_page.common_css import *
 from assets.my_dash.my_dbc.my_button import my_button
 from assets.my_dash.my_dcc.my_dropdown import my_dropdown
 from assets.my_dash.my_html.my_div import my_div
+from utils.create_callback_hidden_button_cover import create_callback_hidden_button_cover
 from utils.parse_contents import parse_contents
 from utils.read_data import read_data
 
 from .load_data_button_css import *
 
 id_page = "load_data"
+
+
+create_callback_hidden_button_cover(f"{id_page}_content_down", True)
 
 
 # botones
@@ -190,20 +194,19 @@ def load_data(n_clicks, user, password, host, port, bd, schema, table, data):
 )
 def load_data(n_clicks):
     return my_div(
-                style_div_up_load,
-                "",
-                [
-                    dcc.Upload(
-                        id="upload-data",
-                        children=html.Div(
-                            ["Drag and Drop or ", html.A("Select Files")]
-                        ),
-                        style=style_dcc_upload,
-                        # Allow multiple files to be uploaded
-                        multiple=True,
-                    ),
-                ],
-            )
+        style_div_up_load,
+        "",
+        [
+            dcc.Upload(
+                id="upload-data",
+                children=html.Div(["Drag and Drop or ", html.A("Select Files")]),
+                style=style_dcc_upload,
+                # Allow multiple files to be uploaded
+                multiple=True,
+            ),
+        ],
+    )
+
 
 @callback(
     Output(f"{id_page}_content_down", "children", allow_duplicate=True),

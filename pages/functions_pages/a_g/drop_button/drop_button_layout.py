@@ -1,5 +1,4 @@
-from assets.layout_templates.main_page.content_layout import \
-    create_content_layout
+from assets.layout_templates.main_page.content_layout import create_content_layout
 from assets.layout_templates.panel_params.create_panel_params import *
 
 from .drop_button_callbacks import *
@@ -16,7 +15,7 @@ params_utils = [
 
 content_down = my_div(
     style_div_content_down,
-    f"{id_page}_content_down",
+    "",
     my_div(style_div_result, f"{id_page}_div_graph"),
 )
 

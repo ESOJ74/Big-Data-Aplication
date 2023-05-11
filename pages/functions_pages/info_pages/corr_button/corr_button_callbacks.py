@@ -2,9 +2,12 @@ import plotly.express as px
 from dash import Input, Output, State, callback, dcc, html
 from pandas import read_json, set_option
 
+from assets.layout_templates.main_page.common_css import (style_content_left,
+                                                          style_content_left2)
 from assets.my_dash.my_html.my_div import my_div
 from assets.templates_plotly import template_visualizations
-from utils.create_callback_button_cover import create_callback_button_cover
+from utils.create_callback_hidden_button_cover import \
+    create_callback_hidden_button_cover
 from utils.create_callbacks_text_graph import create_callback_text_graph
 
 from ..common_css import *
@@ -12,8 +15,19 @@ from ..common_css import *
 id_page = "corr"
 
 
-create_callback_button_cover(id_page, f"{id_page}_content_down")
+create_callback_hidden_button_cover(f"{id_page}_content_down")
 create_callback_text_graph(id_page)
+
+
+@callback(
+    Output(f"{id_page}_content_left", "style"),
+    Input("main_page_button_cover", "n_clicks"),
+    prevent_initial_call=True,
+)
+def auth_display(n_clicks):
+    if n_clicks % 2 != 0:
+        return style_content_left2
+    return style_content_left
 
 
 @callback(
