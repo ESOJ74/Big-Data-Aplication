@@ -39,7 +39,10 @@ style_boton_aceptar = {
     "margin-left": "2%",
     "margin-bottom": "5%",
     "font-size": "75%",
-    "font-family": font_family
+    "font-weight": "bold",
+    "font-family": font_family,
+    "color": "#A0E2F9",
+    "border": "1px solid #A0E2F9"
 }
 
 style_msg = {

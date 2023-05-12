@@ -94,17 +94,6 @@ def create_buttom_refresh(id_page):
         f"{id_page}_refresh",
         "Apply",
         style_button_refresh,
-        className="btn btn-outline-warning",
+        className="btn btn-outline-primary",
         color="black",
-    )
-
-
-def create_buttom_save(id_page, title="Save changes"):
-    return my_button(
-        f"{id_page}_save",
-        title,
-        style_button_save,
-        className="btn btn-outline-warning",
-        color="black",
-        disabled=True,
     )

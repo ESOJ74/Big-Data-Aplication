@@ -82,12 +82,10 @@ style_button = {
 
 style_button_refresh = {
     "margin-top": "10%",
-    "margin-left": "5%",
-    "width": "10vmax"
-}
-
-style_button_save = {
-    "margin-top": "5%",
-    "margin-left": "5%",
-    "width": "10vmax"
+    "margin-left": "30%",
+    "font-size": "85%",
+    "font-weight": "bold",
+    "font-family": font_family,
+    "color": "#A0E2F9",
+    "border": "1px solid #A0E2F9"
 }

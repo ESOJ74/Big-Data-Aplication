@@ -87,21 +87,21 @@ def add_data_to_fig(
 ):
     action = f"""df = df.drop({state_labels_value}, axis={state_axis})"""
     if clicks_button:
+        
         if name_button == "Apply":
-            try:
-                df = read_json(data["df"]).drop(state_labels_value, axis=state_axis)
-                data["prov_df"] = df.to_json(orient="columns")
-                if type(state_labels_value) == str:
-                    state_labels_value = [state_labels_value]
-                msg = html.H6(
-                    f"df.drop(labels={state_labels_value}, axis={state_axis})",
-                    style=style_div_code,
-                )
-                name_button, content = button_apply(id_page, df, msg)
-                labels = select_labels(df, state_axis)
-            except (KeyError, ValueError) as err:
-                content = (html.H6(err.__str__(), style={"color": color_code}),)
-        else:
+            if type(state_labels_value) == str:
+                state_labels_value = []
+
+            df = read_json(data["df"])
+            df.drop(state_labels_value, axis=state_axis, inplace=True)
+            data["prov_df"] = df.to_json(orient="columns")            
+            msg = html.H6(
+                f"df.drop(labels={state_labels_value}, axis={state_axis})",
+                style=style_div_code,
+            )
+            name_button, content = button_apply(id_page, df, msg)
+            labels = select_labels(df, state_axis)
+        else:             
             df = read_json(data["prov_df"])
             data["df"] = df.to_json(orient="columns")
             name_button, content = button_save(

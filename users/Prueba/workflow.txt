@@ -1,3 +1,9 @@
 import pandas as pd
 
 df = pd.read_csv("price.csv")
+
+df = df.drop(, axis=1)
+
+df = df.drop(['carat'], axis=1)
+
+df = df.drop(['color'], axis=1)
