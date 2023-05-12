@@ -44,10 +44,10 @@ content_down = my_div(
         my_div(style_div_result, f"{id_page}_div_code"),
         my_div(
             {},
-            f"{id_page}_div_button_save",
+            f"{id_page}_div_button_save1",
             [
                 my_button(
-                    f"{id_page}_button_save",
+                    f"{id_page}_button_save1",
                     "Save",
                     style_boton_aceptar,
                     className="btn btn-outline-warning",

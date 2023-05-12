@@ -33,7 +33,7 @@ def add_data_to_fig(refres, data):
 
 
 @callback(
-    Output(f"{id_page}_button_save", "children"),
+    Output(f"{id_page}_button_save1", "children"),
     Input(f"{id_page}_workflow", "value"),
     prevent_initial_call=True,
 )
@@ -74,13 +74,13 @@ def add_data_to_fig(drop_workflow, data):
 
 @callback(
     [
-        Output(f"{id_page}_button_save", "children", allow_duplicate=True),
+        Output(f"{id_page}_button_save1", "children", allow_duplicate=True),
         Output("main_page_store", "data", allow_duplicate=True),
         Output(f"{id_page}_div_code", "children", allow_duplicate=True),
     ],
-    Input(f"{id_page}_button_save", "n_clicks"),
+    Input(f"{id_page}_button_save1", "n_clicks"),
     [
-        State(f"{id_page}_button_save", "children"),
+        State(f"{id_page}_button_save1", "children"),
         State("main_page_store", "data"),
     ],
     prevent_initial_call=True,

@@ -3,7 +3,7 @@ from dash.exceptions import PreventUpdate
 from pandas import read_json
 
 
-def create_callback_button_save1(id_page, actions=[]):
+def create_callback_button_save11(id_page, actions=[]):
     @callback(
         [         
          Output("main_page_store", "data", allow_duplicate=True),
@@ -27,7 +27,7 @@ def create_callback_button_save1(id_page, actions=[]):
         return [data, 0, True]
     
 
-def create_callback_updates_button_save1(id_page, id_drop):
+def create_callback_updates_button_save11(id_page, id_drop):
     @callback(
         [
          Output(f"{id_page}_{id_drop}", "options", allow_duplicate=True),

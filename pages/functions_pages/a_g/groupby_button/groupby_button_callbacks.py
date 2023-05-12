@@ -1,5 +1,6 @@
 from dash import Input, Output, State, callback, html
 from pandas import read_json
+
 from assets.layout_templates.main_page.common_css import (
     style_content_left,
     style_content_left2,
@@ -98,7 +99,7 @@ def add_data_to_fig(clicks_button, click, data, state_by, state_axis, name_butto
             df = read_json(data["prov_df"])
             data["df"] = df.to_json(orient="columns")
             name_button, content = button_save(
-                f"""users/{data["user"]}/workflow.txt""", ["", action]
+                f"""users/{data["user"]}/workflow.txt""", action
             )
             state_by = select_labels(df, state_axis, True)
     else:
