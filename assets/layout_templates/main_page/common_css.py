@@ -1,5 +1,6 @@
 from assets.common_css import *
 
+# create_content_layout function
 style_div_main = {
     "position": "relative",
     "top": "5%",
@@ -9,18 +10,12 @@ style_div_main = {
 
 style_content_left = {
     "float": "left",
-    "position": "relative",
-    "top": "0%",
-    "left": "0%",
     "width": "66vmax",
     "height": "100%",
 }
 
 style_content_left2 = {
     "float": "left",
-    "position": "relative",
-    "top": "0%",
-    "left": "0%",
     "width": "84vmax",
     "height": "100%",
 }
@@ -46,6 +41,7 @@ style_content_left_down = {
     "height": "89.3%",
 }
 
+#
 style_div_params = {    
     "width": "100%",
     "height": "98%",    

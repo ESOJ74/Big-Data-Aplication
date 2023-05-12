@@ -81,7 +81,7 @@ style_button = {
 }
 
 style_button_refresh = {
-    "margin-top": "35%",
+    "margin-top": "10%",
     "margin-left": "5%",
     "width": "10vmax"
 }

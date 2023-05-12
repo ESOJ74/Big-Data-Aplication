@@ -7,16 +7,14 @@ from .common_css import *
 
 def create_content_layout(id_page, content_left_up, content_left_down, content_right):
     return my_div(
-        style_div_main,
-        f"{id_page}_content_layout",
+        style_div_main, "",
         [
             my_div(
                 style_content_left,
                 f"{id_page}_content_left",
                 [
                     my_div(
-                        style_content_left_up,
-                        f"{id_page}_content_left_up",
+                        style_content_left_up, "",
                         content_left_up,
                     ),
                     dcc.Loading(
@@ -26,8 +24,7 @@ def create_content_layout(id_page, content_left_up, content_left_down, content_r
                         fullscreen=False,
                     ),
                     my_div(
-                        style_content_left_down,
-                        f"{id_page}_content_left_down",
+                        style_content_left_down, "",
                         content_left_down,
                     ),
                 ],
