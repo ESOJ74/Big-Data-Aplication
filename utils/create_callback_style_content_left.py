@@ -8,7 +8,7 @@ from assets.layout_templates.main_page.common_css import (
 
 def create_callback_style_content_left(id_page):
     @callback(
-        Output(f"{id_page}_content_left", "style"),
+        Output(f"{id_page}_content_left", "style", allow_duplicate=True),
         Input("main_page_button_cover", "n_clicks"),
         prevent_initial_call=True,
     )

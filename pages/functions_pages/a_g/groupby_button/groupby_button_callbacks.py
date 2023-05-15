@@ -1,15 +1,13 @@
 from dash import Input, Output, State, callback, html
 from pandas import read_json
 
-from assets.layout_templates.main_page.common_css import (
-    style_content_left,
-    style_content_left2,
-)
-from assets.my_dash.my_html.my_div import my_div
 from utils.button_apply import button_apply, button_save
-from utils.create_callback_hidden_button_cover import (
-    create_callback_hidden_button_cover,
-)
+from utils.create_callback_content_up import create_callback_content_up
+from utils.create_callback_hidden_button_cover import \
+    create_callback_hidden_button_cover
+from utils.create_callback_style_content_left import \
+    create_callback_style_content_left
+from utils.save_function import save_function
 from utils.select_labels import select_labels
 
 from ...common_css import *
@@ -18,47 +16,16 @@ id_page = "groupby"
 
 
 create_callback_hidden_button_cover(f"{id_page}_div_graph")
+create_callback_content_up(id_page)
+create_callback_style_content_left(id_page)
 
 
-@callback(
-    Output(f"{id_page}_content_left", "style"),
-    Input("main_page_button_cover", "n_clicks"),
-    prevent_initial_call=True,
-)
-def auth_display(n_clicks):
-    if n_clicks % 2 != 0:
-        return style_content_left2
-    return style_content_left
-
-
-@callback(
-    Output(f"{id_page}_content_up", "children"),
-    Input("groupby_button", "n_clicks"),
-    prevent_initial_call=True,
-)
-def second_callback(n_clicks):
-    return my_div(
-        style_div_title,
-        "",
-        [
-            html.H5("DataFrame.groupby()", style=style_title),
-            html.A(
-                "Documentacion",
-                href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.groupby.html",
-                target="_blank",
-            ),
-        ],
-    )
-
-
-@callback(
-    Output(f"{id_page}_by", "options"),
-    Input(f"{id_page}_axis", "value"),
-    State("main_page_store", "data"),
-)
-def display_page(axis, data):
+def apply_function(data, state_by, state_axis):
     df = read_json(data["df"])
-    return select_labels(df, axis, True)
+    df = df.groupby(state_by, axis=state_axis).sum()
+    df = df.reset_index()
+    data["prov_df"] = df.to_json(orient="columns")
+    return df
 
 
 @callback(
@@ -73,6 +40,7 @@ def display_page(axis, data):
     [
         Input(f"{id_page}_refresh", "n_clicks"),
         Input(f"{id_page}_by", "value"),
+        Input(f"{id_page}_axis", "value"),
     ],
     [
         State("main_page_store", "data"),
@@ -82,24 +50,23 @@ def display_page(axis, data):
     ],
     prevent_initial_call=True,
 )
-def add_data_to_fig(clicks_button, click, data, state_by, state_axis, name_button):
-    action = f"""df = df.groupby({state_by}, axis={state_axis}).sum()"""
+def add_data_to_fig(
+    clicks_button, click, click2, data, state_by, state_axis, name_button
+):
     if clicks_button:
+        msg = f"""df = df.groupby({state_by}, axis={state_axis}).sum()"""
         if name_button == "Apply":
             try:
-                df = read_json(data["df"]).groupby(state_by, axis=state_axis).sum()
-                df = df.reset_index()
-                data["prov_df"] = df.to_json(orient="columns")
+                df = apply_function(data, state_by, state_axis)
                 msg = html.H6(f"df.groupby({state_by}).sum()", style=style_div_code)
                 name_button, content = button_apply(id_page, df, msg)
                 state_by = select_labels(df, state_axis, True)
             except (KeyError, ValueError) as err:
                 content = (html.H6(err.__str__(), style={"color": color_code}),)
         else:
-            df = read_json(data["prov_df"])
-            data["df"] = df.to_json(orient="columns")
+            df = save_function(data)
             name_button, content = button_save(
-                f"""users/{data["user"]}/workflow.txt""", action
+                f"""users/{data["user"]}/workflow.txt""", msg
             )
             state_by = select_labels(df, state_axis, True)
     else:

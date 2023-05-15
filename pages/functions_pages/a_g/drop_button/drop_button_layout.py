@@ -1,6 +1,7 @@
 from assets.layout_templates.main_page.content_layout import create_content_layout
 from assets.layout_templates.panel_params.create_panel_params import *
 
+from ...common_css import style_div_result
 from .drop_button_callbacks import *
 
 id_page = "drop"

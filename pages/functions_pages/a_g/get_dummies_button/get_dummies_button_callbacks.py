@@ -1,17 +1,14 @@
 from dash import Input, Output, State, callback, html
-from dash.exceptions import PreventUpdate
 from pandas import get_dummies, read_json
 
-from assets.layout_templates.main_page.common_css import (
-    style_content_left,
-    style_content_left2,
-)
-from assets.my_dash.my_html.my_div import my_div
 from utils.button_apply import button_apply, button_save
 from utils.common_div_utils import selector_options
-from utils.create_callback_hidden_button_cover import (
-    create_callback_hidden_button_cover,
-)
+from utils.create_callback_content_up import create_callback_content_up
+from utils.create_callback_hidden_button_cover import \
+    create_callback_hidden_button_cover
+from utils.create_callback_style_content_left import \
+    create_callback_style_content_left
+from utils.save_function import save_function
 
 from ...common_css import *
 
@@ -19,39 +16,33 @@ id_page = "get_dummies"
 
 
 create_callback_hidden_button_cover(f"{id_page}_content_down")
+create_callback_content_up(id_page, False)
+create_callback_style_content_left(id_page)
 selector_options(id_page, f"{id_page}_prefix")
 selector_options(id_page, f"{id_page}_columns")
 
 
-@callback(
-    Output(f"{id_page}_content_left", "style"),
-    Input("main_page_button_cover", "n_clicks"),
-    prevent_initial_call=True,
-)
-def auth_display(n_clicks):
-    if n_clicks % 2 != 0:
-        return style_content_left2
-    return style_content_left
-
-
-@callback(
-    Output(f"{id_page}_content_up", "children"),
-    Input("get_dummies_button", "n_clicks"),
-    prevent_initial_call=True,
-)
-def second_callback(n_clicks):
-    return my_div(
-        style_div_title,
-        "",
-        [
-            html.H5("DataFrame.get_dummies()", style=style_title),
-            html.A(
-                "Documentacion",
-                href="https://pandas.pydata.org/docs/reference/api/pandas.get_dummies.html",
-                target="_blank",
-            ),
-        ],
+def apply_function(
+    data,
+    state_prefix,
+    state_dummy_na,
+    state_columns,
+    state_sparse,
+    state_drop_first,
+    state_dtype_2,
+):
+    df = read_json(data["df"])
+    df = get_dummies(
+        df,
+        prefix=state_prefix,
+        dummy_na=state_dummy_na,
+        columns=state_columns,
+        sparse=state_sparse,
+        drop_first=state_drop_first,
+        dtype=state_dtype_2,
     )
+    data["prov_df"] = df.to_json(orient="columns")
+    return df
 
 
 @callback(
@@ -62,7 +53,15 @@ def second_callback(n_clicks):
         Output(f"{id_page}_refresh", "children"),
         Output(f"{id_page}_refresh", "n_clicks"),
     ],
-    Input(f"{id_page}_refresh", "n_clicks"),
+    [
+        Input(f"{id_page}_refresh", "n_clicks"),
+        Input(f"{id_page}_prefix", "value"),
+        Input(f"{id_page}_dummy_na", "value"),
+        Input(f"{id_page}_columns", "value"),
+        Input(f"{id_page}_sparse", "value"),
+        Input(f"{id_page}_drop_first", "value"),
+        Input(f"{id_page}_dtype", "value"),
+    ],
     [
         State("main_page_store", "data"),
         State(f"{id_page}_prefix", "value"),
@@ -77,6 +76,12 @@ def second_callback(n_clicks):
 )
 def add_data_to_fig(
     clicks_button,
+    value1,
+    value2,
+    value3,
+    value4,
+    value5,
+    value6,
     data,
     state_prefix,
     state_dummy_na,
@@ -107,57 +112,34 @@ def add_data_to_fig(
                 state_dtype_2 = str
             case "bool":
                 state_dtype_2 = bool
-
         cod1 = (
             f"df = pd.get_dummies(df, prefix={state_prefix}, dummy_na={state_dummy_na},"
         )
         cod2 = f" columns={state_columns}, sparse={state_sparse}, drop_first={state_drop_first},"
         cod3 = f" dtype={state_dtype})"
-        action = cod1 + cod2 + cod3
+        msg = cod1 + cod2 + cod3
 
         if name_button == "Apply":
             try:
-                df = read_json(data["df"])
-                df = get_dummies(
-                    df,
-                    prefix=state_prefix,
-                    dummy_na=state_dummy_na,
-                    columns=state_columns,
-                    sparse=state_sparse,
-                    drop_first=state_drop_first,
-                    dtype=state_dtype_2,
+                df = apply_function(
+                    data,
+                    state_prefix,
+                    state_dummy_na,
+                    state_columns,
+                    state_sparse,
+                    state_drop_first,
+                    state_dtype_2,
                 )
-
-                data["prov_df"] = df.to_json(orient="columns")
-                msg = html.H6(action, style=style_div_code)
+                msg = html.H6(msg, style=style_div_code)
                 name_button, content = button_apply(id_page, df, msg)
             except (KeyError, ValueError) as err:
                 content = (html.H6(err.__str__(), style={"color": color_code}),)
         else:
-            df = read_json(data["prov_df"])
-            data["df"] = df.to_json(orient="columns")
+            df = save_function(data)
             name_button, content = button_save(
-                f"""users/{data["user"]}/workflow.txt""", action
+                f"""users/{data["user"]}/workflow.txt""", msg
             )
     else:
-        raise PreventUpdate
+        content = ""
+        name_button = "Apply"
     return [content, data, "", name_button, 0]
-
-
-@callback(
-    [
-        Output(f"{id_page}_div_graph", "children", allow_duplicate=True),
-        Output(f"{id_page}_refresh", "children", allow_duplicate=True),
-    ],
-    [
-        Input(f"{id_page}_prefix", "value"),
-        Input(f"{id_page}_dummy_na", "value"),
-        Input(f"{id_page}_columns", "value"),
-        Input(f"{id_page}_sparse", "value"),
-        Input(f"{id_page}_drop_first", "value"),
-        Input(f"{id_page}_dtype", "value"),
-    ],
-    prevent_initial_call=True,
-)
-def add_data_to_fig(value1, value2, value3, value4, value5, value6):
-    return ["", "Apply"]

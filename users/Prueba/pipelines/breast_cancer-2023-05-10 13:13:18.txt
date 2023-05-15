@@ -1,9 +1,0 @@
-import pandas as pd
-
-df = pd.read_csv("breast_cancer.csv")
-
-df = df.drop(['id'], axis=1)
-
-df = df.groupby(['diagnosis'], axis=0).sum()
-
-df = df.replace(to_replace="B", value="bien", limit=None, regex=False)

@@ -7,9 +7,10 @@ from utils.create_callback_hidden_button_cover import (
     create_callback_hidden_button_cover,
 )
 from utils.create_callback_style_content_left import create_callback_style_content_left
+from utils.save_function import save_function
 from utils.select_labels import select_labels
 
-from ...common_css import *
+from ...common_css import style_div_code
 
 id_page = "drop"
 
@@ -23,17 +24,7 @@ def apply_function(data, state_labels_value, state_axis):
     df = read_json(data["df"])
     df.drop(state_labels_value, axis=state_axis, inplace=True)
     data["prov_df"] = df.to_json(orient="columns")
-    msg = html.H6(
-            f"df.drop(labels={state_labels_value}, axis={state_axis})",
-            style=style_div_code)
-    return (df, msg)
-
-
-def save_function(data, state_labels_value, state_axis):
-    df = read_json(data["prov_df"])
-    data["df"] = df.to_json(orient="columns")
-    msg = f"""df = df.drop({state_labels_value}, axis={state_axis})"""
-    return (df, msg)
+    return df
 
 
 @callback(
@@ -48,6 +39,7 @@ def save_function(data, state_labels_value, state_axis):
     [
         Input(f"{id_page}_refresh", "n_clicks"),
         Input(f"{id_page}_labels", "value"),
+        Input(f"{id_page}_axis", "value"),
     ],
     [
         State("main_page_store", "data"),
@@ -58,18 +50,20 @@ def save_function(data, state_labels_value, state_axis):
     prevent_initial_call=True,
 )
 def add_data_to_fig(
-    clicks_button, click, data, state_labels_value, state_axis, name_button
+    clicks_button, click, click2, data, state_labels_value, state_axis, name_button
 ):
     if clicks_button:
+        msg = f"df.drop(labels={state_labels_value}, axis={state_axis})"
         if name_button == "Apply":
             if type(state_labels_value) == str:
                 state_labels_value = []
 
-            df, msg = apply_function(data, state_labels_value, state_axis)
+            df = apply_function(data, state_labels_value, state_axis)
+            msg = html.H6(msg, style=style_div_code)
             name_button, content = button_apply(id_page, df, msg)
             labels = select_labels(df, state_axis)
         else:
-            df, msg = save_function(data, state_labels_value, state_axis)
+            df = save_function(data)
             file_path = f"""users/{data["user"]}/workflow.txt"""
             name_button, content = button_save(file_path, msg)
             labels = select_labels(df, state_axis)
