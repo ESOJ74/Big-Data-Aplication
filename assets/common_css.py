@@ -20,9 +20,4 @@ background_in_dropdown = (
     "linear-gradient(90deg, rgba(146,176,217,1) 0%, rgba(98,125,162,1) 100%)"
 )
 
-
 font_family = "Roboto, Helvetica, Arial, sans-serif"
-
-
-color_axis_scatter_3d = "#0A3A4B"
-color_bgcolor_scatter_3d = "#C5E6F2"

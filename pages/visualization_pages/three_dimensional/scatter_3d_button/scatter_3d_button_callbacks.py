@@ -7,7 +7,7 @@ from assets.layout_templates.main_page.common_css import (
     style_content_left2,
 )
 from assets.my_dash.my_html.my_div import my_div
-from assets.templates_plotly import template_visualizations_2
+from assets.templates_plotly import template_visualizations
 from utils.common_div_utils import selector_options
 from utils.create_callback_hidden_button_cover import (
     create_callback_hidden_button_cover,
@@ -124,18 +124,18 @@ def display_page(
                 log_y=state_log_y,
                 log_z=state_log_z,
                 size_max=18,
-                template=template_visualizations_2,
+                template=template_visualizations,
                 color_discrete_sequence=sequential.Agsunset,
             )
             .update_layout(
                 legend={"title_font_color": color_boton_1},
-                margin=dict(l=1, r=1, t=1, b=1),
+                margin=dict(l=0, r=0, t=0, b=3),
                 scene=dict(
-                    xaxis=dict(gridcolor=color_axis_scatter_3d),
-                    yaxis=dict(gridcolor=color_axis_scatter_3d),
-                    zaxis=dict(gridcolor=color_axis_scatter_3d),
-                    aspectratio={"x": 0.7, "y": 0.8, "z": 0.7},
-                    bgcolor=color_bgcolor_scatter_3d,
+                    xaxis=dict(gridcolor="black"),
+                    yaxis=dict(gridcolor="black"),
+                    zaxis=dict(gridcolor="black"),
+                    aspectratio={"x": 0.9, "y": 0.8, "z": 1},
+                    bgcolor=background_light,
                 ),
             )
             .update_traces(
