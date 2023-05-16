@@ -284,11 +284,13 @@ def auth_display(n_clicks, reg_user, reg_pass):
                                    style={"font-weight": "bold",
                                           "color": color_boton_1})
                 sesion_div = html.A("Cerrar Sesión", href="/",
-                                    style={"color": "black"})
+                                    style={"color": color_boton_1})
                 data = {"user": reg_user}
             else:
-                reg_answer = "Contraseña incorrecta"
+                reg_answer = html.H6("Contraseña incorrecta", 
+                                     style={"color": color_boton_1})
         else:
-            reg_answer =  "Usuario no registrado"
+            reg_answer =  html.H6("Usuario no registrado", 
+                                  style={"color": color_boton_1})
     return [left_hidden, registry_hidden, data,
             user_div, sesion_div, reg_answer] 

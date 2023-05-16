@@ -8,13 +8,13 @@ style_selector_workflow = {
     "padding": "2px 2px 0px 2px",
     "font-size": "1em",
     "color": "black",
-    "background": "#2f6374",
+    "background": background_dropdown,
 }
 
 style_code = {
     "margin-bottom": "0%",
     "white-space": "pre-wrap",
-    "color": color_code}
+    "color": color_boton_1}
 
 style_div_result = {
     "margin-top": "2%",

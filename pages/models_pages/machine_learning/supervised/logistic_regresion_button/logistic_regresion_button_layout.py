@@ -42,7 +42,7 @@ content_down = my_div(style_content, "",
                       [
                        my_div(style_div_target, f"{id_page}_div_derecha",
                               [
-                               my_div(style_title_target, "", html.A("Target")),
+                               my_div(style_title_target, "", html.A("Target", style={"color": color_boton_1})),
                                my_div(style_selector_target, "",
                                       my_dropdown(f"{id_page}_target",
                                                   {"background": background_in_dropdown},

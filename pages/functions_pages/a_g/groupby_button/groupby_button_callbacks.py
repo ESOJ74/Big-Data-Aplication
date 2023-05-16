@@ -62,7 +62,7 @@ def add_data_to_fig(
                 name_button, content = button_apply(id_page, df, msg)
                 state_by = select_labels(df, state_axis, True)
             except (KeyError, ValueError) as err:
-                content = (html.H6(err.__str__(), style={"color": color_code}),)
+                content = (html.H6(err.__str__(), style={"color": color_boton_1}),)
         else:
             df = save_function(data)
             name_button, content = button_save(

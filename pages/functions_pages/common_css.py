@@ -8,8 +8,7 @@ style_div_dropdown = {
 }
 
 style_div_result = {
-    "position": "relative",
-    "top": "2%",
+    "margin-top": "2%",
     "width": "100%",
     "height": "88%",
 }
@@ -22,7 +21,7 @@ style_div_table = {
 style_div_code = {
     "height": "22%",
     "margin-top": "1%",
-    "color": color_code,
+    "color": color_boton_1,
 }
 
 style_boton_save = {    
@@ -60,5 +59,5 @@ style_title = {
 }
 
 style_msg = {    
-    "color": "#31EDF0"
+    "color": color_boton_1
 }

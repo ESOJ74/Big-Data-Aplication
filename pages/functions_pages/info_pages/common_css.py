@@ -81,5 +81,5 @@ style_div_obj = {
 }
 
 style_msg = {    
-    "color": "#31EDF0"
+    "color": color_boton_1
 }

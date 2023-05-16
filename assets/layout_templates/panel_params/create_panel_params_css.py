@@ -86,6 +86,6 @@ style_button_refresh = {
     "font-size": "85%",
     "font-weight": "bold",
     "font-family": font_family,
-    "color": "#A0E2F9",
-    "border": "1px solid #A0E2F9"
+    "color": color_boton_1,
+    "border": f"1px solid {color_boton_1}"
 }

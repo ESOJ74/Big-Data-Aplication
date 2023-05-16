@@ -97,7 +97,7 @@ def add_data_to_fig(
                 msg = html.H6(msg, style=style_div_code)
                 name_button, content = button_apply(id_page, df, msg)
             except (KeyError, ValueError, TypeError) as err:
-                content = (html.H6(err.__str__(), style={"color": color_code}),)
+                content = (html.H6(err.__str__(), style={"color": color_boton_1}),)
         else:
             df = save_function(data)
             file_path = f"""users/{data["user"]}/workflow.txt"""

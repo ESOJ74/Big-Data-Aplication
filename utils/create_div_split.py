@@ -31,8 +31,7 @@ style_div_split = {
 }
 
 style_title_split = {
-    "position": "relative",
-    "top": "2%",    
+    "margin-top": "5%",    
     "width": "100%",
     "height": "37%",
     "color": "black", 
@@ -83,14 +82,15 @@ def create_div(id_page, title, id_input, value=None):
 
 
 style_button_start = {
-
+    "color": color_boton_1,
+    "border": f"1px solid {color_boton_1}"
 }
     
 
 def create_div_split(id_page):
     return my_div(style_div_split, f"{id_page}_div_split",
                   [
-                   my_div(style_title_split, "", html.A("train_test_split")),
+                   my_div(style_title_split, "", html.A("train_test_split", style={"color": color_boton_1})),
                    create_div(id_page, "test_size", f"{id_page}_test_size", 20),
                    create_div(id_page, "random_state", f"{id_page}_random_state_split", 42),
                    my_div(style_div_button_start, "",

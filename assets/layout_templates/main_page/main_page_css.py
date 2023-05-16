@@ -29,7 +29,7 @@ style_div_user = {
 
 style_user = {
     "margin-left": "15%",
-    "margin-top": "5%",
+    "margin-top": "10%",
 }
 
 style_div_app = {
@@ -39,7 +39,7 @@ style_div_app = {
 
 style_app = {
     "margin-left": "35%",
-    "margin-top": "0.3%",
+    "margin-top": "0.6%",
     "color": color_boton_1,
 }
 
@@ -49,7 +49,7 @@ style_div_sesion = {
 }
 
 style_sesion = {
-    "margin-top": "6%"
+    "margin-top": "15%",
 }
 
 # Middle Panel
@@ -80,6 +80,13 @@ style_down_panel = {
     "background": background_up_panel,
 }
 
+style_down_panel_html_A = {
+    "float": "left",
+    "margin-left": "2%",
+    "margin-top": "0.5%",
+    "font-family": font_family,
+}
+
 #Button Cover
 style_div_button_cover_right ={
     "position": "absolute",
@@ -88,7 +95,7 @@ style_div_button_cover_right ={
 }
 
 style_button_cover_right = {
-    "background": "#04212c",
+    "background": "transparent",
     "border": "0px solid #2a9fd6",
     "border-radius": "80px",
     "color": color_boton_1,    
@@ -101,7 +108,7 @@ style_div_button_cover_left ={
 }
 
 style_button_cover_left = {
-    "background": "#204765",
+    "background": "transparent",
     "border": "0px solid #060606",
     "border-radius": "80px",
     "color": color_boton_1,
@@ -112,5 +119,6 @@ style_div_middle_left = {
     "float": "left",
     "width": "18%",
     "height": "100%", "border-right": "2px solid black",
+    "border-bottom": "2px solid black",
     "background": backgroud_left_panel,
 }

@@ -5,7 +5,7 @@ from .left_panel_functions_css import *
 
 
 def title(title, style):
-    return my_div(style, "", html.H5(title, style={"color": "#0F1458"}))
+    return my_div(style, "", html.H5(title, style={"color": "#031146"}))
 
 
 def button_drop(id, name, style):
@@ -92,10 +92,10 @@ def create_div_title_panel(title_panel, id_button):
             title(title_panel, style_title),
             my_button(
                 id_button,
-                DashIconify(icon="ic:baseline-list", width=30, height=30),
+                DashIconify(icon="ic:baseline-list", width=30, height=30, color=color_boton_1),
                 style_button_show,
                 className="btn btn-outline-primary",
-                color="Black",
+                color="white",
             ),
         ],
     )

@@ -95,5 +95,5 @@ def create_buttom_refresh(id_page):
         "Apply",
         style_button_refresh,
         className="btn btn-outline-primary",
-        color="black",
+        color=color_boton_1,
     )

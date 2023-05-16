@@ -7,7 +7,7 @@ style_button = {
     "font-size": "0.6vmax",
     "font-weight": "bold",
     "font-family": font_family,
-    "border": "2px solid #b0d8d3",
+    "border": f"2px solid {color_boton_1}",
     "color": color_boton_1,
 }
 

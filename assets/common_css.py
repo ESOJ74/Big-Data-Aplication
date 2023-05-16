@@ -1,21 +1,28 @@
-background_light = (
-    "radial-gradient(circle farthest-side at top left, #00c8ff 0%, #00fff9 80%)"
+background_dark = (
+    "linear-gradient(90deg, rgba(14,26,79,1) 0%, rgba(12,32,117,1) 25%, rgba(12,32,117,1) 75%, rgba(14,26,79,1) 100%)"
 )
-background_dark = "radial-gradient(circle farthest-side at bottom left, #347eb7 0%, #204765 30%, #04212c 95%)"
+background_up_panel = (
+    "linear-gradient(to right, rgba(9,9,121,1) 0%, rgba(2,0,36,1) 25%, rgba(2,0,36,1) 75%, rgba(9,9,121,1) 100%)"
+)
+backgroud_left_panel = (
+    "linear-gradient(90deg, rgba(68,100,240,1) 0%, rgba(14,26,79,1) 100%)"
+)
 background_utils = (
-    "linear-gradient(90deg, #04212c 0%, #165b92 2%, #2c81a9 8%, #04212c 97%)"
+    "linear-gradient(90deg, rgba(14,26,79,1) 0%, rgba(68,100,240,1) 100%)"
 )
+color_boton_1 = "#cad3fb"
+background_light = "#f4f6fe"
+
 background_dropdown = (
-    "radial-gradient(circle farthest-side at bottom left, #b0d8d3 0%, #051f28 95%"
+    "#031146"
 )
 background_in_dropdown = (
-    "radial-gradient(circle farthest-side at bottom left, #bfeef6 0%, #5c8d95 95%)"
+    "linear-gradient(90deg, rgba(146,176,217,1) 0%, rgba(98,125,162,1) 100%)"
 )
-background_up_panel = "linear-gradient(90deg, #0f5779 0%, #062741 70%, #0f5779 90%)"
-backgroud_left_panel = "linear-gradient(90deg,#165b92 0%, #2c81a9 10%, #04212c 99.9%)"
+
 
 font_family = "Roboto, Helvetica, Arial, sans-serif"
-color_boton_1 = "#acf4ed"
-color_code = "#21F5F8"
+
+
 color_axis_scatter_3d = "#0A3A4B"
 color_bgcolor_scatter_3d = "#C5E6F2"

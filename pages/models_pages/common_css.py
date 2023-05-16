@@ -56,7 +56,7 @@ style_title = {
 }
 
 style_msg = {    
-    "color": "#31EDF0"
+    "color": color_boton_1
 }
 
 style_content = {
@@ -86,25 +86,7 @@ style_selector_target = {
     "padding": "2px 2px 0px 2px",
     "font-size": "1em",
     "color": "black",
-    "background": "#2f6374",
-}
-
-style_selector_target_pipe = {  
-    "float": "left",     
-    "width": "35%",
-    "height": "2.65em",
-    "border-radius": "7px 7px 5px 5px",
-    "padding": "2px 2px 0px 2px",
-    "font-size": "1em",
-    "color": "black",
-    "background": "#2f6374",
-}
-
-style_div_button_apply_pipe = {
-    "float": "left",
-    "margin-left": "5%",
-    "width": "20%",
-    "height": "60%",
+    "background": background_dropdown,
 }
 
 style_div_down = {
@@ -156,7 +138,7 @@ style_selector_test = {
     "padding": "2px 2px 0px 2px",
     "font-size": "1em",
     "color": "black",
-    "background": "#2f6374",
+    "background": background_dropdown,
 }
 
 style_selector_test_right = {  
@@ -167,7 +149,7 @@ style_selector_test_right = {
     "padding": "2px 2px 0px 2px",
     "font-size": "1em",
     "color": "black",
-    "background": "#2f6374",
+    "background": background_dropdown,
 }
 
 style_test_result = {        

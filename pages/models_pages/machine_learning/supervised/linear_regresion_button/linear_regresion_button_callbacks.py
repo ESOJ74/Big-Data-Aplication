@@ -91,7 +91,7 @@ def display_page(n_clicks, options_y, value_y, data, test_size,
 
             obj_middle = html.H6(f"""Modelo Entrenado.
                                      Guardado como {value_y}_{date_model}""",
-                                 style={"color": "#b0d8d3"})
+                                 style={"color": color_boton_1})
 
             # Guardamos Modelo
             path = f"""users/{data["user"]}/models/linear_regresion"""   
@@ -114,7 +114,7 @@ def display_page(n_clicks, options_y, value_y, data, test_size,
                 
         except (KeyError, ValueError) as err:        
             obj_middle = html.H6(err.__str__(),
-                                 style={"color": "#b0d8d3"})
+                                 style={"color": color_boton_1})
         return [obj_middle, ""]
     else:
         raise PreventUpdate

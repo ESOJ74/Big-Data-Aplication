@@ -16,15 +16,16 @@ style_content_left = {
 
 style_content_left2 = {
     "float": "left",
-    "width": "84vmax",
+    "width": "83vmax",
     "height": "100%",
 }
 
 style_content_right = {
     "float": "left",
-    "width": "15vmax",
+    "width": "15.2vmax",
     "height": "100%",
     "border-left": "2px solid black",
+    "border-bottom": "2px solid black",
     "background": background_utils,
 }
 

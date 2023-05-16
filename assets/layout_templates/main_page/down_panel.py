@@ -7,32 +7,32 @@ def down_panel():
         "",
         [
             my_div(
-                {"float": "left", "margin-left": "2%"},
+                style_down_panel_html_A,
                 "",
                 html.A(
                     "GitHub",
                     href="https://github.com/ESOJ74/Big-Data-Aplication",
-                    style={"color": "black"},
+                    style={"color": color_boton_1},
                     target="_blank",
                 ),
             ),
             my_div(
-                {"float": "left", "margin-left": "2%"},
+                style_down_panel_html_A,
                 "",
                 html.A(
                     "ChatGPT",
                     href="https://chat.openai.com/",
-                    style={"color": "black"},
+                    style={"color": color_boton_1},
                     target="_blank",
                 ),
             ),
             my_div(
-                {"float": "left", "margin-left": "2%"},
+                style_down_panel_html_A,
                 "",
                 html.A(
                     "Phind",
                     href="https://www.phind.com/",
-                    style={"color": "black"},
+                    style={"color": color_boton_1},
                     target="_blank",
                 ),
             ),

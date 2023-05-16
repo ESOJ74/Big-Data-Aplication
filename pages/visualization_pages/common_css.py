@@ -20,7 +20,7 @@ style_title = {
 }
 
 style_msg = {    
-    "color": "#31EDF0"
+    "color": color_boton_1
 }
 
 style_graph = {

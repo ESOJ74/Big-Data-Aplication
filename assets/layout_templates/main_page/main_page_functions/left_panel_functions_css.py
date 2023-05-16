@@ -43,7 +43,7 @@ style_button_data = {
     "width": "100%",
     "font-size": "0.7vmax",
     "font-weight": "bold",    
-    "border": "2px solid #b0d8d3",
+    "border": f"2px solid {color_boton_1}", # #b0d8d3",
     "color": color_boton_1,
 }
 
@@ -79,7 +79,7 @@ style_div_1 = {
     "width": "100%",
     "height": "100%",
     "border-radius": "8px",
-    "background": background_light
+    "background": color_boton_1
 }
 
 style_button = {       
@@ -89,7 +89,7 @@ style_button = {
     "font-size": "0.7vmax",
     "font-weight": "bold",
     "font-family": font_family,
-    "border": "2px solid #b0d8d3",
+    "border": f"2px solid {color_boton_1}",
     "color": color_boton_1,
 }
 
@@ -162,7 +162,7 @@ style_button_drop = {
     "width": "97%",
     "font-size": "0.8vmax",
     "font-weight": "bold",    
-    "border": "2px solid #b0d8d3",
+    "border": f"2px solid {color_boton_1}",
     "color": color_boton_1,
 }
 

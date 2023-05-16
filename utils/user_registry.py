@@ -9,7 +9,7 @@ style_div_login = {
     "top": "25%",
     "left": "40%",
     "width": "30%",
-    "height": "10%",
+    "height": "10%"
 }
 
 style_div_input = {
@@ -41,7 +41,7 @@ style_div_register = {"margin-top": "3%", "width": "100%"}
 style_div_answer = {
     "float": "left",
     "font-size": "0.9vmax",
-    "color": "#b0d8d3",
+    "color": color_boton_1,
 }
 
 style_div_A = {
@@ -102,7 +102,7 @@ def user_login(id_page):
         f"{id_page}_div_registry",
         [
             my_div(
-                {},
+                {"color": color_boton_1,},
                 "",
                 html.H2("Login"),
             ),
