@@ -8,8 +8,9 @@ style_div_result = {
     "position": "relative",
     "top": "2%",
     "width": "100%",
-    "height": "88%"
+    "height": "100%"
 }
+
 content_down = my_div(
     style_div_content_down,
     f"{id_page}_content_down",
