@@ -10,7 +10,7 @@ backgroud_left_panel = (
 background_utils = (
     "linear-gradient(90deg, rgba(14,26,79,1) 0%, rgba(68,100,240,1) 100%)"
 )
-color_boton_1 = "#cad3fb"
+color_boton_1 = "#f4f4fc"
 background_light = "#f4f6fe"
 
 background_dropdown = (
