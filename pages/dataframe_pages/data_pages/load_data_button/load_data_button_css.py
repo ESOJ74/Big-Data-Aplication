@@ -74,7 +74,9 @@ style_boton_aceptar = {
     "margin-left": "2%",
     "margin-bottom": "5%",
     "font-size": "1.6vmin",
-    "font-family": font_family
+    "font-family": font_family,
+    "color": color_boton_1,
+    "border": f"1px solid {color_boton_1}"
 }
 
 style_div_dropdown_db = {

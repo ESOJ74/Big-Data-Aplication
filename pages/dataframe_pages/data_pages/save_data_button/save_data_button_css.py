@@ -28,7 +28,7 @@ style_selector = {
 }
 
 style_input = {
-    "width": "9em",
+    "width": "11em",
     "font-size": "1vmax",
     "background": background_light,
     "border": "1px solid #020d11"
@@ -41,8 +41,8 @@ style_boton_aceptar = {
     "font-size": "75%",
     "font-weight": "bold",
     "font-family": font_family,
-    "color": "#A0E2F9",
-    "border": "1px solid #A0E2F9"
+    "color": color_boton_1,
+    "border": f"1px solid {color_boton_1}"
 }
 
 style_msg = {

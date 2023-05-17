@@ -26,7 +26,9 @@ style_boton_aceptar = {
     "margin-top": "0.1%",
     "margin-left": "2%",
     "font-size": "1.6vmin",
-    "font-family": font_family
+    "font-family": font_family,
+    "color": color_boton_1,
+    "border": f"1px solid {color_boton_1}"
 }
 
 style_div_download = {
