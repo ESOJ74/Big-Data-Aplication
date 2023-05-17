@@ -104,7 +104,7 @@ def display_page(
                 ecdfmode=state_ecdfmode,
                 markers=state_markers,
                 color_discrete_sequence=sequential.Plasma,
-            ).update_layout(legend={"title_font_color": color_boton_1})
+            )
             return [dcc.Graph(figure=fig, style=style_graph), ""]
         except Exception as err:
             return [html.H6(err.__str__(), style=style_msg), ""]

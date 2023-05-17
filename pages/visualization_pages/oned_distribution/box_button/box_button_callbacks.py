@@ -114,7 +114,7 @@ def display_page(
             notched=state_notched,
             hover_data=state_hover_data,
             color_discrete_sequence=sequential.Plasma,
-        ).update_layout(legend={"title_font_color": color_boton_1})
+        )
         fig.update_traces(quartilemethod=state_quartilemethod)
         return [dcc.Graph(figure=fig, style=style_graph), ""]
     else:

@@ -89,7 +89,7 @@ def display_page(
             names=state_Y,
             color=state_color,
             color_discrete_sequence=sequential.Plasma,
-        ).update_layout(legend={"title_font_color": color_boton_1})
+        )
         return [dcc.Graph(figure=fig, style=style_graph), ""]
     else:
         return [html.H6("X e Y deben tener valor", style=style_msg), ""]

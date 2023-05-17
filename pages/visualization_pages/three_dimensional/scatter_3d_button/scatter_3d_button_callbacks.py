@@ -128,14 +128,9 @@ def display_page(
                 color_discrete_sequence=sequential.Agsunset,
             )
             .update_layout(
-                legend={"title_font_color": color_boton_1},
-                margin=dict(l=0, r=0, t=0, b=3),
+                margin=dict(l=25, r=30, t=35, b=25),
                 scene=dict(
-                    xaxis=dict(gridcolor="black"),
-                    yaxis=dict(gridcolor="black"),
-                    zaxis=dict(gridcolor="black"),
                     aspectratio={"x": 0.9, "y": 0.8, "z": 1},
-                    bgcolor=background_light,
                 ),
             )
             .update_traces(

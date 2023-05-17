@@ -101,7 +101,7 @@ def display_page(
                 size=state_size,
                 hover_data=state_hover_data,
                 color_discrete_sequence=sequential.Plasma,
-            ).update_layout(legend={"title_font_color": color_boton_1})
+            )
             return [dcc.Graph(figure=fig, style=style_graph), ""]
         except TypeError as msg:
             return [html.H6(msg.__str__(), style=style_msg), ""]

@@ -126,8 +126,7 @@ def display_page(
                 histfunc=state_histfunc,
                 pattern_shape=state_pattern_shape,
                 color_discrete_sequence=sequential.Plasma,
-            ).update_layout(
-                legend={"title_font_color": color_boton_1}, bargap=state_bargap
+                bargap=state_bargap
             )
             return [dcc.Graph(figure=fig, style=style_graph), ""]
         except ValueError as err:

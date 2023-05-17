@@ -86,5 +86,4 @@ def display_page(n_clicks, data):
         values="value",
     )
     fig.update_traces(root_color="lightgrey")
-    fig.update_layout(margin=dict(t=50, l=25, r=25, b=25))
     return [dcc.Graph(figure=fig, style=style_graph), ""]

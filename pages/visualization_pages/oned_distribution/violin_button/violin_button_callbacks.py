@@ -113,7 +113,7 @@ def display_page(
             hover_data=state_hover_data,
             template=template_visualizations,
             color_discrete_sequence=sequential.Plasma,
-        ).update_layout(legend={"title_font_color": color_boton_1})
+        )
         return [dcc.Graph(figure=fig, style=style_graph), ""]
     else:
         return [html.H6("X e Y deben tener valor", style=style_msg), ""]
