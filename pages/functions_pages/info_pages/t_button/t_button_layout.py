@@ -8,9 +8,9 @@ from assets.layout_templates.main_page.common_css import (
     style_content_left2,
 )
 from assets.layout_templates.main_page.content_layout import create_content_layout
+from assets.my_dash.my_dash_table.my_dash_table import my_dash_table
 from assets.my_dash.my_html.my_div import my_div
 from pages.functions_pages.info_pages.common_css import *
-from utils.create_agGrid import create_adgrid
 from utils.create_callback_hidden_button_cover import (
     create_callback_hidden_button_cover,
 )
@@ -75,7 +75,7 @@ def add_data_to_fig(n_clicks, data):
         df.to_csv("tmp.csv", index=False)
         df = read_csv("tmp.csv")
         os.remove("tmp.csv")
-        obj.append(create_adgrid(f"{id_page}_ag-table", df))
+        obj.append(my_dash_table(df))
         obj.append(False)
     except (TypeError, KeyError, ValueError):
         obj = [

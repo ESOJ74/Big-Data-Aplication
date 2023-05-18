@@ -2,8 +2,8 @@ from dash import Input, Output, State, callback, html
 from pandas import read_json
 
 from assets.layout_templates.main_page.common_css import *
+from assets.my_dash.my_dash_table.my_dash_table import my_dash_table
 from assets.my_dash.my_html.my_div import my_div
-from utils.create_agGrid import create_adgrid
 from utils.create_callback_hidden_button_cover import (
     create_callback_hidden_button_cover,
 )
@@ -40,7 +40,8 @@ def view_data(n_clicks, data):
         obj = my_div(
             {"widht": "100%", "height": "80%"},
             "",
-            create_adgrid(f"{id_page}_ag-table", df),
+            # create_adgrid(f"{id_page}_ag-table", df),
+            my_dash_table(df),
         )
     else:
         obj = [

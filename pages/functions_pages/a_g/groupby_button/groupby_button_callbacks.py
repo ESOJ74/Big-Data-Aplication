@@ -59,7 +59,7 @@ def add_data_to_fig(
             try:
                 df = apply_function(data, state_by, state_axis)
                 msg = html.H6(f"df.groupby({state_by}).sum()", style=style_div_code)
-                name_button, content = button_apply(id_page, df, msg)
+                name_button, content = button_apply(id_page, df, msg, len(state_by))
                 state_by = select_labels(df, state_axis, True)
             except (KeyError, ValueError) as err:
                 content = (html.H6(err.__str__(), style={"color": color_boton_1}),)
