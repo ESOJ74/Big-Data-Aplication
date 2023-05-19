@@ -2,7 +2,7 @@ import plotly.express as px
 from dash import Input, Output, State, callback, html, dcc
 from pandas import read_json
 
-from assets.templates_plotly import template_visualizations
+from assets.templates_plotly import template_visualizations, list_of_squential
 from utils.common_div_utils import selector_options
 from utils.create_callback_content_up import create_callback_content_up_plotly
 from utils.create_callback_hidden_button_cover import (
@@ -37,6 +37,7 @@ selector_options(id_page, f"{id_page}_line_group")
         Input(f"{id_page}_Y", "value"),
         Input(f"{id_page}_color", "value"),
         Input(f"{id_page}_line_group", "value"),
+        Input(f"{id_page}_template", "value")
     ],
     [
         State("main_page_store", "data"),
@@ -44,6 +45,7 @@ selector_options(id_page, f"{id_page}_line_group")
         State(f"{id_page}_Y", "value"),
         State(f"{id_page}_color", "value"),
         State(f"{id_page}_line_group", "value"),
+        State(f"{id_page}_template", "value"),
         State(f"{id_page}_refresh", "children"),
     ],
     prevent_initial_call=True,
@@ -54,11 +56,13 @@ def display_page(
     click1,
     click2,
     click3,
+    click4,
     data,
     state_X,
     state_Y,
     state_color,
     state_line_group,
+    state_template,
     name_button,
 ):
     if state_color is not None and len(state_color) < 1 or state_color == " ":
@@ -72,7 +76,7 @@ def display_page(
         state_line_group = None
     new_name_button = "Apply"
     content = ""
-    try:
+    try:        
         df = read_json(data["df"])
         fig = px.area(
             df,
@@ -81,7 +85,7 @@ def display_page(
             y=state_Y,
             color=state_color,
             line_group=state_line_group,
-            color_discrete_sequence=sequential.Plasma,
+            color_discrete_sequence=list_of_squential[state_template],
         )
         if n_clicks:
             if name_button == "Apply":
@@ -93,6 +97,6 @@ def display_page(
                     dcc.Graph(figure=fig, style=style_graph),
                     html.H6("Panel Guardado", style=style_msg),
                 ]
-    except Exception:
-        content = html.H6("X e Y deben tener valor", style=style_msg)
+    except Exception as msg:
+        content = html.H6(str(msg).__str__(), style=style_msg)
     return [content, "", new_name_button, 0]

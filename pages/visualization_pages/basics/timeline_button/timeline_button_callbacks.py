@@ -2,6 +2,7 @@ import plotly.figure_factory as ff
 from dash import Input, Output, State, callback, dcc, html
 from pandas import read_json
 
+from assets.templates_plotly import list_of_squential, template_visualizations
 from utils.common_div_utils import selector_options
 from utils.create_callback_content_up import create_callback_content_up_plotly
 from utils.create_callback_hidden_button_cover import (
@@ -32,12 +33,14 @@ selector_options(id_page, f"{id_page}_index_col")
         Input(f"{id_page}_index_col", "value"),
         Input(f"{id_page}_show_colorbar", "value"),
         Input(f"{id_page}_group_tasks", "value"),
+        Input(f"{id_page}_template", "value"),
     ],
     [
         State("main_page_store", "data"),
         State(f"{id_page}_index_col", "value"),
         State(f"{id_page}_show_colorbar", "value"),
         State(f"{id_page}_group_tasks", "value"),
+        State(f"{id_page}_template", "value"),
         State(f"{id_page}_refresh", "children"),
     ],
     prevent_initial_call=True,
@@ -47,10 +50,12 @@ def display_page(
     click,
     click1,
     click2,
+    click3,
     data,
     state_index_col,
     state_show_colorbar,
     state_group_task,
+    state_template,
     name_button,
 ):
     if state_show_colorbar == "True":
@@ -77,6 +82,7 @@ def display_page(
             index_col=state_index_col,
             show_colorbar=state_show_colorbar,
             group_tasks=state_group_task,
+            color_discrete_sequence=list_of_squential[state_template],
         )
         if n_clicks:
             if name_button == "Apply":

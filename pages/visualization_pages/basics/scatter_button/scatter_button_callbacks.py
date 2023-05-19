@@ -2,14 +2,15 @@ import plotly.express as px
 from dash import Input, Output, State, callback, dcc, html
 from pandas import read_json
 
-from utils.create_callback_content_up import create_callback_content_up_plotly
-from utils.create_callback_style_content_left import create_callback_style_content_left
-from utils.save_panel import save_panel
-from assets.templates_plotly import template_visualizations
+from assets.templates_plotly import list_of_squential, template_visualizations
 from utils.common_div_utils import selector_options
+from utils.create_callback_content_up import create_callback_content_up_plotly
 from utils.create_callback_hidden_button_cover import (
     create_callback_hidden_button_cover,
 )
+from utils.create_callback_style_content_left import create_callback_style_content_left
+from utils.save_panel import save_panel
+
 from ...common_css import *
 
 id_page = "scatter"
@@ -23,7 +24,6 @@ selector_options(id_page, f"{id_page}_Y", False)
 selector_options(id_page, f"{id_page}_color")
 selector_options(id_page, f"{id_page}_size")
 selector_options(id_page, f"{id_page}_hover_data")
-
 
 
 @callback(
@@ -40,6 +40,7 @@ selector_options(id_page, f"{id_page}_hover_data")
         Input(f"{id_page}_color", "value"),
         Input(f"{id_page}_size", "value"),
         Input(f"{id_page}_hover_data", "value"),
+        Input(f"{id_page}_template", "value"),
     ],
     [
         State("main_page_store", "data"),
@@ -48,6 +49,7 @@ selector_options(id_page, f"{id_page}_hover_data")
         State(f"{id_page}_color", "value"),
         State(f"{id_page}_size", "value"),
         State(f"{id_page}_hover_data", "value"),
+        State(f"{id_page}_template", "value"),
         State(f"{id_page}_refresh", "children"),
     ],
     prevent_initial_call=True,
@@ -59,13 +61,15 @@ def display_page(
     click2,
     click3,
     click4,
+    click5,
     data,
     state_X,
     state_Y,
     state_color,
     state_size,
     state_hover_data,
-    name_button
+    state_template,
+    name_button,
 ):
     if state_color is not None and len(state_color) < 1 or state_color == " ":
         state_color = None
@@ -92,7 +96,8 @@ def display_page(
             color=state_color,
             size=state_size,
             hover_data=state_hover_data,
-            color_discrete_sequence=sequential.Plasma,
+            color_discrete_sequence=list_of_squential[state_template],
+            color_continuous_scale=list_of_squential[state_template],
         )
         if n_clicks:
             if name_button == "Apply":
@@ -104,7 +109,6 @@ def display_page(
                     dcc.Graph(figure=fig, style=style_graph),
                     html.H6("Panel Guardado", style=style_msg),
                 ]
-    except Exception:         
-        content = html.H6("X e Y deben tener valor", style=style_msg)        
+    except Exception:
+        content = html.H6("X e Y deben tener valor", style=style_msg)
     return [content, "", new_name_button, 0]
-       

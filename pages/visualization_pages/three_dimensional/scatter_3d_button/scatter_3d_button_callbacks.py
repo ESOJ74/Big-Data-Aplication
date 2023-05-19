@@ -1,17 +1,14 @@
-import json
-
 import plotly.express as px
 from dash import Input, Output, State, callback, dcc, html
 from pandas import read_json
 
-from assets.templates_plotly import template_visualizations
+from assets.templates_plotly import list_of_squential, template_visualizations
 from utils.common_div_utils import selector_options
 from utils.create_callback_content_up import create_callback_content_up_plotly
 from utils.create_callback_hidden_button_cover import (
     create_callback_hidden_button_cover,
 )
 from utils.create_callback_style_content_left import create_callback_style_content_left
-from utils.numpy_encoder import NumpyEncoder
 from utils.save_panel import save_panel
 
 from ...common_css import *
@@ -49,6 +46,7 @@ selector_options(id_page, f"{id_page}_size")
         Input(f"{id_page}_log_x", "value"),
         Input(f"{id_page}_log_y", "value"),
         Input(f"{id_page}_log_z", "value"),
+        Input(f"{id_page}_template", "value"),
     ],
     [
         State("main_page_store", "data"),
@@ -62,6 +60,7 @@ selector_options(id_page, f"{id_page}_size")
         State(f"{id_page}_log_x", "value"),
         State(f"{id_page}_log_y", "value"),
         State(f"{id_page}_log_z", "value"),
+        State(f"{id_page}_template", "value"),
         State(f"{id_page}_refresh", "children"),
     ],
     prevent_initial_call=True,
@@ -78,6 +77,7 @@ def display_page(
     click7,
     click8,
     click9,
+    click10,
     data,
     state_X,
     state_Y,
@@ -89,6 +89,7 @@ def display_page(
     state_log_x,
     state_log_y,
     state_log_z,
+    state_template,
     name_button,
 ):
     if state_color is not None and len(state_color) < 1 or state_color == " ":
@@ -108,7 +109,7 @@ def display_page(
     content = ""
     try:
         df = read_json(data["df"])
-
+        print(state_template)
         fig = (
             px.scatter_3d(
                 df,
@@ -124,7 +125,8 @@ def display_page(
                 log_z=state_log_z,
                 size_max=18,
                 template=template_visualizations,
-                color_discrete_sequence=sequential.Agsunset,
+                color_discrete_sequence=list_of_squential[state_template],
+                color_continuous_scale=list_of_squential[state_template]
             )
             .update_layout(
                 margin=dict(l=25, r=30, t=35, b=25),
