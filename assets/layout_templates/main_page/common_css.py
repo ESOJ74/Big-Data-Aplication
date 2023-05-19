@@ -16,7 +16,7 @@ style_content_left = {
 
 style_content_left2 = {
     "float": "left",
-    "width": "83vmax",
+    "width": "83.8vmax",
     "height": "100%",
 }
 

@@ -20,6 +20,7 @@ style_title = {
 }
 
 style_msg = {    
+    "margin-top": "1%",
     "color": color_boton_1
 }
 

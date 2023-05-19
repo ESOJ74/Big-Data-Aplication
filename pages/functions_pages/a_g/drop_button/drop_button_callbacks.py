@@ -10,7 +10,7 @@ from utils.create_callback_style_content_left import create_callback_style_conte
 from utils.save_function import save_function
 from utils.select_labels import select_labels
 
-from ...common_css import style_div_code
+from ...common_css import *
 
 id_page = "drop"
 
