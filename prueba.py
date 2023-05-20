@@ -25,7 +25,7 @@ app.layout = my_div(
                 "position": "relative",
                 "width": "99.5%",
                 "height": "95%",
-                "background": "pink",
+                "background": "black",
             },
             "app_content_prueba",
         ),

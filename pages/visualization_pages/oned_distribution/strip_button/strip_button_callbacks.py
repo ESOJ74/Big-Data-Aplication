@@ -2,7 +2,7 @@ import plotly.express as px
 from dash import Input, Output, State, callback, dcc, html
 from pandas import read_json
 
-from assets.templates_plotly import template_visualizations
+from assets.templates_plotly import list_of_squential, template_visualizations
 from utils.common_div_utils import selector_options
 from utils.create_callback_content_up import create_callback_content_up_plotly
 from utils.create_callback_hidden_button_cover import (
@@ -40,6 +40,7 @@ selector_options(id_page, f"{id_page}_facet_col")
         Input(f"{id_page}_color", "value"),
         Input(f"{id_page}_hover_data", "value"),
         Input(f"{id_page}_facet_col", "value"),
+        Input(f"{id_page}_template", "value"),
     ],
     [
         State("main_page_store", "data"),
@@ -49,6 +50,7 @@ selector_options(id_page, f"{id_page}_facet_col")
         State(f"{id_page}_color", "value"),
         State(f"{id_page}_hover_data", "value"),
         State(f"{id_page}_facet_col", "value"),
+        State(f"{id_page}_template", "value"),
         State(f"{id_page}_refresh", "children"),
     ],
     prevent_initial_call=True,
@@ -61,6 +63,7 @@ def display_page(
     click3,
     click4,
     click5,
+    click6,
     data,
     state_X,
     state_Y,
@@ -68,6 +71,7 @@ def display_page(
     state_color,
     state_hover_data,
     state_facet_col,
+    state_template,
     name_button,
 ):
     if state_color is not None and len(state_color) < 1 or state_color == " ":
@@ -97,7 +101,7 @@ def display_page(
             stripmode=state_stripmode,
             color=state_color,
             facet_col=state_facet_col,
-            color_discrete_sequence=sequential.Plasma,
+            color_discrete_sequence=list_of_squential[state_template],
         )
         if n_clicks:
             if name_button == "Apply":

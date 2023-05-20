@@ -1,6 +1,7 @@
 import plotly.express as px
 from dash import Input, Output, State, callback, dcc, html
 
+from assets.templates_plotly import list_of_squential, template_visualizations
 from utils.create_callback_content_up import create_callback_content_up_plotly
 from utils.create_callback_hidden_button_cover import (
     create_callback_hidden_button_cover,
@@ -25,14 +26,18 @@ create_callback_content_up_plotly(id_page, "icicle-charts")
         Output(f"{id_page}_refresh", "children"),
         Output(f"{id_page}_refresh", "n_clicks"),
     ],
-    Input(f"{id_page}_refresh", "n_clicks"),
+    [
+        Input(f"{id_page}_refresh", "n_clicks"),
+        Input(f"{id_page}_template", "value"),
+    ],
     [
         State("main_page_store", "data"),
+        State(f"{id_page}_template", "value"),
         State(f"{id_page}_refresh", "children"),
     ],
     prevent_initial_call=True,
 )
-def display_page(n_clicks, data, name_button):
+def display_page(n_clicks, click, data, state_template, name_button):
     data = dict(
         character=[
             "Eve",
@@ -56,6 +61,8 @@ def display_page(n_clicks, data, name_button):
             names="character",
             parents="parent",
             values="value",
+            color_discrete_sequence=list_of_squential[state_template],
+            color_continuous_scale=list_of_squential[state_template],
         )
         fig.update_traces(root_color="lightgrey")
         if n_clicks:

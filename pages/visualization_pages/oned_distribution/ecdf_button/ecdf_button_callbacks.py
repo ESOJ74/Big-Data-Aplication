@@ -2,7 +2,7 @@ import plotly.express as px
 from dash import Input, Output, State, callback, dcc, html
 from pandas import read_json
 
-from assets.templates_plotly import template_visualizations
+from assets.templates_plotly import list_of_squential, template_visualizations
 from utils.common_div_utils import selector_options
 from utils.create_callback_content_up import create_callback_content_up_plotly
 from utils.create_callback_hidden_button_cover import (
@@ -40,6 +40,7 @@ selector_options(id_page, f"{id_page}_line_group")
         Input(f"{id_page}_ecdfnorm", "value"),
         Input(f"{id_page}_ecdfmode", "value"),
         Input(f"{id_page}_markers", "value"),
+        Input(f"{id_page}_template", "value"),
     ],
     [
         State("main_page_store", "data"),
@@ -49,6 +50,7 @@ selector_options(id_page, f"{id_page}_line_group")
         State(f"{id_page}_ecdfnorm", "value"),
         State(f"{id_page}_ecdfmode", "value"),
         State(f"{id_page}_markers", "value"),
+        State(f"{id_page}_template", "value"),
         State(f"{id_page}_refresh", "children"),
     ],
     prevent_initial_call=True,
@@ -61,6 +63,7 @@ def display_page(
     click3,
     click4,
     click5,
+    click6,
     data,
     state_X,
     state_Y,
@@ -68,6 +71,7 @@ def display_page(
     state_ecdfnorm,
     state_ecdfmode,
     state_markers,
+    state_template,
     name_button,
 ):
     if state_Y is not None and len(state_Y) < 1 or state_Y == " ":
@@ -90,7 +94,7 @@ def display_page(
             ecdfnorm=state_ecdfnorm,
             ecdfmode=state_ecdfmode,
             markers=state_markers,
-            color_discrete_sequence=sequential.Plasma,
+            color_discrete_sequence=list_of_squential[state_template],
         )
         if n_clicks:
             if name_button == "Apply":

@@ -2,7 +2,7 @@ import plotly.express as px
 from dash import Input, Output, State, callback, dcc, html
 from pandas import read_json
 
-from assets.templates_plotly import template_visualizations
+from assets.templates_plotly import list_of_squential, template_visualizations
 from utils.common_div_utils import selector_options
 from utils.create_callback_content_up import create_callback_content_up_plotly
 from utils.create_callback_hidden_button_cover import (
@@ -41,6 +41,7 @@ selector_options(id_page, f"{id_page}_hover_data")
         Input(f"{id_page}_quartilemethod", "value"),
         Input(f"{id_page}_notched", "value"),
         Input(f"{id_page}_hover_data", "value"),
+        Input(f"{id_page}_template", "value"),
     ],
     [
         State("main_page_store", "data"),
@@ -51,6 +52,7 @@ selector_options(id_page, f"{id_page}_hover_data")
         State(f"{id_page}_quartilemethod", "value"),
         State(f"{id_page}_notched", "value"),
         State(f"{id_page}_hover_data", "value"),
+        State(f"{id_page}_template", "value"),
         State(f"{id_page}_refresh", "children"),
     ],
     prevent_initial_call=True,
@@ -64,6 +66,7 @@ def display_page(
     click4,
     click5,
     click6,
+    click7,
     data,
     state_X,
     state_Y,
@@ -72,6 +75,7 @@ def display_page(
     state_quartilemethod,
     state_notched,
     state_hover_data,
+    state_template,
     name_button,
 ):
     if state_color is not None and len(state_color) < 1 or state_color == " ":
@@ -103,7 +107,7 @@ def display_page(
             color=state_color,
             notched=state_notched,
             hover_data=state_hover_data,
-            color_discrete_sequence=sequential.Plasma,
+            color_discrete_sequence=list_of_squential[state_template],
         )
         fig.update_traces(quartilemethod=state_quartilemethod)
         if n_clicks:

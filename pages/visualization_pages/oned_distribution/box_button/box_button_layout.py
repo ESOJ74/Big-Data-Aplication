@@ -24,7 +24,8 @@ params_utils = [
                 create_param_drop(id_page, "notched",
                                   options=["True", "False"], value="False"
                 ),       
-                create_param_drop(id_page, "hover_data"),              
+                create_param_drop(id_page, "hover_data"),
+                create_param_drop(id_page, "template", options=list_of_squential, value="Plasma"),         
                 create_buttom_refresh(id_page)
                ]
 

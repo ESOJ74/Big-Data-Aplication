@@ -16,6 +16,7 @@ def create_select(
     s_div_selector=style_div_selector2,
     s_selector=style_selector2,
     s_params=style_params2,
+    maxHeight=150
 ):
     return my_div(
         s_div_selector,
@@ -31,13 +32,14 @@ def create_select(
                     options=options,
                     value=value,
                     multi=multi,
+                    maxHeight=maxHeight
                 ),
             ),
         ],
     )
 
 
-def create_param_drop(id_page, id_param, options=[], value="", multi=False):
+def create_param_drop(id_page, id_param, options=[], value="", multi=False, maxHeight=150):
     return create_select(
         id_page,
         id_param,
@@ -47,6 +49,7 @@ def create_param_drop(id_page, id_param, options=[], value="", multi=False):
         style_div_selector,
         style_selector,
         style_params,
+        maxHeight
     )
 
 
