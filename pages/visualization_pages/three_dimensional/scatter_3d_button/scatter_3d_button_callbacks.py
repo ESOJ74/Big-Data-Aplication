@@ -109,7 +109,6 @@ def display_page(
     content = ""
     try:
         df = read_json(data["df"])
-        print(state_template)
         fig = (
             px.scatter_3d(
                 df,
