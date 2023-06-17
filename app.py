@@ -1,22 +1,46 @@
-from dash import Dash, dcc
-from flask import Flask
+import os
 
-from app_callbacks import *
-from assets.my_dash.my_html.my_div import my_div
+from dash import Dash, callback, dcc, html
+from dash.dependencies import Input, Output
+from pages import login_layout, registry_layout
+from pages_conf.main_page import main_page_conf
+from pages_conf.import_pages import *
 
+id_page = "initial_layout"
 
 app = Dash(__name__)
 app.config.suppress_callback_exceptions = True
 
-app.layout = my_div(
-    {"width": "100%", "height": "100%"},
-    "",
+app.layout = html.Div(
     [
-        dcc.Location(id="url"),
-        my_div({"width": "100%", "height": "100%"}, "app_content"),
+        dcc.Location(id=f"{id_page}_url"),
+        html.Div("", f"{id_page}_content", className="panel-content-app"),
     ],
+    className="panel-app",
 )
 
 
+# Update page content
+@callback(Output(f"{id_page}_content", "children"), Input(f"{id_page}_url", "pathname"))
+def display_page(pathname):
+    pages_list = {
+        "/": login_layout.layout,
+        "/registro": registry_layout.layout,
+        "/app": main_page_conf.layout,
+    }
+
+    if pathname == "/":
+        try:
+            os.remove("user.txt")
+        except OSError:
+            pass
+
+    if pathname == "/app" and not os.path.exists("user.txt"):
+        pathname = "/"
+
+    if pathname in pages_list:
+        return pages_list[pathname]
+
+
 if __name__ == "__main__":
-    app.run_server(debug=True)  # , use_reloader=True)
+    app.run_server(debug=True)

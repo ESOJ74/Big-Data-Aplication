@@ -1,0 +1,6 @@
+import pandas as pd
+
+df = pd.read_csv("breast_cancer.csv")
+
+df = df.groupby(['radius_mean'], axis=0).sum()
+
