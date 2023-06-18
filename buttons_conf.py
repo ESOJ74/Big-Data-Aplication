@@ -96,7 +96,7 @@ buttons_for_visualizations = [
 buttons_for_models = [x[0] for x in (models_supervised + models_deep + existing_models)]
 
 list_of_buttons = [
-    ["load_data", "save_data", "workflow"],
+    ["load_data", "view_data", "save_data", "workflow"],
     buttons_for_functions,
     buttons_for_visualizations,
     buttons_for_models,
@@ -105,6 +105,7 @@ list_of_buttons = [
 no_apply = [
     "load_data",
     "save_data",
+    "view_data",
     "workflow",
     "info",
     "t",

@@ -21,7 +21,7 @@ data_panel.update_panel(button_data.panel(), "panel-button-data")
 # button view
 view_panel = panel.Panel()
 view_panel.update_panel(
-    dbc.Button("View", f"{id_page}_button_view", className="btn-data", n_clicks=0),
+    dbc.Button("View", "view_data", className="btn-data", n_clicks=0),
     "panel-button-data",
 )
 

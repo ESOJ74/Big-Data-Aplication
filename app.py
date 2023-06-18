@@ -21,7 +21,10 @@ app.layout = html.Div(
 
 
 # Update page content
-@callback(Output(f"{id_page}_content", "children"), Input(f"{id_page}_url", "pathname"))
+@callback(
+        Output(f"{id_page}_content", "children"),
+        Input(f"{id_page}_url", "pathname")
+)
 def display_page(pathname):
     pages_list = {
         "/": login_layout.layout,
@@ -40,7 +43,7 @@ def display_page(pathname):
 
     if pathname in pages_list:
         return pages_list[pathname]
-
+    
 
 if __name__ == "__main__":
     app.run_server(debug=True)

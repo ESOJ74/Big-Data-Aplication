@@ -86,15 +86,17 @@
 }
 
 @font-face {
-font-family: "Roboto";
-src: url("fonts/Roboto-Regular.ttf") format("truetype");
+    font-family: "Roboto";
+    src: url("fonts/Roboto-Regular.ttf") format("truetype");
 }
 
-*, html, body {
-font-family: "Roboto", sans-serif;
+*,
+html,
+body {
+    font-family: "Roboto", sans-serif;
 }
-    
-    
+
+
 /*********************** App *******************************/
 
 .panel-app {
@@ -103,7 +105,7 @@ font-family: "Roboto", sans-serif;
     left: 0%;
     width: 100dvw;
     height: 100dvh;
-    font-family: var(--bs-body-font-family);        
+    font-family: var(--bs-body-font-family);
 }
 
 .panel-content-app {
@@ -126,7 +128,7 @@ font-family: "Roboto", sans-serif;
     width: 22%;
     height: 30%;
     border-radius: 30px;
-     
+
 }
 
 .btn-login {
@@ -143,7 +145,12 @@ font-family: "Roboto", sans-serif;
 
 .btn-login:hover {
     background-color: var(--bs-teal);
-    color:rgb(255, 255, 255);
+    color: rgb(255, 255, 255);
+}
+
+.no-params {
+    width: 100%;
+    height: 100%;
 }
 
 /*********************** Load Data page *******************************/
@@ -170,7 +177,7 @@ font-family: "Roboto", sans-serif;
 
 .button-panel-load:hover {
     background-color: var(--bs-teal);
-    color:rgb(255, 255, 255);
+    color: rgb(255, 255, 255);
 }
 
 .doc-panel-data {
@@ -182,11 +189,6 @@ font-family: "Roboto", sans-serif;
     font-size: calc(0.1rem + .8vw);
     font-family: var(--bs-body-font-family);
     color: white;
-}
-
-.no-params {
-    width: 100%;
-    height: 100%;
 }
 
 .dropdown-load-data {
@@ -218,14 +220,64 @@ font-family: "Roboto", sans-serif;
 
 .btn-load_data:hover {
     background-color: var(--bs-teal);
-    color:rgb(255, 255, 255);
+    color: rgb(255, 255, 255);
 }
+
+.panel-database {
+    margin-left: 52%;
+    margin-top: 1%;
+    width: 20%;
+}
+
+.h6-input {
+    float: left;
+    margin-top: 2%;
+    width: 35%;
+    font-size: calc(0.1rem + .8vw);
+    font-family: var(--bs-body-font-family);
+    color: white;
+}
+
+.input-database {
+    float: left;
+    margin-top: 2%;
+    width: 60%;
+    border: 1px solid lightgray;
+    font-family: var(--bs-body-font-family);
+
+}
+
+.button-database {
+    margin-left: 36%;
+    margin-top: 4%;
+    height: 30%;
+    width: 61%;
+    border: 0.5px solid var(--bs-mine);
+    border-radius: 7px 7px 5px 5px;
+    font-size: calc(0.1rem + .7vw);
+    font-family: var(--bs-body-font-family);
+    color: var(--bs-mine);
+}
+
+.panel-up-load {
+    margin-left: 28%;
+    width: 21%;
+    font-size: 0.9vmax;     
+    font-family: font_family;
+    color: white;
+    line-height: 100px;
+    border-width: 1px;
+    border-style: dashed;
+    border-radius: 5px;
+    text-align: center;  
+}
+
 /*********************** Main page *******************************/
 
 .panel-content-main_page {
-    position: relative;    
+    position: relative;
     width: 100%;
-    height: 100%;    
+    height: 100%;
 }
 
 /* panel up */
@@ -237,7 +289,7 @@ font-family: "Roboto", sans-serif;
     width: 100%;
     height: 6%;
     background: white;
-     
+
 }
 
 .panel-user {
@@ -291,13 +343,13 @@ font-family: "Roboto", sans-serif;
 
 /* panel footer */
 
-.panel-footer {     
+.panel-footer {
     margin-left: 0%;
     margin-top: 0%;
     width: 100%;
     height: 6%;
     background: white;
-     
+
 }
 
 .panel-a-footer {
@@ -314,7 +366,7 @@ font-family: "Roboto", sans-serif;
 
 /* panel middle */
 
-.panel-middle {     
+.panel-middle {
     margin-left: 0%;
     margin-top: 0%;
     width: 100%;
@@ -327,7 +379,7 @@ font-family: "Roboto", sans-serif;
     left: 0%;
     top: 0%;
     width: 17.8%;
-    height: 100%;  
+    height: 100%;
 }
 
 .panel-middle-right {
@@ -340,6 +392,7 @@ font-family: "Roboto", sans-serif;
 
 .transpose-content-down {
     position: sticky;
+    margin-left: 4%;
     width: 117%;
     z-index: 1000;
 }
@@ -367,28 +420,28 @@ font-family: "Roboto", sans-serif;
 .btn-cover {
     width: 100%;
     height: 100%;
-    font-size: 100%;    
-    background: transparent;    
+    font-size: 100%;
+    background: transparent;
 }
 
 .icon-cover {
     width: 100%;
     height: 100%;
-    color:  white;
+    color: white;
     border-radius: 50px;
 }
 
-.icon-cover:hover {    
+.icon-cover:hover {
     border-radius: 50px;
-    color:var(--bs-teal);
+    color: var(--bs-teal);
 }
 
-.panel-dataframe {    
+.panel-dataframe {
     margin-left: 2%;
     margin-top: 15%;
     width: 95%;
     max-height: 20%;
-    border-radius: 10px; 
+    border-radius: 10px;
 }
 
 .panel-title-data {
@@ -421,7 +474,7 @@ font-family: "Roboto", sans-serif;
 
 .btn-data {
     width: 100%;
-    height: 100%;    
+    height: 100%;
     font-size: calc(0.1rem + .8vw);
     font-family: var(--bs-body-font-family);
     color: var(--bs-mine);
@@ -432,14 +485,14 @@ font-family: "Roboto", sans-serif;
 
 .btn-data:hover {
     background-color: var(--bs-teal);
-    color:rgb(255, 255, 255);
+    color: rgb(255, 255, 255);
 }
 
 .btn-load {
     width: 100%;
-    height: 100%;    
+    height: 100%;
     font-size: calc(0.1rem + .6vw);
-    font-family: var(--bs-body-font-family);     
+    font-family: var(--bs-body-font-family);
     border-radius: 5px;
     background: rgb(250, 249, 248);
     color: var(--bs-mine);
@@ -448,7 +501,7 @@ font-family: "Roboto", sans-serif;
 
 .btn-load:hover {
     background-color: var(--bs-teal);
-    color:rgb(255, 255, 255);
+    color: rgb(255, 255, 255);
 }
 
 .panel_load_save {
@@ -456,7 +509,7 @@ font-family: "Roboto", sans-serif;
     margin-top: .1%;
     width: 42%;
     max-height: 37%;
-    border-radius: 10px; 
+    border-radius: 10px;
 }
 
 .panel-load {
@@ -488,20 +541,20 @@ font-family: "Roboto", sans-serif;
 .btn-functionalities {
     margin-left: 3%;
     width: 97%;
-    height: 100%;   
+    height: 100%;
     font-family: var(--bs-body-font-family);
-    font-size: calc(0.1rem + 1.5vw);         
+    font-size: calc(0.1rem + 1.5vw);
     font-style: italic;
     font-weight: bold;
     border: transparent;
     border-radius: 5px;
-    background: transparent;   
+    background: transparent;
     color: white
 }
 
 .btn-functionalities:hover {
     background-color: var(--bs-teal);
-    color:rgb(255, 255, 255);
+    color: rgb(255, 255, 255);
 }
 
 .panel-button-drop-functionalities {
@@ -511,7 +564,7 @@ font-family: "Roboto", sans-serif;
     height: 2%;
 }
 
-.info_buttons_div_panel{
+.info_buttons_div_panel {
     margin-left: 8%;
     margin-bottom: 5%;
     width: 77%;
@@ -534,25 +587,32 @@ font-family: "Roboto", sans-serif;
 
 .info_buttons_panel:hover {
     background-color: var(--bs-teal);
-    color:rgb(255, 255, 255);
+    color: rgb(255, 255, 255);
 }
 
-.pabb {
+.panel-creator {
     position: relative;
     width: 100%;
     height: 100%;
+}
+
+.panel-loading {
+    position: sticky;
+    margin-top: 20%;
+    margin-left: 0%;
+    z-index: 9999;
 }
 
 .panel-content-up {
     position: relative;
     left: 0%;
     width: 100%;
-    height: 10%;    
+    height: 10%;
 }
 
 .panel-content-down {
     position: relative;
-    width:calc(100% - 18vmax);
+    width: calc(100% - 18vmax);
     height: 88.5%;
     border-radius: 20px;
 }
@@ -581,7 +641,7 @@ font-family: "Roboto", sans-serif;
     color: var(--bs-mine);
 }
 
-.panel-title-params{
+.panel-title-params {
     position: relative;
     left: 5%;
     top: 2%;
@@ -610,7 +670,7 @@ font-family: "Roboto", sans-serif;
 
 .btn-text:hover {
     background-color: var(--bs-teal);
-    color:rgb(255, 255, 255);
+    color: rgb(255, 255, 255);
 }
 
 .btn-on {
@@ -643,7 +703,7 @@ font-family: "Roboto", sans-serif;
 
 .btn-apply:hover {
     background-color: var(--bs-teal);
-    color:rgb(255, 255, 255);
+    color: rgb(255, 255, 255);
 }
 
 .panel-funtions-text {
@@ -652,10 +712,10 @@ font-family: "Roboto", sans-serif;
     left: 1%;
     max-height: 100%;
     max-width: 90%;
-    font-family: var(--bs-body-font-family);   
+    font-family: var(--bs-body-font-family);
     background: white;
     padding: 4%;
-    border-radius: 20px;    
+    border-radius: 20px;
     font-size: 0.7vmax;
     overflow: auto;
 }
@@ -668,10 +728,10 @@ font-family: "Roboto", sans-serif;
     height: 100%;
 }
 
-.title-workflow {    
+.title-workflow {
     float: left;
     margin-left: 2%;
-    margin-top: 2%;    
+    margin-top: 2%;
     width: 9%;
     height: 40%;
     font-size: calc(0.1rem + 1.5vw);
@@ -727,7 +787,7 @@ font-family: "Roboto", sans-serif;
 
 .button-workflow:hover {
     background-color: var(--bs-teal);
-    color:rgb(255, 255, 255);
+    color: rgb(255, 255, 255);
 }
 
 /********* Models ********/
@@ -740,19 +800,19 @@ font-family: "Roboto", sans-serif;
     height: 10%;
 }
 
-.target {   
-   float: left;
-   margin-left: 2%;
-   margin-top: 3%;
-   width: 25%;
-   height: 50%;
-   color: white;
-   font-size: calc(0.1rem + 1.2vw);
-   font-family: var(--bs-body-font-family);
-   font-style: italic;
+.target {
+    float: left;
+    margin-left: 2%;
+    margin-top: 3%;
+    width: 25%;
+    height: 50%;
+    color: white;
+    font-size: calc(0.1rem + 1.2vw);
+    font-family: var(--bs-body-font-family);
+    font-style: italic;
 }
 
-.drop-target {     
+.drop-target {
     float: left;
     margin-left: 0.5%;
     margin-top: 2%;
@@ -788,7 +848,7 @@ font-family: "Roboto", sans-serif;
     height: 40%;
 }
 
-.btn-start {    
+.btn-start {
     width: 100%;
     height: 100%;
     border: 0.5px solid var(--bs-mine);

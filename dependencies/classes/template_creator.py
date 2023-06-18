@@ -89,8 +89,10 @@ class TemplateCreator:
                 id="loading-2",
                 children=html.Div(id="loading"),
                 type="default",
-                fullscreen=True,
+                fullscreen=False,
+                color="white",
+                className="panel-loading"
             )
         return html.Div(
-            [self.content_up, loading, self.content_down, self.params], className="pabb"
+            [self.content_up, loading, self.content_down, self.params], className="panel-creator"
             )

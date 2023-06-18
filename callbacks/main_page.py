@@ -67,19 +67,6 @@ def auth_display(n_clicks, panel_hidden):
     return [not panel_hidden]
 
 
-# button view
-@callback(
-    [
-        Output(f"{id_page}_button_view", "n_clicks"),
-    ],
-    Input(f"{id_page}_button_view", "n_clicks"),
-    prevent_initial_call=True,
-)
-def auth_display(n_clicks):
-    print(n_clicks)
-    return [n_clicks]
-
-
 # button save
 @callback(
     [
@@ -279,8 +266,7 @@ def create_callback_for_buttons(button):
     load_buttons = list_of_buttons[0]
     buttons_for_functions = list_of_buttons[1]
     buttons_for_visualizations = list_of_buttons[2] 
-    buttons_for_models = list_of_buttons[3]   
-
+    buttons_for_models = list_of_buttons[3]  
     @callback(
         [
             Output(f"{id_page}_panel_middle_right", "children", allow_duplicate=True),

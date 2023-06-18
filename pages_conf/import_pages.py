@@ -37,4 +37,5 @@ from pages_conf.models.canny import *
 
 
 from pages_conf.load_data import *
+from pages_conf.view_data import *
 from pages_conf.workflow import *
