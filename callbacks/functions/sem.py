@@ -71,7 +71,7 @@ def second_callback(
         if state_axis not in (1, 0):
             return [create_msg(f"axis no ha sido seleccionado"), ""]
         if type(sem_info) != float64:
-            sem_info = sem_info.to_string()
+            sem_info = sem_info
 
         fig = px.bar(
             x=sem.index,

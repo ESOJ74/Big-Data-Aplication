@@ -62,6 +62,6 @@ def second_callback(
                 contrast_rescaling="infer",
                 aspect="auto",
             )      
-        return [create_obj(cov.__str__(), fig, state_graph), ""]
+        return [create_obj(cov, fig, state_graph), ""]
     except ValueError as msg:
         return [create_msg(msg), ""]

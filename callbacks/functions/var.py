@@ -71,7 +71,7 @@ def add_data_to_fig(
         if state_axis not in (1, 0):
             return [create_msg(f"axis no ha sido seleccionado"), ""]
         if type(var_info) != float64:
-            var_info = var_info.to_string()
+            var_info = var_info
 
         fig = px.bar(
             x=var.index,

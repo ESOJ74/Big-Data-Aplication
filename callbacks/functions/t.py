@@ -12,8 +12,9 @@ style_table = {
     "margin-left": "1%",
     "margin-top": "6%",
     "width": "96.5%",
-    "height": "98%",
+    "max-height": "500px",
     "text-align": "left",
+    "overflow": "auto",
 }
 
 
@@ -22,7 +23,7 @@ style_data = {
     "text-align": "left",
     "height": "0.5vmin",
     "font-family": "var(--bs-body-font-family)",
-    "font-size": "0.8vmax",
+    "font-size": "0.7vmax",
     "border-right": "1.5px solid #F4F5F5",
     "border": "1.5px solid #F4F5F5",
     "color": "#535353",
@@ -32,14 +33,14 @@ style_data = {
 
 style_cell = {
     "min-width": "2%",
-    "max-widht": "2%",
+    "max-width": "2%",
     "padding": "-5px",
 }
 
 style_header = {
     "color": "#535353",
     "font-family": "var(--bs-body-font-family)",
-    "font-size": "1.1vmax",
+    "font-size": "0.8vmax",
     "font-weight": "bold",
     "text-align": "left",
     "border-left": "1.5px solid #D2D2D2",
@@ -53,7 +54,12 @@ style_data_conditional = [
         "backgroundColor": "#D2D2D2",
         "border": "1.5px solid #D2D2D2",
         "borderRadius": "35px",
-    }
+    },
+    {
+        "if": {"column_id": "columns"},
+        "font-size": "0.8vmax",
+        "font-weight": "bold",
+    },
 ]
 
 
@@ -77,6 +83,7 @@ def add_data_to_fig(n_clicks, data):
             style_header,
             style_cell,
             style_data_conditional,
+            100
         )
         return [obj, ""]
     except (TypeError, KeyError, ValueError) as msg:

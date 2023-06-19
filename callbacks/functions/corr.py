@@ -59,7 +59,7 @@ def second_callback(
             color_continuous_scale=list_of_squential[state_template],
             contrast_rescaling="infer",
             aspect="auto",
-        )
-        return [create_obj(corr.to_string(), fig, state_graph), ""]
+        )         
+        return [create_obj(corr, fig, state_graph), ""]
     except ValueError as msg:
         return [create_msg(msg), ""]

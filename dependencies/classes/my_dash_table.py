@@ -9,7 +9,8 @@ class MyDashTable:
 
     @staticmethod
     def my_dash_table(
-        df, style_table, style_data, style_header, style_cell, style_data_conditional=[]
+        df, style_table, style_data, style_header, style_cell, style_data_conditional=[],
+        page_size=15
     ):
         """
         Crea una tabla interactiva con los datos proporcionados.
@@ -28,7 +29,7 @@ class MyDashTable:
         return dash_table.DataTable(
             data=df.to_dict("records"),
             columns=[{"name": col, "id": col} for col in df.columns],
-            page_size=15,
+            page_size=page_size,
             selected_rows=[],
             style_table=style_table,
             style_data=style_data,
