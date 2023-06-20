@@ -6,7 +6,7 @@ class ParamInputCreator:
         self.id_param = id_param
         self.style_div_input = {
             "margin-left": "10%",
-            "margin-top": "1%",
+            "margin-top": "2%",
             "height": "3%",
             "width": "90%",
         }
@@ -20,11 +20,11 @@ class ParamInputCreator:
             "color": "white",
         }
         self.style_input = {"float": "left",
-                            "width": "37%",
+                            "width": "44%",
                             "color": "black",
-                            "border": "0.5px solid var(--bs-mine)",
-                            "border-bottom": "2px solid var(--bs-mine)",
-                            "border-right": "2px solid var(--bs-mine)",
+                            "border": "0.5px solid var(--bs-azul-odd)",
+                            "border-bottom": "2px solid var(--bs-azul-odd)",
+                            "border-right": "2px solid var(--bs-azul-odd)",
                             "border-radius": "5px"}
         self.value = value
 

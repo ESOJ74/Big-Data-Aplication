@@ -9,48 +9,44 @@ id_page = "view_data"
 
 style_table = {
     "margin-left": "1%",
-    "margin-top": "6%",
+    "margin-top": "0%",
     "width": "98%",
     "height": "98%",
     "text-align": "left",
-    "overflow-y": "auto"
+    "overflow": "auto"
 }
-
 style_data = {
     "padding": "-5px",
     "text-align": "left",
     "height": "0.5vmin",
     "font-family": "var(--bs-body-font-family)",
-    "font-size": "0.8vmax",
-    "border-right": "1.5px solid #F4F5F5",
-    "border": "1.5px solid #F4F5F5",
+    "font-size": "0.7vmax",
+    "border": "transparent",
     "color": "#535353",
-    "background": "#F4F5F5",
+    "background": "#E8F6FF",
     "border-radius": "10px",
 }
-
 style_cell = {
     "min-width": "2%",
-    "max-widht": "2%",
+    "max-width": "2%",
     "padding": "-5px",
 }
-
 style_header = {
-    "color": "#535353",
+    "color": "white",
     "font-family": "var(--bs-body-font-family)",
-    "font-size": "1.1vmax",
+    "font-size": "0.8vmax",
     "font-weight": "bold",
     "text-align": "left",
-    "border-left": "1.5px solid #D2D2D2",
-    "border-right": "1.5px solid #D2D2D2",
-    "background": "#D2D2D2",
+    "border": "transparent",
+    "background": "#08397E",
 }
 
 style_data_conditional = [
     {
         "if": {"row_index": "odd"},
-        "backgroundColor": "#D2D2D2",
-        "border": "1.5px solid #D2D2D2",
+        "color": "white",
+        "backgroundColor": "#9EC7FC",
+        "border": "transparent",
         "borderRadius": "35px",
     }
 ]

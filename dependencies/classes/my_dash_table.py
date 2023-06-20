@@ -9,8 +9,13 @@ class MyDashTable:
 
     @staticmethod
     def my_dash_table(
-        df, style_table, style_data, style_header, style_cell, style_data_conditional=[],
-        page_size=15
+        df,
+        style_table,
+        style_data,
+        style_header,
+        style_cell,
+        style_data_conditional=[],
+        page_size=15,
     ):
         """
         Crea una tabla interactiva con los datos proporcionados.
@@ -33,9 +38,18 @@ class MyDashTable:
             selected_rows=[],
             style_table=style_table,
             style_data=style_data,
-            style_header=style_header,
+            style_header={
+                "position": "sticky",
+                "top": "0",
+                "zIndex": "1",
+                "textOverflow": "ellipsis",
+                "overflow": "hidden",
+                "whiteSpace": "nowrap",
+            }
+            | style_header,
             style_cell=style_cell,
             style_data_conditional=style_data_conditional,
+            fixed_rows={"data": 0},
         )
 
     @staticmethod

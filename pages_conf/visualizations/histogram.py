@@ -19,10 +19,7 @@ params = [
     SelectCreator(
         "histogram",
         ["Y"],
-    ).create_select(),
-    ParamInputCreator("histogram", "nbins", 20).create_input(),
-    ParamInputCreator("histogram", "bargap", 0).create_input(),
-    ParamInputCreator("histogram", "opacity", 1).create_input(),
+    ).create_select(),    
     SelectCreator(
         "histogram",
         ["color"],
@@ -55,6 +52,9 @@ params = [
                 options=["count", "sum", "avg", "min", "max"],
                 value="count",
     ).create_select(),
+    ParamInputCreator("histogram", "nbins", 20).create_input(),
+    ParamInputCreator("histogram", "bargap", 0).create_input(),
+    ParamInputCreator("histogram", "opacity", 1).create_input(),
     SelectCreator(
         "histogram",
         ["template"],

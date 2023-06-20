@@ -16,7 +16,11 @@
 
 
 :root {
-    --bs-mine: #A50050;
+    --bs-azul-header: #A50050;
+    --bs-azul-header: #08397E;
+    --bs-azul-odd: #9EC7FC;
+    --bs-azul-data: #E8F6FF;
+
     --bs-blue: #2a9fd6;
     --bs-indigo: #6610f2;
     --bs-purple: #6f42c1;
@@ -96,7 +100,22 @@ body {
     font-family: "Roboto", sans-serif;
 }
 
-
+/* Cambiar el color de la barra de desplazamiento */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background-color: #E8F6FF;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: #9EC7FC;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #03214C;
+  }
 /*********************** App *******************************/
 
 .panel-app {
@@ -169,8 +188,8 @@ body {
     height: 95%;
     font-size: calc(0.1rem + .8vw);
     font-family: var(--bs-body-font-family);
-    color: var(--bs-mine);
-    border: 1px solid var(--bs-mine);
+    color: var(--bs-azul-header);
+    border: 1px solid var(--bs-azul-odd);
     background-color: white;
     border-radius: 5px;
 }
@@ -196,26 +215,26 @@ body {
     left: 4%;
     top: 50%;
     height: 1%;
-    width: 21.5%;
-    border: 0.5px solid var(--bs-mine);
-    border-right: 2px solid var(--bs-mine);
-    border-bottom: 2px solid var(--bs-mine);
+    width: 22.5%;
+    border: 0.5px solid var(--bs-azul-odd);
+    border-right: 2px solid var(--bs-azul-odd);
+    border-bottom: 2px solid var(--bs-azul-odd);
     border-radius: 7px 7px 5px 5px;
     font-size: calc(0.1rem + .7vw);
     font-family: var(--bs-body-font-family);
-    color: var(--bs-mine);
+    color: var(--bs-azul-header);
 }
 
 .btn-load_data {
     margin-left: 4%;
     margin-top: 0.5%;
-    height: 30%;
-    width: 21.5%;
-    border: 0.5px solid var(--bs-mine);
+    height: 10%;
+    width: 22.5%;
+    border: 0.5px solid var(--bs-azul-odd);
     border-radius: 7px 7px 5px 5px;
     font-size: calc(0.1rem + .8vw);
     font-family: var(--bs-body-font-family);
-    color: var(--bs-mine);
+    color: var(--bs-azul-header);
 }
 
 .btn-load_data:hover {
@@ -252,11 +271,11 @@ body {
     margin-top: 4%;
     height: 30%;
     width: 61%;
-    border: 0.5px solid var(--bs-mine);
+    border: 0.5px solid var(--bs-azul-odd);
     border-radius: 7px 7px 5px 5px;
     font-size: calc(0.1rem + .7vw);
     font-family: var(--bs-body-font-family);
-    color: var(--bs-mine);
+    color: var(--bs-azul-header);
 }
 
 .panel-up-load {
@@ -299,7 +318,7 @@ body {
     top: 55%;
     width: 36%;
     height: 43%;
-    color: var(--bs-mine);
+    color: var(--bs-azul-header);
     font-weight: bolder;
     font-style: italic;
     font-family: var(--bs-body-font-family);
@@ -313,7 +332,7 @@ body {
     margin-top: .3%;
     width: 48%;
     height: 85%;
-    color: var(--bs-mine);
+    color: var(--bs-azul-header);
     font-weight: bolder;
     font-family: var(--bs-body-font-family);
     font-size: calc(0.1rem + 2vw);
@@ -327,14 +346,13 @@ body {
     margin-top: 1.7%;
     width: 6.6%;
     height: 40%;
-    color: var(--bs-mine);
     background: transparent;
 }
 
 .close-sesion {
     width: 6.6%;
     height: 40%;
-    color: var(--bs-mine);
+    color: var(--bs-azul-header);
     font-weight: bolder;
     font-family: var(--bs-body-font-family);
     font-size: calc(0.1rem + 0.9vw);
@@ -358,7 +376,7 @@ body {
     margin-top: 1%;
     width: 10%;
     height: 60%;
-    color: var(--bs-mine);
+    color: var(--bs-azul-header);
     font-size: calc(0.1rem + 0.9vw);
     font-family: var(--bs-body-font-family);
     background: transparent;
@@ -477,8 +495,8 @@ body {
     height: 100%;
     font-size: calc(0.1rem + .8vw);
     font-family: var(--bs-body-font-family);
-    color: var(--bs-mine);
-    border: 1px solid var(--bs-mine);
+    color: var(--bs-azul-header);
+    border: 1px solid var(--bs-azul-odd);
     border-radius: 5px;
     background: rgb(250, 249, 248);
 }
@@ -495,8 +513,8 @@ body {
     font-family: var(--bs-body-font-family);
     border-radius: 5px;
     background: rgb(250, 249, 248);
-    color: var(--bs-mine);
-    border: 0.5px solid var(--bs-mine);
+    color: var(--bs-azul-header);
+    border: 0.5px solid var(--bs-azul-odd);
 }
 
 .btn-load:hover {
@@ -581,8 +599,8 @@ body {
     font-size: calc(0.1rem + .7vw);
     font-family: var(--bs-body-font-family);
     border-radius: 5px;
-    color: var(--bs-mine);
-    border: 0.5px solid var(--bs-mine);
+    color: var(--bs-azul-header);
+    border: 0.5px solid var(--bs-azul-odd);
 }
 
 .info_buttons_panel:hover {
@@ -598,8 +616,8 @@ body {
 
 .panel-loading {
     position: sticky;
-    margin-top: 20%;
-    margin-left: 0%;
+    margin-top: 30%;
+    margin-left: -20%;
     z-index: 9999;
 }
 
@@ -632,13 +650,13 @@ body {
     float: left;
     height: 1%;
     width: 47%;
-    border: 0.5px solid var(--bs-mine);
-    border-right: 2px solid var(--bs-mine);
-    border-bottom: 2px solid var(--bs-mine);
+    border: 0.5px solid var(--bs-azul-odd);
+    border-right: 2px solid var(--bs-azul-odd);
+    border-bottom: 2px solid var(--bs-azul-odd);
     border-radius: 7px 7px 5px 5px;
     font-size: calc(0.1rem + .7vw);
     font-family: var(--bs-body-font-family);
-    color: var(--bs-mine);
+    color: var(--bs-azul-header);
 }
 
 .panel-title-params {
@@ -662,9 +680,9 @@ body {
     height: 50%;
     font-family: var(--bs-body-font-family);
     font-size: calc(0.1rem + .8vw);
-    border: 0.1px solid var(--bs-mine);
+    border: 0.1px solid var(--bs-azul-odd);
     border-radius: 3px;
-    color: var(--bs-mine);
+    color: var(--bs-azul-header);
     background: rgb(250, 249, 248);
 }
 
@@ -681,9 +699,9 @@ body {
     height: 50%;
     font-family: var(--bs-body-font-family);
     font-size: calc(0.1rem + .8vw);
-    border: 0.1px solid var(--bs-mine);
+    border: 0.1px solid var(--bs-azul-odd);
     border-radius: 3px;
-    color: var(--bs-mine);
+    color: var(--bs-azul-header);
     background: var(--bs-teal);
 }
 
@@ -695,9 +713,9 @@ body {
     height: 4%;
     font-family: var(--bs-body-font-family);
     font-size: calc(0.1rem + .8vw);
-    border: 0.1px solid var(--bs-mine);
+    border: 0.1px solid var(--bs-azul-odd);
     border-radius: 3px;
-    color: var(--bs-mine);
+    color: var(--bs-azul-header);
     background: rgb(250, 249, 248);
 }
 
@@ -747,9 +765,9 @@ body {
     margin-top: 2%;
     height: 1%;
     width: 21.5%;
-    border: 0.5px solid var(--bs-mine);
-    border-right: 2px solid var(--bs-mine);
-    border-bottom: 2px solid var(--bs-mine);
+    border: 0.5px solid var(--bs-azul-odd);
+    border-right: 2px solid var(--bs-azul-odd);
+    border-bottom: 2px solid var(--bs-azul-odd);
     border-radius: 7px 7px 5px 5px;
     font-size: calc(0.1rem + .7vw);
     font-family: var(--bs-body-font-family);
@@ -780,8 +798,8 @@ body {
     height: 95%;
     font-size: calc(0.1rem + .8vw);
     font-family: var(--bs-body-font-family);
-    border: 0.5px solid var(--bs-mine);
-    color: var(--bs-mine);
+    border: 0.5px solid var(--bs-azul-odd);
+    color: var(--bs-azul-header);
     border-radius: 5px;
 }
 
@@ -818,9 +836,9 @@ body {
     margin-top: 2%;
     height: 1%;
     width: 60%;
-    border: 0.5px solid var(--bs-mine);
-    border-right: 2px solid var(--bs-mine);
-    border-bottom: 2px solid var(--bs-mine);
+    border: 0.5px solid var(--bs-azul-odd);
+    border-right: 2px solid var(--bs-azul-odd);
+    border-bottom: 2px solid var(--bs-azul-odd);
     border-radius: 7px 7px 5px 5px;
     font-size: calc(0.1rem + .7vw);
     font-family: var(--bs-body-font-family);
@@ -851,11 +869,11 @@ body {
 .btn-start {
     width: 100%;
     height: 100%;
-    border: 0.5px solid var(--bs-mine);
+    border: 0.5px solid var(--bs-azul-odd);
     border-radius: 7px 7px 5px 5px;
     font-size: calc(0.1rem + .8vw);
     font-family: var(--bs-body-font-family);
-    color: var(--bs-mine);
+    color: var(--bs-azul-header);
 }
 
 .btn-start:hover {
@@ -865,11 +883,11 @@ body {
 .btn-up-foto {
     margin-left: 3%;
     margin-top: 2.5%;
-    border: 0.5px solid var(--bs-mine);
+    border: 0.5px solid var(--bs-azul-odd);
     border-radius: 7px 7px 5px 5px;
     font-size: calc(0.1rem + .7vw);
     font-family: var(--bs-body-font-family);
-    color: var(--bs-mine);
+    color: var(--bs-azul-header);
 }
 
 .btn-up-foto:hover {

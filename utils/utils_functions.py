@@ -7,12 +7,12 @@ def create_obj(df, fig, state_button, axis=0):
     set_option("display.max_columns", 500)
     set_option("display.width", 1000)
     style_table = {
-        "margin-left": "1%",
-        "margin-top": "6%",
-        "width": "96.5%",
+        "margin-left": "3%",
+        "margin-top": "3.5%",
+        "width": "95%",
         "max-height": "500px",
         "text-align": "left",
-        "overflow-x": "auto",
+        "overflow": "auto",
     }
     style_data = {
         "padding": "-5px",
@@ -20,10 +20,9 @@ def create_obj(df, fig, state_button, axis=0):
         "height": "0.5vmin",
         "font-family": "var(--bs-body-font-family)",
         "font-size": "0.7vmax",
-        "border-right": "1.5px solid #F4F5F5",
-        "border": "1.5px solid #F4F5F5",
+        "border": "transparent",
         "color": "#535353",
-        "background": "#F4F5F5",
+        "background": "#E8F6FF",
         "border-radius": "10px",
     }
     style_cell = {
@@ -31,21 +30,21 @@ def create_obj(df, fig, state_button, axis=0):
         "max-width": "2%",
         "padding": "-5px",
     }
-    style_header = {
-        "color": "#535353",
+    style_header = {        
+        "color": "white",
         "font-family": "var(--bs-body-font-family)",
         "font-size": "0.8vmax",
         "font-weight": "bold",
         "text-align": "left",
-        "border-left": "1.5px solid #D2D2D2",
-        "border-right": "1.5px solid #D2D2D2",
-        "background": "#D2D2D2",
+        "border": "transparent",
+        "background": "#08397E",
     }
     style_data_conditional = [
         {
             "if": {"row_index": "odd"},
-            "backgroundColor": "#D2D2D2",
-            "border": "1.5px solid #D2D2D2",
+            "color": "white",
+            "backgroundColor": "#9EC7FC",
+            "border": "transparent",
             "borderRadius": "35px",
         },
         {
@@ -55,7 +54,7 @@ def create_obj(df, fig, state_button, axis=0):
             "font-weight": "bold",
         },
     ]
-
+    df = df.round(decimals=5)
     try:
         df.insert(0, "-", df.columns)   
     except:
@@ -79,7 +78,6 @@ def create_obj(df, fig, state_button, axis=0):
         style_header,
         style_cell,
         style_data_conditional,
-        100
     )
     if state_button == "btn-on":
         if axis == 0:

@@ -44,13 +44,13 @@ content_down = html.Div(
 
 params = [
     html.Div("Params", className="panel-title-params"),
-    ParamInputCreator(id_page, "threshold1", 100).create_input(),
-    ParamInputCreator(id_page, "threshold2", 200).create_input(),
-    ParamInputCreator(id_page, "aperture_size", 3).create_input(),
     SelectCreator(
         id_page,
         ["L2gradient"],
         ["True", "False"],
         "False",
     ).create_select(),
+    ParamInputCreator(id_page, "threshold1", 100).create_input(),
+    ParamInputCreator(id_page, "threshold2", 200).create_input(),
+    ParamInputCreator(id_page, "aperture_size", 3).create_input(),    
 ]

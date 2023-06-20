@@ -88,11 +88,12 @@ class TemplateCreator:
         loading = dcc.Loading(
                 id="loading-2",
                 children=html.Div(id="loading"),
-                type="default",
+                type="cube",
                 fullscreen=False,
-                color="white",
-                className="panel-loading"
+                color="#20c997",
+                className="panel-loading",
             )
         return html.Div(
             [self.content_up, loading, self.content_down, self.params], className="panel-creator"
             )
+    #"graph","cube","circle","dot","default"
