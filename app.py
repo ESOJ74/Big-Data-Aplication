@@ -21,6 +21,7 @@ app.layout = html.Div(
 
 
 # Update page content
+import contextlib
 @callback(
         Output(f"{id_page}_content", "children"),
         Input(f"{id_page}_url", "pathname")
@@ -33,11 +34,8 @@ def display_page(pathname):
     }
 
     if pathname == "/":
-        try:
+        with contextlib.suppress(OSError):
             os.remove("user.txt")
-        except OSError:
-            pass
-
     if pathname == "/app" and not os.path.exists("user.txt"):
         pathname = "/"
 

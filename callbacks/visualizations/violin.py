@@ -79,7 +79,7 @@ def display_page(
         state_X = None
     if state_points == "False":
         state_points = False
-    state_box = False if state_box == "False" else True
+    state_box = state_box != "False"
 
     new_name_button = "Apply"
     content = ""

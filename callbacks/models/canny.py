@@ -22,10 +22,8 @@ id_page = "canny"
     prevent_initial_call=True,
 )
 def load_data(drop_dir, data):
-    foto = ""
     list_dir = os.listdir(f"""users/{data["user"]}/fotos""")
-    if len(list_dir) > 0:
-        foto = list_dir[0]
+    foto = list_dir[0] if len(list_dir) > 0 else ""
     return [list_dir, foto]
 
 
@@ -40,16 +38,15 @@ def load_data(drop_dir, data):
     prevent_initial_call=True,
 )
 def load_data(n_clicks, data):
-    if n_clicks:
-        try:
-            archivo = filedialog.askopenfilename()
-            filename = archivo.split("/")[-1]
-            shutil.copy(archivo, f"""users/{data["user"]}/fotos/{filename}""")
-            return [1, 0]
-        except AttributeError:
-            raise PreventUpdate
-    else:
+    if not n_clicks:
         raise PreventUpdate
+    try:
+        archivo = filedialog.askopenfilename()
+        filename = archivo.split("/")[-1]
+        shutil.copy(archivo, f"""users/{data["user"]}/fotos/{filename}""")
+        return [1, 0]
+    except AttributeError as e:
+        raise PreventUpdate from e
 
 
 # content fotos
@@ -85,7 +82,7 @@ def load_data(
     if accept:
         try:
             if input_value is not None and len(input_value) > 0:
-                l2gradient = True if l2gradient == "True" else False
+                l2gradient = l2gradient == "True"
                 threshold1 = int(threshold1)
                 threshold2 = int(threshold2)
                 aperture_size = int(aperture_size)
@@ -98,7 +95,7 @@ def load_data(
                 jpg_img = cv2.imencode(".jpg", resized_img)
                 b64_string = base64.b64encode(jpg_img[1]).decode("utf-8")
                 # Añadir el prefijo para la representación de datos
-                img_data = "{}{}".format("data:image/jpg;base64, ", b64_string)
+                img_data = f"data:image/jpg;base64, {b64_string}"
                 # Foto Bordes
 
                 # Canny
@@ -116,7 +113,7 @@ def load_data(
                 jpg_img = cv2.imencode(".jpg", edges)
                 b64_string = base64.b64encode(jpg_img[1]).decode("utf-8")
                 # Añadir el prefijo para la representación de datos
-                bordes = "{}{}".format("data:image/jpg;base64, ", b64_string)
+                bordes = f"data:image/jpg;base64, {b64_string}"
                 # Foto Bordes
 
                 load_data_content =  [
@@ -143,7 +140,7 @@ def load_data(
                                    "margin-left": "1%",
                                    "width": "45%"},
                         ),
-                    ]                   
+                    ]
             else:
                 load_data_content = html.H6(
                     "No tiene fotos guardadas", style={"color": "#b0d8d3"}

@@ -91,10 +91,10 @@ def display_page(
         state_size = None
 
     state_opacity = float(state_opacity)
-    
-    state_log_x = False if state_log_x == "False" else True
-    state_log_y = False if state_log_y == "False" else True
-    state_log_z = False if state_log_z == "False" else True
+
+    state_log_x = state_log_x != "False"
+    state_log_y = state_log_y != "False"
+    state_log_z = state_log_z != "False"
 
     new_name_button = "Apply"
     content = ""

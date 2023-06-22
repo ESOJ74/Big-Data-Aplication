@@ -54,22 +54,14 @@ def add_data_to_fig(
         if type(state_axis) != int:
             state_axis = None
 
-        if state_skipna == "True":
-            state_skipna = True
-        else:
-            state_skipna = False
-
-        if state_numeric_only == "True":
-            state_numeric_only = True
-        else:
-            state_numeric_only = False
-
+        state_skipna = state_skipna == "True"
+        state_numeric_only = state_numeric_only == "True"
         var = read_json(data["df"]).var(
             state_axis, state_skipna, state_ddof, state_numeric_only
         )
         var_info = var
         if state_axis not in (1, 0):
-            return [create_msg(f"axis no ha sido seleccionado"), ""]
+            return [create_msg("axis no ha sido seleccionado"), ""]
         if type(var_info) != float64:
             var_info = var_info
 

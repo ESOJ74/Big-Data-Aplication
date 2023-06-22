@@ -49,15 +49,8 @@ def display_page(
     state_template,
     name_button,
 ):
-    if state_show_colorbar == "True":
-        state_show_colorbar = True
-    else:
-        state_show_colorbar = False
-
-    if state_group_tasks == "True":
-        state_group_tasks = True
-    else:
-        state_group_tasks = False
+    state_show_colorbar = state_show_colorbar == "True"
+    state_group_tasks = state_group_tasks == "True"
     new_name_button = "Apply"
     content = ""
     try:

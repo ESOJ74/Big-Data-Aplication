@@ -49,21 +49,14 @@ def second_callback(
         if type(state_axis) != int:
             state_axis = None
 
-        if state_skipna == "True":
-            state_skipna = True
-        else:
-            state_skipna = False
-
-        if state_numeric_only == "True":
-            state_numeric_only = True
-        else:
-            state_numeric_only = False
+        state_skipna = state_skipna == "True"
+        state_numeric_only = state_numeric_only == "True"
         kurt = read_json(data["df"]).kurt(
             state_axis, state_skipna, state_numeric_only
         )
         kurt_info = kurt
         if state_axis not in (1, 0):
-            return [create_msg(f"axis no ha sido seleccionado"), ""]
+            return [create_msg("axis no ha sido seleccionado"), ""]
         if type(kurt_info) != float64:
             kurt_info = kurt_info
         fig = px.bar(

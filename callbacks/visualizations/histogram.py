@@ -93,7 +93,7 @@ def display_page(
         or state_pattern_shape == " "
     ):
         state_pattern_shape = None
-    state_log_y = False if state_log_y == "False" else True
+    state_log_y = state_log_y == "True"
 
     new_name_button = "Apply"
     content = ""

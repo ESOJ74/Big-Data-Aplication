@@ -82,10 +82,10 @@ def display_page(
     if state_symbol is not None and len(state_symbol) < 1 or state_symbol == " ":
         state_symbol = None
 
-    state_markers = False if state_markers == "False" else True
-    state_log_x = False if state_log_x == "False" else True
-    state_log_y = False if state_log_y == "False" else True
-    state_log_z = False if state_log_z == "False" else True
+    state_markers = state_markers != "False"
+    state_log_x = state_log_x != "False"
+    state_log_y = state_log_y != "False"
+    state_log_z = state_log_z != "False"
 
     new_name_button = "Apply"
     content = ""

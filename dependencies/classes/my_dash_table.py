@@ -14,7 +14,7 @@ class MyDashTable:
         style_data,
         style_header,
         style_cell,
-        style_data_conditional=[],
+        style_data_conditional=None,
         page_size=15,
     ):
         """
@@ -31,6 +31,8 @@ class MyDashTable:
             dash_table.DataTable: Tabla interactiva.
 
         """
+        if style_data_conditional is None:
+            style_data_conditional = []
         return dash_table.DataTable(
             data=df.to_dict("records"),
             columns=[{"name": col, "id": col} for col in df.columns],
@@ -60,7 +62,7 @@ class MyDashTable:
         style_data,
         style_header,
         style_cell,
-        style_data_conditional=[],
+        style_data_conditional=None,
     ):
         """
         Crea una tabla interactiva con datos agrupados según las columnas especificadas.
@@ -77,8 +79,10 @@ class MyDashTable:
             dash_table.DataTable: Tabla interactiva con datos agrupados.
 
         """
+        if style_data_conditional is None:
+            style_data_conditional = []
         columns = [
-            {"name": ["", col], "id": col} for col in df.columns[0:columns_grouped]
+            {"name": ["", col], "id": col} for col in df.columns[:columns_grouped]
         ]
         columns += [
             {"name": [col, ""], "id": col} for col in df.columns[columns_grouped:]

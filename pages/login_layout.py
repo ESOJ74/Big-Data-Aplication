@@ -38,11 +38,10 @@ def auth_display(n_clicks, reg_user, reg_pass):
         reader = csv.DictReader(file)
         for row in reader:
             if row["user"] == reg_user:
-                if row["password"] == reg_pass:
-                    with open("user.txt", "w") as user_file:
-                        user_file.write(reg_user)
-                    return "ok"
-                else:
+                if row["password"] != reg_pass:
                     return "Contraseña incorrecta"
 
+                with open("user.txt", "w") as user_file:
+                    user_file.write(reg_user)
+                return "ok"
     return f"El Usuario {reg_user} no está registrado"

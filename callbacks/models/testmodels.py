@@ -8,7 +8,11 @@ from dash.exceptions import PreventUpdate
 from joblib import load
 from sklearn.linear_model import LinearRegression, LogisticRegression
 
-from utils.test_models_button_functions import *
+# sourcery skip: dont-import-test-modules
+from utils.test_models_button_functions import (
+    results_logistic_regresion,
+    results_linear_regresion,
+)
 
 id_page = "test_models"
 

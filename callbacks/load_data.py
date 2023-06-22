@@ -43,34 +43,36 @@ def load_data(n_clicks, data):
 @callback(
     [
         Output("main_page_store", "data", allow_duplicate=True),
-        Output(f"main_page_div_functionalities", "hidden", allow_duplicate=True),
-        Output(f"main_page_panel_load_save", "hidden", allow_duplicate=True),
+        Output("main_page_div_functionalities", "hidden", allow_duplicate=True),
+        Output("main_page_panel_load_save", "hidden", allow_duplicate=True),
         Output(f"{id_page}_content_down", "children", allow_duplicate=True),
     ],
     Input(f"{id_page}_aceptar", "n_clicks"),
-    [State(f"{id_page}_drop_file", "value"), State("main_page_store", "data")],
+    [
+        State(f"{id_page}_drop_file", "value"),
+        State("main_page_store", "data")
+    ],
     prevent_initial_call=True,
 )
 def load_data(accept, input_value, data):
-    if accept:
-        path = f"""users/{data["user"]}/data/{input_value}"""
-        data["df"] = read_data(input_value.split(".")[-1], path)
-        data["name_df"] = input_value.split(".")[0]
-        ext = input_value.split(".")[1]
-
-        actions = [
-            "import pandas as pd",
-            "",
-            f"""df = pd.read_{ext}("{input_value}")""",
-        ]
-
-        with open(f"""users/{data["user"]}/workflow.txt""", "w") as file:
-            for action in actions:
-                file.write(action + "\n")
-
-        div_data_hidden = True
-    else:
+    if not accept:
         raise PreventUpdate
+    path = f"""users/{data["user"]}/data/{input_value}"""
+    data["df"] = read_data(input_value.split(".")[-1], path)
+    data["name_df"] = input_value.split(".")[0]
+    ext = input_value.split(".")[1]
+
+    actions = [
+        "import pandas as pd",
+        "",
+        f"""df = pd.read_{ext}("{input_value}")""",
+    ]
+
+    with open(f"""users/{data["user"]}/workflow.txt""", "w") as file:
+        for action in actions:
+            file.write(action + "\n")
+
+    div_data_hidden = True
     return [
         data,
         False,
@@ -138,7 +140,7 @@ def load_data(n_clicks, user, password, host, port, bd, schema, table, data):
             read_sql(query, engine).to_csv(f"""users/{data["user"]}/data/{table}.csv""")
             engine.dispose()
             msg = create_msg(f"Archivo guardardo como {table}.csv")
-        except:
+        except Exception:
             msg = create_msg("Datos Erroneos")
         return msg
     else:

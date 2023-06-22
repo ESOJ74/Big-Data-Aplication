@@ -47,11 +47,7 @@ def second_callback(
     try:
         state_min_periods = int(state_min_periods)
 
-        if state_numeric_only == "True":
-            state_numeric_only = True
-        else:
-            state_numeric_only = False
-
+        state_numeric_only = state_numeric_only == "True"
         cov = read_json(data["df"]).cov(
             state_min_periods, state_ddof, state_numeric_only
         )
@@ -61,7 +57,7 @@ def second_callback(
                 color_continuous_scale=list_of_squential[state_template],
                 contrast_rescaling="infer",
                 aspect="auto",
-            )      
+            )
         return [create_obj(cov, fig, state_graph), ""]
     except ValueError as msg:
         return [create_msg(msg), ""]

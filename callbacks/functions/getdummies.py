@@ -91,9 +91,9 @@ def add_data_to_fig(
             or state_columns[0] == " "
         ):
             state_columns = None
-            state_dummy_na = True if state_dummy_na == "True" else False
-            state_sparse = True if state_sparse == "True" else False
-            state_drop_first = True if state_drop_first == "True" else False
+            state_dummy_na = state_dummy_na == "True"
+            state_sparse = state_sparse == "True"
+            state_drop_first = state_drop_first == "True"
         match state_dtype:
             case "int":
                 state_dtype_2 = int
@@ -131,7 +131,7 @@ def add_data_to_fig(
             df = save_function(data)
             name_button, content = button_save(
                 f"""users/{data["user"]}/workflow.txt""", msg
-            )            
+            )
     else:
         content = ""
         name_button = "Apply"

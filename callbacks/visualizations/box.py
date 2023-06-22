@@ -81,7 +81,7 @@ def display_page(
         state_hover_data = None
     if state_points == "False":
         state_points = False
-    state_notched = True if state_notched == "True" else False
+    state_notched = state_notched == "True"
 
     new_name_button = "Apply"
     content = ""

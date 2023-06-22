@@ -54,22 +54,14 @@ def second_callback(
         if type(state_axis) != int:
             state_axis = None
 
-        if state_skipna == "True":
-            state_skipna = True
-        else:
-            state_skipna = False
-
-        if state_numeric_only == "True":
-            state_numeric_only = True
-        else:
-            state_numeric_only = False
-
+        state_skipna = state_skipna == "True"
+        state_numeric_only = state_numeric_only == "True"
         sem = read_json(data["df"]).sem(
             state_axis, state_skipna, state_ddof, state_numeric_only
         )
         sem_info = sem
         if state_axis not in (1, 0):
-            return [create_msg(f"axis no ha sido seleccionado"), ""]
+            return [create_msg("axis no ha sido seleccionado"), ""]
         if type(sem_info) != float64:
             sem_info = sem_info
 

@@ -18,7 +18,7 @@ def create_obj(df, fig, state_button, axis=0):
         "padding": "-5px",
         "text-align": "left",
         "height": "0.5vmin",
-        
+
         "font-size": "0.7vmax",
         "border": "transparent",
         "color": "#535353",
@@ -32,7 +32,7 @@ def create_obj(df, fig, state_button, axis=0):
     }
     style_header = {        
         "color": "white",
-        
+
         "font-size": "0.8vmax",
         "font-weight": "bold",
         "text-align": "left",
@@ -56,8 +56,8 @@ def create_obj(df, fig, state_button, axis=0):
     ]
     df = df.round(decimals=5)
     try:
-        df.insert(0, "-", df.columns)   
-    except:
+        df.insert(0, "-", df.columns)
+    except Exception:
         try:
             df = DataFrame({"Class": df.index, "Values": df.values})
             style_table = {
@@ -69,7 +69,7 @@ def create_obj(df, fig, state_button, axis=0):
                 "overflow-x": "auto",
                 "overflow-y": "auto"
             }
-        except:
+        except Exception:
             df.insert(0, "-", df.index)
     obj = MyDashTable.my_dash_table(
         df,

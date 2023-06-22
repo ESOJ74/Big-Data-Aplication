@@ -19,7 +19,7 @@ def add_data_to_fig(n_clicks, data):
         f"{stop - list_non_null[column]} non-null" for column in list_non_null
     ]
     list_dtype = [df[column].dtype for column in columns]
-    list_dtypes = dict((i, list_dtype.count(i)) for i in list_dtype)
+    list_dtypes = {i: list_dtype.count(i) for i in list_dtype}
     maxi = len(max(columns, key=len))
 
     texto = (
@@ -42,5 +42,5 @@ def add_data_to_fig(n_clicks, data):
         + "\n"
         + f"memory usage: {df.memory_usage(index=False).sum() / 1000} KB"
     )
-    
+
     return [html.Pre(texto, className="panel-funtions-text")]

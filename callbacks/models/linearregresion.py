@@ -15,9 +15,9 @@ id_page = "LinearRegression"
 
 
 def fit_model(X, y, fit_intercept, copy_X, n_jobs, positive):
-    fit_intercept = False if fit_intercept == "False" else True
-    copy_X = False if copy_X == "False" else True
-    positive = False if positive == "False" else True
+    fit_intercept = fit_intercept != "False"
+    copy_X = copy_X != "False"
+    positive = positive != "False"
     if n_jobs is not None:
         n_jobs = int(n_jobs)
 
@@ -34,18 +34,17 @@ def fit_model(X, y, fit_intercept, copy_X, n_jobs, positive):
         Output(f"{id_page}_target", "options"),
         Output(f"{id_page}_target", "value"),
     ],
-    Input(f"linearregresion", "n_clicks"),
+    Input("linearregresion", "n_clicks"),
     State("main_page_store", "data"),
     prevent_initial_call=True,
 )
 def second_callback(n_clicks, data):
     df = read_json(data["df"])[:1]
-    columns = [
+    if columns := [
         c
         for c in df.columns
         if "int" not in str(df[c].dtype) and "float" not in str(df[c].dtype)
-    ]
-    if len(columns) > 0:
+    ]:
         return [columns, columns[0]]
     else:
         return [df.columns, df.columns[0]]
@@ -82,50 +81,49 @@ def display_page(
     n_jobs,
     positive,
 ):
-    if n_clicks:
-        df = read_json(data["df"])
-        value_x = [x for x in df.columns if x not in options_y]
-
-        if len(value_x) == 0:
-            value_x = list(df.columns)
-            value_x.remove(value_y)
-
-        try:
-            # train_test_split
-            X_train, X_test, y_train, y_test = split_df(
-                df, value_x, value_y, int(test_size) / 100, int(random_state)
-            )
-            # Entrenamos modelo
-            regr = fit_model(X_train, y_train, fit_intercept, copy_X, n_jobs, positive)
-
-            date_model = str(datetime.now()).split(".")[0]
-
-            obj_middle = create_msg(
-                f"""Modelo Entrenado.
-                                     Guardado como {value_y}_{date_model}"""
-            )
-
-            # Guardamos Modelo
-            path = f"""users/{data["user"]}/models/linear_regresion"""
-            try:
-                os.stat(path)
-            except:
-                os.makedirs(path)
-            path = path + f"/{value_y}_{date_model}"
-            os.makedirs(path)
-            dump(regr, f"{path}/model.joblib")
-
-            with open(f"{path}/X_train.pickle", "wb") as f:
-                pickle.dump(X_train, f)
-            with open(f"{path}/y_train.pickle", "wb") as f:
-                pickle.dump(y_train, f)
-            with open(f"{path}/X_test.pickle", "wb") as f:
-                pickle.dump(X_test, f)
-            with open(f"{path}/y_test.pickle", "wb") as f:
-                pickle.dump(y_test, f)
-
-        except (KeyError, ValueError) as err:
-            obj_middle = create_msg(err.__str__())
-        return [obj_middle, ""]
-    else:
+    if not n_clicks:
         raise PreventUpdate
+    df = read_json(data["df"])
+    value_x = [x for x in df.columns if x not in options_y]
+
+    if not value_x:
+        value_x = list(df.columns)
+        value_x.remove(value_y)
+
+    try:
+        # train_test_split
+        X_train, X_test, y_train, y_test = split_df(
+            df, value_x, value_y, int(test_size) / 100, int(random_state)
+        )
+        # Entrenamos modelo
+        regr = fit_model(X_train, y_train, fit_intercept, copy_X, n_jobs, positive)
+
+        date_model = str(datetime.now()).split(".")[0]
+
+        obj_middle = create_msg(
+            f"""Modelo Entrenado.
+                                     Guardado como {value_y}_{date_model}"""
+        )
+
+        # Guardamos Modelo
+        path = f"""users/{data["user"]}/models/linear_regresion"""
+        try:
+            os.stat(path)
+        except Exception:
+            os.makedirs(path)
+        path = path + f"/{value_y}_{date_model}"
+        os.makedirs(path)
+        dump(regr, f"{path}/model.joblib")
+
+        with open(f"{path}/X_train.pickle", "wb") as f:
+            pickle.dump(X_train, f)
+        with open(f"{path}/y_train.pickle", "wb") as f:
+            pickle.dump(y_train, f)
+        with open(f"{path}/X_test.pickle", "wb") as f:
+            pickle.dump(X_test, f)
+        with open(f"{path}/y_test.pickle", "wb") as f:
+            pickle.dump(y_test, f)
+
+    except (KeyError, ValueError) as err:
+        obj_middle = create_msg(err.__str__())
+    return [obj_middle, ""]

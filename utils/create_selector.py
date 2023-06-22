@@ -6,11 +6,13 @@ class SelectCreator:
         self,
         id_dropdown,
         name_params,
-        options=[],
+        options=None,
         value="",
         multi=False,
         maxHeight=150,
     ):
+        if options is None:
+            options = []
         self.id_dropdown = id_dropdown
         self.name_params = name_params
         self.style_div = {

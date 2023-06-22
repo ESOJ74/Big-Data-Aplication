@@ -1,3 +1,4 @@
+import contextlib
 import re
 
 from dash import Input, Output, State, callback, html
@@ -58,22 +59,16 @@ def add_data_to_fig(
     name_button,
 ):
     if clicks_button:
-        try:
+        with contextlib.suppress(Exception):
             to_replace = float(to_replace) if "." in to_replace else int(to_replace)
-        except:
-            pass
-
-        try:
+        with contextlib.suppress(Exception):
             value = float(value) if "." in value else int(value)
-        except:
-            pass
-
         limit = None if limit == " " else int(limit)
-        regex = True if regex == "True" else False
+        regex = regex == "True"
         cod1 = f"""df = df.replace(to_replace="{to_replace}", """
         cod2 = f"value={value}, "
         cod3 = f"limit={limit}, regex={regex})"
-        if regex == True:
+        if regex:
             cod1 = f"""df.replace(to_replace=r"{to_replace}", """
             to_replace = re.compile(to_replace)
         if value:

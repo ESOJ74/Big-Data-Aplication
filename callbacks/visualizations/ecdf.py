@@ -69,7 +69,7 @@ def display_page(
         state_ecdfnorm = None
     if state_color is not None and len(state_color) < 1 or state_color == " ":
         state_color = None
-    state_markers = False if state_markers == "False" else True
+    state_markers = state_markers != "False"
 
     new_name_button = "Apply"
     content = ""

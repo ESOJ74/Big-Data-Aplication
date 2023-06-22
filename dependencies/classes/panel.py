@@ -43,7 +43,7 @@ class Panel:
         """
         self.hidden = hidden
 
-    def update_panel(self, obj=[], className=None):
+    def update_panel(self, obj=None, className=None):
         """
         Update the child elements and class name of the panel.
 
@@ -51,6 +51,8 @@ class Panel:
             obj (list, optional): The child elements of the panel. Defaults to an empty list.
             className (str, optional): The class name of the panel. Defaults to None.
         """
+        if obj is None:
+            obj = []
         self.children = obj
         self.className = className
 
