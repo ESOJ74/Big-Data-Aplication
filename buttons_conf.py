@@ -93,7 +93,9 @@ buttons_for_visualizations = [
     )
 ]
 
-buttons_for_models = [x[0] for x in (models_supervised + models_deep + existing_models)]
+buttons_for_models = [
+    x[0] for x in (models_supervised + models_deep + existing_models + models_test)
+]
 
 list_of_buttons = [
     ["load_data", "view_data", "save_data", "workflow"],
@@ -107,6 +109,7 @@ no_apply = [
     "save_data",
     "view_data",
     "workflow",
+    "testmodels",
     "info",
     "t",
     "unique",

@@ -14,7 +14,7 @@ style_title = {
     "left": "2%",
     "top": "35%",
     "font-size": "calc(0.1rem + 1.7vw)",
-    "font-family": "var(--bs-body-font-family)",
+    
     "font-weight": "bold",
     "font-style": "italic",
     "color": "white",
@@ -24,7 +24,7 @@ style_a = {
     "float": "left",
     "margin-left": "3%",
     "margin-top": "4.5vmin",
-    "font-family": "var(--bs-body-font-family)",
+    
     "font-style": "italic",
     "font-size": "calc(0.1rem + .8vw)",
     "color": "white", 

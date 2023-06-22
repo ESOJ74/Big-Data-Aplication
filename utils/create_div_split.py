@@ -12,7 +12,7 @@ style_params_split = {
     "float": "left",
     "color": "white",
     "font-size": "0.9em",
-    "font-family": "var(--bs-body-font-family)",
+    
 }
 
 style_input_split = {

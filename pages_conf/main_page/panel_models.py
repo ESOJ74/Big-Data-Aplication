@@ -31,7 +31,8 @@ existing_models_button = create_button_drop(
 existing_models_buttons_div = create_div_buttons(
     f"{id_page}_div_existing_models", existing_models
 )
-
+# models_test button
+models_test_div = create_div_buttons(f"{id_page}_models_test", models_test, False)
 
 list_of_models = [
     supervised_button,
@@ -40,6 +41,7 @@ list_of_models = [
     deep_learning_buttons_div,
     existing_models_button,
     existing_models_buttons_div,
+    models_test_div
 ]
 
 models = panel.Panel(f"{id_page}_div_models")

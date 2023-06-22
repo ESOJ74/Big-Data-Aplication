@@ -8,7 +8,7 @@ style_login = {
     "width": "100%",
     "height": "35%",
     "text-align": "center",
-    "font-family": "var(--bs-body-font-family)",
+    
     "font-size": "calc(0.1rem + 2.5vw)",
     "font-weight": "bold",
     "font-style": "italic",
@@ -26,7 +26,7 @@ style_div_input = {
 style_input = {
     "width": "100%",
     "height": "100%",
-    "font-family": "var(--bs-body-font-family)",
+    
     "font-size": "calc(0.1rem + 0.9vw)",
     "background": "white",
     "border": "1px solid #020d11",
@@ -54,7 +54,7 @@ style_msg = {
     "margin-left": "25%",
     "margin-top": "0.5%",
     "color": "white",
-    "font-family": "var(--bs-body-font-family)",
+    
     "font-weight": "bold",
     "font-size": "calc(0.1rem + 0.8vw)",
 }
@@ -69,7 +69,7 @@ style_a = {
     "margin-top": "0%",
     "color": "white",
     "text-align": "left",
-    "font-family": "var(--bs-body-font-family)",
+    
     "font-weight": "bold",
     "font-size": "calc(0.1rem + 0.8vw)",
 }
@@ -80,7 +80,7 @@ style_res = {
     "top": "3%",
     "width": "100%",
     "color": "var(--bs-mine)",
-    "font-family": "var(--bs-body-font-family)",
+    
     "font-size": "calc(0.1rem + 1vw)",
     "text-align": "center",
 }

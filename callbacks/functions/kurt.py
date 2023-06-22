@@ -66,7 +66,6 @@ def second_callback(
             return [create_msg(f"axis no ha sido seleccionado"), ""]
         if type(kurt_info) != float64:
             kurt_info = kurt_info
-        print(kurt_info)
         fig = px.bar(
             x=kurt.index,
             y=kurt.values,

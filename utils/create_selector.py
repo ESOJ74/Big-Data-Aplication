@@ -24,11 +24,10 @@ class SelectCreator:
             "top": "20%",
             "float": "left",
             "width": "52%",
-            "font-size": "calc(0.1rem + 1vw)",
-            "font-family": "var(--bs-body-font-family)",
-            "color": "white"
+            "font-size": "calc(0.1rem + 0.9vw)",
+            "color": "white",
         }
-      
+
         self.background = "transparent"
         self.options = options
         self.value = value

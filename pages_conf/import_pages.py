@@ -34,6 +34,7 @@ from pages_conf.visualizations.violin import *
 from pages_conf.models.linearregresion import *
 from pages_conf.models.logisticregresion import *
 from pages_conf.models.canny import *
+from pages_conf.models.testmodels import *
 
 
 from pages_conf.load_data import *

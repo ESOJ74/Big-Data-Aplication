@@ -13,13 +13,12 @@ style_table = {
     "width": "98%",
     "height": "98%",
     "text-align": "left",
-    "overflow": "auto"
+    "overflow": "auto",
 }
 style_data = {
     "padding": "-5px",
     "text-align": "left",
     "height": "0.5vmin",
-    "font-family": "var(--bs-body-font-family)",
     "font-size": "0.7vmax",
     "border": "transparent",
     "color": "#535353",
@@ -33,7 +32,6 @@ style_cell = {
 }
 style_header = {
     "color": "white",
-    "font-family": "var(--bs-body-font-family)",
     "font-size": "0.8vmax",
     "font-weight": "bold",
     "text-align": "left",

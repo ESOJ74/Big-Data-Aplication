@@ -20,7 +20,7 @@ style_data = {
     "padding": "-5px",
     "text-align": "left",
     "height": "0.5vmin",
-    "font-family": "var(--bs-body-font-family)",
+    
     "font-size": "0.7vmax",
     "border-right": "1.5px solid #F4F5F5",
     "border": "1.5px solid #F4F5F5",
@@ -35,7 +35,7 @@ style_cell = {
 }
 style_header = {
     "color": "white",
-    "font-family": "var(--bs-body-font-family)",
+    
     "font-size": "0.8vmax",
     "font-weight": "bold",
     "text-align": "left",

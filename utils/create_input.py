@@ -16,7 +16,7 @@ class ParamInputCreator:
             "float": "left",
             "width": "52%",
             "font-size": "calc(0.1rem + 1vw)",
-            "font-family": "var(--bs-body-font-family)",
+            
             "color": "white",
         }
         self.style_input = {"float": "left",

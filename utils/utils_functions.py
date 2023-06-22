@@ -18,7 +18,7 @@ def create_obj(df, fig, state_button, axis=0):
         "padding": "-5px",
         "text-align": "left",
         "height": "0.5vmin",
-        "font-family": "var(--bs-body-font-family)",
+        
         "font-size": "0.7vmax",
         "border": "transparent",
         "color": "#535353",
@@ -32,7 +32,7 @@ def create_obj(df, fig, state_button, axis=0):
     }
     style_header = {        
         "color": "white",
-        "font-family": "var(--bs-body-font-family)",
+        
         "font-size": "0.8vmax",
         "font-weight": "bold",
         "text-align": "left",
