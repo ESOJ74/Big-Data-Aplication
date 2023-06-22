@@ -23,8 +23,11 @@ id_page = "main_page"
 def update_panel_up(pathname):
     with open("user.txt", "r") as file:
         user = file.read()
-    return [f"Usuario: {user}", html.A("Cerrar Sesión", href="/",
-                                       className="close-sesion"), {"user": user}]
+    return [
+        f"Usuario: {user}",
+        html.A("Cerrar Sesión", href="/", className="close-sesion"),
+        {"user": user},
+    ]
 
 
 # --------------------- middle panel ---------------------------
@@ -265,8 +268,9 @@ def auth_display(
 def create_callback_for_buttons(button):
     load_buttons = list_of_buttons[0]
     buttons_for_functions = list_of_buttons[1]
-    buttons_for_visualizations = list_of_buttons[2] 
-    buttons_for_models = list_of_buttons[3]  
+    buttons_for_visualizations = list_of_buttons[2]
+    buttons_for_models = list_of_buttons[3]
+
     @callback(
         [
             Output(f"{id_page}_panel_middle_right", "children", allow_duplicate=True),
@@ -295,11 +299,13 @@ def create_callback_for_buttons(button):
             ]
 
         pan = TemplateCreator(button)
-        pan.create_content_up(module.content_up, "panel-content-up")       
+        pan.create_content_up(module.content_up, "panel-content-up")
         pan.create_content_down(module.content_down, "panel-content-down")
         pan.create_params(params, "panel-params")
         return [pan.create_template(), 0]
 
 
-for button in list_of_buttons[0] + list_of_buttons[1] + list_of_buttons[2] + list_of_buttons[3]:
+for button in (
+    list_of_buttons[0] + list_of_buttons[1] + list_of_buttons[2] + list_of_buttons[3]
+):
     create_callback_for_buttons(button)

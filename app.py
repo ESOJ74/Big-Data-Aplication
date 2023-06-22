@@ -1,10 +1,11 @@
+import contextlib
 import os
 
 from dash import Dash, callback, dcc, html
 from dash.dependencies import Input, Output
+
 from pages import login_layout, registry_layout
 from pages_conf.main_page import main_page_conf
-from pages_conf.import_pages import *
 
 id_page = "initial_layout"
 
@@ -21,11 +22,7 @@ app.layout = html.Div(
 
 
 # Update page content
-import contextlib
-@callback(
-        Output(f"{id_page}_content", "children"),
-        Input(f"{id_page}_url", "pathname")
-)
+@callback(Output(f"{id_page}_content", "children"), Input(f"{id_page}_url", "pathname"))
 def display_page(pathname):
     pages_list = {
         "/": login_layout.layout,
@@ -39,9 +36,8 @@ def display_page(pathname):
     if pathname == "/app" and not os.path.exists("user.txt"):
         pathname = "/"
 
-    if pathname in pages_list:
-        return pages_list[pathname]
-    
+    return pages_list.get(pathname, "")
+
 
 if __name__ == "__main__":
     app.run_server(debug=True)
