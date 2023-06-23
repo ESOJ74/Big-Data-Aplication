@@ -1,5 +1,5 @@
 import numpy as np
-from dash import Input, Output, State, callback, html 
+from dash import Input, Output, State, callback
 from pandas import read_json, set_option
 from utils.utils_functions import create_msg, create_obj
 
@@ -51,7 +51,9 @@ def add_data_to_fig(n_clicks, data, percentiles, include, exclude):
         case _:
             exclude = None
     try:
-        describe_df = read_json(data["df"]).describe(percentiles, include, exclude).transpose()        
+        describe_df = (
+            read_json(data["df"]).describe(percentiles, include, exclude).transpose()
+        )
         return [create_obj(describe_df, "", ""), ""]
     except Exception as msg:
-        return [create_msg(msg) , ""]
+        return [create_msg(msg), ""]
