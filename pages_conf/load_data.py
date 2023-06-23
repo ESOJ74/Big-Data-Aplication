@@ -1,6 +1,6 @@
 from dash import html
 import dash_bootstrap_components as dbc
-from callbacks.load_data import *
+from callbacks.load_data import *  # noqa: F403
 
 id_page = "load_data"
 

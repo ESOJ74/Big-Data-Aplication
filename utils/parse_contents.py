@@ -16,6 +16,6 @@ def parse_contents(contents, filename, data):
             # Assume that the user uploaded an excel file
             df = read_excel(io.BytesIO(decoded))
         df.to_csv(f"""users/{data["user"]}/data/{filename}""", index=False)
-    except Exception as e:
+    except Exception:
         return "There was an error processing this file."
     return "Archivo guardado"

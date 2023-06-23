@@ -1,7 +1,7 @@
 import dash_bootstrap_components as dbc
 from dash import dcc, html
 
-from callbacks.workflow import *
+from callbacks.workflow import * # noqa: F403
 
 id_page = "workflow"
 

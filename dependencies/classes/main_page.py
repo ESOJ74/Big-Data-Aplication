@@ -26,7 +26,8 @@ class MainPage:
 
     main_page = MainPage(id_page="my-main-page", className="main-page")
     main_page.update_panel_up(html.Div([html.H1("Welcome to Dash!")]))
-    main_page.update_middle_panel(html.Div([html.P("This is the content of the main page.")]))
+    main_page.update_middle_panel(html.Div([html.P("This is the content of the
+                                                    main page.")]))
     main_page.update_panel_footer(html.Div([html.P("Footer content")]))
     main_page_layout = main_page.main_page()
     """

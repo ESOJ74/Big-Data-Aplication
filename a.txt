@@ -1,0 +1,18 @@
+************* Module corr
+callbacks/functions/corr.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+callbacks/functions/corr.py:5:0: E0401: Unable to import 'assets.template' (import-error)
+callbacks/functions/corr.py:6:0: E0401: Unable to import 'utils.create_callback_text_graph' (import-error)
+callbacks/functions/corr.py:7:0: E0401: Unable to import 'utils.utils_functions' (import-error)
+callbacks/functions/corr.py:9:0: C0103: Constant name "id_page" doesn't conform to UPPER_CASE naming style (invalid-name)
+callbacks/functions/corr.py:35:0: C0116: Missing function or method docstring (missing-function-docstring)
+callbacks/functions/corr.py:35:0: R0913: Too many arguments (10/5) (too-many-arguments)
+callbacks/functions/corr.py:17:8: E1123: Unexpected keyword argument 'allow_duplicate' in constructor call (unexpected-keyword-arg)
+callbacks/functions/corr.py:50:15: E1101: Instance of 'JsonReader' has no 'corr' member (no-member)
+callbacks/functions/corr.py:36:4: W0613: Unused argument 'click1' (unused-argument)
+callbacks/functions/corr.py:37:4: W0613: Unused argument 'click2' (unused-argument)
+callbacks/functions/corr.py:38:4: W0613: Unused argument 'click3' (unused-argument)
+callbacks/functions/corr.py:40:4: W0613: Unused argument 'state_text' (unused-argument)
+
+------------------------------------------------------------------
+Your code has been rated at 0.00/10 (previous run: 0.00/10, +0.00)
+

@@ -5,7 +5,8 @@ from dash_iconify import DashIconify
 
 class ButtonDropCreator:
     """
-    A class for creating a dropdown button with a name and icon using Dash and Bootstrap.
+    A class for creating a dropdown button with a name and icon using Dash and
+    Bootstrap.
 
     Attributes:
         style_div (dict): The CSS styles for the name container div.

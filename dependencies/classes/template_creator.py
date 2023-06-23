@@ -5,8 +5,8 @@ class TemplateCreator:
     """
     A class for creating templates using Dash HTML components.
 
-    The TemplateCreator class provides methods for creating the content, parameters, and the overall template structure
-    using the Dash HTML components.
+    The TemplateCreator class provides methods for creating the content, parameters,
+    and the overall template structureusing the Dash HTML components.
 
     Attributes:
     - id_page (str): The ID of the page.
@@ -16,11 +16,14 @@ class TemplateCreator:
 
     Methods:
     - __init__(self, id_page): Initializes a TemplateCreator object with the given ID.
-    - create_content_up(content, className): Creates the content for the upper section of the template.
-    - create_content_down(content, className): Creates the content for the lower section of the template.
+    - create_content_up(content, className): Creates the content for the upper section
+      of the template.
+    - create_content_down(content, className): Creates the content for the lower section
+      of the template.
     - create_params(content, className): Creates the parameters for the template.
     - create_template(): Creates the final template structure.
     """
+
     def __init__(self, id_page):
         """
         Initializes a TemplateCreator object.
@@ -61,7 +64,7 @@ class TemplateCreator:
         """
         self.content_down = html.Div(
             content, f"{self.id_page}_content_down", className=className
-            )
+        )
 
     def create_params(self, content, className):
         """
@@ -74,9 +77,7 @@ class TemplateCreator:
         Returns:
         None
         """
-        self.params = html.Div(
-            content, f"{self.id_page}_params", className=className
-            )
+        self.params = html.Div(content, f"{self.id_page}_params", className=className)
 
     def create_template(self):
         """
@@ -86,14 +87,16 @@ class TemplateCreator:
         html.Div: The template as an HTML div element.
         """
         loading = dcc.Loading(
-                id="loading-2",
-                children=html.Div(id="loading"),
-                type="cube",
-                fullscreen=False,
-                color="#20c997",
-                className="panel-loading",
-            )
+            id="loading-2",
+            children=html.Div(id="loading"),
+            type="cube",
+            fullscreen=False,
+            color="#20c997",
+            className="panel-loading",
+        )
         return html.Div(
-            [self.content_up, loading, self.content_down, self.params], className="panel-creator"
-            )
-    #"graph","cube","circle","dot","default"
+            [self.content_up, loading, self.content_down, self.params],
+            className="panel-creator",
+        )
+
+    # "graph","cube","circle","dot","default"

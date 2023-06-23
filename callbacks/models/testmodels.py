@@ -10,8 +10,8 @@ from sklearn.linear_model import LinearRegression, LogisticRegression
 
 # sourcery skip: dont-import-test-modules
 from utils.test_models_button_functions import (
-    results_logistic_regresion,
     results_linear_regresion,
+    results_logistic_regresion,
 )
 
 id_page = "test_models"
@@ -25,13 +25,13 @@ id_page = "test_models"
     Input("testmodels", "n_clicks"),
     State("main_page_store", "data"),
 )
-def second_callback(n_clicks, data):
+def button_testmodels(n_clicks, data):
     try:
         path = f"""users/{data["user"]}/models/"""
         lista = os.listdir(path)
         return [lista, lista[0]]
-    except:
-        raise PreventUpdate
+    except Exception as e:
+        raise PreventUpdate from e
 
 
 @callback(
@@ -42,13 +42,13 @@ def second_callback(n_clicks, data):
     Input(f"{id_page}_test_left", "value"),
     State("main_page_store", "data"),
 )
-def second_callback(type_model, data):
+def drop_left(type_model, data):
     try:
         path = f"""users/{data["user"]}/models/{type_model}"""
         lista = os.listdir(path)
         return [lista, lista[0]]
-    except:
-        raise PreventUpdate
+    except Exception as e:
+        raise PreventUpdate from e
 
 
 @callback(
@@ -64,7 +64,7 @@ def second_callback(type_model, data):
     ],
     prevent_initial_call=True,
 )
-def display_page(model_name, type_model, data):
+def drop_right(model_name, type_model, data):
     path = f"""users/{data["user"]}/models/{type_model}/{model_name}/"""
     model = load(f"{path}model.joblib")
 

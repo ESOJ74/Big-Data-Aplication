@@ -104,7 +104,7 @@ def add_data_to_fig(
         cod1 = (
             f"df = pd.get_dummies(df, prefix={state_prefix}, dummy_na={state_dummy_na},"
         )
-        cod2 = f" columns={state_columns}, sparse={state_sparse}, drop_first={state_drop_first},"
+        cod2 = f" columns={state_columns}, sparse={state_sparse}, drop_first={state_drop_first},"  # noqa: E501
         cod3 = f" dtype={state_dtype})"
         msg = cod1 + cod2 + cod3
 

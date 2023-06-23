@@ -2,7 +2,7 @@ from dash import html
 from numpy import arange
 
 from assets.template import list_of_squential
-from callbacks.visualizations.scatter3d import *
+from callbacks.visualizations.scatter3d import *  # noqa: F403
 from utils.create_callback_content_up import content_up_visualizations
 from utils.create_selector import SelectCreator
 

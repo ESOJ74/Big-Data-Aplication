@@ -2,8 +2,6 @@ import plotly.figure_factory as ff
 
 from dash import Input, Output, State, callback
 from pandas import read_json
-
-from assets.template import list_of_squential, template_visualizations
 from utils.selector_options import selector_options
 from utils.utils_visualizations import create_result, error
 

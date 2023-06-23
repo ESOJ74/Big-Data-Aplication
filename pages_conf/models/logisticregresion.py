@@ -1,6 +1,6 @@
 from dash import dcc, html
 
-from callbacks.models.logisticregresion import *
+from callbacks.models.logisticregresion import *  # noqa: F403
 from utils.create_callback_content_up import content_up_models
 from utils.create_div_split import create_div_split
 from utils.create_input import ParamInputCreator

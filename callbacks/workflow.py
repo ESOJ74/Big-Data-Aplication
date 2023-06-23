@@ -4,8 +4,9 @@ from datetime import datetime
 
 from pandas import read_json
 from dash.exceptions import PreventUpdate
-from dash import Input, Output, State, callback, dcc, html
+from dash import Input, Output, State, callback, dcc
 from utils.utils_functions import create_msg
+import pathlib
 
 id_page = "workflow"
 
@@ -13,7 +14,7 @@ global file_path
 file_path = ""
 
 
-import pathlib
+
 @callback(
     [
         Output(f"{id_page}_drop_file", "options"),
@@ -33,7 +34,7 @@ def add_data_to_fig(refres, data):
     Input(f"{id_page}_drop_file", "value"),
     prevent_initial_call=True,
 )
-def add_data_to_fig(drop_workflow):
+def change_button_apply(drop_workflow):
     return "Save" if drop_workflow == "Actual" else "Apply"
 
 
@@ -46,7 +47,7 @@ def add_data_to_fig(drop_workflow):
     State("main_page_store", "data"),
     prevent_initial_call=True,
 )
-def add_data_to_fig(drop_workflow, data):
+def drop_file(drop_workflow, data):
     global file_path
     if drop_workflow == "Actual":
         pipe_file = f"""users/{data["user"]}/workflow.txt"""
@@ -76,7 +77,7 @@ def add_data_to_fig(drop_workflow, data):
     ],
     prevent_initial_call=True,
 )
-def add_data_to_fig(n_clicks, name_button, data):
+def button_apply(n_clicks, name_button, data):
     if not n_clicks:
         raise PreventUpdate
     if name_button == "Save":
@@ -88,7 +89,7 @@ def add_data_to_fig(n_clicks, name_button, data):
         shutil.copy2(path_file, path_end)
         msg = "Workflow guardado"
     else:
-        import pandas as pd  # se utiliza en eval()
+        import pandas as pd  # se utiliza en eval()  # noqa: F401
 
         df = read_json(data["df"])
         df_pipeline = data["pipeline"]

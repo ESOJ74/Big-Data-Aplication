@@ -1,7 +1,7 @@
 from dash import html
 
 from assets.template import list_of_squential
-from callbacks.functions.kurt import *
+from callbacks.functions.kurt import *  # noqa: F403
 from utils.buttons_text_graph import ButtonsTextGraph
 from utils.create_callback_content_up import content_up_functions
 from utils.create_selector import SelectCreator

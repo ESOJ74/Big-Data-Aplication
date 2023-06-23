@@ -1,6 +1,6 @@
-from buttons_conf import *
+from buttons_conf import l_workflow
 from dependencies.classes import button_bar, panel
-from pages_conf.main_page.utils import create_button_drop, create_div_buttons
+from pages_conf.main_page.utils import create_div_buttons
 
 id_page = "main_page"
 

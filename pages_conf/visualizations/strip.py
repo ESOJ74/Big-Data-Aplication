@@ -1,7 +1,7 @@
 from dash import html
 
 from assets.template import list_of_squential
-from callbacks.visualizations.strip import *
+from callbacks.visualizations.strip import *  # noqa: F403
 from utils.create_callback_content_up import content_up_visualizations
 from utils.create_selector import SelectCreator
 

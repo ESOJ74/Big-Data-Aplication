@@ -1,6 +1,6 @@
 from dash import html
 
-from callbacks.functions.replace import *
+from callbacks.functions.replace import *  # noqa: F403
 from utils.create_callback_content_up import content_up_functions
 from utils.create_input import ParamInputCreator
 from utils.create_selector import SelectCreator

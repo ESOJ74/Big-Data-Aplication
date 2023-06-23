@@ -53,7 +53,8 @@ class DivButtonCreator:
         Updates the CSS class name for each div containing a button.
 
         Args:
-            div_button_classname (str): The new CSS class name for each div containing a button.
+            div_button_classname (str): The new CSS class name for each div containing
+            a button.
         """
         self.div_button_classname = div_button_classname
 
@@ -71,7 +72,8 @@ class DivButtonCreator:
         Updates the visibility state of the div.
 
         Args:
-            hidden (bool): True if the div should be hidden, False if it should be visible.
+            hidden (bool): True if the div should be hidden, False if it should be
+            visible.
         """
         self.hidden = hidden
 

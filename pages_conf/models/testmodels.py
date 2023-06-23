@@ -1,6 +1,6 @@
 from dash import dcc, html
 
-from callbacks.models.testmodels import *
+from callbacks.models.testmodels import *  # noqa: F403
 
 id_page = "test_models"
 

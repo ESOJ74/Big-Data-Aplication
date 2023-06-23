@@ -1,6 +1,6 @@
 from dash import html
 
-from callbacks.view_data import *
+from callbacks.view_data import * # noqa: F403
 
 id_page = "view_data"
 

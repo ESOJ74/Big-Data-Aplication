@@ -1,1 +1,1 @@
-from .import canny, linearregresion, logisticregresion, testmodels
+from .import canny, linearregresion, logisticregresion, testmodels  # noqa: F401

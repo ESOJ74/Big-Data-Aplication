@@ -4,7 +4,7 @@ from utils.create_callback_content_up import content_up_models
 from utils.create_div_split import create_div_split
 from utils.create_input import ParamInputCreator
 from utils.create_selector import SelectCreator
-from callbacks.models.linearregresion import *
+from callbacks.models.linearregresion import *  # noqa: F403
 
 id_page = "LinearRegression"
 

@@ -103,9 +103,12 @@ class UserLogin:
 
     Methods:
         set_title(title): Sets the title of the user login component.
-        set_pathname(name_pathname, pathname): Sets the pathname and name of the user login component.
-        create_input(msg, id_input): Creates an input field for the user login component.
-        user_login(): Generates a `html.Div` element representing the user login component.
+        set_pathname(name_pathname, pathname): Sets the pathname and name of the user
+        login component.
+        create_input(msg, id_input): Creates an input field for the user login
+        component.
+        user_login(): Generates a `html.Div` element representing the user login
+        component.
 
     Example usage:
 

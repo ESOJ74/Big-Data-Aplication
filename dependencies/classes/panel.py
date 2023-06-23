@@ -17,7 +17,8 @@ class Panel:
     Methods:
         update_id_page(id_page): Updates the ID of the panel.
         update_hidden(hidden): Updates the hidden status of the panel.
-        update_panel(obj=[], className=None): Updates the child elements and class name of the panel.
+        update_panel(obj=[], className=None): Updates the child elements and class name
+        of the panel.
         panel(): Generates a `html.Div` element representing the panel.
 
     Example usage:
@@ -48,7 +49,8 @@ class Panel:
         Update the child elements and class name of the panel.
 
         Args:
-            obj (list, optional): The child elements of the panel. Defaults to an empty list.
+            obj (list, optional): The child elements of the panel. Defaults to an empty
+            list.
             className (str, optional): The class name of the panel. Defaults to None.
         """
         if obj is None:

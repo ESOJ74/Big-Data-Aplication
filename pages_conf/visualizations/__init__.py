@@ -1,3 +1,19 @@
-from . import (area, bar, box, ecdf, funnel, histogram, icicle, line, line3d,
-               pie, scatter, scatter3d, strip, sunburst, timeline, treemap,
-               violin)
+from . import (
+    area, # noqa: F401
+    bar, # noqa: F401
+    box, # noqa: F401
+    ecdf, # noqa: F401
+    funnel, # noqa: F401
+    histogram, # noqa: F401
+    icicle, # noqa: F401
+    line, # noqa: F401    
+    line3d,  # noqa: F401
+    pie, # noqa: F401
+    scatter, # noqa: F401
+    scatter3d, # noqa: F401
+    strip, # noqa: F401
+    sunburst, # noqa: F401
+    timeline, # noqa: F401
+    treemap, # noqa: F401
+    violin, # noqa: F401
+)

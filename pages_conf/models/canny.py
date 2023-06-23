@@ -3,7 +3,7 @@ import dash_bootstrap_components as dbc
 from utils.create_selector import SelectCreator
 from utils.create_input import ParamInputCreator
 from utils.create_callback_content_up import content_up_existing_models
-from callbacks.models.canny import *
+from callbacks.models.canny import *  # noqa: F403
 
 id_page = "canny"
 

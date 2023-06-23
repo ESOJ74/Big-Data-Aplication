@@ -15,7 +15,8 @@ class ButtonsTextGraph:
     - style_button (dict): The CSS styles for the buttons.
 
     Methods:
-    - buttons_text_graph(): Returns the HTML representation of the text and graph buttons.
+    - buttons_text_graph(): Returns the HTML representation of the text and
+      graph buttons.
     """
 
     def __init__(self, id_page):

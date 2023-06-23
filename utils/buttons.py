@@ -1,5 +1,5 @@
-# from utils.imports import *
 from dash import html
+
 from dependencies.classes.my_dash_table import MyDashTable
 
 style_table = {
@@ -34,6 +34,8 @@ style_header = {
 }
 
 style_cell = {"textAlign": "center"}
+
+
 def button_apply(df, msg, columns_grouped=0):
     if columns_grouped == 0:
         div = MyDashTable.my_dash_table(
@@ -63,5 +65,6 @@ def button_apply(df, msg, columns_grouped=0):
 def button_save(file, action):
     with open(file, "a") as file:
         file.write(action + "\n")
-    return "Apply", html.H6("Guardado",
-                            style={"color": "white", "font-size": "1vmax", "margin-left": "2%"})
+    return "Apply", html.H6(
+        "Guardado", style={"color": "white", "font-size": "1vmax", "margin-left": "2%"}
+    )

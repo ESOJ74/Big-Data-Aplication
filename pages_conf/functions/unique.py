@@ -1,5 +1,7 @@
+from dash import html
+
+from callbacks.functions.unique import *  # noqa: F403
 from utils.create_callback_content_up import content_up_functions
-from callbacks.functions.unique import *
 
 id_page = "unique"
 
