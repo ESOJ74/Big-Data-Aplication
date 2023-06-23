@@ -47,8 +47,7 @@ def second_callback(
     state_numeric_only,
     state_template,
 ):
-    try:
-        obj = ""
+    try:        
         state_ddof = int(state_ddof)
 
         if type(state_axis) != int:

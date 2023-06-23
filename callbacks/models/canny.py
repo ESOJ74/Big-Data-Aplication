@@ -21,7 +21,7 @@ id_page = "canny"
     State("main_page_store", "data"),
     prevent_initial_call=True,
 )
-def load_data(drop_dir, data):
+def button_canny(drop_dir, data):
     list_dir = os.listdir(f"""users/{data["user"]}/fotos""")
     foto = list_dir[0] if len(list_dir) > 0 else ""
     return [list_dir, foto]
@@ -37,7 +37,7 @@ def load_data(drop_dir, data):
     State("main_page_store", "data"),
     prevent_initial_call=True,
 )
-def load_data(n_clicks, data):
+def button_up_foto(n_clicks, data):
     if not n_clicks:
         raise PreventUpdate
     try:
@@ -69,7 +69,7 @@ def load_data(n_clicks, data):
     ],
     prevent_initial_call=True,
 )
-def load_data(
+def results(
     accept,
     refresh,
     input_value,

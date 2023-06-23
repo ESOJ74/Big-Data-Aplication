@@ -48,7 +48,6 @@ def add_data_to_fig(
     state_template,
 ):
     try:
-        obj = ""
         state_ddof = int(state_ddof)
 
         if type(state_axis) != int:

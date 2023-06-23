@@ -6,7 +6,6 @@ from pandas import read_json
 
 from utils.buttons import button_apply, button_save
 from utils.in_out import save_function
-from utils.select_labels import select_labels
 
 id_page = "replace"
 
@@ -78,10 +77,22 @@ def add_data_to_fig(
         if name_button == "Apply":
             try:
                 df = apply_function(data, to_replace, value, limit, regex)
-                msg = html.H6(msg, style={"color": "white", "font-size": "1vmax", "margin-left": "2%"})
+                msg = html.H6(
+                    msg,
+                    style={"color": "white", "font-size": "1vmax", "margin-left": "2%"},
+                )
                 name_button, content = button_apply(df, msg)
             except (KeyError, ValueError, TypeError) as err:
-                content = (html.H6(err.__str__(), style={"color": "white", "font-size": "1vmax", "margin-left": "2%"}),)
+                content = (
+                    html.H6(
+                        err.__str__(),
+                        style={
+                            "color": "white",
+                            "font-size": "1vmax",
+                            "margin-left": "2%",
+                        },
+                    ),
+                )
         else:
             df = save_function(data)
             file_pathname = f"""users/{data["user"]}/workflow.txt"""

@@ -1,10 +1,8 @@
-
 from pandas import get_dummies, read_json
 from dash import Input, Output, State, callback, html
 
 from utils.buttons import button_apply, button_save
 from utils.in_out import save_function
-from utils.select_labels import select_labels
 from utils.selector_options import selector_options
 
 id_page = "getdummies"
@@ -121,12 +119,24 @@ def add_data_to_fig(
                     state_drop_first,
                     state_dtype_2,
                 )
-                msg = html.H6(msg,
-                              style={"color": "white", "font-size": "1vmax", "margin-left": "2%"})              
+                msg = html.H6(
+                    msg,
+                    style={"color": "white", "font-size": "1vmax", "margin-left": "2%"},
+                )
                 name_button, content = button_apply(df, msg)
             except (KeyError, ValueError) as err:
-                content = (html.H6(err.__str__(),
-                                   style={"color": "white", "font-size": "1vmax", "margin-left": "2%"})),
+                content = (
+                    (
+                        html.H6(
+                            err.__str__(),
+                            style={
+                                "color": "white",
+                                "font-size": "1vmax",
+                                "margin-left": "2%",
+                            },
+                        )
+                    ),
+                )
         else:
             df = save_function(data)
             name_button, content = button_save(

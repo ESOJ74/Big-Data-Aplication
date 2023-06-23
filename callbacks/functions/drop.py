@@ -47,8 +47,9 @@ def add_data_to_fig(
                 state_labels_value = []
 
             df = apply_function(data, state_labels_value, state_axis)
-            msg = html.H6(msg,
-                          style={"color": "white", "font-size": "1vmax", "margin-left": "2%"})
+            msg = html.H6(
+                msg, style={"color": "white", "font-size": "1vmax", "margin-left": "2%"}
+            )
             name_button, content = button_apply(df, msg)
             labels = select_labels(df, state_axis)
         else:

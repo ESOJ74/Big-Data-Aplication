@@ -42,7 +42,7 @@ def update_panel_up(pathname):
     State(f"{id_page}_panel_middle_left", "className"),
     prevent_initial_call=True,
 )
-def auth_display(n_clicks, middle_right):
+def button_cover(n_clicks, middle_right):
     if n_clicks % 2 != 0:
         return [
             DashIconify(icon="ic:baseline-arrow-circle-right", className="icon-cover"),
@@ -66,7 +66,7 @@ def auth_display(n_clicks, middle_right):
     State(f"{id_page}_panel_load_save", "hidden"),
     prevent_initial_call=True,
 )
-def auth_display(n_clicks, panel_hidden):
+def button_data(n_clicks, panel_hidden):
     return [not panel_hidden]
 
 
@@ -78,7 +78,7 @@ def auth_display(n_clicks, panel_hidden):
     Input(f"{id_page}save_data", "n_clicks"),
     prevent_initial_call=True,
 )
-def auth_display(n_clicks):
+def button_save(n_clicks):
     print(n_clicks)
     return [n_clicks]
 
@@ -109,7 +109,7 @@ def auth_display(n_clicks):
     ],
     prevent_initial_call=True,
 )
-def auth_display(
+def drop_buttons(
     c_funtions,
     c_visualizations,
     c_models,
@@ -187,7 +187,7 @@ def auth_display(
     ],
     prevent_initial_call=True,
 )
-def auth_display(
+def buttons(
     c_info,
     c_a_g,
     c_h_p,
@@ -266,7 +266,7 @@ def auth_display(
 
 
 def create_callback_for_buttons(button):
-    load_buttons = list_of_buttons[0]
+    list_of_buttons[0]
     buttons_for_functions = list_of_buttons[1]
     buttons_for_visualizations = list_of_buttons[2]
     buttons_for_models = list_of_buttons[3]

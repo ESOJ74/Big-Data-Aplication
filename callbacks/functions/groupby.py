@@ -46,13 +46,23 @@ def add_data_to_fig(
         if name_button == "Apply":
             try:
                 df = apply_function(data, state_by, state_axis)
-                msg = html.H6(f"df.groupby({state_by}).sum()",
-                              style={"color": "white", "font-size": "1vmax", "margin-left": "2%"})
+                msg = html.H6(
+                    f"df.groupby({state_by}).sum()",
+                    style={"color": "white", "font-size": "1vmax", "margin-left": "2%"},
+                )
                 name_button, content = button_apply(df, msg, len(state_by))
                 state_by = select_labels(df, state_axis, True)
             except (KeyError, ValueError) as err:
-                content = (html.H6(err.__str__(),
-                                   style={"color": "white", "font-size": "1vmax", "margin-left": "2%"}),)
+                content = (
+                    html.H6(
+                        err.__str__(),
+                        style={
+                            "color": "white",
+                            "font-size": "1vmax",
+                            "margin-left": "2%",
+                        },
+                    ),
+                )
         else:
             df = save_function(data)
             name_button, content = button_save(

@@ -20,7 +20,7 @@ id_page = "load_data"
     State("main_page_store", "data"),
     prevent_initial_call=True,
 )
-def load_data(n_clicks, data):
+def button_archivos(n_clicks, data):
     obj = create_msg("No tiene archivos")
     options = os.listdir(f"""users/{data["user"]}/data""")
     if len(options) > 0:
@@ -54,7 +54,7 @@ def load_data(n_clicks, data):
     ],
     prevent_initial_call=True,
 )
-def load_data(accept, input_value, data):
+def button_load(accept, input_value, data):
     if not accept:
         raise PreventUpdate
     path = f"""users/{data["user"]}/data/{input_value}"""
@@ -87,7 +87,7 @@ def load_data(accept, input_value, data):
     State("main_page_store", "data"),
     prevent_initial_call=True,
 )
-def load_data(click_db, data):
+def button_database(click_db, data):
     return html.Div(
         [
             html.Div("User", className="h6-input"),
@@ -130,7 +130,7 @@ def load_data(click_db, data):
     ],
     prevent_initial_call=True,
 )
-def load_data(n_clicks, user, password, host, port, bd, schema, table, data):
+def button_aceptar_db(n_clicks, user, password, host, port, bd, schema, table, data):
     if n_clicks:
         try:
             engine = create_engine(f"postgresql://{user}:{password}@{host}:{port}/{bd}")
@@ -153,7 +153,7 @@ def load_data(n_clicks, user, password, host, port, bd, schema, table, data):
     Input(f"{id_page}_up_file", "n_clicks"),
     prevent_initial_call=True,
 )
-def load_data(n_clicks):
+def button_up_file(n_clicks):
     return html.Div(
         [
             dcc.Upload(
