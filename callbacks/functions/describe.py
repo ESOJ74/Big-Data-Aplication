@@ -1,5 +1,5 @@
 import numpy as np
-from dash import Input, Output, State, callback, html
+from dash import Input, Output, State, callback, html 
 from pandas import read_json, set_option
 from utils.utils_functions import create_msg, create_obj
 
