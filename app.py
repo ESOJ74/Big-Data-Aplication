@@ -57,15 +57,20 @@ from pages_conf.main_page import main_page_conf
 
 ID_PAGE = "initial_layout"
 
-app = Dash(__name__)
+meta_tags = [{'name': 'viewport', 'content': 'width=device-width'}]
+external_stylesheets = [meta_tags]
+
+app = Dash(__name__, external_stylesheets=external_stylesheets)
 app.config.suppress_callback_exceptions = True
+
+
 
 app.layout = html.Div(
     [
         dcc.Location(id=f"{ID_PAGE}_url"),
         html.Div("", f"{ID_PAGE}_content", className="panel-content-app"),
     ],
-    className="panel-app",
+    className="mainContainer",
 )
 
 

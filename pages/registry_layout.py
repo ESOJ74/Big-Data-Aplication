@@ -8,7 +8,7 @@ from dependencies.classes.my_login import UserLogin
 
 id_page = "users_registry"
 
-user_login = UserLogin(id_page, "panel-login")
+user_login = UserLogin(id_page, "login-container")
 user_login.set_title("Sign In")
 user_login.set_pathname("login", "")
 layout = user_login.user_login()

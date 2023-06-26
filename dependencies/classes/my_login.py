@@ -1,86 +1,13 @@
 import dash_bootstrap_components as dbc
 from dash import dcc, html
 
-style_login = {
-    "position": "relative",
-    "left": "0%",
-    "top": "7%",
-    "width": "100%",
-    "height": "35%",
-    "text-align": "center",
-    
-    "font-size": "calc(0.1rem + 2.5vw)",
-    "font-weight": "bold",
-    "font-style": "italic",
-    "color": "white",
-    "border-radius": "40px",
-}
-
-style_div_input = {
-    "margin-left": "35%",
-    "margin-top": "1.8%",
-    "width": "30%",
-    "height": "8%",
-}
-
-style_input = {
-    "width": "100%",
-    "height": "100%",
-    
-    "font-size": "calc(0.1rem + 0.9vw)",
-    "background": "white",
-    "border": "1px solid #020d11",
-    "color": "black",
-}
-
-style_button = {
-    "margin-left": "37%",
-    "margin-top": "3%",
-    "width": "27%",
-    "height": "9%",
-    "font-size": "1.8vmin",
-}
-
-style_div_msg = {
-    "margin-left": "0%",
-    "margin-top": "4%",
-    "width": "100%",
-    "height": "8%",
-    "text-align": "center",    
-}
-
-style_msg = {
-    "float": "left",
-    "margin-left": "25%",
-    "margin-top": "0.5%",
-    "color": "white",
-    
-    "font-weight": "bold",
-    "font-size": "calc(0.1rem + 0.8vw)",
-}
-
-style_div_a = {
-    "float": "left",
-    "margin-left": "2%",
-    "height": "100%",
-}
-
-style_a = {    
-    "margin-top": "0%",
-    "color": "white",
-    "text-align": "left",
-    
-    "font-weight": "bold",
-    "font-size": "calc(0.1rem + 0.8vw)",
-}
 
 style_res = {
     "position": "relative",
     "left": "0%",
     "top": "3%",
     "width": "100%",
-    "color": "var(--bs-mine)",
-    
+    "color": "white",
     "font-size": "calc(0.1rem + 1vw)",
     "text-align": "center",
 }
@@ -162,10 +89,10 @@ class UserLogin:
                 dcc.Input(
                     id=id_input,
                     placeholder=msg,
-                    style=style_input,
+                    className="input-login",
                 )
             ],
-            style=style_div_input,
+            className="row-100 input-login-container",
         )
 
     def user_login(self):
@@ -178,36 +105,40 @@ class UserLogin:
         return html.Div(
             [
                 html.Div(
-                    html.Div(children=self.title),
-                    "",
-                    style=style_login,
+                    html.Div(self.title, className="title-login"),
+                    className="row-100 title-login-container",
                 ),
-                self.create_input("Usuario", f"{self.id_page}_reg_user"),
-                self.create_input("Contraseña", f"{self.id_page}_reg_pass"),
+                html.Div(
+                    [
+                        self.create_input("Usuario", f"{self.id_page}_reg_user"),
+                        self.create_input("Contraseña", f"{self.id_page}_reg_pass"),
+                    ],
+                    style={"margin-top": "5%"},
+                ),
                 html.Div(
                     dbc.Button(
                         self.title,
                         f"{self.id_page}_reg_accept",
                         className="btn-login",
                     ),
-                    style=style_button,
+                    className="row-100 btn-login-container",
                 ),
                 html.Div(
                     [
                         html.Div(
                             "Nuevo en Big Data App?",
-                            style=style_msg,
+                            className="msg-login",
                         ),
-                        html.Div(
+                         
                             html.A(
                                 self.name_pathname,
                                 href=f"/{self.pathname}",
-                                style=style_a,
+                                className="a-login",
                             ),
-                            style=style_div_a,
-                        ),
+                            
+                       
                     ],
-                    style=style_div_msg,
+                    className="row-100 msg-login-container",
                 ),
                 html.Div(
                     "",
