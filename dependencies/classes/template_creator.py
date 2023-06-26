@@ -94,8 +94,15 @@ class TemplateCreator:
             color="#20c997",
             className="panel-loading",
         )
+
         return html.Div(
-            [self.content_up, loading, self.content_down, self.params],
+            [
+                html.Div(
+                    [self.content_up, loading, self.content_down],
+                    className="panel-creator-left",
+                ),
+                self.params,
+            ],
             className="panel-creator",
         )
 

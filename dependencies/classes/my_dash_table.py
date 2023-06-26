@@ -47,8 +47,7 @@ class MyDashTable:
                 "textOverflow": "ellipsis",
                 "overflow": "hidden",
                 "whiteSpace": "nowrap",
-            }
-            | style_header,
+            } | style_header,
             style_cell=style_cell,
             style_data_conditional=style_data_conditional,
             fixed_rows={"data": 0},

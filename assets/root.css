@@ -72,6 +72,23 @@
     --bs-highlight-bg: #ffe7cc;
 }
 
+/* Cambiar el color de la barra de desplazamiento */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #E8F6FF;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #9EC7FC;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #03214C;
+}
+
 .row-100 {
     display: flex;
     width: 100%;

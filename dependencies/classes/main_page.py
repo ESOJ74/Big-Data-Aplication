@@ -1,5 +1,5 @@
 from dash import dcc, html
-
+from pages_conf.main_page.panel_button_cover import panel_button_cover
 
 class MainPage:
     """
@@ -77,6 +77,7 @@ class MainPage:
             [
                 dcc.Store(id=f"{self.id_page}_store"),
                 self.panel_up,
+                panel_button_cover,
                 self.middle_panel,
                 self.panel_footer,
             ],

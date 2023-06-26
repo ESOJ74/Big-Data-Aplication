@@ -35,24 +35,23 @@ def update_panel_up(pathname):
 @callback(
     [
         Output(f"{id_page}_button_cover", "children"),
-        Output(f"{id_page}_panel_middle_left", "hidden"),
+        Output(f"{id_page}_panel_middle_left", "className"),
         Output(f"{id_page}_panel_middle_right", "className"),
     ],
     Input(f"{id_page}_button_cover", "n_clicks"),
-    State(f"{id_page}_panel_middle_left", "className"),
     prevent_initial_call=True,
 )
-def button_cover(n_clicks, middle_right):
+def button_cover(n_clicks):
     if n_clicks % 2 != 0:
         return [
             DashIconify(icon="ic:baseline-arrow-circle-right", className="icon-cover"),
-            True,
+            "panel-middle-left-cover",
             "panel-middle-right-cover",
         ]
     else:
         return [
             DashIconify(icon="ic:baseline-arrow-circle-left", className="icon-cover"),
-            False,
+            "panel-middle-left",
             "panel-middle-right",
         ]
 

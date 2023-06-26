@@ -33,5 +33,6 @@ content_up = html.Div(
 
 content_down = html.Div(
     id=f"{id_page}_content_down",
+    className="content-down-load-data"
 )
 params = [html.Div(className="no-params")]

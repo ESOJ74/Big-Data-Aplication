@@ -11,7 +11,8 @@ panel_git.update_panel(
         href="https://github.com/ESOJ74/Big-Data-Aplication",
         className="panel-a-footer",
         target="_blank",
-    )
+    ),
+    className="container-a-footer"
 )
 panel_chat = panel.Panel()
 panel_chat.update_panel(
@@ -20,7 +21,8 @@ panel_chat.update_panel(
         href="https://chat.openai.com/",
         className="panel-a-footer",
         target="_blank",
-    )
+    ),
+    className="container-a-footer"
 )
 panel_phind = panel.Panel()
 panel_phind.update_panel(
@@ -29,7 +31,8 @@ panel_phind.update_panel(
         href="https://www.phind.com/",
         className="panel-a-footer",
         target="_blank",
-    )
+    ),
+    className="container-a-footer"
 )
 
 footer = panel.Panel()
